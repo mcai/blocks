@@ -1,0 +1,36 @@
+{
+  "name": "@itecgo/blocks",
+  "version": "0.0.1",
+  "description": "blocks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcai/blocks.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "Min Cai",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "linq": "^3.2.2",
+    "moment": "^2.27.0",
+    "mongoose": "^5.10.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
+    "react-data-export": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/gulp": "^4.0.6",
+    "@types/react": "^16.9.48",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
