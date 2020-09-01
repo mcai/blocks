@@ -1,6 +1,5 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {PagedDataViewState} from "./PagedDataViewState";
-import {DataLoader} from "../DataLoader/DataLoader";
 import {PagedDataViewProps} from "./PagedDataViewProps";
 // @ts-ignore
 import ReactExport from "react-data-export";
@@ -13,9 +12,11 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
         super(props);
 
         this.state = {
-            pageSize: 10,
-            pageNum: 0,
-            paging: undefined
+            pageNum: this.props.pageNum,
+
+            count: 0,
+            pageCount: 0,
+            itemsInCurrentPage: []
         }
     }
 
@@ -28,7 +29,7 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
         prevState: Readonly<PagedDataViewState<ItemT>>,
         snapshot?: any
     ) {
-        if (prevState.pageNum !== this.state.pageNum || prevState.pageSize !== this.state.pageSize) {
+        if (prevState.pageNum !== this.state.pageNum) {
             await this.loadData();
         }
     }
@@ -41,22 +42,26 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
 
     public async loadData() {
         this.setState({
-            paging: undefined
+            count: 0,
+            pageCount: 0,
+            itemsInCurrentPage: []
         });
 
-        let paging = await this.props.getItems(this.state.pageSize, this.state.pageNum);
+        let {count, pageCount, itemsInCurrentPage} = await this.props.getItems(this.props.pageSize, this.state.pageNum);
 
         this.setState({
-            paging: paging
+            count: count,
+            pageCount: pageCount,
+            itemsInCurrentPage: itemsInCurrentPage
         });
     }
     render(): React.ReactNode {
         let paging = (
-            this.state.paging != null && <Pager
-                pageCount={this.state.paging.count ?? 0}
+            <Pager
+                pageCount={this.state.count ?? 0}
                 pageNum={this.state.pageNum + 1}
-                count={this.state.paging.count}
-                pageSize={this.state.pageSize}
+                count={this.state.count}
+                pageSize={this.props.pageSize}
                 onClick={(pageNum) => this.setState({
                     pageNum: pageNum
                 })}
@@ -64,7 +69,7 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
         );
 
         return (
-            <DataLoader isDataLoaded={this.state.paging != null}>
+            <Fragment>
                 {paging}
 
                 <ReactExport.ExcelFile element={(
@@ -72,7 +77,7 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
                         导出
                     </Button>
                 )} filename={Formatting.toFormattedDateTimeStringAsFileName()}>
-                    <ReactExport.ExcelSheet data={this.state.paging?.itemsInCurrentPage} name="Sheet1">
+                    <ReactExport.ExcelSheet data={this.state.itemsInCurrentPage} name="Sheet1">
                         {
                             this.props.fields.filter(field => field.renderAsText !== undefined).map(field => <ReactExport.ExcelColumn label={field.title} value={(item: any) => field.renderAsText?.(item)}/>)
                         }
@@ -84,11 +89,11 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
                 }
 
                 {
-                    this.state.paging != null
-                    ? this.getTable()
-                    : (<span>没有数据。</span>)
+                    this.state.itemsInCurrentPage?.length > 1
+                        ? this.getTable()
+                        : (<span>没有数据。</span>)
                 }
-            </DataLoader>
+            </Fragment>
         );
     }
 
@@ -104,7 +109,7 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
                 </thead>
                 <tbody>
                 {
-                    this.state.paging?.itemsInCurrentPage.map(item => (
+                    this.state.itemsInCurrentPage.map(item => (
                         <tr>
                             {
                                 this.props.fields.map(field => <td>{field.render(item)}</td>)
