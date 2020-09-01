@@ -1,7 +1,7 @@
 export interface PagerProps {
-    pageCount: number
+    pageSize: number
     pageNum: number
     count: number
-    pageSize: number
+    pageCount: number
     onClick: (pageNum: number) => void
 }
