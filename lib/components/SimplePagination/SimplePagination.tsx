@@ -1,9 +1,9 @@
 import {Component} from "react";
-import {PagerProps} from "./PagerProps";
+import {SimplePaginationProps} from "./SimplePaginationProps";
 import {Button, Col, Pagination, Row} from "react-bootstrap";
 import React from "react";
 
-export class Pager extends Component<PagerProps, any> {
+export class SimplePagination extends Component<SimplePaginationProps, any> {
     get hasPreviousPage() {
         return this.props.pageNum > 0;
     }

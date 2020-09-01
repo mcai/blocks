@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import {ModalConfirmProps} from "./ModalConfirmProps";
-import {ModalConfirmState} from "./ModalConfirmState";
+import {SimpleModalConfirmProps} from "./SimpleModalConfirmProps";
+import {SimpleModalConfirmState} from "./SimpleModalConfirmState";
 import {Button, Modal} from "react-bootstrap";
 
-export class ModalConfirm extends Component<ModalConfirmProps, ModalConfirmState> {
-    constructor(props: ModalConfirmProps) {
+export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, SimpleModalConfirmState> {
+    constructor(props: SimpleModalConfirmProps) {
         super(props);
 
         this.state = {

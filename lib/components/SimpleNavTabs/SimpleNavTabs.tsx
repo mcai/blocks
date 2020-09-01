@@ -1,12 +1,12 @@
 import {Component} from "react";
 import {Badge, Nav} from "react-bootstrap";
 import React from "react";
-import {NavTabProps} from "./NavTabProps";
-import {NavTabItem} from "./NavTabItem";
-import {NavTabState} from "./NavTabState";
+import {SimpleNavTabsProps} from "./SimpleNavTabsProps";
+import {SimpleNavTabsItem} from "./SimpleNavTabsItem";
+import {SimpleNavTabsState} from "./SimpleNavTabsState";
 
-export class NavTab extends Component<NavTabProps, NavTabState> {
-    constructor(props: NavTabProps) {
+export class SimpleNavTabs extends Component<SimpleNavTabsProps, SimpleNavTabsState> {
+    constructor(props: SimpleNavTabsProps) {
         super(props);
 
         this.state = {
@@ -36,7 +36,7 @@ export class NavTab extends Component<NavTabProps, NavTabState> {
         );
     }
 
-    private setActive(item: NavTabItem) {
+    private setActive(item: SimpleNavTabsItem) {
         item.onClick();
         this.state.items.forEach(x => x.active = x == item);
     }

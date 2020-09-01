@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Nav, Navbar} from "react-bootstrap";
-import {MenuBarProps} from "./MenuBarProps";
+import {SimpleNavbarProps} from "./SimpleNavbarProps";
 
-export class MenuBar extends Component<MenuBarProps, any> {
-    constructor(props: MenuBarProps) {
+export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
+    constructor(props: SimpleNavbarProps) {
         super(props);
     }
 

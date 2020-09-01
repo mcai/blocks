@@ -1,7 +1,6 @@
 import React from "react";
 
 export interface FooterProps {
-    siteName?: string
-    siteUrl?: React.ReactNode
+    brand: { title: string, href: string }
     extra?: React.ReactNode
 }

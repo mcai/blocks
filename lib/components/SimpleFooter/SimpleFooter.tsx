@@ -1,15 +1,14 @@
 import React, {Component} from "react";
 import {FooterProps} from "./FooterProps";
-import {FooterState} from "./FooterState";
 import {Container} from "react-bootstrap";
 
-export class Footer extends Component<FooterProps, FooterState> {
+export class SimpleFooter extends Component<FooterProps, any> {
     render(): React.ReactNode {
         return (
             <footer>
                 <Container>
                     <div className="row h-100 justify-content-center align-items-center">
-                        <p>{this.props.siteName} - {this.props.siteUrl} {this.props.extra}</p>
+                        <p>{this.props.brand.title} - {this.props.brand.href} {this.props.extra}</p>
                     </div>
                 </Container>
             </footer>

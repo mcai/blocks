@@ -1,7 +1,7 @@
-import {Field} from "./Field";
+import {SimpleTableField} from "./SimpleTableField";
 import React from "react";
 
-export interface PagedTableProps<ItemT> {
+export interface SimpleTableProps<ItemT> {
     pageSize: number
     pageNum: number
 
@@ -14,7 +14,7 @@ export interface PagedTableProps<ItemT> {
         itemsInCurrentPage: ItemT[]
     }>;
 
-    fields: Field<ItemT>[]
+    fields: SimpleTableField<ItemT>[]
 
     extra?: React.ReactNode
 }

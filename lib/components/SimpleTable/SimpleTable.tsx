@@ -1,14 +1,14 @@
 import React, {Component, Fragment} from "react";
-import {PagedTableState} from "./PagedTableState";
-import {PagedTableProps} from "./PagedTableProps";
+import {SimpleTableState} from "./SimpleTableState";
+import {SimpleTableProps} from "./SimpleTableProps";
 // @ts-ignore
 import ReactExport from "react-data-export";
 import {Button, Table} from "react-bootstrap";
-import {Pager} from "../Pager/Pager";
+import {SimplePagination} from "../SimplePagination/SimplePagination";
 import {Formatting} from "../../utils/Formatting";
 
-export class PagedTable<ItemT> extends Component<PagedTableProps<ItemT>, PagedTableState<ItemT>> {
-    constructor(props: PagedTableProps<ItemT>) {
+export class SimpleTable<ItemT> extends Component<SimpleTableProps<ItemT>, SimpleTableState<ItemT>> {
+    constructor(props: SimpleTableProps<ItemT>) {
         super(props);
 
         this.state = {
@@ -25,8 +25,8 @@ export class PagedTable<ItemT> extends Component<PagedTableProps<ItemT>, PagedTa
     }
 
     async componentDidUpdate(
-        prevProps: Readonly<PagedTableProps<ItemT>>,
-        prevState: Readonly<PagedTableState<ItemT>>,
+        prevProps: Readonly<SimpleTableProps<ItemT>>,
+        prevState: Readonly<SimpleTableState<ItemT>>,
         snapshot?: any
     ) {
         if (prevState.pageNum !== this.state.pageNum) {
@@ -57,7 +57,7 @@ export class PagedTable<ItemT> extends Component<PagedTableProps<ItemT>, PagedTa
     }
     render(): React.ReactNode {
         let paging = (
-            <Pager
+            <SimplePagination
                 pageCount={this.state.count ?? 0}
                 pageNum={this.state.pageNum + 1}
                 count={this.state.count}

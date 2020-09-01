@@ -1,4 +1,4 @@
-export interface PagerProps {
+export interface SimplePaginationProps {
     pageSize: number
     pageNum: number
     count: number

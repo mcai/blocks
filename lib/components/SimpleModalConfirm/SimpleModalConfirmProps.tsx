@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface ModalConfirmProps {
+export interface SimpleModalConfirmProps {
     visible?: boolean
     width?: number
     title: React.ReactNode
