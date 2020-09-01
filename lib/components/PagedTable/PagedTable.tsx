@@ -1,14 +1,14 @@
 import React, {Component, Fragment} from "react";
-import {PagedDataViewState} from "./PagedDataViewState";
-import {PagedDataViewProps} from "./PagedDataViewProps";
+import {PagedTableState} from "./PagedTableState";
+import {PagedTableProps} from "./PagedTableProps";
 // @ts-ignore
 import ReactExport from "react-data-export";
 import {Button, Table} from "react-bootstrap";
 import {Pager} from "../Pager/Pager";
 import {Formatting} from "../../utils/Formatting";
 
-export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, PagedDataViewState<ItemT>> {
-    constructor(props: PagedDataViewProps<ItemT>) {
+export class PagedTable<ItemT> extends Component<PagedTableProps<ItemT>, PagedTableState<ItemT>> {
+    constructor(props: PagedTableProps<ItemT>) {
         super(props);
 
         this.state = {
@@ -25,8 +25,8 @@ export class PagedDataView<ItemT> extends Component<PagedDataViewProps<ItemT>, P
     }
 
     async componentDidUpdate(
-        prevProps: Readonly<PagedDataViewProps<ItemT>>,
-        prevState: Readonly<PagedDataViewState<ItemT>>,
+        prevProps: Readonly<PagedTableProps<ItemT>>,
+        prevState: Readonly<PagedTableState<ItemT>>,
         snapshot?: any
     ) {
         if (prevState.pageNum !== this.state.pageNum) {

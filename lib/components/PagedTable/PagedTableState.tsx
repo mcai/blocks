@@ -1,4 +1,4 @@
-export interface PagedDataViewState<ItemT> {
+export interface PagedTableState<ItemT> {
     pageNum: number
     count: number,
     pageCount: number

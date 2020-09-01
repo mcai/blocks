@@ -1,7 +1,7 @@
 import {Field} from "./Field";
 import React from "react";
 
-export interface PagedDataViewProps<ItemT> {
+export interface PagedTableProps<ItemT> {
     pageSize: number
     pageNum: number
 
