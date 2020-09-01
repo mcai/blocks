@@ -8,7 +8,7 @@ export class SimpleNumberField extends Component<SimpleNumberFieldProps, any> {
             <Form.Group controlId={this.props.name}>
                 <Form.Label>{this.props.title}</Form.Label>
 
-                <Form.Control type="number" name={this.props.name} value={this.props.value} placeholder={this.props.placeholder} />
+                <Form.Control type="number" name={this.props.name} value={this.props.value} min={this.props.min} max={this.props.max} placeholder={this.props.placeholder} />
 
                 {
                     this.props.hint && <Form.Text className="text-muted">
