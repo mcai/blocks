@@ -13,8 +13,8 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                 <Navbar.Brand href={this.props.brand.href}>{this.props.brand.title}</Navbar.Brand>
                 <Nav className="mr-auto">
                     {
-                        this.props.links.map(link => (
-                            <Nav.Link href={link.href}>{link.title}</Nav.Link>
+                        this.props.items.map(item => (
+                            <Nav.Link href={item.href} active={item.active}>{item.title}</Nav.Link>
                         ))
                     }
                 </Nav>

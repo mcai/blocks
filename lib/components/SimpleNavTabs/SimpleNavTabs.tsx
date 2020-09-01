@@ -23,11 +23,7 @@ export class SimpleNavTabs extends Component<SimpleNavTabsProps, SimpleNavTabsSt
                             {item.text}
 
                             {
-                                item.badgeText.text != "" && (
-                                    item.badgeText.visible
-                                        ? <Badge variant={"primary"}>{item.badgeText.text}</Badge>
-                                        : <span>{item.badgeText.text}</span>
-                                )
+                                item.badge != "" && <Badge variant={"primary"}>{item.badge}</Badge>
                             }
                         </Nav.Link>
                     </Nav.Item>)

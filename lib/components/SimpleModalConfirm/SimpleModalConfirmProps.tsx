@@ -2,7 +2,6 @@ import React from "react";
 
 export interface SimpleModalConfirmProps {
     visible?: boolean
-    width?: number
     title: React.ReactNode
     subtitle?: React.ReactNode
     onConfirm: () => void,

@@ -1,6 +1,6 @@
 import React from "react";
 
 export interface SimpleFooterProps {
-    brand: { title: string, href: string }
+    brand: { title?: React.ReactNode, href: string }
     extra?: React.ReactNode
 }

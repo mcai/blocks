@@ -1,6 +1,5 @@
 import React from "react";
 
-export interface SimpleNavbarProps {
-    brand: { title?: React.ReactNode, href?: string }
+export interface SimpleBreadcrumbProps {
     items: { title?: React.ReactNode, href?: string, active?: boolean }[]
 }
