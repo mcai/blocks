@@ -1,8 +1,7 @@
 import React from "react";
 
-export interface SimpleSelectInputProps {
+export interface SimpleBooleanFieldProps {
     label: React.ReactNode;
     record: any;
     source: string;
-    options: {value: string, label: string}[];
 }

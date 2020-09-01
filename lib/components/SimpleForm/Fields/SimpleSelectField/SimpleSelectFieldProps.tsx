@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SimpleSelectInputProps {
+export interface SimpleSelectFieldProps {
     label: React.ReactNode;
     record: any;
     source: string;
