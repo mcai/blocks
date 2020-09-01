@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {SimpleTextFieldProps} from "./SimpleTextFieldProps";
+import {SimpleTextInputProps} from "./SimpleTextInputProps";
 import {Form} from "react-bootstrap";
 
-export class SimpleTextField extends Component<SimpleTextFieldProps, any> {
+export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     render() {
         return (
             <Form.Group controlId={this.props.name}>

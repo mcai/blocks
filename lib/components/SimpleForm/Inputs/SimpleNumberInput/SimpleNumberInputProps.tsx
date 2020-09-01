@@ -1,9 +1,11 @@
 import React from "react";
 
-export interface SimpleBooleanFieldProps {
+export interface SimpleNumberInputProps {
     name: string;
     title?: React.ReactNode;
-    value?: boolean;
+    value?: number;
+    min?: number;
+    max?: number;
     placeholder?: string;
     hint?: React.ReactNode;
 }

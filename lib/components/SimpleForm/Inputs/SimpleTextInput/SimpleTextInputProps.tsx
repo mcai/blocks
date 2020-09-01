@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SimpleTextFieldProps {
+export interface SimpleTextInputProps {
     name: string;
     title?: React.ReactNode;
     value?: string;

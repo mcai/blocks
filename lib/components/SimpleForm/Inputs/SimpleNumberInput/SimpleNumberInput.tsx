@@ -1,14 +1,14 @@
 import React, {Component} from "react";
-import {SimpleBooleanFieldProps} from "./SimpleBooleanFieldProps";
+import {SimpleNumberInputProps} from "./SimpleNumberInputProps";
 import {Form} from "react-bootstrap";
 
-export class SimpleBooleanField extends Component<SimpleBooleanFieldProps, any> {
+export class SimpleNumberInput extends Component<SimpleNumberInputProps, any> {
     render() {
         return (
             <Form.Group controlId={this.props.name}>
                 <Form.Label>{this.props.title}</Form.Label>
 
-                <Form.Check type="checkbox" name={this.props.name} checked={this.props.value} label={this.props.title} />
+                <Form.Control type="number" name={this.props.name} value={this.props.value} min={this.props.min} max={this.props.max} placeholder={this.props.placeholder} />
 
                 {
                     this.props.hint && <Form.Text className="text-muted">
