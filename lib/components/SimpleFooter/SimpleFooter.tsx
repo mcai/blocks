@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {FooterProps} from "./FooterProps";
+import {SimpleFooterProps} from "./SimpleFooterProps";
 import {Container} from "react-bootstrap";
 
-export class SimpleFooter extends Component<FooterProps, any> {
+export class SimpleFooter extends Component<SimpleFooterProps, any> {
     render(): React.ReactNode {
         return (
             <footer>
