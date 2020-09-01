@@ -1,11 +1,9 @@
 import React from "react";
 
 export interface SimpleNumberInputProps {
-    name: string;
-    title?: React.ReactNode;
-    value?: number;
+    label: React.ReactNode;
+    record: any;
+    source: string;
     min?: number;
     max?: number;
-    placeholder?: string;
-    hint?: React.ReactNode;
 }
