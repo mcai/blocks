@@ -58,8 +58,8 @@ export class SimpleTable<ItemT> extends Component<SimpleTableProps<ItemT>, Simpl
     render(): React.ReactNode {
         let paging = (
             <SimplePagination
-                pageCount={this.state.count ?? 0}
-                pageNum={this.state.pageNum + 1}
+                pageCount={this.state.pageCount}
+                pageNum={this.state.pageNum}
                 count={this.state.count}
                 pageSize={this.props.pageSize}
                 onClick={(pageNum) => this.setState({
