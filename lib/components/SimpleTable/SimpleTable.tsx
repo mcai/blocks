@@ -1,11 +1,8 @@
 import React, {Component, Fragment} from "react";
 import {SimpleTableState} from "./SimpleTableState";
 import {SimpleTableProps} from "./SimpleTableProps";
-// @ts-ignore
-import ReactExport from "react-data-export";
 import {Button, Col, Row, Table} from "react-bootstrap";
 import {SimplePagination} from "../SimplePagination/SimplePagination";
-import {Formatting} from "../../utils/Formatting";
 import {SimpleExport} from "../SimpleExport/SimpleExport";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
@@ -94,8 +91,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 <Row>
                     <Col>
                         <div className={"float-right"}>
-                            <Button onClick={async () => await this.refExportAll.download()}>导出全部</Button>
-                            <Button onClick={async () => await this.refExportCurrentPage.download()}>导出当前页</Button>
+                            <Button onClick={async () => await this.refExportAll.download()} className={"ml-3"}>导出全部</Button>
+                            <Button onClick={async () => await this.refExportCurrentPage.download()} className={"ml-3"}>导出当前页</Button>
 
                             {
                                 this.props.extra
