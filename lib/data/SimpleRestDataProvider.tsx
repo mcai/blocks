@@ -9,184 +9,105 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         this.url = url;
     }
 
-    async getList<RecordT>(
+    async getList<ItemT>(
         resource: string,
+        action: string,
         params: {
-            pagination: {
-                pageSize: number,
-                pageNum: number
-            },
-            sort?: {
-                field: string,
-                order: string
-            },
+            pageSize: number,
+            pageNum: number,
+            ordering?: string,
             filter?: {
                 [key: string]: any
             }
         }
     ): Promise<{
-        data: RecordT[],
-        count: number
+        count: number,
+        pageCount: number,
+        itemsInCurrentPage: ItemT[]
     }> {
         return await SimpleHttpClient.call<{
-            data: RecordT[],
-            count: number
+            count: number,
+            pageCount: number,
+            itemsInCurrentPage: ItemT[]
         }>(
-            this.url + "/" + resource + "/" + "getList",
+            this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.get,
-            params
+            {
+                pageSize: params.pageSize,
+                pageNum: params.pageNum,
+                ordering: params.ordering,
+                ...params.filter
+            }
         );
     }
 
-    async getOne<RecordT>(
+    async getById<ItemT>(
         resource: string,
+        action: string,
         params: {
             id: number
         }
-    ): Promise<{
-        data: RecordT
-    }>{
-        return await SimpleHttpClient.call<{
-            data: RecordT
-        }>(
-            this.url + "/" + resource + "/" + "getOne",
+    ): Promise<ItemT>{
+        return await SimpleHttpClient.call<ItemT>(
+            this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.get,
-            params
+            {
+                id: params.id
+            }
         );
     }
 
-    async getMany<RecordT>(
+    async add<ItemT>(
         resource: string,
+        action: string,
         params: {
-            ids: number[]
-        }
-    ): Promise<{
-        data: RecordT[]
-    }>{
-        return await SimpleHttpClient.call<{
-            data: RecordT[]
-        }>(
-            this.url + "/" + resource + "/" + "getMany",
-            SimpleHttpClientMethod.get,
-            params
-        );
-    }
-
-    async getListByReference<RecordT>(
-        resource: string,
-        params: {
-            reference: string,
-            id: number,
-            pagination: {
-                pageSize: number,
-                pageNum: number
-            },
-            sort?: {
-                field: string,
-                order: string
-            },
-            filter?: {
+            data: {
                 [key: string]: any
             }
         }
-    ): Promise<{
-        data: RecordT[],
-        count: number
-    }>{
-        return await SimpleHttpClient.call<{
-            data: RecordT[],
-            count: number
-        }>(
-            this.url + "/" + resource + "/" + "getListByReference",
-            SimpleHttpClientMethod.get,
-            params
-        );
-    }
-
-    async create<RecordT>(
-        resource: string,
-        params: {
-            data: any
-        }
-    ): Promise<{
-        data: RecordT
-    }>{
-        return await SimpleHttpClient.call<{
-            data: RecordT
-        }>(
-            this.url + "/" + resource + "/" + "create",
+    ): Promise<ItemT>{
+        return await SimpleHttpClient.call<ItemT>(
+            this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.post,
-            params
+            {
+                ...params.data
+            }
         );
     }
 
-    async update<RecordT>(
+    async update<ItemT>(
         resource: string,
+        action: string,
         params: {
             id: number,
-            data: any
+            data: {
+                [key: string]: any
+            }
         }
-    ): Promise<{
-        data: RecordT
-    }>{
-        return await SimpleHttpClient.call<{
-            data: RecordT
-        }>(
-            this.url + "/" + resource + "/" + "update",
+    ): Promise<ItemT>{
+        return await SimpleHttpClient.call<ItemT>(
+            this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.post,
-            params
+            {
+                id: params.id,
+                ...params.data
+            }
         );
     }
 
-    async updateMany(
+    async remove<ItemT>(
         resource: string,
-        params: {
-            ids: number[],
-            data: any
-        }
-    ): Promise<{
-        data: number[]
-    }>{
-        return await SimpleHttpClient.call<{
-            data: number[]
-        }>(
-            this.url + "/" + resource + "/" + "updateMany",
-            SimpleHttpClientMethod.post,
-            params
-        );
-    }
-
-    async delete<RecordT>(
-        resource: string,
+        action: string,
         params: {
             id: number
         }
-    ): Promise<{
-        data: RecordT
-    }>{
-        return await SimpleHttpClient.call<{
-            data: RecordT
-        }>(
-            this.url + "/" + resource + "/" + "delete",
+    ): Promise<void>{
+        return await SimpleHttpClient.call<void>(
+            this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.post,
-            params
-        );
-    }
-
-    async deleteMany(
-        resource: string,
-        params: {
-            ids: number[]
-        }
-    ): Promise<{
-        data: number[]
-    }>{
-        return await SimpleHttpClient.call<{
-            data: number[]
-        }>(
-            this.url + "/" + resource + "/" + "deleteMany",
-            SimpleHttpClientMethod.post,
-            params
+            {
+                id: params.id
+            }
         );
     }
 }

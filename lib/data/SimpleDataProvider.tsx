@@ -1,108 +1,55 @@
 export interface SimpleDataProvider {
-    getList<RecordT>(
+    getList<ItemT>(
         resource: string,
+        action: string,
         params: {
-            pagination: {
-                pageSize: number,
-                pageNum: number
-            },
-            sort?: {
-                field: string,
-                order: string
-            },
+            pageSize: number,
+            pageNum: number,
+            ordering?: string,
             filter?: {
                 [key: string]: any
             }
         }
     ): Promise<{
-        data: RecordT[],
-        count: number
+        count: number,
+        pageCount: number,
+        itemsInCurrentPage: ItemT[]
     }>;
 
-    getOne<RecordT>(
+    getById<RecordT>(
         resource: string,
+        action: string,
         params: {
             id: number
         }
-    ): Promise<{
-        data: RecordT
-    }>
+    ): Promise<RecordT>
 
-    getMany<RecordT>(
+    add<RecordT>(
         resource: string,
+        action: string,
         params: {
-            ids: number[]
-        }
-    ): Promise<{
-        data: RecordT[]
-    }>
-
-    getListByReference<RecordT>(
-        resource: string,
-        params: {
-            reference: string,
-            id: number,
-            pagination: {
-                pageSize: number,
-                pageNum: number
-            },
-            sort?: {
-                field: string,
-                order: string
-            },
-            filter?: {
+            data: {
                 [key: string]: any
             }
         }
-    ): Promise<{
-        data: RecordT[],
-        count: number
-    }>;
-
-    create<RecordT>(
-        resource: string,
-        params: {
-            data: any
-        }
-    ): Promise<{
-        data: RecordT
-    }>;
+    ): Promise<RecordT>;
 
     update<RecordT>(
         resource: string,
+        action: string,
         params: {
             id: number,
-            data: any
+            data: {
+                [key: string]: any
+            }
         }
-    ): Promise<{
-        data: RecordT
-    }>;
+    ): Promise<RecordT>;
 
-    updateMany(
+    remove<RecordT>(
         resource: string,
-        params: {
-            ids: number[],
-            data: any
-        }
-    ): Promise<{
-        data: number[]
-    }>;
-
-    delete<RecordT>(
-        resource: string,
+        action: string,
         params: {
             id: number
         }
-    ): Promise<{
-        data: RecordT
-    }>;
-
-    deleteMany(
-        resource: string,
-        params: {
-            ids: number[]
-        }
-    ): Promise<{
-        data: number[]
-    }>;
+    ): Promise<void>;
 }
