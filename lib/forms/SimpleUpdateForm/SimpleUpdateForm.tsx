@@ -16,6 +16,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
 
     async componentDidMount() {
         let item = await this.props.dataProvider.getById(this.props.resource, this.props.getByIdAction, {
+            ...this.props.getByIdExtraData,
             id: this.props.id
         });
 
@@ -27,7 +28,10 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     private async onSubmit(values: any) {
         await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
             id: this.props.id,
-            data: values
+            data: {
+                ...this.props.updateExtraData,
+                ...values
+            }
         });
     }
 

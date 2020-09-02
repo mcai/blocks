@@ -14,7 +14,10 @@ export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormSt
 
     private async onSubmit(values: any) {
         await this.props.dataProvider.add(this.props.resource, this.props.addAction, {
-            data: values
+            data: {
+                ...this.props.addExtraData,
+                ...values
+            }
         });
     }
 

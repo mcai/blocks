@@ -2,14 +2,17 @@ import React from "react";
 import {SimpleDataProvider} from "../../data/SimpleDataProvider";
 
 export interface SimpleUpdateFormProps {
-    dataProvider: SimpleDataProvider
-    resource: string
-    getByIdAction: string
-    updateAction: string
+    dataProvider: SimpleDataProvider;
+    resource: string;
+    getByIdAction: string;
+    updateAction: string;
 
-    id: number
+    id: number;
 
-    inputs: React.ReactNode[]
+    getByIdExtraData?: any;
+    updateExtraData?: any;
 
-    submitButtonText?: string
+    inputs: React.ReactNode[];
+
+    submitButtonText?: string;
 }
