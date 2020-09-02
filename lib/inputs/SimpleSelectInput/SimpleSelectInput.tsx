@@ -1,32 +1,20 @@
 import React, {Component} from "react";
 import {SimpleSelectInputProps} from "./SimpleSelectInputProps";
-import {Form} from "react-bootstrap";
-import {Field} from "react-final-form";
+import {Field} from "formik";
 
 export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
     render() {
         return (
-            <Field
-                name={this.props.name}
-                render={({props, state}) => (
-                    <Form.Group controlId={this.props.name}>
-                        <Form.Label>{this.props.label}</Form.Label>
-                        <Form.Control
-                            {...props}
-                            as="select"
-                            name={this.props.name}
-                        >
-                            {
-                                this.props.options.map(option => (
-                                    <option value={option.value}>{option.label}</option>
-                                ))
-                            }
-                        </Form.Control>
-                        {/*{state.touched && state.error && <span>{state.error}</span>}*/}
-                    </Form.Group>
-                )}
-            >
-            </Field>
+            <div>
+                <label>{this.props.label}</label>
+                <Field as="select" name={this.props.name}>
+                    {
+                        this.props.options.map(option => (
+                            <option value={option.value}>{option.label}</option>
+                        ))
+                    }
+                </Field>
+            </div>
         );
     }
 }

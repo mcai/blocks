@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {SimpleFormProps} from "./SimpleFormProps";
-import {Form} from "react-final-form";
 import {SimpleFormState} from "./SimpleFormState";
 import {SimpleIf} from "../SimpleIf/SimpleIf";
 import {Button} from "react-bootstrap";
+import {Form, Formik, FormikProps} from "formik";
 
 export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     constructor(props: SimpleFormProps) {
@@ -34,19 +34,19 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     render() {
         return (
             <SimpleIf condition={this.state.item != undefined}>
-                <Form
-                    onSubmit={values => this.onSubmit(values)}
+                <Formik
                     initialValues={this.state.item}
-                    render={({handleSubmit}) => (
-                        <form onSubmit={handleSubmit}>
+                    onSubmit={values => this.onSubmit(values)}
+                >
+                    {(props: FormikProps<any>) => (
+                        <Form>
                             {
                                 this.props.inputs
                             }
-
                             <Button variant={"primary"} type="submit">{this.props.submitButtonText ?? "提交"}</Button>
-                        </form>
+                        </Form>
                     )}
-                />
+                </Formik>
             </SimpleIf>
         );
     }
