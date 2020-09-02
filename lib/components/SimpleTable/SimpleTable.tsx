@@ -110,7 +110,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         />;
 
         return (
-            <SimpleLoading active={false} text={"正在导出,请稍候..."}>
+            <SimpleLoading active={this.state.exportLoadingActive} text={this.state.exportLoadingText}>
                 {exportAll}
                 {exportCurrentPage}
 
