@@ -1,9 +1,9 @@
 import {SimpleDataProvider} from "../../data/SimpleDataProvider";
+import {SimpleCookie} from "../../utils/SimpleCookie";
 
-export interface SignInPageProps {
+export interface SignInFormProps {
     dataProvider: SimpleDataProvider;
     resource: string;
-    getUserByGuidAction: string;
     signInAction: string;
-    sessionKeyUserGuid: string;
+    cookie: SimpleCookie;
 }

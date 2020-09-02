@@ -1,35 +1,16 @@
 import React, {Component} from "react";
-import {SignInPageProps} from "./SignInPageProps";
-import {SignInPageState} from "./SignInPageState";
-import {SimpleCookie} from "../../utils/SimpleCookie";
+import {SignInFormProps} from "./SignInFormProps";
 import {Toastify} from "../../components/SimpleToast/SimpleToast";
 import {SimpleToastType} from "../../components/SimpleToast/SimpleToastType";
-import {SimpleAddForm} from "../../forms/SimpleAddForm/SimpleAddForm";
+import {SimpleAddForm} from "../SimpleAddForm/SimpleAddForm";
 import {SimpleTextInput} from "../../inputs/SimpleTextInput/SimpleTextInput";
 
-export class SignInPage extends Component<SignInPageProps, SignInPageState> {
-    private refInputMobile: any;
-
-    private cookie: SimpleCookie;
-
+export class SignInForm extends Component<SignInFormProps, any> {
     constructor(props: Readonly<any>) {
         super(props);
 
         this.state = {
         };
-
-        this.cookie = new SimpleCookie(
-            guid => this.props.dataProvider.getOne(this.props.resource, this.props.getUserByGuidAction, {
-                filter: {
-                    guid: guid
-                }
-            }),
-            this.props.sessionKeyUserGuid
-        );
-    }
-
-    componentDidMount() {
-        this.refInputMobile?.focus();
     }
 
     render(): React.ReactNode {
@@ -46,7 +27,7 @@ export class SignInPage extends Component<SignInPageProps, SignInPageState> {
                 }
                 submitButtonText={"登陆"}
                 onSuccess={item => {
-                    this.cookie.signIn(item.guid);
+                    this.props.cookie.signIn(item.guid);
 
                     Toastify(
                         SimpleToastType.Success,

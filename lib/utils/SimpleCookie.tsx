@@ -1,14 +1,21 @@
 import Cookies from "js-cookie";
+import {SimpleDataProvider} from "../data/SimpleDataProvider";
 
 export class SimpleCookie {
-    private readonly getUserByGuidFunc: (guid: string) => Promise<any | undefined>;
+    private readonly dataProvider: SimpleDataProvider;
+    private readonly resource: string;
+    private readonly getUserByGuidAction: string;
     private readonly sessionKeyUserGuid: string;
 
     constructor(
-        getUserByGuidFunc: (guid: string) => any,
+        dataProvider: SimpleDataProvider,
+        resource: string,
+        getUserByGuidAction: string,
         sessionKeyUserGuid: string = "user_guid"
     ) {
-        this.getUserByGuidFunc = getUserByGuidFunc;
+        this.dataProvider = dataProvider;
+        this.resource = resource;
+        this.getUserByGuidAction = getUserByGuidAction;
         this.sessionKeyUserGuid = sessionKeyUserGuid;
     }
 
@@ -17,7 +24,11 @@ export class SimpleCookie {
         if (guid == null || guid === "") {
             return undefined;
         } else {
-            return await this.getUserByGuidFunc(guid);
+            return await this.dataProvider.getOne(this.resource, this.getUserByGuidAction, {
+                filter: {
+                    guid: guid
+                }
+            });
         }
     }
 
