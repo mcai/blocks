@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.58",
+  "version": "0.0.59",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "react-data-export": "^0.6.0",
     "react-dom": "^16.13.1",
     "react-loading-overlay": "^1.0.1",
+    "react-router-dom": "^5.2.0",
     "react-toastify": "^6.0.8",
     "superagent": "^6.1.0",
     "xlsx": "^0.16.6"
@@ -41,6 +42,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
     "@types/superagent": "^4.1.10",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
