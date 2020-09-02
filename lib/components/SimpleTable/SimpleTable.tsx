@@ -67,7 +67,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                     <Col>
                         <div className={"float-right"}>
                             <SimpleExport
-                                pageSize={10}
+                                pageSize={this.props.pageSize}
                                 dataProvider={this.props.dataProvider}
                                 resource={this.props.resource}
                                 action={this.props.action}
@@ -76,7 +76,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                             />
 
                             <SimpleExport
-                                pageSize={10}
+                                pageSize={this.props.pageSize}
                                 startPageNum={this.state.pageNum}
                                 endPageNum={this.state.pageNum}
                                 dataProvider={this.props.dataProvider}

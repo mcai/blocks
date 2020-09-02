@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {SimpleExportProps} from "./SimpleExportProps";
 import {SimpleExportState} from "./SimpleExportState";
 import {Button} from "react-bootstrap";
@@ -59,7 +59,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <Button onClick={() => this.download()}>{this.props.buttonText ?? "导出"}</Button>
 
                 <ReactExport.ExcelFile
@@ -76,7 +76,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                         }
                     </ReactExport.ExcelSheet>
                 </ReactExport.ExcelFile>
-            </div>
+            </Fragment>
         );
     }
 }
