@@ -11,9 +11,10 @@ export class SimpleBooleanInput extends Component<SimpleBooleanInputProps, any> 
                 render={({props, state}) => (
                     <Form.Group controlId={this.props.name}>
                         <Form.Label>{this.props.label}</Form.Label>
-                        <Form.Control>
-                            <input {...props} type="checkbox"/>
-                        </Form.Control>
+                        <Form.Control
+                            {...props}
+                            type="checkbox"
+                        />
                         {/*{state.touched && state.error && <span>{state.error}</span>}*/}
                     </Form.Group>
                 )}
