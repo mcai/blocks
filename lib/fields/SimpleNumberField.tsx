@@ -13,10 +13,10 @@ export class SimpleNumberField implements SimpleField {
     }
 
     render(item: any): React.ReactNode {
-        return (item[this.name] as number).toFixed(this.fractionDigits);
+        return (item[this.name] as number)?.toFixed(this.fractionDigits);
     }
 
     renderAsText(item: any): string | undefined {
-        return (item[this.name] as number).toFixed(this.fractionDigits);
+        return (item[this.name] as number)?.toFixed(this.fractionDigits);
     }
 }
