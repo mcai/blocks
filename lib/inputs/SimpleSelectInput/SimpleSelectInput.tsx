@@ -6,8 +6,9 @@ import {Field} from "react-final-form";
 export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
     render() {
         return (
-            <Field name={this.props.name}>
-                {({props, state}) => (
+            <Field
+                name={this.props.name}
+                render={({props, state}) => (
                     <Form.Group controlId={this.props.name}>
                         <Form.Label>{this.props.label}</Form.Label>
                         <Form.Control>
@@ -22,6 +23,7 @@ export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
                         {state.touched && state.error && <span>{state.error}</span>}
                     </Form.Group>
                 )}
+            >
             </Field>
         );
     }
