@@ -2,8 +2,7 @@ import React from "react";
 
 export interface SimpleNumberInputProps {
     label: React.ReactNode;
-    record: any;
-    source: string;
+    name: string;
     min?: number;
     max?: number;
 }

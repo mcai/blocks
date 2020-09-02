@@ -3,18 +3,18 @@ import {SimpleField} from "./SimpleField";
 
 export class SimpleTextField implements SimpleField {
     title: React.ReactNode;
-    field: string;
+    name: string;
 
     constructor(title: React.ReactNode, field: string) {
         this.title = title;
-        this.field = field;
+        this.name = field;
     }
 
     render(item: any): React.ReactNode {
-        return item[this.field];
+        return item[this.name];
     }
 
     renderAsText(item: any): string | undefined {
-        return item[this.field];
+        return item[this.name];
     }
 }

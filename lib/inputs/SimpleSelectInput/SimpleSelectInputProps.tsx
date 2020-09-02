@@ -2,7 +2,6 @@ import React from "react";
 
 export interface SimpleSelectInputProps {
     label: React.ReactNode;
-    record: any;
-    source: string;
+    name: string;
     options: {value: string, label: string}[];
 }

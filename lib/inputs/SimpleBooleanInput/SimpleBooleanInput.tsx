@@ -1,13 +1,20 @@
 import React, {Component} from "react";
 import {SimpleBooleanInputProps} from "./SimpleBooleanInputProps";
 import {Form} from "react-bootstrap";
+import {Field} from "react-final-form";
 
 export class SimpleBooleanInput extends Component<SimpleBooleanInputProps, any> {
     render() {
         return (
-            <Form.Group controlId={this.props.source}>
-                <Form.Check type="checkbox" name={this.props.source} checked={this.props.record[this.props.source]} label={this.props.label} />
-            </Form.Group>
+            <Field name={this.props.name}>
+                {({props, state}) => (
+                    <Form.Group controlId={this.props.name}>
+                        <Form.Label>{this.props.label}</Form.Label>
+                        <input {...props} type="checkbox"/>
+                        {state.touched && state.error && <span>{state.error}</span>}
+                    </Form.Group>
+                )}
+            </Field>
         );
     }
 }
