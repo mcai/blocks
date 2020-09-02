@@ -12,6 +12,4 @@ export interface SimpleExportProps {
     action: string
 
     fields: SimpleField[]
-
-    buttonText?: string
 }

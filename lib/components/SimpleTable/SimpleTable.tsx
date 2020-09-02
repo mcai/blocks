@@ -9,6 +9,9 @@ import {Formatting} from "../../utils/Formatting";
 import {SimpleExport} from "../SimpleExport/SimpleExport";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
+    private refExportAll: any;
+    private refExportCurrentPage: any;
+
     constructor(props: SimpleTableProps) {
         super(props);
 
@@ -61,30 +64,38 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     }
 
     render(): React.ReactNode {
+        let exportAll = <SimpleExport
+            pageSize={this.props.pageSize}
+            dataProvider={this.props.dataProvider}
+            resource={this.props.resource}
+            action={this.props.action}
+            fields={this.props.fields}
+            ref={(ref: any) => {this.refExportAll = ref}}
+        />;
+
+        let exportCurrentPage = <SimpleExport
+            pageSize={this.props.pageSize}
+            startPageNum={this.state.pageNum}
+            endPageNum={this.state.pageNum}
+            dataProvider={this.props.dataProvider}
+            resource={this.props.resource}
+            action={this.props.action}
+            fields={this.props.fields}
+            ref={(ref: any) => {
+                this.refExportCurrentPage = ref
+            }}
+        />;
+
         return (
             <Fragment>
+                {exportAll}
+                {exportCurrentPage}
+
                 <Row>
                     <Col>
                         <div className={"float-right"}>
-                            <SimpleExport
-                                pageSize={this.props.pageSize}
-                                dataProvider={this.props.dataProvider}
-                                resource={this.props.resource}
-                                action={this.props.action}
-                                fields={this.props.fields}
-                                buttonText={"导出全部"}
-                            />
-
-                            <SimpleExport
-                                pageSize={this.props.pageSize}
-                                startPageNum={this.state.pageNum}
-                                endPageNum={this.state.pageNum}
-                                dataProvider={this.props.dataProvider}
-                                resource={this.props.resource}
-                                action={this.props.action}
-                                fields={this.props.fields}
-                                buttonText={"导出当前页"}
-                            />
+                            <Button onClick={async () => await this.refExportAll.download()}>导出全部</Button>
+                            <Button onClick={async () => await this.refExportCurrentPage.download()}>导出当前页</Button>
 
                             {
                                 this.props.extra

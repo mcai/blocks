@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from "react";
 import {SimpleExportProps} from "./SimpleExportProps";
 import {SimpleExportState} from "./SimpleExportState";
-import {Button} from "react-bootstrap";
 import {Formatting} from "../../utils/Formatting";
 // @ts-ignore
 import ReactExport from "react-data-export";
@@ -59,24 +58,20 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
     render() {
         return (
-            <Fragment>
-                <Button onClick={() => this.download()}>{this.props.buttonText ?? "导出"}</Button>
-
-                <ReactExport.ExcelFile
-                    filename={Formatting.toFormattedDateTimeStringAsFileName()}
-                    element={<div/>}
-                    hideElement={false}
-                    ref={(ref: any) => {this.refExcelFile = ref}}
-                >
-                    <ReactExport.ExcelSheet data={this.state.allItems} name="Sheet1">
-                        {
-                            this.props.fields.filter(field => field.renderAsText !== undefined).map(field =>
-                                <ReactExport.ExcelColumn label={field.title}
-                                                         value={(item: any) => field.renderAsText?.(item)}/>)
-                        }
-                    </ReactExport.ExcelSheet>
-                </ReactExport.ExcelFile>
-            </Fragment>
+            <ReactExport.ExcelFile
+                filename={Formatting.toFormattedDateTimeStringAsFileName()}
+                element={<div/>}
+                hideElement={false}
+                ref={(ref: any) => {this.refExcelFile = ref}}
+            >
+                <ReactExport.ExcelSheet data={this.state.allItems} name="Sheet1">
+                    {
+                        this.props.fields.filter(field => field.renderAsText !== undefined).map(field =>
+                            <ReactExport.ExcelColumn label={field.title}
+                                                     value={(item: any) => field.renderAsText?.(item)}/>)
+                    }
+                </ReactExport.ExcelSheet>
+            </ReactExport.ExcelFile>
         );
     }
 }
