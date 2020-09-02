@@ -30,7 +30,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             pageCount: number,
             itemsInCurrentPage: ItemT[]
         }>(
-            this.url + "/" + resource + "/" + action,
+            this.url + resource + action,
             SimpleHttpClientMethod.get,
             {
                 pageSize: params.pageSize,
@@ -49,7 +49,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         }
     ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
-            this.url + "/" + resource + "/" + action,
+            this.url + resource + action,
             SimpleHttpClientMethod.get,
             {
                 id: params.id
@@ -67,7 +67,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         }
     ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
-            this.url + "/" + resource + "/" + action,
+            this.url + resource + action,
             SimpleHttpClientMethod.post,
             {
                 ...params.data
@@ -86,7 +86,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         }
     ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
-            this.url + "/" + resource + "/" + action,
+            this.url + resource + action,
             SimpleHttpClientMethod.post,
             {
                 id: params.id,
@@ -103,7 +103,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         }
     ): Promise<void>{
         return await SimpleHttpClient.call<void>(
-            this.url + "/" + resource + "/" + action,
+            this.url + resource + action,
             SimpleHttpClientMethod.post,
             {
                 id: params.id
