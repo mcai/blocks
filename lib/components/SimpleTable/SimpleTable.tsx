@@ -6,6 +6,7 @@ import ReactExport from "react-data-export";
 import {Button, Col, Row, Table} from "react-bootstrap";
 import {SimplePagination} from "../SimplePagination/SimplePagination";
 import {Formatting} from "../../utils/Formatting";
+import {SimpleExport} from "../SimpleExport/SimpleExport";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     constructor(props: SimpleTableProps) {
@@ -65,17 +66,25 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 <Row>
                     <Col>
                         <div className={"float-right"}>
-                            <ReactExport.ExcelFile element={(
-                                <Button>
-                                    导出
-                                </Button>
-                            )} filename={Formatting.toFormattedDateTimeStringAsFileName()}>
-                                <ReactExport.ExcelSheet data={this.state.itemsInCurrentPage} name="Sheet1">
-                                    {
-                                        this.props.fields.filter(field => field.renderAsText !== undefined).map(field => <ReactExport.ExcelColumn label={field.title} value={(item: any) => field.renderAsText?.(item)}/>)
-                                    }
-                                </ReactExport.ExcelSheet>
-                            </ReactExport.ExcelFile>
+                            <SimpleExport
+                                pageSize={10}
+                                dataProvider={this.props.dataProvider}
+                                resource={this.props.resource}
+                                action={this.props.action}
+                                fields={this.props.fields}
+                                buttonText={"导出全部"}
+                            />
+
+                            <SimpleExport
+                                pageSize={10}
+                                startPageNum={this.state.pageNum}
+                                endPageNum={this.state.pageNum}
+                                dataProvider={this.props.dataProvider}
+                                resource={this.props.resource}
+                                action={this.props.action}
+                                fields={this.props.fields}
+                                buttonText={"导出当前页"}
+                            />
 
                             {
                                 this.props.extra

@@ -60,7 +60,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
     render() {
         return (
             <div>
-                <Button onClick={() => this.download()}>导出</Button>
+                <Button onClick={() => this.download()}>{this.props.buttonText ?? "导出"}</Button>
 
                 <ReactExport.ExcelFile
                     filename={Formatting.toFormattedDateTimeStringAsFileName()}
