@@ -7,6 +7,8 @@ export class SimpleHttpClient {
         method: SimpleHttpClientMethod,
         params: { [name: string]: any }
     ): Promise<ResultT> {
+        console.log(`url: ${url}, method: ${method}, params: ${params}`);
+
         let res: request.Response;
 
         switch (method) {
