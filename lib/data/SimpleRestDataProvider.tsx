@@ -8,7 +8,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         this.url = url;
     }
 
-    async getList(
+    async getList<RecordT>(
         resource: string,
         params: {
             pagination: {
@@ -24,11 +24,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             }
         }
     ): Promise<{
-        data: any[],
+        data: RecordT[],
         count: number
     }> {
         return await HttpClientHelper.call<{
-            data: any[],
+            data: RecordT[],
             count: number
         }>(
             this.url + "/" + resource + "/" + "getList",
@@ -37,16 +37,16 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getOne(
+    async getOne<RecordT>(
         resource: string,
         params: {
             id: number
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>{
         return await HttpClientHelper.call<{
-            data: any
+            data: RecordT
         }>(
             this.url + "/" + resource + "/" + "getOne",
             "get",
@@ -54,16 +54,16 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getMany(
+    async getMany<RecordT>(
         resource: string,
         params: {
             ids: number[]
         }
     ): Promise<{
-        data: any[]
+        data: RecordT[]
     }>{
         return await HttpClientHelper.call<{
-            data: any[]
+            data: RecordT[]
         }>(
             this.url + "/" + resource + "/" + "getMany",
             "get",
@@ -71,7 +71,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getListByReference(
+    async getListByReference<RecordT>(
         resource: string,
         params: {
             reference: string,
@@ -89,11 +89,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             }
         }
     ): Promise<{
-        data: any[],
+        data: RecordT[],
         count: number
     }>{
         return await HttpClientHelper.call<{
-            data: any[],
+            data: RecordT[],
             count: number
         }>(
             this.url + "/" + resource + "/" + "getListByReference",
@@ -102,16 +102,16 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async create(
+    async create<RecordT>(
         resource: string,
         params: {
             data: any
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>{
         return await HttpClientHelper.call<{
-            data: any
+            data: RecordT
         }>(
             this.url + "/" + resource + "/" + "create",
             "post",
@@ -119,17 +119,17 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async update(
+    async update<RecordT>(
         resource: string,
         params: {
             id: number,
             data: any
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>{
         return await HttpClientHelper.call<{
-            data: any
+            data: RecordT
         }>(
             this.url + "/" + resource + "/" + "update",
             "post",
@@ -155,16 +155,16 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async delete(
+    async delete<RecordT>(
         resource: string,
         params: {
             id: number
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>{
         return await HttpClientHelper.call<{
-            data: any
+            data: RecordT
         }>(
             this.url + "/" + resource + "/" + "delete",
             "post",

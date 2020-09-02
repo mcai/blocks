@@ -1,5 +1,5 @@
 export interface SimpleDataProvider {
-    getList(
+    getList<RecordT>(
         resource: string,
         params: {
             pagination: {
@@ -15,29 +15,29 @@ export interface SimpleDataProvider {
             }
         }
     ): Promise<{
-        data: any[],
+        data: RecordT[],
         count: number
     }>;
 
-    getOne(
+    getOne<RecordT>(
         resource: string,
         params: {
             id: number
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>
 
-    getMany(
+    getMany<RecordT>(
         resource: string,
         params: {
             ids: number[]
         }
     ): Promise<{
-        data: any[]
+        data: RecordT[]
     }>
 
-    getListByReference(
+    getListByReference<RecordT>(
         resource: string,
         params: {
             reference: string,
@@ -55,27 +55,27 @@ export interface SimpleDataProvider {
             }
         }
     ): Promise<{
-        data: any[],
+        data: RecordT[],
         count: number
     }>;
 
-    create(
+    create<RecordT>(
         resource: string,
         params: {
             data: any
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>;
 
-    update(
+    update<RecordT>(
         resource: string,
         params: {
             id: number,
             data: any
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>;
 
     updateMany(
@@ -88,13 +88,13 @@ export interface SimpleDataProvider {
         data: number[]
     }>;
 
-    delete(
+    delete<RecordT>(
         resource: string,
         params: {
             id: number
         }
     ): Promise<{
-        data: any
+        data: RecordT
     }>;
 
     deleteMany(
