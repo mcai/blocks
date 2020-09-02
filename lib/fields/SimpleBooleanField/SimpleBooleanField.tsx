@@ -12,13 +12,11 @@ export class SimpleBooleanField<ItemT> implements SimpleTableField<ItemT> {
 
     render(item: ItemT): React.ReactNode {
         // @ts-ignore
-        let value: boolean = item[this.field];
-        return value ? "是" : "否";
+        return item[this.field] ? "是" : "否";
     }
 
     renderAsText(item: ItemT): string | undefined {
         // @ts-ignore
-        let value: boolean = item[this.field];
-        return value ? "是" : "否";
+        return item[this.field] ? "是" : "否";
     }
 }
