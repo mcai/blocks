@@ -1,5 +1,6 @@
 import {SimpleDataProvider} from "./SimpleDataProvider";
-import {HttpClientHelper} from "./HttpClientHelper";
+import {SimpleHttpClient} from "./SimpleHttpClient";
+import {SimpleHttpClientMethod} from "./SimpleHttpClientMethod";
 
 export class SimpleRestDataProvider implements SimpleDataProvider {
     url: string
@@ -15,11 +16,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
                 pageSize: number,
                 pageNum: number
             },
-            sort: {
+            sort?: {
                 field: string,
                 order: string
             },
-            filter: {
+            filter?: {
                 [key: string]: any
             }
         }
@@ -27,12 +28,12 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         data: RecordT[],
         count: number
     }> {
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT[],
             count: number
         }>(
             this.url + "/" + resource + "/" + "getList",
-            "get",
+            SimpleHttpClientMethod.get,
             params
         );
     }
@@ -45,11 +46,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: RecordT
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT
         }>(
             this.url + "/" + resource + "/" + "getOne",
-            "get",
+            SimpleHttpClientMethod.get,
             params
         );
     }
@@ -62,11 +63,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: RecordT[]
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT[]
         }>(
             this.url + "/" + resource + "/" + "getMany",
-            "get",
+            SimpleHttpClientMethod.get,
             params
         );
     }
@@ -80,11 +81,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
                 pageSize: number,
                 pageNum: number
             },
-            sort: {
+            sort?: {
                 field: string,
                 order: string
             },
-            filter: {
+            filter?: {
                 [key: string]: any
             }
         }
@@ -92,12 +93,12 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         data: RecordT[],
         count: number
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT[],
             count: number
         }>(
             this.url + "/" + resource + "/" + "getListByReference",
-            "get",
+            SimpleHttpClientMethod.get,
             params
         );
     }
@@ -110,11 +111,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: RecordT
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT
         }>(
             this.url + "/" + resource + "/" + "create",
-            "post",
+            SimpleHttpClientMethod.post,
             params
         );
     }
@@ -128,11 +129,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: RecordT
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT
         }>(
             this.url + "/" + resource + "/" + "update",
-            "post",
+            SimpleHttpClientMethod.post,
             params
         );
     }
@@ -146,11 +147,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: number[]
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: number[]
         }>(
             this.url + "/" + resource + "/" + "updateMany",
-            "post",
+            SimpleHttpClientMethod.post,
             params
         );
     }
@@ -163,11 +164,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: RecordT
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: RecordT
         }>(
             this.url + "/" + resource + "/" + "delete",
-            "post",
+            SimpleHttpClientMethod.post,
             params
         );
     }
@@ -180,11 +181,11 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: number[]
     }>{
-        return await HttpClientHelper.call<{
+        return await SimpleHttpClient.call<{
             data: number[]
         }>(
             this.url + "/" + resource + "/" + "deleteMany",
-            "post",
+            SimpleHttpClientMethod.post,
             params
         );
     }

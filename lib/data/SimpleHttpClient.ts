@@ -1,20 +1,21 @@
 import request from "superagent";
+import {SimpleHttpClientMethod} from "./SimpleHttpClientMethod";
 
-export class HttpClientHelper {
+export class SimpleHttpClient {
     static async call<ResultT>(
         url: string,
-        method: string,
+        method: SimpleHttpClientMethod,
         params: { [name: string]: any }
     ): Promise<ResultT> {
         let res: request.Response;
 
         switch (method) {
-            case "get":
+            case SimpleHttpClientMethod.get:
                 res = await request
                     .get(url)
                     .query(params);
                 break;
-            case "post":
+            case SimpleHttpClientMethod.post:
                 res = await request
                     .post(url)
                     .type('form')

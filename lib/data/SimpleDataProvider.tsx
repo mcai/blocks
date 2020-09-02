@@ -6,11 +6,11 @@ export interface SimpleDataProvider {
                 pageSize: number,
                 pageNum: number
             },
-            sort: {
+            sort?: {
                 field: string,
                 order: string
             },
-            filter: {
+            filter?: {
                 [key: string]: any
             }
         }
@@ -46,11 +46,11 @@ export interface SimpleDataProvider {
                 pageSize: number,
                 pageNum: number
             },
-            sort: {
+            sort?: {
                 field: string,
                 order: string
             },
-            filter: {
+            filter?: {
                 [key: string]: any
             }
         }
