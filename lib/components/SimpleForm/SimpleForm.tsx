@@ -3,6 +3,7 @@ import {SimpleFormProps} from "./SimpleFormProps";
 import {Form} from "react-final-form";
 import {SimpleFormState} from "./SimpleFormState";
 import {SimpleIf} from "../SimpleIf/SimpleIf";
+import {Button} from "react-bootstrap";
 
 export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     constructor(props: SimpleFormProps) {
@@ -39,10 +40,10 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                     render={({handleSubmit}) => (
                         <form onSubmit={handleSubmit}>
                             {
-                                this.props.inputs.map(input => input)
+                                this.props.inputs
                             }
 
-                            <button type="submit">{this.props.submitButtonText ?? "提交"}</button>
+                            <Button variant={"primary"} type="submit">{this.props.submitButtonText ?? "提交"}</Button>
                         </form>
                     )}
                 />
