@@ -12,9 +12,9 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
     constructor(props: SimpleExportProps) {
         super(props);
 
-        this.setState({
+        this.state = {
             allItems: undefined
-        });
+        };
     }
 
     public async download() {
