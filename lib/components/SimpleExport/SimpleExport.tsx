@@ -22,12 +22,12 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
             allItems: undefined
         });
 
-        let i = 0;
+        let i = Math.max(0, this.props.startPageNum ?? 0);
 
         let allItems = [];
 
-        while (true) {
-            console.log(`[SimpleExport] download data from ${this.props.resource}/${this.props.action}, i=${i}`);
+        while (this.props.endPageNum == undefined || i <= this.props.endPageNum) {
+            console.log(`[SimpleExport] download data from ${this.props.resource}/${this.props.action}, pageNum=${i}`);
 
             let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
@@ -40,7 +40,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             allItems.push(result.itemsInCurrentPage);
 
-            if (i == result?.pageCount - 1)
+            if (i == result?.pageCount - 1 || (this.props.endPageNum != undefined && i == this.props.endPageNum))
             {
                 break;
             }
