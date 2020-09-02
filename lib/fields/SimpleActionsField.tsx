@@ -26,8 +26,8 @@ export class SimpleActionsField implements SimpleField {
             <Fragment>
                 {
                     this.actions.map(action => (
-                        <Button variant={"primary"}>
-                            <a href={action.urlFunc(item)}>{action.text}</a>
+                        <Button variant={"primary"} href={action.urlFunc(item)}>
+                            {action.text}
                         </Button>
                     ))
                 }
