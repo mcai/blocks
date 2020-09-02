@@ -79,13 +79,13 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                     exportLoadingActive: true,
                     exportLoadingText: "正在导出Excel文件,请稍候..."
                 });
-
-                Toastify(SimpleToastType.Info, "正在导出Excel文件,请稍候...");
             }}
             onExporting={(pageCount, pageNum) => {
-                this.setState({
-                    exportLoadingText: `正在导出Excel文件第${pageNum}页(共${pageCount}页),请稍候...`
-                });
+                if (pageNum % 5 == 0) {
+                    this.setState({
+                        exportLoadingText: `正在导出Excel文件第${pageNum}页(共${pageCount}页),请稍候...`
+                    });
+                }
             }}
             onEndExport={() => {
                 this.setState({
