@@ -3,13 +3,13 @@ import {SimpleTableField} from "../../components/SimpleTable/SimpleTableField";
 
 export class SimpleFileField<ItemT> implements SimpleTableField<ItemT> {
     title: React.ReactNode;
-    text: React.ReactNode;
     field: string;
+    text: React.ReactNode;
 
-    constructor(title: React.ReactNode, text: React.ReactNode, field: string) {
+    constructor(title: React.ReactNode, field: string, text: React.ReactNode) {
         this.title = title;
-        this.text = text;
         this.field = field;
+        this.text = text;
     }
 
     render(item: ItemT): React.ReactNode {
