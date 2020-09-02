@@ -14,7 +14,7 @@ export class SimpleBooleanInput extends Component<SimpleBooleanInputProps, any> 
                         <Form.Control>
                             <input {...props} type="checkbox"/>
                         </Form.Control>
-                        {state.touched && state.error && <span>{state.error}</span>}
+                        {/*{state.touched && state.error && <span>{state.error}</span>}*/}
                     </Form.Group>
                 )}
             >

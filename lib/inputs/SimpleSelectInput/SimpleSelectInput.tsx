@@ -20,7 +20,7 @@ export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
                                 }
                             </select>
                         </Form.Control>
-                        {state.touched && state.error && <span>{state.error}</span>}
+                        {/*{state.touched && state.error && <span>{state.error}</span>}*/}
                     </Form.Group>
                 )}
             >

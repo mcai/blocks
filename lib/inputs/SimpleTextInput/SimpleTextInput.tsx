@@ -15,7 +15,7 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
                             <input {...props} type={this.props.password ? "password" : "text"}
                                    placeholder={this.props.placeholder}/>
                         </Form.Control>
-                        {state.touched && state.error && <span>{state.error}</span>}
+                        {/*{state.touched && state.error && <span>{state.error}</span>}*/}
                     </Form.Group>
                 )}
             >

@@ -15,7 +15,7 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                         <Form.Control>
                             <input {...props} type={"file"}/>
                         </Form.Control>
-                        {state.touched && state.error && <span>{state.error}</span>}
+                        {/*{state.touched && state.error && <span>{state.error}</span>}*/}
                     </Form.Group>
                 )}
             >

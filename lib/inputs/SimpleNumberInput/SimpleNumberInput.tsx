@@ -14,7 +14,7 @@ export class SimpleNumberInput extends Component<SimpleNumberInputProps, any> {
                         <Form.Control>
                             <input {...props} type={"number"} min={this.props.min} max={this.props.max}/>
                         </Form.Control>
-                        {state.touched && state.error && <span>{state.error}</span>}
+                        {/*{state.touched && state.error && <span>{state.error}</span>}*/}
                     </Form.Group>
                 )}
             >
