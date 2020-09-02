@@ -1,15 +1,23 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {SimpleTextInputProps} from "./SimpleTextInputProps";
 import {Field} from "formik";
-import { Form } from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 
 export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     render() {
         return (
-            <Form.Group>
-                <Form.Label>{this.props.label}</Form.Label>
-                <Field type={this.props.password ? "password" : "text"} name={this.props.name} placeholder={this.props.placeholder}/>
-            </Form.Group>
+            <Fragment>
+                <Row>
+                    <Col>
+                        <label>{this.props.label}</label>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Field type={this.props.password ? "password" : "text"} name={this.props.name} placeholder={this.props.placeholder}/>
+                    </Col>
+                </Row>
+            </Fragment>
         );
     }
 }
