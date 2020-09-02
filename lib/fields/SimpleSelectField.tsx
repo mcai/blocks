@@ -3,9 +3,9 @@ import {SimpleField} from "./SimpleField";
 import Enumerable from "linq";
 
 export class SimpleSelectField implements SimpleField {
-    title: React.ReactNode;
-    name: string;
-    options: {value: string, text: string}[];
+    readonly title: React.ReactNode;
+    readonly name: string;
+    readonly options: {value: string, text: string}[];
 
     constructor(title: React.ReactNode, field: string, options: {value: string, text: string}[]) {
         this.title = title;

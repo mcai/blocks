@@ -3,7 +3,7 @@ import {SimpleField} from "./SimpleField";
 import {Button} from "react-bootstrap";
 
 export class SimpleActionsField implements SimpleField {
-    title: React.ReactNode;
+    readonly title: React.ReactNode;
 
     actions: {
         text: React.ReactNode,

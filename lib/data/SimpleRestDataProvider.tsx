@@ -3,7 +3,7 @@ import {SimpleHttpClient} from "./SimpleHttpClient";
 import {SimpleHttpClientMethod} from "./SimpleHttpClientMethod";
 
 export class SimpleRestDataProvider implements SimpleDataProvider {
-    url: string
+    private readonly url: string
 
     constructor(url: string) {
         this.url = url;

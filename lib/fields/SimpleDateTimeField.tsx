@@ -3,8 +3,8 @@ import {SimpleField} from "./SimpleField";
 import {SimpleFormatting} from "../utils/SimpleFormatting";
 
 export class SimpleDateTimeField implements SimpleField {
-    title: React.ReactNode;
-    name: string;
+    readonly title: React.ReactNode;
+    readonly name: string;
 
     constructor(title: React.ReactNode, field: string) {
         this.title = title;

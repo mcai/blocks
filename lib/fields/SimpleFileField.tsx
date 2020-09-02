@@ -2,9 +2,9 @@ import React from "react";
 import {SimpleField} from "./SimpleField";
 
 export class SimpleFileField implements SimpleField {
-    title: React.ReactNode;
-    name: string;
-    text: React.ReactNode;
+    readonly title: React.ReactNode;
+    readonly name: string;
+    readonly text: React.ReactNode;
 
     constructor(title: React.ReactNode, field: string, text: React.ReactNode) {
         this.title = title;

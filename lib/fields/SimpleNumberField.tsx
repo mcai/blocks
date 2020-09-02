@@ -2,9 +2,9 @@ import React from "react";
 import {SimpleField} from "./SimpleField";
 
 export class SimpleNumberField implements SimpleField {
-    title: React.ReactNode;
-    name: string;
-    fractionDigits: number
+    readonly title: React.ReactNode;
+    readonly name: string;
+    readonly fractionDigits: number
 
     constructor(title: React.ReactNode, field: string, fractionDigits: number = 2) {
         this.title = title;

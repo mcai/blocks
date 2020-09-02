@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
 
 export class SimpleCookie {
-    getUserByGuidFunc: (guid: string) => Promise<any | undefined>;
-    sessionKeyUserGuid: string;
+    private readonly getUserByGuidFunc: (guid: string) => Promise<any | undefined>;
+    private readonly sessionKeyUserGuid: string;
 
     constructor(
         getUserByGuidFunc: (guid: string) => any,

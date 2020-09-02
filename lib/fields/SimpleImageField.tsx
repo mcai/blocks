@@ -3,9 +3,9 @@ import React from "react";
 import {Image} from "react-bootstrap";
 
 export class SimpleImageField implements SimpleField {
-    title: React.ReactNode;
-    name: string;
-    text: string;
+    readonly title: React.ReactNode;
+    readonly name: string;
+    readonly text: string;
 
     constructor(title: React.ReactNode, field: string, text: string) {
         this.title = title;
