@@ -1,18 +1,14 @@
 import {SimpleTableField} from "./SimpleTableField";
 import React from "react";
+import {SimpleDataProvider} from "../../data/SimpleDataProvider";
 
 export interface SimpleTableProps<ItemT> {
     pageSize: number
     pageNum: number
 
-    getItems: (
-        pageSize: number,
-        pageNum: number
-    ) => Promise<{
-        count: number,
-        pageCount: number
-        itemsInCurrentPage: ItemT[]
-    }>;
+    dataProvider: SimpleDataProvider
+    resource: string
+    action: string
 
     fields: SimpleTableField<ItemT>[]
 

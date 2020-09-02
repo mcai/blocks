@@ -47,12 +47,15 @@ export class SimpleTable<ItemT> extends Component<SimpleTableProps<ItemT>, Simpl
             itemsInCurrentPage: []
         });
 
-        let {count, pageCount, itemsInCurrentPage} = await this.props.getItems(this.props.pageSize, this.state.pageNum);
+        let result = await this.props.dataProvider.getList<ItemT>(this.props.resource, this.props.action, {
+            pageSize: this.props.pageSize,
+            pageNum: this.state.pageNum
+        });
 
         this.setState({
-            count: count,
-            pageCount: pageCount,
-            itemsInCurrentPage: itemsInCurrentPage
+            count: result?.count ?? 0,
+            pageCount: result?.pageCount ?? 0,
+            itemsInCurrentPage: result?.itemsInCurrentPage ?? []
         });
     }
     render(): React.ReactNode {
