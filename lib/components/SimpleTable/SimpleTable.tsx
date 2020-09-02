@@ -58,6 +58,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             itemsInCurrentPage: result?.itemsInCurrentPage ?? []
         });
     }
+
     render(): React.ReactNode {
         let paging = (
             <SimplePagination
@@ -93,35 +94,31 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
 
                 {
                     this.state.itemsInCurrentPage?.length > 1
-                        ? this.getTable()
+                        ? (
+                            <Table striped={true} bordered={true} hover={true}>
+                                <thead>
+                                <tr>
+                                    {
+                                        this.props.fields.map(field => <th>{field.title}</th>)
+                                    }
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {
+                                    this.state.itemsInCurrentPage.map(item => (
+                                        <tr>
+                                            {
+                                                this.props.fields.map(field => <td>{field.render(item)}</td>)
+                                            }
+                                        </tr>
+                                    ))
+                                }
+                                </tbody>
+                            </Table>
+                        )
                         : (<span>没有数据。</span>)
                 }
             </Fragment>
-        );
-    }
-
-    protected getTable(): any {
-        return (
-            <Table striped={true} bordered={true} hover={true}>
-                <thead>
-                <tr>
-                    {
-                        this.props.fields.map(field => <th>{field.title}</th>)
-                    }
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    this.state.itemsInCurrentPage.map(item => (
-                        <tr>
-                            {
-                                this.props.fields.map(field => <td>{field.render(item)}</td>)
-                            }
-                        </tr>
-                    ))
-                }
-                </tbody>
-            </Table>
         );
     }
 }
