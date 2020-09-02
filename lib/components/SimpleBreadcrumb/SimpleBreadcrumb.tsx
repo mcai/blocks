@@ -8,7 +8,7 @@ export class SimpleBreadcrumb extends Component<SimpleBreadcrumbProps, any> {
             <Breadcrumb>
                 {
                     this.props.items.map(item => (
-                        <Breadcrumb.Item href={item.href} active={item.active}>
+                        <Breadcrumb.Item href={item.href} active={item.active} key={item.key}>
                             {item.title}
                         </Breadcrumb.Item>
                     ))
