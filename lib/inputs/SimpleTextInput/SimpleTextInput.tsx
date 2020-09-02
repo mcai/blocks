@@ -7,12 +7,12 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     render() {
         return (
             <Fragment>
-                <Row>
+                <Row className={"mb-3"}>
                     <Col>
                         <label>{this.props.label}</label>
                     </Col>
                 </Row>
-                <Row>
+                <Row className={"mb-3"}>
                     <Col>
                         <Field type={this.props.password ? "password" : "text"} name={this.props.name} placeholder={this.props.placeholder}/>
                     </Col>
