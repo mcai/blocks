@@ -4,7 +4,8 @@ import {SimpleDataProvider} from "../../data/SimpleDataProvider";
 export interface SimpleFormProps {
     dataProvider: SimpleDataProvider
     resource: string
-    action: string
+    getByIdAction: string
+    updateAction: string
 
     id: number
 
