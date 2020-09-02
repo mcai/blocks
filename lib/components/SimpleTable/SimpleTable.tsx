@@ -1,9 +1,12 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {SimpleTableState} from "./SimpleTableState";
 import {SimpleTableProps} from "./SimpleTableProps";
 import {Button, Col, Row, Table} from "react-bootstrap";
 import {SimplePagination} from "../SimplePagination/SimplePagination";
 import {SimpleExport} from "../SimpleExport/SimpleExport";
+import {SimpleLoading} from "../SimpleLoading/SimpleLoading";
+import {Toastify} from "../SimpleToast/SimpleToast";
+import {SimpleToastType} from "../SimpleToast/SimpleToastType";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     private refExportAll: any;
@@ -17,7 +20,10 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
 
             count: 0,
             pageCount: 0,
-            itemsInCurrentPage: []
+            itemsInCurrentPage: [],
+
+            exportLoadingActive: false,
+            exportLoadingText: ""
         }
     }
 
@@ -68,6 +74,26 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             action={this.props.action}
             fields={this.props.fields}
             ref={(ref: any) => {this.refExportAll = ref}}
+            onBeginExport={() => {
+                this.setState({
+                    exportLoadingActive: true,
+                    exportLoadingText: "正在导出Excel文件,请稍候..."
+                });
+
+                Toastify(SimpleToastType.Info, "正在导出Excel文件,请稍候...");
+            }}
+            onExporting={(pageCount, pageNum) => {
+                this.setState({
+                    exportLoadingText: `正在导出Excel文件第${pageNum}页(共${pageCount}页),请稍候...`
+                });
+            }}
+            onEndExport={() => {
+                this.setState({
+                    exportLoadingActive: false
+                });
+
+                Toastify(SimpleToastType.Info, "已导出Excel文件到本地，请查看文件.");
+            }}
         />;
 
         let exportCurrentPage = <SimpleExport
@@ -84,7 +110,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         />;
 
         return (
-            <Fragment>
+            <SimpleLoading active={false} text={"正在导出,请稍候..."}>
                 {exportAll}
                 {exportCurrentPage}
 
@@ -137,7 +163,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                         )
                         : (<span>没有数据。</span>)
                 }
-            </Fragment>
+            </SimpleLoading>
         );
     }
 }

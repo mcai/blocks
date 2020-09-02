@@ -12,4 +12,8 @@ export interface SimpleExportProps {
     action: string
 
     fields: SimpleField[]
+
+    onBeginExport?: () => void
+    onExporting?: (pageCount: number, pageNum: number) => void
+    onEndExport?: () => void
 }

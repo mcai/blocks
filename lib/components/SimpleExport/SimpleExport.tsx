@@ -17,20 +17,22 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
     }
 
     public async download() {
+        this.props.onBeginExport?.();
+
         this.setState({
             allItems: undefined
         });
 
-        let i = Math.max(0, this.props.startPageNum ?? 0);
+        let pageNum = Math.max(0, this.props.startPageNum ?? 0);
 
         let allItems = [];
 
-        while (this.props.endPageNum == undefined || i <= this.props.endPageNum) {
-            console.log(`[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${i}`);
+        while (this.props.endPageNum == undefined || pageNum <= this.props.endPageNum) {
+            console.log(`[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${pageNum}`);
 
             let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
-                pageNum: i
+                pageNum: pageNum
             });
 
             if (result == undefined) {
@@ -39,12 +41,14 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             allItems.push(...result.itemsInCurrentPage);
 
-            if (i == result?.pageCount - 1 || (this.props.endPageNum != undefined && i == this.props.endPageNum))
+            this.props.onExporting?.(result.pageCount, pageNum);
+
+            if (pageNum == result?.pageCount - 1 || (this.props.endPageNum != undefined && pageNum == this.props.endPageNum))
             {
                 break;
             }
 
-            i++;
+            pageNum++;
         }
 
         this.setState({
@@ -52,6 +56,8 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         });
 
         console.log(`[SimpleExport] handle download`);
+
+        this.props.onEndExport?.();
 
         this.refExcelFile.handleDownload();
     }
