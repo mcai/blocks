@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleTableField} from "../../components/SimpleTable/SimpleTableField";
+import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 import Enumerable from "linq";
 
 export class SimpleSelectField<ItemT> implements SimpleTableField<ItemT> {

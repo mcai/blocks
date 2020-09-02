@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleTableField} from "../../components/SimpleTable/SimpleTableField";
+import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 
 export class SimpleFileField<ItemT> implements SimpleTableField<ItemT> {
     title: React.ReactNode;
