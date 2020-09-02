@@ -1,10 +1,26 @@
-import React, {Component} from "react";
-import {SimpleFileFieldProps} from "./SimpleFileFieldProps";
+import React from "react";
+import {SimpleTableField} from "../../components/SimpleTable/SimpleTableField";
 
-export class SimpleFileField extends Component<SimpleFileFieldProps, any> {
-    render() {
+export class SimpleFileField<ItemT> implements SimpleTableField<ItemT> {
+    title: React.ReactNode;
+    text: React.ReactNode;
+    field: string;
+
+    constructor(title: React.ReactNode, text: React.ReactNode, field: string) {
+        this.title = title;
+        this.text = text;
+        this.field = field;
+    }
+
+    render(item: ItemT): React.ReactNode {
         return (
-            <a href={this.props.record[this.props.source]}>{this.props.record[this.props.title]}</a>
+            // @ts-ignore
+            <a href={item[this.field]}>{this.text}</a>
         );
+    }
+
+    renderAsText(item: ItemT): string | undefined {
+        // @ts-ignore
+        return item[this.field];
     }
 }
