@@ -107,6 +107,9 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             ref={(ref: any) => {
                 this.refExportCurrentPage = ref
             }}
+            onEndExport={() => {
+                Toastify(SimpleToastType.Info, "已导出Excel文件到本地，请查看文件.");
+            }}
         />;
 
         return (
