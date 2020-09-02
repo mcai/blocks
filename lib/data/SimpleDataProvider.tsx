@@ -14,7 +14,7 @@ export interface SimpleDataProvider {
         count: number,
         pageCount: number,
         itemsInCurrentPage: ItemT[]
-    }>;
+    } | undefined>;
 
     getById<RecordT>(
         resource: string,
@@ -22,7 +22,7 @@ export interface SimpleDataProvider {
         params: {
             id: number
         }
-    ): Promise<RecordT>
+    ): Promise<RecordT | undefined>
 
     add<RecordT>(
         resource: string,
@@ -32,7 +32,7 @@ export interface SimpleDataProvider {
                 [key: string]: any
             }
         }
-    ): Promise<RecordT>;
+    ): Promise<RecordT | undefined>;
 
     update<RecordT>(
         resource: string,
@@ -43,7 +43,7 @@ export interface SimpleDataProvider {
                 [key: string]: any
             }
         }
-    ): Promise<RecordT>;
+    ): Promise<RecordT | undefined>;
 
     remove<RecordT>(
         resource: string,

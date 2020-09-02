@@ -6,27 +6,23 @@ export class SimpleHttpClient {
         url: string,
         method: SimpleHttpClientMethod,
         params: { [name: string]: any }
-    ): Promise<ResultT> {
-        console.log(`url: ${url}, method: ${method}, params: ${params}`);
-
-        let res: request.Response;
-
-        switch (method) {
-            case SimpleHttpClientMethod.get:
-                res = await request
-                    .get(url)
-                    .query(params);
-                break;
-            case SimpleHttpClientMethod.post:
-                res = await request
+    ): Promise<ResultT | undefined> {
+        try {
+            let res = method === SimpleHttpClientMethod.post
+                ? await request
                     .post(url)
                     .type('form')
-                    .send(params);
-                break;
-            default:
-                throw new Error(`${method}`);
-        }
+                    .send(params)
+                : await request
+                    .get(url)
+                    .query(params);
 
-        return res.body;
+            return res.body;
+        } catch (e) {
+            console.log(`url: ${url}, method: ${method}, params: ${params}`);
+            console.log(e.stackTrace);
+
+            return undefined;
+        }
     }
 }

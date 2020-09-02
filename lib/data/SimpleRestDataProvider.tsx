@@ -24,7 +24,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         count: number,
         pageCount: number,
         itemsInCurrentPage: ItemT[]
-    }> {
+    } | undefined> {
         return await SimpleHttpClient.call<{
             count: number,
             pageCount: number,
@@ -47,7 +47,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         params: {
             id: number
         }
-    ): Promise<ItemT>{
+    ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
             this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.get,
@@ -65,7 +65,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
                 [key: string]: any
             }
         }
-    ): Promise<ItemT>{
+    ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
             this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.post,
@@ -84,7 +84,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
                 [key: string]: any
             }
         }
-    ): Promise<ItemT>{
+    ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
             this.url + "/" + resource + "/" + action,
             SimpleHttpClientMethod.post,
