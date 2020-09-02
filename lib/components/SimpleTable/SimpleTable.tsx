@@ -63,24 +63,25 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         return (
             <Fragment>
                 <Row>
-                    <Col className={"float-right"}>
-                        <ReactExport.ExcelFile element={(
-                            <Button>
-                                导出
-                            </Button>
-                        )} filename={Formatting.toFormattedDateTimeStringAsFileName()}>
-                            <ReactExport.ExcelSheet data={this.state.itemsInCurrentPage} name="Sheet1">
-                                {
-                                    this.props.fields.filter(field => field.renderAsText !== undefined).map(field => <ReactExport.ExcelColumn label={field.title} value={(item: any) => field.renderAsText?.(item)}/>)
-                                }
-                            </ReactExport.ExcelSheet>
-                        </ReactExport.ExcelFile>
-
-                        {
-                            this.props.extra
-                        }
-                    </Col>
                     <Col>
+                        <div className={"float-right"}>
+                            <ReactExport.ExcelFile element={(
+                                <Button>
+                                    导出
+                                </Button>
+                            )} filename={Formatting.toFormattedDateTimeStringAsFileName()}>
+                                <ReactExport.ExcelSheet data={this.state.itemsInCurrentPage} name="Sheet1">
+                                    {
+                                        this.props.fields.filter(field => field.renderAsText !== undefined).map(field => <ReactExport.ExcelColumn label={field.title} value={(item: any) => field.renderAsText?.(item)}/>)
+                                    }
+                                </ReactExport.ExcelSheet>
+                            </ReactExport.ExcelFile>
+
+                            {
+                                this.props.extra
+                            }
+                        </div>
+
                         <SimplePagination
                             pageCount={this.state.pageCount}
                             pageNum={this.state.pageNum}
