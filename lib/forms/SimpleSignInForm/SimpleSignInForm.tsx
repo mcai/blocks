@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import {SignInFormProps} from "./SignInFormProps";
+import {SimpleSignInFormProps} from "./SimpleSignInFormProps";
 import {Toastify} from "../../components/SimpleToast/SimpleToast";
 import {SimpleToastType} from "../../components/SimpleToast/SimpleToastType";
 import {SimpleAddForm} from "../SimpleAddForm/SimpleAddForm";
 import {SimpleTextInput} from "../../inputs/SimpleTextInput/SimpleTextInput";
 
-export class SignInForm extends Component<SignInFormProps, any> {
+export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
     constructor(props: Readonly<any>) {
         super(props);
 
