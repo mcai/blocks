@@ -3,7 +3,7 @@ import {SimpleTableState} from "./SimpleTableState";
 import {SimpleTableProps} from "./SimpleTableProps";
 // @ts-ignore
 import ReactExport from "react-data-export";
-import {Button, Table} from "react-bootstrap";
+import {Button, Col, Row, Table} from "react-bootstrap";
 import {SimplePagination} from "../SimplePagination/SimplePagination";
 import {Formatting} from "../../utils/Formatting";
 
@@ -60,37 +60,38 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     }
 
     render(): React.ReactNode {
-        let paging = (
-            <SimplePagination
-                pageCount={this.state.pageCount}
-                pageNum={this.state.pageNum}
-                count={this.state.count}
-                pageSize={this.props.pageSize}
-                onClick={(pageNum) => this.setState({
-                    pageNum: pageNum
-                })}
-            />
-        );
-
         return (
             <Fragment>
-                {paging}
+                <Row>
+                    <Col>
+                        <SimplePagination
+                            pageCount={this.state.pageCount}
+                            pageNum={this.state.pageNum}
+                            count={this.state.count}
+                            pageSize={this.props.pageSize}
+                            onClick={(pageNum) => this.setState({
+                                pageNum: pageNum
+                            })}
+                        />
+                    </Col>
+                    <Col>
+                        <ReactExport.ExcelFile element={(
+                            <Button>
+                                导出
+                            </Button>
+                        )} filename={Formatting.toFormattedDateTimeStringAsFileName()}>
+                            <ReactExport.ExcelSheet data={this.state.itemsInCurrentPage} name="Sheet1">
+                                {
+                                    this.props.fields.filter(field => field.renderAsText !== undefined).map(field => <ReactExport.ExcelColumn label={field.title} value={(item: any) => field.renderAsText?.(item)}/>)
+                                }
+                            </ReactExport.ExcelSheet>
+                        </ReactExport.ExcelFile>
 
-                <ReactExport.ExcelFile element={(
-                    <Button>
-                        导出
-                    </Button>
-                )} filename={Formatting.toFormattedDateTimeStringAsFileName()}>
-                    <ReactExport.ExcelSheet data={this.state.itemsInCurrentPage} name="Sheet1">
                         {
-                            this.props.fields.filter(field => field.renderAsText !== undefined).map(field => <ReactExport.ExcelColumn label={field.title} value={(item: any) => field.renderAsText?.(item)}/>)
+                            this.props.extra
                         }
-                    </ReactExport.ExcelSheet>
-                </ReactExport.ExcelFile>
-
-                {
-                    this.props.extra
-                }
+                    </Col>
+                </Row>
 
                 {
                     this.state.itemsInCurrentPage?.length > 1
