@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import {SimpleFormProps} from "./SimpleFormProps";
-import {SimpleFormState} from "./SimpleFormState";
-import {SimpleIf} from "../SimpleIf/SimpleIf";
+import {SimpleUpdateFormProps} from "./SimpleUpdateFormProps";
+import {SimpleUpdateFormState} from "./SimpleUpdateFormState";
+import {SimpleIf} from "../../components/SimpleIf/SimpleIf";
 import {Button} from "react-bootstrap";
 import {Form, Formik, FormikProps} from "formik";
 
-export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
-    constructor(props: SimpleFormProps) {
+export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpdateFormState> {
+    constructor(props: SimpleUpdateFormProps) {
         super(props);
 
         this.state = {

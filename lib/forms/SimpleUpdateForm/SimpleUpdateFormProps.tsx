@@ -1,7 +1,7 @@
 import React from "react";
 import {SimpleDataProvider} from "../../data/SimpleDataProvider";
 
-export interface SimpleFormProps {
+export interface SimpleUpdateFormProps {
     dataProvider: SimpleDataProvider
     resource: string
     getByIdAction: string
