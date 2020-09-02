@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from "react";
 import {SimpleExportProps} from "./SimpleExportProps";
 import {SimpleExportState} from "./SimpleExportState";
-import {Formatting} from "../../utils/Formatting";
+import {SimpleFormatting} from "../../utils/SimpleFormatting";
 // @ts-ignore
 import ReactExport from "react-data-export";
 
@@ -65,7 +65,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
     render() {
         return (
             <ReactExport.ExcelFile
-                filename={Formatting.toFormattedDateTimeStringAsFileName()}
+                filename={SimpleFormatting.toFormattedDateTimeStringAsFileName()}
                 element={<div/>}
                 hideElement={false}
                 ref={(ref: any) => {this.refExcelFile = ref}}

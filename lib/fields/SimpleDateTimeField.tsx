@@ -1,6 +1,6 @@
 import React from "react";
 import {SimpleField} from "./SimpleField";
-import {Formatting} from "../utils/Formatting";
+import {SimpleFormatting} from "../utils/SimpleFormatting";
 
 export class SimpleDateTimeField implements SimpleField {
     title: React.ReactNode;
@@ -12,10 +12,10 @@ export class SimpleDateTimeField implements SimpleField {
     }
 
     render(item: any): React.ReactNode {
-        return Formatting.toFormattedDateTimeString(item[this.name]);
+        return SimpleFormatting.toFormattedDateTimeString(item[this.name]);
     }
 
     renderAsText(item: any): string | undefined {
-        return Formatting.toFormattedDateTimeString(item[this.name]);
+        return SimpleFormatting.toFormattedDateTimeString(item[this.name]);
     }
 }

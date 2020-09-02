@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export class Formatting {
+export class SimpleFormatting {
     static toFormattedDateTimeString(dateStr: string): string {
         return moment(dateStr).format("YYYY-MM-DD HH:mm:ss");
     }
