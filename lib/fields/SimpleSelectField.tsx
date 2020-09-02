@@ -2,7 +2,7 @@ import React from "react";
 import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 import Enumerable from "linq";
 
-export class SimpleSelectField<ItemT> implements SimpleTableField<ItemT> {
+export class SimpleSelectField implements SimpleTableField {
     title: React.ReactNode;
     field: string;
     options: {value: string, text: string}[];
@@ -13,14 +13,12 @@ export class SimpleSelectField<ItemT> implements SimpleTableField<ItemT> {
         this.options = options;
     }
 
-    render(item: ItemT): React.ReactNode {
-        // @ts-ignore
+    render(item: any): React.ReactNode {
         let value = item[this.field];
         return Enumerable.from(this.options).firstOrDefault(option => option.value == value)?.text;
     }
 
-    renderAsText(item: ItemT): string | undefined {
-        // @ts-ignore
+    renderAsText(item: any): string | undefined {
         let value = item[this.field];
         return Enumerable.from(this.options).firstOrDefault(option => option.value == value)?.text;
     }

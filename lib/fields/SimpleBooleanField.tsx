@@ -1,7 +1,7 @@
 import React from "react";
 import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 
-export class SimpleBooleanField<ItemT> implements SimpleTableField<ItemT> {
+export class SimpleBooleanField implements SimpleTableField {
     title: React.ReactNode;
     field: string;
 
@@ -10,13 +10,11 @@ export class SimpleBooleanField<ItemT> implements SimpleTableField<ItemT> {
         this.field = field;
     }
 
-    render(item: ItemT): React.ReactNode {
-        // @ts-ignore
+    render(item: any): React.ReactNode {
         return item[this.field] ? "是" : "否";
     }
 
-    renderAsText(item: ItemT): string | undefined {
-        // @ts-ignore
+    renderAsText(item: any): string | undefined {
         return item[this.field] ? "是" : "否";
     }
 }

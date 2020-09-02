@@ -2,7 +2,7 @@ import React from "react";
 import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 import {Formatting} from "../utils/Formatting";
 
-export class SimpleDateTimeField<ItemT> implements SimpleTableField<ItemT> {
+export class SimpleDateTimeField implements SimpleTableField {
     title: React.ReactNode;
     field: string;
 
@@ -11,13 +11,11 @@ export class SimpleDateTimeField<ItemT> implements SimpleTableField<ItemT> {
         this.field = field;
     }
 
-    render(item: ItemT): React.ReactNode {
-        // @ts-ignore
+    render(item: any): React.ReactNode {
         return Formatting.toFormattedDateTimeString(item[this.field]);
     }
 
-    renderAsText(item: ItemT): string | undefined {
-        // @ts-ignore
+    renderAsText(item: any): string | undefined {
         return Formatting.toFormattedDateTimeString(item[this.field]);
     }
 }

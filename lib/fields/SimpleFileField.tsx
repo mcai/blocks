@@ -1,7 +1,7 @@
 import React from "react";
 import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 
-export class SimpleFileField<ItemT> implements SimpleTableField<ItemT> {
+export class SimpleFileField implements SimpleTableField {
     title: React.ReactNode;
     field: string;
     text: React.ReactNode;
@@ -12,15 +12,13 @@ export class SimpleFileField<ItemT> implements SimpleTableField<ItemT> {
         this.text = text;
     }
 
-    render(item: ItemT): React.ReactNode {
+    render(item: any): React.ReactNode {
         return (
-            // @ts-ignore
             <a href={item[this.field]}>{this.text}</a>
         );
     }
 
-    renderAsText(item: ItemT): string | undefined {
-        // @ts-ignore
+    renderAsText(item: any): string | undefined {
         return item[this.field];
     }
 }

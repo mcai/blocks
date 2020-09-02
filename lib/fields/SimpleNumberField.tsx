@@ -1,7 +1,7 @@
 import React from "react";
 import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 
-export class SimpleNumberField<ItemT> implements SimpleTableField<ItemT> {
+export class SimpleNumberField implements SimpleTableField {
     title: React.ReactNode;
     field: string;
     fractionDigits: number
@@ -12,13 +12,11 @@ export class SimpleNumberField<ItemT> implements SimpleTableField<ItemT> {
         this.fractionDigits = fractionDigits;
     }
 
-    render(item: ItemT): React.ReactNode {
-        // @ts-ignore
+    render(item: any): React.ReactNode {
         return (item[this.field] as number).toFixed(this.fractionDigits);
     }
 
-    renderAsText(item: ItemT): string | undefined {
-        // @ts-ignore
+    renderAsText(item: any): string | undefined {
         return (item[this.field] as number).toFixed(this.fractionDigits);
     }
 }

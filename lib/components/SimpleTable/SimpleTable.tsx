@@ -7,8 +7,8 @@ import {Button, Table} from "react-bootstrap";
 import {SimplePagination} from "../SimplePagination/SimplePagination";
 import {Formatting} from "../../utils/Formatting";
 
-export class SimpleTable<ItemT> extends Component<SimpleTableProps<ItemT>, SimpleTableState<ItemT>> {
-    constructor(props: SimpleTableProps<ItemT>) {
+export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
+    constructor(props: SimpleTableProps) {
         super(props);
 
         this.state = {
@@ -25,8 +25,8 @@ export class SimpleTable<ItemT> extends Component<SimpleTableProps<ItemT>, Simpl
     }
 
     async componentDidUpdate(
-        prevProps: Readonly<SimpleTableProps<ItemT>>,
-        prevState: Readonly<SimpleTableState<ItemT>>,
+        prevProps: Readonly<SimpleTableProps>,
+        prevState: Readonly<SimpleTableState>,
         snapshot?: any
     ) {
         if (prevState.pageNum !== this.state.pageNum) {
@@ -47,7 +47,7 @@ export class SimpleTable<ItemT> extends Component<SimpleTableProps<ItemT>, Simpl
             itemsInCurrentPage: []
         });
 
-        let result = await this.props.dataProvider.getList<ItemT>(this.props.resource, this.props.action, {
+        let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
             pageSize: this.props.pageSize,
             pageNum: this.state.pageNum
         });

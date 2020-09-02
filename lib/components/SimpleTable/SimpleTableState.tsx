@@ -1,6 +1,6 @@
-export interface SimpleTableState<ItemT> {
+export interface SimpleTableState {
     pageNum: number
     count: number,
     pageCount: number
-    itemsInCurrentPage: ItemT[]
+    itemsInCurrentPage: any[]
 }

@@ -2,7 +2,7 @@ import {SimpleTableField} from "./SimpleTableField";
 import React from "react";
 import {SimpleDataProvider} from "../../data/SimpleDataProvider";
 
-export interface SimpleTableProps<ItemT> {
+export interface SimpleTableProps {
     pageSize: number
     pageNum: number
 
@@ -10,7 +10,7 @@ export interface SimpleTableProps<ItemT> {
     resource: string
     action: string
 
-    fields: SimpleTableField<ItemT>[]
+    fields: SimpleTableField[]
 
     extra?: React.ReactNode
 }

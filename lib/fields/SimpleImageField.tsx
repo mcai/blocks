@@ -2,7 +2,7 @@ import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
 import React from "react";
 import {Image} from "react-bootstrap";
 
-export class SimpleImageField<ItemT> implements SimpleTableField<ItemT> {
+export class SimpleImageField implements SimpleTableField {
     title: React.ReactNode;
     field: string;
     text: string;
@@ -13,8 +13,7 @@ export class SimpleImageField<ItemT> implements SimpleTableField<ItemT> {
         this.text = text;
     }
 
-    render(item: ItemT): React.ReactNode {
-        // @ts-ignore
+    render(item: any): React.ReactNode {
         let src = item[this.field];
         return (
             <a href={src}>
@@ -23,8 +22,7 @@ export class SimpleImageField<ItemT> implements SimpleTableField<ItemT> {
         );
     }
 
-    renderAsText(item: ItemT): string | undefined {
-        // @ts-ignore
+    renderAsText(item: any): string | undefined {
         return item[this.field];
     }
 }
