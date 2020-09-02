@@ -27,6 +27,8 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         let allItems = [];
 
         while (true) {
+            console.log(`[SimpleExport] download data from ${this.props.resource}/${this.props.action}, i=${i}`);
+
             let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
                 pageNum: i
@@ -49,6 +51,8 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         this.setState({
             allItems: allItems
         });
+
+        console.log(`[SimpleExport] handle download`);
 
         this.refExcelFile.handleDownload();
     }

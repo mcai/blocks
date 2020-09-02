@@ -19,7 +19,7 @@ export class SimpleHttpClient {
 
             return res.body;
         } catch (e) {
-            console.log(`url: ${url}, method: ${method}, params: ${params}`);
+            console.log(`[SimpleHttpClient] call, url=${url},method=${method},params=${params}`);
             console.log(e.stackTrace);
 
             return undefined;
