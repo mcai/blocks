@@ -41,18 +41,20 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getById<ItemT>(
+    async getOne<ItemT>(
         resource: string,
         action: string,
         params: {
-            id: number
+            filter?: {
+                [key: string]: any
+            }
         }
     ): Promise<ItemT | undefined>{
         return await SimpleHttpClient.call<ItemT>(
             this.url + resource + action,
             SimpleHttpClientMethod.get,
             {
-                id: params.id
+                ...params.filter
             }
         );
     }

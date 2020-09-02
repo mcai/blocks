@@ -16,11 +16,13 @@ export interface SimpleDataProvider {
         itemsInCurrentPage: ItemT[]
     } | undefined>;
 
-    getById<RecordT>(
+    getOne<RecordT>(
         resource: string,
         action: string,
         params: {
-            id: number
+            filter?: {
+                [key: string]: any
+            }
         }
     ): Promise<RecordT | undefined>
 

@@ -21,7 +21,7 @@ export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormSt
         });
 
         if (result != undefined) {
-            this.props.onSuccess?.();
+            this.props.onSuccess?.(result);
         } else {
             this.props.onFailure?.();
         }
