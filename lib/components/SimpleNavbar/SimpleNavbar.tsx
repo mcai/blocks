@@ -14,7 +14,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                 <Nav className="mr-auto">
                     {
                         this.props.items.map(item => (
-                            <Nav.Link href={item.href} active={item.active}>{item.title}</Nav.Link>
+                            <Nav.Link href={item.href} active={item.active} key={item.key}>{item.title}</Nav.Link>
                         ))
                     }
                 </Nav>
