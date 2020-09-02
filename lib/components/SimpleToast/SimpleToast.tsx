@@ -1,30 +1,35 @@
-import {Component} from "react";
-import {SimpleToastProps} from "./SimpleToastProps";
-import {Toast} from "react-bootstrap";
-import React from "react";
+import React, {Component} from "react";
 
-export class SimpleToast extends Component<SimpleToastProps, any> {
-    constructor(props: SimpleToastProps) {
-        super(props);
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {SimpleToastType} from "./SimpleToastType";
 
-        this.state = {
-        };
+export function Toastify(
+    type: SimpleToastType,
+    text: React.ReactNode
+): void {
+    switch (type) {
+    case SimpleToastType.Success:
+        toast.success(text);
+        break;
+    case SimpleToastType.Info:
+        toast.info(text);
+        break;
+    case SimpleToastType.Warning:
+        toast.warn(text);
+        break;
+    case SimpleToastType.Error:
+        toast.error(text);
+        break;
+    default:
+        throw new Error(type);
     }
+}
 
+export class SimpleToast extends Component<any, any> {
     render() {
         return (
-            <Toast
-                onClose={() => this.props.onClose()}
-                show={this.props.visible}
-                delay={this.props.delay ?? 3000}
-                autohide={true}
-            >
-                <Toast.Header>
-                    <strong className="mr-auto">{this.props.title}</strong>
-                    <small>{this.props.subtitle}</small>
-                </Toast.Header>
-                <Toast.Body>{this.props.text}</Toast.Body>
-            </Toast>
+            <ToastContainer autoClose={3000} position={"top-center"}/>
         );
     }
 }
