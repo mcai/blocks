@@ -11,4 +11,8 @@ export interface SimpleAddFormProps {
     inputs: React.ReactNode[];
 
     submitButtonText?: string;
+
+    onSuccess?: () => void;
+    onFailure?: () => void;
 }
+

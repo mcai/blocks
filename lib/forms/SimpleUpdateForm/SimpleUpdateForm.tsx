@@ -26,13 +26,19 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     private async onSubmit(values: any) {
-        await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
+        let result = await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
             id: this.props.id,
             data: {
                 ...this.props.updateExtraData,
                 ...values
             }
         });
+
+        if (result != undefined) {
+            this.props.onSuccess?.();
+        } else {
+            this.props.onFailure?.();
+        }
     }
 
     render() {

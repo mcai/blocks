@@ -15,4 +15,7 @@ export interface SimpleUpdateFormProps {
     inputs: React.ReactNode[];
 
     submitButtonText?: string;
+
+    onSuccess?: () => void;
+    onFailure?: () => void;
 }

@@ -13,12 +13,18 @@ export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormSt
     }
 
     private async onSubmit(values: any) {
-        await this.props.dataProvider.add(this.props.resource, this.props.addAction, {
+        let result = await this.props.dataProvider.add(this.props.resource, this.props.addAction, {
             data: {
                 ...this.props.addExtraData,
                 ...values
             }
         });
+
+        if (result != undefined) {
+            this.props.onSuccess?.();
+        } else {
+            this.props.onFailure?.();
+        }
     }
 
     render() {
