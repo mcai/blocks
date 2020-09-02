@@ -63,18 +63,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         return (
             <Fragment>
                 <Row>
-                    <Col>
-                        <SimplePagination
-                            pageCount={this.state.pageCount}
-                            pageNum={this.state.pageNum}
-                            count={this.state.count}
-                            pageSize={this.props.pageSize}
-                            onClick={(pageNum) => this.setState({
-                                pageNum: pageNum
-                            })}
-                        />
-                    </Col>
-                    <Col>
+                    <Col className={"float-right"}>
                         <ReactExport.ExcelFile element={(
                             <Button>
                                 导出
@@ -90,6 +79,17 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                         {
                             this.props.extra
                         }
+                    </Col>
+                    <Col>
+                        <SimplePagination
+                            pageCount={this.state.pageCount}
+                            pageNum={this.state.pageNum}
+                            count={this.state.count}
+                            pageSize={this.props.pageSize}
+                            onClick={(pageNum) => this.setState({
+                                pageNum: pageNum
+                            })}
+                        />
                     </Col>
                 </Row>
 
