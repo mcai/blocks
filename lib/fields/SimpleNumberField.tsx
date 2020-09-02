@@ -1,7 +1,7 @@
 import React from "react";
-import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
+import {SimpleField} from "./SimpleField";
 
-export class SimpleNumberField implements SimpleTableField {
+export class SimpleNumberField implements SimpleField {
     title: React.ReactNode;
     field: string;
     fractionDigits: number

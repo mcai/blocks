@@ -12,7 +12,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         super(props);
 
         this.state = {
-            pageNum: this.props.pageNum,
+            pageNum: this.props.initialPageNum,
 
             count: 0,
             pageCount: 0,

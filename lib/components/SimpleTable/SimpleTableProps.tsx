@@ -1,16 +1,16 @@
-import {SimpleTableField} from "./SimpleTableField";
+import {SimpleField} from "../../fields/SimpleField";
 import React from "react";
 import {SimpleDataProvider} from "../../data/SimpleDataProvider";
 
 export interface SimpleTableProps {
     pageSize: number
-    pageNum: number
+    initialPageNum: number
 
     dataProvider: SimpleDataProvider
     resource: string
     action: string
 
-    fields: SimpleTableField[]
+    fields: SimpleField[]
 
     extra?: React.ReactNode
 }

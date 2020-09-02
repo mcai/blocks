@@ -1,8 +1,8 @@
 import React from "react";
-import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
+import {SimpleField} from "./SimpleField";
 import {Formatting} from "../utils/Formatting";
 
-export class SimpleDateTimeField implements SimpleTableField {
+export class SimpleDateTimeField implements SimpleField {
     title: React.ReactNode;
     field: string;
 

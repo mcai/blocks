@@ -1,7 +1,7 @@
 import React from "react";
-import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
+import {SimpleField} from "./SimpleField";
 
-export class SimpleBooleanField implements SimpleTableField {
+export class SimpleBooleanField implements SimpleField {
     title: React.ReactNode;
     field: string;
 

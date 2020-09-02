@@ -1,8 +1,8 @@
 import React from "react";
-import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
+import {SimpleField} from "./SimpleField";
 import Enumerable from "linq";
 
-export class SimpleSelectField implements SimpleTableField {
+export class SimpleSelectField implements SimpleField {
     title: React.ReactNode;
     field: string;
     options: {value: string, text: string}[];

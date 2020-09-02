@@ -1,8 +1,8 @@
-import {SimpleTableField} from "../components/SimpleTable/SimpleTableField";
+import {SimpleField} from "./SimpleField";
 import React from "react";
 import {Image} from "react-bootstrap";
 
-export class SimpleImageField implements SimpleTableField {
+export class SimpleImageField implements SimpleField {
     title: React.ReactNode;
     field: string;
     text: string;
