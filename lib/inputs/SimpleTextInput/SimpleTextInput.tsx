@@ -7,7 +7,7 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     render() {
         return (
             <Fragment>
-                <Row className={"mb-3"}>
+                <Row>
                     <Col>
                         <label>{this.props.label}</label>
                     </Col>
