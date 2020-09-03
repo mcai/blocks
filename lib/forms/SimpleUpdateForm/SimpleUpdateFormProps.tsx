@@ -5,6 +5,7 @@ export interface SimpleUpdateFormProps {
     dataProvider: SimpleDataProvider;
     resource: string;
     getByIdAction: string;
+    onGetIdResult?: (item: any) => void;
     updateAction: string;
 
     id: number;
