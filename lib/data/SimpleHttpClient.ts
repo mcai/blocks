@@ -8,6 +8,8 @@ export class SimpleHttpClient {
         params: { [name: string]: any }
     ): Promise<ResultT | undefined> {
         try {
+            console.log(`[SimpleHttpClient] call, url=${url},method=${method},params=${params}`);
+
             let res = method === SimpleHttpClientMethod.post
                 ? await request
                     .post(url)
@@ -19,7 +21,6 @@ export class SimpleHttpClient {
 
             return res.body;
         } catch (e) {
-            console.log(`[SimpleHttpClient] call, url=${url},method=${method},params=${params}`);
             console.log(e.stackTrace);
 
             return undefined;
