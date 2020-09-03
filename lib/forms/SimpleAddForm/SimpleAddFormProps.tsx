@@ -13,6 +13,6 @@ export interface SimpleAddFormProps {
     submitButtonText?: string;
 
     onSuccess?: (item: any) => void;
+    onSuccessRedirect?: string;
     onFailure?: () => void;
 }
-
