@@ -57,7 +57,10 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
 
         let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
             pageSize: this.props.pageSize,
-            pageNum: this.state.pageNum
+            pageNum: this.state.pageNum,
+            filter: {
+                ...this.props.extraData
+            }
         });
 
         this.setState({

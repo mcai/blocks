@@ -10,6 +10,8 @@ export interface SimpleTableProps {
     resource: string
     action: string
 
+    extraData?: any;
+
     fields: SimpleField[]
 
     extra?: React.ReactNode
