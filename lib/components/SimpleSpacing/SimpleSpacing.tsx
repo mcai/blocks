@@ -1,9 +1,10 @@
 import React, {Component} from "react";
+import {SimpleSpacingProps} from "./SimpleSpacingProps";
 
-export class SimpleSpacing extends Component<any, any> {
+export class SimpleSpacing extends Component<SimpleSpacingProps, any> {
     render() {
         return (
-            <span className={"mb-3"}/>
+            <div className={`mb-${this.props.value ?? 3}`}/>
         );
     }
 }
