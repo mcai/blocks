@@ -8,7 +8,7 @@ export class SimpleButtonBar extends Component<SimpleButtonBarProps, any> {
             <Fragment>
                 {
                     this.props.items.map(item => (
-                        <Button variant="primary" href={item.href} onClick={() => item.onClick?.()}>{item.title}</Button>
+                        <Button variant="primary" href={item.href} onClick={() => item.onClick?.()} className={"ml-3"}>{item.title}</Button>
                     ))
                 }
             </Fragment>
