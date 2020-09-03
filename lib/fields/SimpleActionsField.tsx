@@ -34,8 +34,4 @@ export class SimpleActionsField implements SimpleField {
             </Fragment>
         );
     }
-
-    renderAsText(item: any): string | undefined {
-        return undefined;
-    }
 }
