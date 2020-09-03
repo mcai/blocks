@@ -4,6 +4,7 @@ import {SimpleUpdateFormState} from "./SimpleUpdateFormState";
 import {SimpleIf} from "../../components/SimpleIf/SimpleIf";
 import {Button} from "react-bootstrap";
 import {Form, Formik, FormikProps} from "formik";
+import {Redirect} from "react-router-dom";
 
 export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpdateFormState> {
     constructor(props: SimpleUpdateFormProps) {
@@ -38,6 +39,12 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
 
         if (result != undefined) {
             this.props.onSuccess?.(result);
+
+            if (this.props.onSuccessRedirect) {
+                this.setState({
+                    redirect: this.props.onSuccessRedirect
+                })
+            }
         } else {
             this.props.onFailure?.();
         }
@@ -46,6 +53,10 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     render() {
         return (
             <SimpleIf condition={this.state.item != undefined}>
+                {
+                    this.state.redirect && <Redirect to={this.state.redirect}/>
+                }
+
                 <Formik
                     initialValues={this.state.item}
                     onSubmit={values => this.onSubmit(values)}

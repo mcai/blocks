@@ -17,5 +17,6 @@ export interface SimpleUpdateFormProps {
     submitButtonText?: string;
 
     onSuccess?: (item: any) => void;
+    onSuccessRedirect?: string;
     onFailure?: () => void;
 }
