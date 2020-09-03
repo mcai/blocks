@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {HashRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import {SimpleAppProps} from "./SimpleAppProps";
 import {SimpleAppState} from "./SimpleAppState";
 import {Container} from "react-bootstrap";
@@ -8,7 +8,7 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState>{
     render() {
         return (
             <Container>
-                <HashRouter basename="/">
+                <BrowserRouter basename={process.env.PUBLIC_URL}>
                     {this.props.navbar}
 
                     <Switch>
@@ -20,7 +20,7 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState>{
                             ))
                         }
                     </Switch>
-                </HashRouter>
+                </BrowserRouter>
             </Container>
         );
     }
