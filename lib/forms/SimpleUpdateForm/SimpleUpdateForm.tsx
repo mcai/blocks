@@ -42,7 +42,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
 
             if (this.props.onSuccessRedirect) {
                 this.setState({
-                    redirect: this.props.onSuccessRedirect
+                    redirect: this.props.onSuccessRedirect?.(result)
                 })
             }
         } else {

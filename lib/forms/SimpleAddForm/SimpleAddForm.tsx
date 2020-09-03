@@ -26,7 +26,7 @@ export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormSt
 
             if (this.props.onSuccessRedirect) {
                 this.setState({
-                    redirect: this.props.onSuccessRedirect
+                    redirect: this.props.onSuccessRedirect?.(result)
                 })
             }
         } else {
