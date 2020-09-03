@@ -1,7 +1,7 @@
-import {SimpleNavbar} from "../SimpleNavbar/SimpleNavbar";
 import {SimpleRoute} from "./SimpleRoute";
+import React from "react";
 
 export interface SimpleAppProps {
-    navbar: SimpleNavbar
+    navbar: React.ReactNode
     routes: SimpleRoute[]
 }
