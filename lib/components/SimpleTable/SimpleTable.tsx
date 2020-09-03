@@ -141,7 +141,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 </Row>
 
                 {
-                    this.state.itemsInCurrentPage?.length > 1
+                    this.state.itemsInCurrentPage?.length > 0
                         ? (
                             <Table striped={true} bordered={true} hover={true}>
                                 <thead>
