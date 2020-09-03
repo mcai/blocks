@@ -9,7 +9,7 @@ export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
             <Fragment>
                 <Row>
                     <Col>
-                        <b>{this.props.label}</b>
+                        <b>{this.props.label}:</b>
                     </Col>
                 </Row>
                 <Row className={"mb-3"}>
