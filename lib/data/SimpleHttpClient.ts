@@ -8,7 +8,7 @@ export class SimpleHttpClient {
         params: { [name: string]: any }
     ): Promise<ResultT | undefined> {
         try {
-            console.log(`[SimpleHttpClient] call, url=${url},method=${method},params=${params}`);
+            console.log(`[SimpleHttpClient] call, url=${url},method=${method == SimpleHttpClientMethod.get ? "get" : "post"},params=${JSON.stringify(params)}`);
 
             let res = method === SimpleHttpClientMethod.post
                 ? await request
