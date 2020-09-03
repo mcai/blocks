@@ -10,7 +10,7 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
             <Fragment>
                 <Row>
                     <Col>
-                        <label>{this.props.label}</label>
+                        <b>{this.props.label}</b>
                     </Col>
                 </Row>
                 <Row className={"mb-3"}>
