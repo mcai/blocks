@@ -8,7 +8,7 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState>{
     render() {
         return (
             <Container>
-                <BrowserRouter>
+                <BrowserRouter basename={process.env.PUBLIC_URL}>
                     {this.props.navbar}
 
                     <Switch>
