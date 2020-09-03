@@ -8,7 +8,15 @@ export class SimpleFooter extends Component<SimpleFooterProps, any> {
             <footer>
                 <Container>
                     <div className="row h-100 justify-content-center align-items-center">
-                        <p>{this.props.brand.title} - {this.props.brand.href} {this.props.extra}</p>
+                        <p>
+                            {this.props.brand.title}
+
+                            {
+                                this.props.brand.href && <span>- {this.props.brand.href}</span>
+                            }
+
+                            {this.props.extra}
+                        </p>
                     </div>
                 </Container>
             </footer>
