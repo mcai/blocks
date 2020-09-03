@@ -7,6 +7,7 @@ import {SimpleExport} from "../SimpleExport/SimpleExport";
 import {SimpleLoading} from "../SimpleLoading/SimpleLoading";
 import {Toastify} from "../SimpleToast/SimpleToast";
 import {SimpleToastType} from "../SimpleToast/SimpleToastType";
+import {SimpleSpacing} from "../SimpleSpacing/SimpleSpacing";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     private refExportAll: any;
@@ -127,6 +128,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 this.props.extra
                             }
                         </div>
+
+                        <SimpleSpacing/>
 
                         <SimplePagination
                             pageCount={this.state.pageCount}
