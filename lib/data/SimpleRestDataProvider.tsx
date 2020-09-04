@@ -41,6 +41,26 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
+    async getAll<ItemT>(
+        resource: string,
+        action: string,
+        params: {
+            ordering?: string,
+            filter?: {
+                [key: string]: any
+            }
+        }
+    ): Promise<ItemT[] | undefined> {
+        return await SimpleHttpClient.call<ItemT[]>(
+            this.url + resource + action,
+            SimpleHttpClientMethod.get,
+            {
+                ordering: params.ordering,
+                ...params.filter
+            }
+        );
+    }
+
     async getOne<ItemT>(
         resource: string,
         action: string,

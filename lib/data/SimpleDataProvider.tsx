@@ -16,6 +16,17 @@ export interface SimpleDataProvider {
         itemsInCurrentPage: ItemT[]
     } | undefined>;
 
+    getAll<ItemT>(
+        resource: string,
+        action: string,
+        params: {
+            ordering?: string,
+            filter?: {
+                [key: string]: any
+            }
+        }
+    ): Promise<ItemT[] | undefined>;
+
     getOne<RecordT>(
         resource: string,
         action: string,
