@@ -42,7 +42,7 @@ export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormSt
                 }
 
                 <Formik
-                    initialValues={{}}
+                    initialValues={this.props.initialValues}
                     onSubmit={values => this.onSubmit(values)}
                 >
                     {(props: FormikProps<any>) => (
