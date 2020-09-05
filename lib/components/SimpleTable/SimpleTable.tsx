@@ -8,6 +8,7 @@ import {SimpleLoading} from "../SimpleLoading/SimpleLoading";
 import {Toastify} from "../SimpleToast/SimpleToast";
 import {SimpleToastType} from "../SimpleToast/SimpleToastType";
 import {SimpleSpacing} from "../SimpleSpacing/SimpleSpacing";
+import {SimpleTableRowType} from "./SimpleTableRowType";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     private refExportAll: any;
@@ -159,13 +160,30 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 </thead>
                                 <tbody>
                                 {
-                                    this.state.itemsInCurrentPage.map(item => (
-                                        <tr>
-                                            {
-                                                this.props.fields.map(field => <td>{field.render(item)}</td>)
+                                    this.state.itemsInCurrentPage.map(item => {
+                                        let trClass = "";
+
+                                        if (this.props.getRowTypeFunc != undefined) {
+                                            switch (this.props.getRowTypeFunc(item)) {
+                                                case SimpleTableRowType.none:
+                                                    break;
+                                                case SimpleTableRowType.danger:
+                                                    trClass = "table-danger";
+                                                    break;
+                                                case SimpleTableRowType.warning:
+                                                    trClass = "table-warning";
+                                                    break;
                                             }
-                                        </tr>
-                                    ))
+                                        }
+
+                                        return (
+                                            <tr className={trClass}>
+                                                {
+                                                    this.props.fields.map(field => <td>{field.render(item)}</td>)
+                                                }
+                                            </tr>
+                                        );
+                                    })
                                 }
                                 </tbody>
                             </Table>

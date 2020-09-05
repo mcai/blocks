@@ -1,6 +1,7 @@
 import {SimpleField} from "../../fields/SimpleField";
 import React from "react";
 import {SimpleDataProvider} from "../../data/SimpleDataProvider";
+import {SimpleTableRowType} from "./SimpleTableRowType";
 
 export interface SimpleTableProps {
     pageSize: number
@@ -13,6 +14,8 @@ export interface SimpleTableProps {
     extraData?: any;
 
     fields: SimpleField[]
+
+    getRowTypeFunc?: (item: any) => SimpleTableRowType
 
     extra?: React.ReactNode
 }
