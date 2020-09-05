@@ -4,6 +4,6 @@ import {Spinner} from "react-bootstrap";
 
 export class SimpleIf extends Component<SimpleIfProps, any> {
     render(): React.ReactNode {
-        return this.props.condition ? this.props.children : <Spinner animation={"border"}/>;
+        return this.props.condition ? this.props.children : this.props.otherwiseComponent ?? <Spinner animation={"border"}/>;
     }
 }
