@@ -60,7 +60,10 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
                 }
 
                 <Formik
-                    initialValues={this.state.item}
+                    initialValues={{
+                        ...this.props.initialValues,
+                        ...this.state.item
+                    }}
                     onSubmit={values => this.onSubmit(values)}
                 >
                     {(props: FormikProps<any>) => (
