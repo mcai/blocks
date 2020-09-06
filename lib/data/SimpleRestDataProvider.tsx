@@ -15,7 +15,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         params: {
             pageSize: number,
             pageNum: number,
-            ordering?: string,
+            ordering?: any,
             filter?: {
                 [key: string]: any
             }
@@ -45,7 +45,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            ordering?: string,
+            ordering?: any,
             filter?: {
                 [key: string]: any
             }

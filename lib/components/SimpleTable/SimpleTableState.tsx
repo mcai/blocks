@@ -1,10 +1,11 @@
 export interface SimpleTableState {
-    pageNum: number
-    count: number,
-    pageCount: number
-    itemsInCurrentPage: any[]
-    loadingData: boolean
+    pageNum: number;
+    ordering?: any;
+    count: number;
+    pageCount: number;
+    itemsInCurrentPage: any[];
+    loadingData: boolean;
 
-    exportLoadingActive: boolean
-    exportLoadingText: string
+    exportLoadingActive: boolean;
+    exportLoadingText: string;
 }

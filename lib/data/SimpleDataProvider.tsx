@@ -5,7 +5,7 @@ export interface SimpleDataProvider {
         params: {
             pageSize: number,
             pageNum: number,
-            ordering?: string,
+            ordering?: any,
             filter?: {
                 [key: string]: any
             }
@@ -20,7 +20,7 @@ export interface SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            ordering?: string,
+            ordering?: any,
             filter?: {
                 [key: string]: any
             }

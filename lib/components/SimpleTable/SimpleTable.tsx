@@ -9,6 +9,7 @@ import {Toastify} from "../SimpleToast/SimpleToast";
 import {SimpleToastType} from "../SimpleToast/SimpleToastType";
 import {SimpleSpacing} from "../SimpleSpacing/SimpleSpacing";
 import {SimpleTableRowType} from "./SimpleTableRowType";
+import {SimpleTableOrderingDirection} from "./SimpleTableOrderingDirection";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     private refExportAll: any;
@@ -19,6 +20,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
 
         this.state = {
             pageNum: this.props.initialPageNum,
+            ordering: this.props.initialOrdering,
 
             count: 0,
             pageCount: 0,
@@ -61,6 +63,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
             pageSize: this.props.pageSize,
             pageNum: this.state.pageNum,
+            ordering: this.state.ordering,
             filter: {
                 ...this.props.extraData
             }
@@ -160,7 +163,33 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 <thead>
                                 <tr>
                                     {
-                                        this.props.fields.map(field => <th>{field.title}</th>)
+                                        this.props.fields.map(field => {
+                                            let orderingDirection = this.props.getOrderingDirectionFunc?.(field, this.state.ordering);
+
+                                            return (
+                                                <th>
+                                                    {
+                                                        this.props.orderingOnClick != undefined
+                                                            ? (
+                                                                <Button onClick={() => {
+                                                                    this.setState({
+                                                                        ordering: this.props.orderingOnClick?.(this.state.ordering)
+                                                                    })
+                                                                }}>{field.title}</Button>
+                                                            )
+                                                            : field.title
+                                                    }
+
+                                                    {
+                                                        orderingDirection == SimpleTableOrderingDirection.ascending && "(Up)"
+                                                    }
+
+                                                    {
+                                                        orderingDirection == SimpleTableOrderingDirection.descending && "(Down)"
+                                                    }
+                                                </th>
+                                            );
+                                        })
                                     }
                                 </tr>
                                 </thead>
