@@ -173,7 +173,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                             ? (
                                                                 <Button onClick={() => {
                                                                     this.setState({
-                                                                        ordering: this.props.orderingOnClick?.(this.state.ordering)
+                                                                        ordering: this.props.orderingOnClick?.(field, this.state.ordering)
                                                                     })
                                                                 }}>{field.title}</Button>
                                                             )

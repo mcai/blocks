@@ -8,7 +8,7 @@ export interface SimpleTableProps {
     pageSize: number;
     initialPageNum: number;
     initialOrdering?: any;
-    orderingOnClick?: (ordering?: any) => any;
+    orderingOnClick?: (field: any, ordering?: any) => any;
     getOrderingDirectionFunc?: (field: any, ordering?: any) => SimpleTableOrderingDirection;
 
     dataProvider: SimpleDataProvider;
