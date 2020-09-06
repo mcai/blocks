@@ -23,6 +23,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             count: 0,
             pageCount: 0,
             itemsInCurrentPage: [],
+            loadingData: false,
 
             exportLoadingActive: false,
             exportLoadingText: ""
@@ -53,7 +54,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         this.setState({
             count: 0,
             pageCount: 0,
-            itemsInCurrentPage: []
+            itemsInCurrentPage: [],
+            loadingData: true
         });
 
         let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
@@ -67,7 +69,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         this.setState({
             count: result?.count ?? 0,
             pageCount: result?.pageCount ?? 0,
-            itemsInCurrentPage: result?.itemsInCurrentPage ?? []
+            itemsInCurrentPage: result?.itemsInCurrentPage ?? [],
+            loadingData: false
         });
     }
 
@@ -118,7 +121,10 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         />;
 
         return (
-            <SimpleLoading active={this.state.exportLoadingActive} text={this.state.exportLoadingText}>
+            <SimpleLoading
+                active={this.state.loadingData || this.state.exportLoadingActive}
+                text={this.state.loadingData ? "正在载入数据,请稍候..." : this.state.exportLoadingText}
+            >
                 {exportAll}
                 {exportCurrentPage}
 
