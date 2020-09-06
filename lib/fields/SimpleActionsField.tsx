@@ -6,9 +6,9 @@ import {SimpleModalConfirm} from "../components/SimpleModalConfirm/SimpleModalCo
 import Enumerable from "linq";
 
 export class SimpleActionsField implements SimpleField {
-    readonly title: React.ReactNode;
+    title?: React.ReactNode;
 
-    actions: {
+    actions?: {
         text?: React.ReactNode,
         hrefFunc?: (item: any) => string,
         onClick?: (item: any) => void,
@@ -16,8 +16,8 @@ export class SimpleActionsField implements SimpleField {
     }[]
 
     constructor(
-        title: React.ReactNode,
-        actions: {
+        title?: React.ReactNode,
+        actions?: {
             text?: React.ReactNode,
             hrefFunc?: (item: any) => string,
             onClick?: (item: any) => void,
@@ -28,7 +28,7 @@ export class SimpleActionsField implements SimpleField {
         this.actions = actions;
 
         if (Enumerable
-            .from(this.actions)
+            .from(this.actions ?? [])
             .any(action =>
                 action.type != undefined
                 && action.type != SimpleActionsFieldType.none
@@ -43,7 +43,7 @@ export class SimpleActionsField implements SimpleField {
         return (
             <Fragment>
                 {
-                    this.actions.map(action => {
+                    this.actions?.map(action => {
                         let buttonClass = "primary";
 
                         if (action.type != undefined) {
