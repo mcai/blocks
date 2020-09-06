@@ -41,7 +41,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         prevState: Readonly<SimpleTableState>,
         snapshot?: any
     ) {
-        if (prevState.pageNum !== this.state.pageNum) {
+        if (prevState.pageNum !== this.state.pageNum || prevState.ordering !== this.state.ordering) {
             await this.loadData();
         }
     }
@@ -171,11 +171,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     {
                                                         this.props.orderingOnClick != undefined
                                                             ? (
-                                                                <Button onClick={() => {
+                                                                <a href={"#"} onClick={() => {
                                                                     this.setState({
                                                                         ordering: this.props.orderingOnClick?.(field, this.state.ordering)
                                                                     })
-                                                                }}>{field.title}</Button>
+                                                                }}>{field.title}</a>
                                                             )
                                                             : field.title
                                                     }
