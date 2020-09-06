@@ -7,16 +7,18 @@ export class SimpleActionsField implements SimpleField {
     readonly title: React.ReactNode;
 
     actions: {
-        text: React.ReactNode,
-        urlFunc: (item: any) => string,
+        text?: React.ReactNode,
+        hrefFunc?: (item: any) => string,
+        onClick?: (item: any) => void,
         type?: SimpleActionsFieldType
     }[]
 
     constructor(
         title: React.ReactNode,
         actions: {
-            text: React.ReactNode,
-            urlFunc: (item: any) => string,
+            text?: React.ReactNode,
+            hrefFunc?: (item: any) => string,
+            onClick?: (item: any) => void,
             type?: SimpleActionsFieldType
         }[]
     ) {
@@ -45,7 +47,7 @@ export class SimpleActionsField implements SimpleField {
                         }
 
                         return (
-                            <Button variant={buttonClass} href={action.urlFunc(item)} className={"mr-3"}>
+                            <Button variant={buttonClass} href={action.hrefFunc?.(item)} onClick={() => action.onClick?.(item)} className={"mr-3"}>
                                 {action.text}
                             </Button>
                         );
