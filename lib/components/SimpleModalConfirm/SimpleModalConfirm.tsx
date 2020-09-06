@@ -12,7 +12,7 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
         };
     }
 
-    private showModal() {
+    public showModal() {
         this.setState({
             visible: true
         });
@@ -37,9 +37,11 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
     render() {
         return (
             <div>
-                <div onClick={() => this.showModal()}>
-                    {this.props.children}
-                </div>
+                {
+                    (this.props.buttonVisible == undefined || this.props.buttonVisible) && <div onClick={() => this.showModal()}>
+                        {this.props.children}
+                    </div>
+                }
 
                 <Modal show={(this.props.visible == null || this.props.visible) && this.state.visible} onHide={() => this.handleCancel()}>
                     <Modal.Header closeButton={true}>
