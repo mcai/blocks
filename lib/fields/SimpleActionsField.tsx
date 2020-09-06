@@ -59,32 +59,30 @@ export class SimpleActionsField implements SimpleField {
                             }
                         }
 
-                        return (
-                            action.type == SimpleActionsFieldType.none
-                                ? <Button
+                        return action.type == undefined || action.type == SimpleActionsFieldType.none
+                            ? <Button
+                                variant={buttonClass}
+                                href={action.hrefFunc?.(item)}
+                                onClick={() => action.onClick?.(item)}
+                                className={"mr-3"}
+                            >
+                                {action.text}
+                            </Button>
+                            : <SimpleModalConfirm
+                                title={`确定${action.text}`}
+                                subtitle={`${action.text}后不可撤销.`}
+                                onConfirm={() => action.onClick?.(item)}
+                                onCancel={() => {}}
+                                okText="确定"
+                                cancelText="取消"
+                            >
+                                <Button
                                     variant={buttonClass}
-                                    href={action.hrefFunc?.(item)}
-                                    onClick={() => action.onClick?.(item)}
                                     className={"mr-3"}
                                 >
                                     {action.text}
                                 </Button>
-                                : <SimpleModalConfirm
-                                    title={`确定${action.text}`}
-                                    subtitle={`${action.text}后不可撤销.`}
-                                    onConfirm={() => action.onClick?.(item)}
-                                    onCancel={() => {}}
-                                    okText="确定"
-                                    cancelText="取消"
-                                >
-                                    <Button
-                                        variant={buttonClass}
-                                        className={"mr-3"}
-                                    >
-                                        {action.text}
-                                    </Button>
-                                </SimpleModalConfirm>
-                        );
+                            </SimpleModalConfirm>;
                     })
                 }
             </Fragment>
