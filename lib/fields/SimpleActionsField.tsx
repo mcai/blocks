@@ -38,10 +38,10 @@ export class SimpleActionsField implements SimpleField {
                                 case SimpleActionsFieldType.none:
                                     break;
                                 case SimpleActionsFieldType.danger:
-                                    buttonClass = "table-danger";
+                                    buttonClass = "danger";
                                     break;
                                 case SimpleActionsFieldType.warning:
-                                    buttonClass = "table-warning";
+                                    buttonClass = "warning";
                                     break;
                             }
                         }
