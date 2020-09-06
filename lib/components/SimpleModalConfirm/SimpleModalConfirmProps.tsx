@@ -2,10 +2,10 @@ import React from "react";
 
 export interface SimpleModalConfirmProps {
     visible?: boolean
-    title: React.ReactNode
+    title?: React.ReactNode
     subtitle?: React.ReactNode
-    onConfirm: () => void,
-    onCancel: () => void,
-    okText: string,
-    cancelText: string
+    onConfirm?: () => void,
+    onCancel?: () => void,
+    okText?: string,
+    cancelText?: string
 }

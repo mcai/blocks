@@ -23,7 +23,7 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
             visible: false
         });
 
-        this.props.onConfirm();
+        this.props.onConfirm?.();
     }
 
     private handleCancel() {
@@ -31,7 +31,7 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
             visible: false
         });
 
-        this.props.onCancel();
+        this.props.onCancel?.();
     }
 
     render() {
@@ -43,15 +43,15 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
 
                 <Modal show={(this.props.visible == null || this.props.visible) && this.state.visible} onHide={() => this.handleCancel()}>
                     <Modal.Header closeButton={true}>
-                        <Modal.Title>{this.props.title}</Modal.Title>
+                        <Modal.Title>{this.props.title ?? "Untitled"}</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>{this.props.subtitle ?? this.props.title}</Modal.Body>
+                    <Modal.Body>{this.props.subtitle ?? this.props.title ?? "Untitled"}</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => this.handleCancel()}>
-                            {this.props.cancelText}
+                            {this.props.cancelText ?? "Cancel"}
                         </Button>
                         <Button variant="primary" onClick={() => this.handleConfirm()}>
-                            {this.props.okText}
+                            {this.props.okText ?? "OK"}
                         </Button>
                     </Modal.Footer>
                 </Modal>
