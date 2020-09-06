@@ -62,7 +62,10 @@ export interface SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            id: number
+            id: number,
+            data: {
+                [key: string]: any
+            }
         }
     ): Promise<void>;
 }

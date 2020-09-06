@@ -121,14 +121,18 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            id: number
+            id: number,
+            data: {
+                [key: string]: any
+            }
         }
     ): Promise<void>{
         return await SimpleHttpClient.call<void>(
             this.url + resource + action,
             SimpleHttpClientMethod.post,
             {
-                id: params.id
+                id: params.id,
+                ...params.data
             }
         );
     }
