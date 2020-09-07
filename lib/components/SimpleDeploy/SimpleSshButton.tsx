@@ -54,10 +54,10 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                         !this.state.running
                             ? this.props.buttonText ?? "Run"
                             : (
-                                <div>
+                                <Fragment>
                                     <Spinner animation={"border"}/>
                                     {this.props.buttonRunningText ?? "Running"}
-                                </div>
+                                </Fragment>
                             )
                     }
                 </Button>
