@@ -1,4 +1,5 @@
 import React from "react";
+import {SimpleModalConfirmType} from "./SimpleModalConfirmType";
 
 export interface SimpleModalConfirmProps {
     buttonVisible?: boolean
@@ -6,6 +7,7 @@ export interface SimpleModalConfirmProps {
     title?: React.ReactNode
     subtitle?: React.ReactNode
     onConfirm?: () => void,
+    type?: SimpleModalConfirmType
     onCancel?: () => void,
     okText?: string,
     cancelText?: string

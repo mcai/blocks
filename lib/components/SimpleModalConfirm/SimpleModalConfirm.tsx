@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {SimpleModalConfirmProps} from "./SimpleModalConfirmProps";
 import {SimpleModalConfirmState} from "./SimpleModalConfirmState";
 import {Button, Modal} from "react-bootstrap";
+import {SimpleModalConfirmType} from "./SimpleModalConfirmType";
 
 export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, SimpleModalConfirmState> {
     constructor(props: SimpleModalConfirmProps) {
@@ -35,6 +36,21 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
     }
 
     render() {
+        let confirmButtonClass = "primary";
+
+        if (this.props.type != undefined) {
+            switch (this.props.type) {
+                case SimpleModalConfirmType.primary:
+                    break;
+                case SimpleModalConfirmType.danger:
+                    confirmButtonClass = "danger";
+                    break;
+                case SimpleModalConfirmType.warning:
+                    confirmButtonClass = "warning";
+                    break;
+            }
+        }
+
         return (
             <div>
                 {
@@ -52,7 +68,7 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
                         <Button variant="secondary" onClick={() => this.handleCancel()}>
                             {this.props.cancelText ?? "Cancel"}
                         </Button>
-                        <Button variant="primary" onClick={() => this.handleConfirm()}>
+                        <Button variant={confirmButtonClass} onClick={() => this.handleConfirm()}>
                             {this.props.okText ?? "OK"}
                         </Button>
                     </Modal.Footer>
