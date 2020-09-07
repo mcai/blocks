@@ -10,6 +10,7 @@ import {SimpleToastType} from "../SimpleToast/SimpleToastType";
 import {SimpleSpacing} from "../SimpleSpacing/SimpleSpacing";
 import {SimpleTableRowType} from "./SimpleTableRowType";
 import {SimpleTableOrderingDirection} from "./SimpleTableOrderingDirection";
+import {BsCaretDown, BsCaretUp, FaSortUp} from "react-icons/all";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     private refExportAll: any;
@@ -181,11 +182,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     }
 
                                                     {
-                                                        orderingDirection == SimpleTableOrderingDirection.ascending && "(Up)"
+                                                        orderingDirection == SimpleTableOrderingDirection.ascending && <BsCaretUp/>
                                                     }
 
                                                     {
-                                                        orderingDirection == SimpleTableOrderingDirection.descending && "(Down)"
+                                                        orderingDirection == SimpleTableOrderingDirection.descending && <BsCaretDown/>
                                                     }
                                                 </th>
                                             );
