@@ -169,7 +169,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                             return (
                                                 <th>
                                                     {
-                                                        this.props.orderingOnClick != undefined
+                                                        this.props.orderingOnClick != undefined && (this.props.canOrderByFunc == undefined || this.props.canOrderByFunc(field))
                                                             ? (
                                                                 <a href={"#"} onClick={() => {
                                                                     this.setState({

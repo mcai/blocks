@@ -8,6 +8,7 @@ export interface SimpleTableProps {
     pageSize: number;
     initialPageNum: number;
     initialOrdering?: any;
+    canOrderByFunc?: (field: SimpleField) => boolean;
     orderingOnClick?: (field: SimpleField, ordering?: any) => any;
     getOrderingDirectionFunc?: (field: SimpleField, ordering?: any) => SimpleTableOrderingDirection;
 
