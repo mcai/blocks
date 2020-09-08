@@ -28,6 +28,19 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                 password: this.props.password
             });
 
+            if (this.props.filesToUpload != undefined && this.props.filesToUpload?.length > 0) {
+                await ssh.putFiles(
+                    this.props.filesToUpload?.map(
+                        x => {
+                            return {
+                                local: x.localFileName,
+                                remote: x.remoteFileName
+                            };
+                        }
+                    ) ?? []
+                );
+            }
+
             for (let command of commands) {
                 let result = await ssh.execCommand(command, {cwd: workingDirectory});
                 this.props.onStdout?.(result.stdout);

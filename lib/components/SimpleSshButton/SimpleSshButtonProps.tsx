@@ -4,6 +4,7 @@ export interface SimpleSshButtonProps {
     username: string
     password: string
     workingDirectory: string
+    filesToUpload?: {localFileName: string, remoteFileName: string}[]
     commands: string[]
     onStdout?: (str: string) => void;
     onStderr?: (str: string) => void;
