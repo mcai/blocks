@@ -20,6 +20,11 @@ export class SimpleSshGitPullButton extends Component<SimpleSshGitPullButtonProp
                 "expect EOF",
                 "EOF",
             ]}
+            onStdout={this.props.onStdout}
+            onStderr={this.props.onStderr}
+            onError={this.props.onError}
+            buttonText={"pull"}
+            buttonRunningText={"pulling..."}
         />;
     }
 }

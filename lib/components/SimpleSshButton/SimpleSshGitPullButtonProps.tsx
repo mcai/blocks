@@ -6,4 +6,7 @@ export interface SimpleSshGitPullButtonProps {
     workingDirectory: string
     gitUsername: string
     gitPassword: string
+    onStdout?: (str: string) => void;
+    onStderr?: (str: string) => void;
+    onError?: (error: any) => void;
 }
