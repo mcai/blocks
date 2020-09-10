@@ -5,6 +5,7 @@ export interface SimpleNavbarProps {
     sections: {
         id: string,
         title: string,
-        items: { key: string, title?: React.ReactNode, href?: string }[]
+        visible?: boolean,
+        items: { key: string, title?: React.ReactNode, href?: string, visible?: boolean }[]
     }[];
 }
