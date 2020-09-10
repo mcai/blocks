@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from "react";
 import {SimpleSshButtonProps} from "./SimpleSshButtonProps";
 import {SimpleSshButtonState} from "./SimpleSshButtonState";
-import {Button, Spinner} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {NodeSSH} from "node-ssh";
+import {SimpleSpinner} from "../SimpleSpinner/SimpleSpinner";
 
 export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshButtonState> {
     constructor(props: SimpleSshButtonProps) {
@@ -68,7 +69,7 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                             ? this.props.buttonText ?? "Run"
                             : (
                                 <Fragment>
-                                    <Spinner animation={"border"}/>
+                                    <SimpleSpinner/>
                                     {this.props.buttonRunningText ?? "Running"}
                                 </Fragment>
                             )
