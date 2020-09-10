@@ -13,14 +13,12 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState>{
                 {this.props.navbar}
 
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
-                    <Container>
+                    <Container fluid={true}>
                         <Switch>
                             {
                                 this.props.routes.map(route => (
                                     <Route exact path={route.path}>
-                                        <Container>
-                                            {route.page}
-                                        </Container>
+                                        {route.page}
                                     </Route>
                                 ))
                             }
