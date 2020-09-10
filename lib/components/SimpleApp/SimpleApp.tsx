@@ -18,7 +18,9 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState>{
                             {
                                 this.props.routes.map(route => (
                                     <Route exact path={route.path}>
-                                        {route.page}
+                                        <Container>
+                                            {route.page}
+                                        </Container>
                                     </Route>
                                 ))
                             }
