@@ -168,7 +168,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                             let orderingDirection = this.props.getOrderingDirectionFunc?.(field, this.state.ordering);
 
                                             return (
-                                                <th>
+                                                <th key={field.name}>
                                                     {
                                                         this.props.orderingOnClick != undefined && (this.props.canOrderByFunc == undefined || this.props.canOrderByFunc(field))
                                                             ? (
@@ -215,7 +215,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                         return (
                                             <tr className={trClass}>
                                                 {
-                                                    this.props.fields.map(field => <td>{field.render(item)}</td>)
+                                                    this.props.fields.map(field => <td key={field.name}>{field.render(item)}</td>)
                                                 }
                                             </tr>
                                         );
