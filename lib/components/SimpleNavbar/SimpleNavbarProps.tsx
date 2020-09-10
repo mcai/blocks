@@ -6,6 +6,6 @@ export interface SimpleNavbarProps {
         id: string,
         title: string,
         visible?: boolean,
-        items: { key: string, title?: React.ReactNode, href?: string, visible?: boolean }[]
+        items: { key: string, title?: React.ReactNode, href?: string, onClick?: () => void, visible?: boolean }[]
     }[];
 }

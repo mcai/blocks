@@ -24,6 +24,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                                                 .map(item => (
                                                     <NavDropdown.Item
                                                         href={item.href}
+                                                        onClick={item.onClick}
                                                         key={item.key}
                                                     >
                                                         {item.title}
