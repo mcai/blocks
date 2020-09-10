@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {SimpleNavbarProps} from "./SimpleNavbarProps";
 
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
@@ -9,8 +9,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
 
     render() {
         return (
-            <Container className={"mb-3"}>
-                <Navbar bg="primary" variant="dark">
+            <Navbar bg="primary" variant="dark" className={"mb-3"}>
                     <Navbar.Brand href={this.props.brand.href}>{this.props.brand.title}</Navbar.Brand>
                     <Nav className="mr-auto">
                         {
@@ -36,7 +35,6 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                         }
                     </Nav>
                 </Navbar>
-            </Container>
         );
     }
 }
