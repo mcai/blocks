@@ -181,11 +181,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     }
 
                                                     {
-                                                        this.state.ordering == field.ascendingOrdering && <BsCaretUp/>
+                                                        this.state.ordering != undefined && this.state.ordering == field.ascendingOrdering && <BsCaretUp/>
                                                     }
 
                                                     {
-                                                        this.state.ordering == field.descendingOrdering && <BsCaretDown/>
+                                                        this.state.ordering != undefined && this.state.ordering == field.descendingOrdering && <BsCaretDown/>
                                                     }
                                                 </th>
                                             );
