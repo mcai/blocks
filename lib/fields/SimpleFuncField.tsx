@@ -7,16 +7,23 @@ export class SimpleFuncField implements SimpleField {
     renderFunc?: (item: any) => React.ReactNode;
     renderAsTextFunc?: (item: any) => string | undefined;
 
+    ascendingOrdering?: any
+    descendingOrdering?: any
+
     constructor(
         title: React.ReactNode,
         name: string,
         renderFunc: (value: any) => React.ReactNode,
-        renderAsTextFunc: (value: any) => (string | undefined)
+        renderAsTextFunc: (value: any) => (string | undefined),
+        ascendingOrdering?: any,
+        descendingOrdering?: any
     ) {
         this.title = title;
         this.name = name;
         this.renderFunc = renderFunc;
         this.renderAsTextFunc = renderAsTextFunc;
+        this.ascendingOrdering = ascendingOrdering;
+        this.descendingOrdering = descendingOrdering;
     }
 
     render(item: any): React.ReactNode {

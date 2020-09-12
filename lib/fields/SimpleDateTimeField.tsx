@@ -6,9 +6,19 @@ export class SimpleDateTimeField implements SimpleField {
     title?: React.ReactNode;
     name?: string;
 
-    constructor(title?: React.ReactNode, field?: string) {
+    ascendingOrdering?: any
+    descendingOrdering?: any
+
+    constructor(
+        title?: React.ReactNode,
+        name?: string,
+        ascendingOrdering?: any,
+        descendingOrdering?: any
+    ) {
         this.title = title;
-        this.name = field;
+        this.name = name;
+        this.ascendingOrdering = ascendingOrdering;
+        this.descendingOrdering = descendingOrdering;
     }
 
     render(item: any): React.ReactNode {

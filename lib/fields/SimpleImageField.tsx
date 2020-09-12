@@ -7,10 +7,21 @@ export class SimpleImageField implements SimpleField {
     name?: string;
     text?: string;
 
-    constructor(title?: React.ReactNode, field?: string, text?: string) {
+    ascendingOrdering?: any
+    descendingOrdering?: any
+
+    constructor(
+        title?: React.ReactNode,
+        field?: string,
+        text?: string,
+        ascendingOrdering?: any,
+        descendingOrdering?: any
+    ) {
         this.title = title;
         this.name = field;
         this.text = text;
+        this.ascendingOrdering = ascendingOrdering;
+        this.descendingOrdering = descendingOrdering;
     }
 
     render(item: any): React.ReactNode {

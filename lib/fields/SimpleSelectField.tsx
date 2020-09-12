@@ -7,10 +7,21 @@ export class SimpleSelectField implements SimpleField {
     name?: string;
     options?: {value: string, text: string}[];
 
-    constructor(title?: React.ReactNode, name?: string, options?: {value: string, text: string}[]) {
+    ascendingOrdering?: any
+    descendingOrdering?: any
+
+    constructor(
+        title?: React.ReactNode,
+        name?: string,
+        options?: {value: string, text: string}[],
+        ascendingOrdering?: any,
+        descendingOrdering?: any
+    ) {
         this.title = title;
         this.name = name;
         this.options = options;
+        this.ascendingOrdering = ascendingOrdering;
+        this.descendingOrdering = descendingOrdering;
     }
 
     render(item: any): React.ReactNode {
