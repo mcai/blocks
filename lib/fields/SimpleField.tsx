@@ -5,4 +5,7 @@ export interface SimpleField {
     name?: string;
     render: (item: any) => React.ReactNode | undefined
     renderAsText?: (item: any) => string | undefined
+
+    ascendingOrdering?: any
+    descendingOrdering?: any
 }

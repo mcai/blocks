@@ -9,8 +9,7 @@ import {Toastify} from "../SimpleToast/SimpleToast";
 import {SimpleToastType} from "../SimpleToast/SimpleToastType";
 import {SimpleSpacing} from "../SimpleSpacing/SimpleSpacing";
 import {SimpleTableRowType} from "./SimpleTableRowType";
-import {SimpleTableOrderingDirection} from "./SimpleTableOrderingDirection";
-import {BsCaretDown, BsCaretUp, FaSortUp} from "react-icons/all";
+import {BsCaretDown, BsCaretUp} from "react-icons/all";
 
 export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     private refExportAll: any;
@@ -165,16 +164,16 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 <tr>
                                     {
                                         this.props.fields.map(field => {
-                                            let orderingDirection = this.props.getOrderingDirectionFunc?.(field, this.state.ordering);
-
                                             return (
                                                 <th key={field.name}>
                                                     {
-                                                        this.props.orderingOnClick != undefined && (this.props.canOrderByFunc == undefined || this.props.canOrderByFunc(field))
+                                                        field.ascendingOrdering != undefined && field.descendingOrdering != undefined
                                                             ? (
                                                                 <a href={"#"} onClick={() => {
                                                                     this.setState({
-                                                                        ordering: this.props.orderingOnClick?.(field, this.state.ordering)
+                                                                        ordering: this.state.ordering == field.ascendingOrdering
+                                                                            ? field.descendingOrdering
+                                                                            : field.ascendingOrdering
                                                                     })
                                                                 }}>{field.title}</a>
                                                             )
@@ -182,11 +181,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     }
 
                                                     {
-                                                        orderingDirection == SimpleTableOrderingDirection.ascending && <BsCaretUp/>
+                                                        this.state.ordering == field.ascendingOrdering && <BsCaretUp/>
                                                     }
 
                                                     {
-                                                        orderingDirection == SimpleTableOrderingDirection.descending && <BsCaretDown/>
+                                                        this.state.ordering == field.descendingOrdering && <BsCaretDown/>
                                                     }
                                                 </th>
                                             );
