@@ -5,7 +5,7 @@ import {Button} from "react-bootstrap";
 import renderer from 'react-test-renderer';
 
 test('renders without crashing', () => {
-    let component = renderer.create(
+    let testRenderer = renderer.create(
         <Formik
             initialValues={{
                 name: "3F2D"
@@ -23,5 +23,9 @@ test('renders without crashing', () => {
         </Formik>
     );
 
-    console.log(component.toJSON());
+    console.log(testRenderer.toJSON());
+
+    let testInstance = testRenderer.root;
+
+    console.log(JSON.stringify(testInstance.findByType(SimpleHexInput).props));
 });
