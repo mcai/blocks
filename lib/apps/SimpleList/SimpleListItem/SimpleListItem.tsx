@@ -19,11 +19,14 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, { [name
     }
 
     render() {
+        console.log(this.state);
+
         return (
             <div className='list-item'>
                 {
                     Object.keys(this.state).map(key =>
                         <input
+                            key={key}
                             type="text"
                             className="input"
                             placeholder={key}

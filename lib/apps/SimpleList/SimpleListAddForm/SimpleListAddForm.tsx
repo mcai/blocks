@@ -26,6 +26,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, {
                 {
                     Object.keys(this.state).map(key =>
                         <input
+                            key={key}
                             type="text"
                             className="input"
                             placeholder={key}
