@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.125",
+  "version": "0.0.128",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build",
+    "html": "cd lib && copyfiles **/*.css ../dist",
+    "prepare": "npm run build && npm run html",
     "test": "jest"
   },
   "keywords": [],
@@ -54,6 +55,7 @@
     "@types/react-test-renderer": "^16.9.3",
     "@types/superagent": "^4.1.10",
     "babel-jest": "^26.3.0",
+    "copyfiles": "^2.3.0",
     "jest": "^26.4.2",
     "react-test-renderer": "^16.13.1",
     "ts-jest": "^26.4.0",
