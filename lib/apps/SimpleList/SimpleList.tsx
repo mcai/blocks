@@ -26,14 +26,14 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         });
     }
 
-    onUpdate(index: number, item: {[name: string]: string}) {
+    onUpdate(index: number, key: string, value: string) {
         let newItems = [...(this.state.items ?? [])];
-        newItems[index] = item;
+        newItems[index][key] = value;
         this.setState({
             items: newItems
         });
 
-        console.log(`SimpleList.onUpdate: index=${index}, item=${JSON.stringify(item)}`);
+        console.log(`SimpleList.onUpdate: index=${index}, key=${key}, value=${value}`);
     }
 
     onRemove(index: number) {
@@ -54,7 +54,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
                     <SimpleListList
                         items={this.state.items}
-                        onUpdate={((index: number, item: { [name: string]: string }) => this.onUpdate(index, item))}
+                        onUpdate={((index: number, key: string, value: string) => this.onUpdate(index, key, value))}
                         onRemove={(index: number) => this.onRemove(index)}
                     />
 

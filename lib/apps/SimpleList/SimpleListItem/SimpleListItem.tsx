@@ -15,14 +15,12 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, { [name
             [key]: value
         });
 
-        this.props.onUpdate(this.props.index, this.state);
+        this.props.onUpdate(this.props.index, key, value);
 
-        console.log(`SimpleListItem.onUpdate: index=${this.props.index}, item=${JSON.stringify(this.state)}`);
+        console.log(`SimpleListItem.onUpdate: index=${this.props.index}, key=${key}, value=${value}`);
     }
 
     render() {
-        console.log(this.state);
-
         return (
             <div className='list-item'>
                 {
