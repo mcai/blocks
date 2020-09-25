@@ -7,7 +7,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps> {
     render() {
         return (
             <div className='list-item'>
-                {this.props.item}
+                {this.props.onRender?.(this.props.item) ?? JSON.stringify(this.props.item)}
+
                 <Button variant={"danger"} className="is-pulled-right" onClick={() => this.props.onRemove(this.props.index)}>
                     <BsTrash/>
                 </Button>
