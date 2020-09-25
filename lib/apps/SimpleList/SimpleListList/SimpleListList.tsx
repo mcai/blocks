@@ -8,7 +8,13 @@ export class SimpleListList extends React.Component<SimpleListListProps, any> {
             <div className='list-wrapper'>
                 {
                     this.props.items?.map((item: any, index: number) => (
-                        <SimpleListItem key={index} item={item} index={index} onRender={this.props.onRender} onRemove={this.props.onRemove}/>
+                        <SimpleListItem
+                            key={index}
+                            initialItem={item}
+                            index={index}
+                            onUpdate={this.props.onUpdate}
+                            onRemove={this.props.onRemove}
+                        />
                     ))
                 }
             </div>
