@@ -16,6 +16,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, { [name
         });
 
         this.props.onUpdate(this.props.index, this.state);
+
+        console.log(`SimpleListItem.onUpdate: index=${this.props.index}, item=${JSON.stringify(this.state)}`);
     }
 
     render() {

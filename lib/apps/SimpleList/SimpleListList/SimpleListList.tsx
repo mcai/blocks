@@ -12,8 +12,8 @@ export class SimpleListList extends React.Component<SimpleListListProps, any> {
                             key={index}
                             initialItem={item}
                             index={index}
-                            onUpdate={this.props.onUpdate}
-                            onRemove={this.props.onRemove}
+                            onUpdate={(index1, item1) => this.props.onUpdate(index1, item1)}
+                            onRemove={(index1 => this.props.onRemove(index1))}
                         />
                     ))
                 }
