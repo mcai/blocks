@@ -33,7 +33,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, { [name
                             className="input"
                             placeholder={key}
                             value={this.state[key]}
-                            onChange={(e) => this.setState({[key]: e.target.value})}
+                            onChange={(e) => this.onUpdate(key, e.target.value)}
                         />)
                 }
 
