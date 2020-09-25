@@ -36,7 +36,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                 <div className='card frame'>
                     <SimpleListHeader numItems={this.state.items?.length ?? 0} />
                     <SimpleListList items={this.state.items} onRender={this.props.onRender} onRemove={(index: number) => this.onRemove(index)} />
-                    <SimpleListAddForm onAdd={(item: {[name: string]: string}) => this.onAdd(item)} />
+                    <SimpleListAddForm initialItem={this.props.addFormInitialItem} onAdd={(item: {[name: string]: string}) => this.onAdd(item)} />
                 </div>
             </div>
         );
