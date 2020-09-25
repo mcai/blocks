@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {SimpleKeyValueInputListProps} from "./SimpleKeyValueInputListProps";
 import {SimpleKeyValueInputListState} from "./SimpleKeyValueInputListState";
-import {SimpleKeyValueInput} from "../SimpleKeyValuePairInput/SimpleKeyValueInput";
+import {SimpleKeyValueInput} from "../SimpleKeyValueInput/SimpleKeyValueInput";
 
 export class SimpleKeyValueInputList extends Component<SimpleKeyValueInputListProps, SimpleKeyValueInputListState> {
     constructor(props: SimpleKeyValueInputListProps) {

@@ -1,5 +1,5 @@
-export interface SimpleTodoAppTodoProps {
-    todo: string;
+export interface SimpleListItemProps {
+    item: any;
 
     index: number;
 
