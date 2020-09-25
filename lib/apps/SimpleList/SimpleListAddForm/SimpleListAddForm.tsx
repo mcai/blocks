@@ -28,7 +28,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, {
                         <input
                             type="text"
                             className="input"
-                            placeholder="Enter Key"
+                            placeholder={key}
                             value={this.state[key]}
                             onChange={(e) => this.setState({[key]: e.target.value})}
                         />)
