@@ -32,6 +32,8 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         this.setState({
             items: newItems
         });
+
+        console.log(`SimpleList.onUpdate: index=${index}, item=${JSON.stringify(item)}`);
     }
 
     onRemove(index: number) {
