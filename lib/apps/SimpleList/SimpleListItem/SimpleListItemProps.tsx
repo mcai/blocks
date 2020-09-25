@@ -1,5 +1,5 @@
 export interface SimpleListItemProps {
-    initialItem: { [name: string]: string };
+    item: { [name: string]: string };
 
     index: number;
 

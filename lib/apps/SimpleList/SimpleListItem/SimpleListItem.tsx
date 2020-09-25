@@ -3,18 +3,8 @@ import {SimpleListItemProps} from "./SimpleListItemProps";
 import {Button} from "react-bootstrap";
 import {BsTrash} from "react-icons/all";
 
-export class SimpleListItem extends React.Component<SimpleListItemProps, { [name: string]: string }> {
-    constructor(props: SimpleListItemProps) {
-        super(props);
-
-        this.state = props.initialItem ?? { value: "" };
-    }
-
+export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: string) {
-        this.setState({
-            [key]: value
-        });
-
         this.props.onUpdate(this.props.index, key, value);
 
         console.log(`SimpleListItem.onUpdate: index=${this.props.index}, key=${key}, value=${value}`);
@@ -24,7 +14,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, { [name
         return (
             <div className='list-item'>
                 {
-                    Object.keys(this.state).map(key =>
+                    Object.keys(this.props.item).map(key =>
                         <input
                             key={key}
                             type="text"

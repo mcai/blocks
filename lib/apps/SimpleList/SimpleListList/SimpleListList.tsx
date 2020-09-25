@@ -10,7 +10,7 @@ export class SimpleListList extends React.Component<SimpleListListProps, any> {
                     this.props.items?.map((item: any, index: number) => (
                         <SimpleListItem
                             key={index}
-                            initialItem={item}
+                            item={item}
                             index={index}
                             onUpdate={(index1, key, value) => this.props.onUpdate(index1, key, value)}
                             onRemove={(index1 => this.props.onRemove(index1))}
