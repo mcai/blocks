@@ -1,3 +1,3 @@
 export interface SimpleListHeaderProps {
-    numItems: number;
+    items?: {[name: string]: string}[];
 }

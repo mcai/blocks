@@ -7,7 +7,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, { [name
     constructor(props: SimpleListItemProps) {
         super(props);
 
-        this.state = props.initialItem;
+        this.state = props.initialItem ?? { value: "" };
     }
 
     onUpdate(key: string, value: string) {

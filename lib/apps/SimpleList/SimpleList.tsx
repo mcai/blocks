@@ -47,14 +47,8 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             <div className='wrapper'>
                 <div className='card frame'>
                     <SimpleListHeader
-                        numItems={this.state.items?.length ?? 0}
+                        items={this.state.items}
                     />
-
-                    {
-                        this.state.items?.map(item => {
-                            JSON.stringify(item)
-                        })
-                    }
 
                     <SimpleListList
                         items={this.state.items}
