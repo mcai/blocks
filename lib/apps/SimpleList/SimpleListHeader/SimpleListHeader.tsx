@@ -9,9 +9,9 @@ export class SimpleListHeader extends React.Component<SimpleListHeaderProps, any
                     共 {this.props.items?.length ?? 0} 项
 
                     {
-                        this.props.items?.map(item => {
-                            JSON.stringify(item)
-                        })
+                        this.props.items?.map(item => (
+                            <span>{JSON.stringify(item)}</span>
+                        ))
                     }
                 </h1>
             </div>
