@@ -18,11 +18,12 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
                     {
                         Object.keys(this.props.item.values).map(key =>
-                            <Fragment>
+                            <Fragment
+                                key={key}
+                            >
                                 <span>{key}: </span>
 
                                 <input
-                                    key={key}
                                     type="text"
                                     placeholder={key}
                                     value={this.props.item.values[key]}

@@ -54,11 +54,15 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             <Fragment>
                 <Row>
                     <Col>
-                        共 {this.state.items?.length ?? 0} 项
+                        <p>
+                            共 {this.state.items?.length ?? 0} 项
+                        </p>
+
+                        <br/>
 
                         {
                             this.state.items?.map((item, index) => (
-                                <span key={index}>{JSON.stringify(item)}</span>
+                                <p key={index}>{JSON.stringify(item)}</p>
                             ))
                         }
                     </Col>
