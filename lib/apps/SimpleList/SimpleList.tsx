@@ -29,7 +29,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     onUpdate(index: number, key: string, value: string) {
         let newItems = [...(this.state.items ?? [])];
-        newItems[index][key] = value;
+        newItems[index].values[key] = value;
         this.setState({
             items: newItems
         });

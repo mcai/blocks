@@ -1,5 +1,5 @@
 export interface SimpleListItemType {
-    name: string,
+    name: string;
 
-    [name: string]: string
+    values: { [name: string]: string };
 }

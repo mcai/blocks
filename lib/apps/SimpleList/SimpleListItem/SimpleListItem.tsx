@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
 import {Button} from "react-bootstrap";
 import {BsTrash} from "react-icons/all";
@@ -13,16 +13,25 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     render() {
         return (
             <div className='list-item'>
+                <b>{this.props.item.name}: </b>
+
                 {
-                    Object.keys(this.props.item).map(key =>
-                        <input
-                            key={key}
-                            type="text"
-                            className="input"
-                            placeholder={key}
-                            value={this.props.item[key]}
-                            onChange={(e) => this.onUpdate(key, e.target.value)}
-                        />)
+                    Object.keys(this.props.item.values).map(key =>
+                        <Fragment>
+                            <span>{key}: </span>
+
+                            <input
+                                key={key}
+                                type="text"
+                                className="input"
+                                placeholder={key}
+                                value={this.props.item.values[key]}
+                                onChange={(e) => this.onUpdate(key, e.target.value)}
+                            />
+
+                            &nbsp;&nbsp;
+                        </Fragment>
+                    )
                 }
 
                 <Button variant={"danger"} className="is-pulled-right" onClick={() => this.props.onRemove(this.props.index)}>
