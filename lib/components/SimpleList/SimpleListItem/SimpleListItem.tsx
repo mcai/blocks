@@ -14,7 +14,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
         return (
             <Row>
                 <Col>
-                    <b>{this.props.item.name}: </b>
+                    <b>{this.props.item.description}: </b>
 
                     {
                         Object.keys(this.props.item.values).map(key =>
