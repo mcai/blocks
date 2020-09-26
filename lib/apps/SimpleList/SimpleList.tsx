@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import {SimpleListAddForm} from "./SimpleListAddForm/SimpleListAddForm";
 import {SimpleListHeader} from "./SimpleListHeader/SimpleListHeader";
-import {SimpleListList} from "./SimpleListList/SimpleListList";
 
 import {SimpleListProps} from "./SimpleListProps";
 import {SimpleListState} from "./SimpleListState";
