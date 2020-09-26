@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import {SimpleListAddForm} from "./SimpleListAddForm/SimpleListAddForm";
-import {SimpleListHeader} from "./SimpleListHeader/SimpleListHeader";
 
 import {SimpleListProps} from "./SimpleListProps";
 import {SimpleListState} from "./SimpleListState";
 import {SimpleListItemType} from "./SimpleListItemType";
 import {SimpleListItem} from "./SimpleListItem/SimpleListItem";
+import {Col, Row} from "react-bootstrap";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     constructor(props: SimpleListProps) {
@@ -20,13 +20,15 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         return this.state.items;
     }
 
-    onAdd(item: SimpleListItemType) {
+    private onAdd(item: SimpleListItemType) {
         this.setState({
             items: [...(this.state.items ?? []), item]
         });
+
+        console.log(`SimpleList.onAdd: item=${JSON.stringify(item)}`);
     }
 
-    onUpdate(index: number, key: string, value: string) {
+    private onUpdate(index: number, key: string, value: string) {
         let newItems = [...(this.state.items ?? [])];
         newItems[index].values[key] = value;
         this.setState({
@@ -36,20 +38,31 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         console.log(`SimpleList.onUpdate: index=${index}, key=${key}, value=${value}`);
     }
 
-    onRemove(index: number) {
+    private onRemove(index: number) {
         let newItems = [...(this.state.items ?? [])];
         newItems.splice(index, 1);
+
         this.setState({
             items: newItems
         });
+
+        console.log(`SimpleList.onRemove: index=${index}`);
     }
 
     render() {
         return(
             <Fragment>
-                <SimpleListHeader
-                    items={this.state.items}
-                />
+                <Row>
+                    <Col>
+                        共 {this.state.items?.length ?? 0} 项
+
+                        {
+                            this.state.items?.map((item, index) => (
+                                <span key={index}>{JSON.stringify(item)}</span>
+                            ))
+                        }
+                    </Col>
+                </Row>
 
                 {
                     this.state.items?.map((item: any, index: number) => (

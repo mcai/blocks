@@ -1,7 +1,7 @@
 import React from "react";
 import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
 import {SimpleListAddFormState} from "./SimpleListAddFormState";
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
@@ -13,24 +13,32 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
     }
 
     private onChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        let selectedIndex = Number(e.target.value);
+
         this.setState({
-            selectedIndex: Number(e.target.value)
+            selectedIndex: selectedIndex
         });
+
+        console.log(`SimpleListItem.onChange: selectedIndex=${selectedIndex}`);
     }
 
-    onSubmit(e: any) {
+    private onSubmit(e: any) {
         e.preventDefault();
 
-        let item = this.props.items?.[this.state.selectedIndex];
+        let selectedIndex = this.state.selectedIndex;
+
+        let item = this.props.items?.[selectedIndex];
 
         if (item) {
             this.props.onAdd(item);
         }
+
+        console.log(`SimpleListItem.onSubmit: selectedIndex=${selectedIndex}, item=${item}`);
     }
 
     render() {
         return (
-            <Form onSubmit={(e) => this.onSubmit(e)}>
+            <form onSubmit={(e) => this.onSubmit(e)}>
                 <select
                     value={this.state.selectedIndex}
                     onChange={(e) => this.onChange(e)}
@@ -45,7 +53,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
                 &nbsp;&nbsp;
 
                 <Button variant="primary" disabled={this.props.items?.[this.state.selectedIndex] == undefined}>Add</Button>
-            </Form>
+            </form>
         );
     }
 }
