@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
 import {Button, Col, Row} from "react-bootstrap";
-import {BsTrash} from "react-icons/all";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: string) {
@@ -14,7 +13,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
         return (
             <Row>
                 <Col>
-                    <b>{this.props.item.description}: </b>
+                    <b>{this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}</b>
 
                     {
                         Object.keys(this.props.item.values).map(key =>
@@ -35,8 +34,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                         )
                     }
 
-                    <Button variant={"danger"} className="is-pulled-right" onClick={() => this.props.onRemove(this.props.index)}>
-                        <BsTrash/>
+                    <Button variant={"danger"} onClick={() => this.props.onRemove(this.props.index)}>
+                        删除
                     </Button>
                 </Col>
             </Row>
