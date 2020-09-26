@@ -1,5 +1,7 @@
+import {SimpleListItemType} from "../SimpleListItemType";
+
 export interface SimpleListListProps {
-    items?: { [name: string]: string }[];
+    items?: SimpleListItemType[];
 
     onUpdate: (index: number, key: string, value: string) => void;
 

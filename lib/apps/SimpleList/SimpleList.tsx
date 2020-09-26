@@ -6,6 +6,7 @@ import {SimpleListList} from "./SimpleListList/SimpleListList";
 import "./SimpleList.css";
 import {SimpleListProps} from "./SimpleListProps";
 import {SimpleListState} from "./SimpleListState";
+import {SimpleListItemType} from "./SimpleListItemType";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     constructor(props: SimpleListProps) {
@@ -16,11 +17,11 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         };
     }
 
-    getItems(): { [name: string]: string }[] | undefined {
+    getItems(): SimpleListItemType[] | undefined {
         return this.state.items;
     }
 
-    onAdd(item: {[name: string]: string}) {
+    onAdd(item: SimpleListItemType) {
         this.setState({
             items: [...(this.state.items ?? []), item]
         });
@@ -59,8 +60,8 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     />
 
                     <SimpleListAddForm
-                        initialItem={this.props.addFormInitialItem}
-                        onAdd={(item: {[name: string]: string}) => this.onAdd(item)}
+                        items={this.props.addFormItems}
+                        onAdd={(item: SimpleListItemType) => this.onAdd(item)}
                     />
                 </div>
             </div>

@@ -1,3 +1,5 @@
+import {SimpleListItemType} from "../SimpleListItemType";
+
 export interface SimpleListHeaderProps {
-    items?: {[name: string]: string}[];
+    items?: SimpleListItemType[];
 }

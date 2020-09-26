@@ -1,38 +1,42 @@
 import React from "react";
 import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
+import {SimpleListAddFormState} from "./SimpleListAddFormState";
 
-export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, {[name: string]: string}> {
+export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
         super(props);
 
-        this.state = props.initialItem ?? { value: "" };
+        this.state = {
+            selectedIndex: 0
+        };
+    }
+
+    private onChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        this.setState({
+            selectedIndex: Number(e.target.value)
+        });
     }
 
     onSubmit(e: any) {
         e.preventDefault();
 
-        if (!this.state) {
-            return;
-        }
-
-        this.props.onAdd(this.state);
-
-        this.setState({});
+        this.props.onAdd(this.props.items?.[this.state.selectedIndex] ?? {name: "default", value: ""});
     }
 
     render() {
         return (
             <form onSubmit={(e) => this.onSubmit(e)}>
                 {
-                    Object.keys(this.state).map(key =>
-                        <input
-                            key={key}
-                            type="text"
-                            className="input"
-                            placeholder={key}
-                            value={this.state[key]}
-                            onChange={(e) => this.setState({[key]: e.target.value})}
-                        />)
+                    <select
+                        value={this.state.selectedIndex}
+                        onChange={(e) => this.onChange(e)}
+                    >
+                        {
+                            this.props.items?.map((item, index) => (
+                                <option value={index}>{JSON.stringify(item)}</option>
+                            ))
+                        }
+                    </select>
                 }
 
                 <button className="button">Add</button>

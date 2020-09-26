@@ -1,5 +1,7 @@
-export interface SimpleListProps {
-    initialItems?: {[name: string]: string}[];
+import {SimpleListItemType} from "./SimpleListItemType";
 
-    addFormInitialItem?: { [name: string]: string };
+export interface SimpleListProps {
+    initialItems?: SimpleListItemType[];
+
+    addFormItems?: SimpleListItemType[];
 }

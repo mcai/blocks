@@ -1,5 +1,7 @@
-export interface SimpleListAddFormProps {
-    initialItem?: { [name: string]: string };
+import {SimpleListItemType} from "../SimpleListItemType";
 
-    onAdd: (item: { [name: string]: string }) => void;
+export interface SimpleListAddFormProps {
+    items?: SimpleListItemType[];
+
+    onAdd: (item: SimpleListItemType) => void;
 }

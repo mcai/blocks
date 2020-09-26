@@ -1,5 +1,7 @@
+import {SimpleListItemType} from "../SimpleListItemType";
+
 export interface SimpleListItemProps {
-    item: { [name: string]: string };
+    item: SimpleListItemType;
 
     index: number;
 
