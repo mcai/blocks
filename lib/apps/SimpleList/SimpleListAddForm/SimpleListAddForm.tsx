@@ -1,6 +1,7 @@
 import React from "react";
 import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
 import {SimpleListAddFormState} from "./SimpleListAddFormState";
+import {Button, Form} from "react-bootstrap";
 
 export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
@@ -29,22 +30,22 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
     render() {
         return (
-            <form onSubmit={(e) => this.onSubmit(e)}>
-                {
-                    <select
-                        value={this.state.selectedIndex}
-                        onChange={(e) => this.onChange(e)}
-                    >
-                        {
-                            this.props.items?.map((item, index) => (
-                                <option value={index}>{item.name}</option>
-                            ))
-                        }
-                    </select>
-                }
+            <Form onSubmit={(e) => this.onSubmit(e)}>
+                <select
+                    value={this.state.selectedIndex}
+                    onChange={(e) => this.onChange(e)}
+                >
+                    {
+                        this.props.items?.map((item, index) => (
+                            <option value={index}>{item.name}</option>
+                        ))
+                    }
+                </select>
 
-                <button className="button" disabled={this.props.items?.[this.state.selectedIndex] == undefined}>Add</button>
-            </form>
+                &nbsp;&nbsp;
+
+                <Button variant="primary" disabled={this.props.items?.[this.state.selectedIndex] == undefined}>Add</Button>
+            </Form>
         );
     }
 }

@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {SimpleListAddForm} from "./SimpleListAddForm/SimpleListAddForm";
 import {SimpleListHeader} from "./SimpleListHeader/SimpleListHeader";
 import {SimpleListList} from "./SimpleListList/SimpleListList";
 
-import "./SimpleList.css";
 import {SimpleListProps} from "./SimpleListProps";
 import {SimpleListState} from "./SimpleListState";
 import {SimpleListItemType} from "./SimpleListItemType";
+import {SimpleListItem} from "./SimpleListItem/SimpleListItem";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     constructor(props: SimpleListProps) {
@@ -47,24 +47,28 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     render() {
         return(
-            <div className='wrapper'>
-                <div className='card frame'>
-                    <SimpleListHeader
-                        items={this.state.items}
-                    />
+            <Fragment>
+                <SimpleListHeader
+                    items={this.state.items}
+                />
 
-                    <SimpleListList
-                        items={this.state.items}
-                        onUpdate={((index: number, key: string, value: string) => this.onUpdate(index, key, value))}
-                        onRemove={(index: number) => this.onRemove(index)}
-                    />
+                {
+                    this.state.items?.map((item: any, index: number) => (
+                        <SimpleListItem
+                            key={index}
+                            item={item}
+                            index={index}
+                            onUpdate={(index1, key, value) => this.onUpdate(index1, key, value)}
+                            onRemove={(index1 => this.onRemove(index1))}
+                        />
+                    ))
+                }
 
-                    <SimpleListAddForm
-                        items={this.props.addFormItems}
-                        onAdd={(item: SimpleListItemType) => this.onAdd(item)}
-                    />
-                </div>
-            </div>
+                <SimpleListAddForm
+                    items={this.props.addFormItems}
+                    onAdd={(item: SimpleListItemType) => this.onAdd(item)}
+                />
+            </Fragment>
         );
     }
 }

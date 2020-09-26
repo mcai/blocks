@@ -1,11 +1,12 @@
 import React from "react";
 import {SimpleListHeaderProps} from "./SimpleListHeaderProps";
+import {Col, Row} from "react-bootstrap";
 
 export class SimpleListHeader extends React.Component<SimpleListHeaderProps, any> {
     render() {
         return (
-            <div className='card-header'>
-                <h1 className='card-header-title header'>
+            <Row>
+                <Col>
                     共 {this.props.items?.length ?? 0} 项
 
                     {
@@ -13,8 +14,8 @@ export class SimpleListHeader extends React.Component<SimpleListHeaderProps, any
                             <span key={index}>{JSON.stringify(item)}</span>
                         ))
                     }
-                </h1>
-            </div>
+                </Col>
+            </Row>
         )
     }
 }
