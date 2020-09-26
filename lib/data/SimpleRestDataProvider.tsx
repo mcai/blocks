@@ -9,6 +9,45 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         this.url = url;
     }
 
+    private async call<ResultT>(
+        resource: string,
+        action: string,
+        method: SimpleHttpClientMethod,
+        params: { [key: string]: any }
+    ): Promise<ResultT | undefined> {
+        return await SimpleHttpClient.call<ResultT | undefined>(
+            this.url + resource + action,
+            method,
+            params
+        );
+    }
+
+    async get<ResultT>(
+        resource: string,
+        action: string,
+        params: { [key: string]: any }
+    ): Promise<ResultT | undefined> {
+        return await this.call<ResultT | undefined>(
+            resource,
+            action,
+            SimpleHttpClientMethod.get,
+            params
+        );
+    }
+
+    async post<ResultT>(
+        resource: string,
+        action: string,
+        params: { [key: string]: any }
+    ): Promise<ResultT | undefined> {
+        return await this.call<ResultT | undefined>(
+            resource,
+            action,
+            SimpleHttpClientMethod.post,
+            params
+        );
+    }
+
     async getList<ItemT>(
         resource: string,
         action: string,

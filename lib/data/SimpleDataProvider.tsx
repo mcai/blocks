@@ -1,4 +1,16 @@
 export interface SimpleDataProvider {
+    get<ResultT>(
+        resource: string,
+        action: string,
+        params: { [key: string]: any }
+    ): Promise<ResultT | undefined>;
+
+    post<ResultT>(
+        resource: string,
+        action: string,
+        params: { [key: string]: any }
+    ): Promise<ResultT | undefined>;
+
     getList<ItemT>(
         resource: string,
         action: string,
