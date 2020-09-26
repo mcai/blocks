@@ -27,10 +27,13 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
         let selectedIndex = this.state.selectedIndex;
 
-        let item = this.props.getItemFuncs?.[selectedIndex];
+        let item = this.props.options?.[selectedIndex];
 
         if (item) {
-            this.props.onAdd(item());
+            this.props.onAdd({
+                name: item.name,
+                values: item.getValuesFunc()
+            });
         }
 
         console.log(`SimpleListItem.onSubmit: selectedIndex=${selectedIndex}, item=${item}`);
@@ -44,7 +47,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
                     onChange={(e) => this.onChange(e)}
                 >
                     {
-                        this.props.getItemFuncs?.map((item, index) => (
+                        this.props.options?.map((item, index) => (
                             <option key={index} value={index}>{item.name}</option>
                         ))
                     }
@@ -52,7 +55,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
                 &nbsp;&nbsp;
 
-                <Button variant="primary" type="submit" disabled={this.props.getItemFuncs?.[this.state.selectedIndex] == undefined}>Add</Button>
+                <Button variant="primary" type="submit" disabled={this.props.options?.[this.state.selectedIndex] == undefined}>Add</Button>
             </form>
         );
     }

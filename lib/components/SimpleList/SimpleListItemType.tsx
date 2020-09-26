@@ -1,5 +1,7 @@
+import {SimpleListItemValuesType} from "./SimpleListItemValuesType";
+
 export interface SimpleListItemType {
     name: string;
 
-    values: { [name: string]: string };
+    values: SimpleListItemValuesType;
 }

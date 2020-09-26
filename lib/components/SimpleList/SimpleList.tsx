@@ -81,7 +81,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                 }
 
                 <SimpleListAddForm
-                    getItemFuncs={this.props.addFormGetItemFuncs}
+                    options={this.props.addFormOptions}
                     onAdd={(item: SimpleListItemType) => this.onAdd(item)}
                 />
             </Fragment>
