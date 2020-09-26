@@ -20,7 +20,11 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
     onSubmit(e: any) {
         e.preventDefault();
 
-        this.props.onAdd(this.props.items?.[this.state.selectedIndex] ?? {name: "default", value: ""});
+        let item = this.props.items?.[this.state.selectedIndex];
+
+        if (item) {
+            this.props.onAdd(item);
+        }
     }
 
     render() {
@@ -39,7 +43,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
                     </select>
                 }
 
-                <button className="button">Add</button>
+                <button className="button" disabled={this.props.items?.[this.state.selectedIndex] == undefined}>Add</button>
             </form>
         );
     }
