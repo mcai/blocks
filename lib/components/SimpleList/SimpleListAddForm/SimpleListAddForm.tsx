@@ -52,7 +52,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
                 &nbsp;&nbsp;
 
-                <Button variant="primary" disabled={this.props.items?.[this.state.selectedIndex] == undefined}>Add</Button>
+                <Button variant="primary" type="submit" disabled={this.props.items?.[this.state.selectedIndex] == undefined}>Add</Button>
             </form>
         );
     }
