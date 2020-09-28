@@ -19,15 +19,14 @@
     "isolatedModules": true,
     "sourceMap": true,
     "jsx": "react",
-    "rootDir": "./src",
-    "outDir": "./build",
-    "noEmit": true
+    "rootDir": "src",
+    "outDir": "build"
   },
   "include": [
-    "src"
+    "src/"
   ],
   "exclude": [
-    "node_modules",
-    "build"
+    "node_modules/",
+    "build/"
   ]
 }
