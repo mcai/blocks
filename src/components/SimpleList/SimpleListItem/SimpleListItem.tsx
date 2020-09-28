@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
-import {Button, Col, Row} from "react-bootstrap";
 import {SimpleRow} from "../../../styles/SimpleRow/SimpleRow";
 import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
 

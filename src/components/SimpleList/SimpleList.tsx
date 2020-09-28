@@ -5,7 +5,6 @@ import {SimpleListProps} from "./SimpleListProps";
 import {SimpleListState} from "./SimpleListState";
 import {SimpleListItemType} from "./SimpleListItemType";
 import {SimpleListItem} from "./SimpleListItem/SimpleListItem";
-import {Col, Row} from "react-bootstrap";
 import {SimpleRow} from "../../styles/SimpleRow/SimpleRow";
 import {SimpleContainer} from "../../styles/SimpleTheme/SimpleTheme";
 

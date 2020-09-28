@@ -1,9 +1,7 @@
 import React from "react";
 import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
 import {SimpleListAddFormState} from "./SimpleListAddFormState";
-import {Button} from "react-bootstrap";
 import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
-import {SimpleRow} from "../../../styles/SimpleRow/SimpleRow";
 
 export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
