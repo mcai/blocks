@@ -4,9 +4,7 @@ import {
     SimpleH1,
     SimpleH2,
     SimpleP,
-    simpleDarkTheme,
-    simpleLightTheme,
-    SimpleContainer
+    SimpleContainer, simpleGracefulTheme
 } from "./SimpleTheme/SimpleTheme";
 import {SimpleRow} from "./SimpleRow/SimpleRow";
 import { SimpleButton } from "./SimpleButton/SimpleButton";
@@ -70,12 +68,10 @@ export class StylesDemo extends React.Component<any> {
             </SimpleContainer>
         );
 
-        let themes = [simpleLightTheme, simpleDarkTheme]
-
-        return themes.map(theme => (
-            <ThemeProvider theme={theme}>
+        return (
+            <ThemeProvider theme={simpleGracefulTheme}>
                 {fragment}
             </ThemeProvider>
-        ));
+        );
     }
 }

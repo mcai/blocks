@@ -2,29 +2,20 @@ import styled from "styled-components";
 import React from "react";
 
 export interface SimpleTheme {
-    white: string;
-    lightgray: string;
-    gray: string;
-    darkgray: string;
-    black: string;
+    LightBackground: string;
+    LightForeground: string;
+    Main: string;
+    DarkForeground: string;
+    DarkBackground: string;
 }
 
-// 粉色无尽夏
-export let simpleLightTheme: SimpleTheme = {
-    white: "#E7ECE8",
-    lightgray: "#DDAFBC",
-    gray: "#B37C93",
-    darkgray: "#B0597C",
-    black: "#172D18",
-};
-
-// 夜空中的月亮
-export let simpleDarkTheme: SimpleTheme = {
-    white: "#000000",
-    lightgray: "#76A2AF",
-    gray: "#BCD9E1",
-    darkgray: "#DCEFF5",
-    black: "#EDEDED",
+// Graceful
+export let simpleGracefulTheme: SimpleTheme = {
+    LightBackground: "#F3F2F4",
+    LightForeground: "#6EA5C5",
+    Main: "#3C7AB4",
+    DarkForeground: "#657C9E",
+    DarkBackground: "#242D57",
 }
 
 export let SimpleCenter = styled.div`
@@ -41,17 +32,17 @@ export let SimpleRight = styled.div`
 
 export let SimpleH1 = styled.h1`
   font-size: 2.0em;
-  color: ${props => (props.theme as SimpleTheme).darkgray};
+  color: ${props => (props.theme as SimpleTheme).DarkForeground};
 `;
 
 export let SimpleH2 = styled.h2`
   font-size: 1.5em;
-  color: ${props => (props.theme as SimpleTheme).gray};
+  color: ${props => (props.theme as SimpleTheme).DarkForeground};
 `;
 
 export let SimpleP = styled.p`
   font-size: 1.0em;
-  color: ${props => (props.theme as SimpleTheme).black};
+  color: ${props => (props.theme as SimpleTheme).Main};
 `;
 
 export let SimpleSpace = styled.div`
@@ -61,7 +52,7 @@ export let SimpleSpace = styled.div`
 export let SimpleContainer = styled.div`
   padding: 1em;
   margin: 1em;
-  background: ${props => (props.theme as SimpleTheme).white};
-  border: 1px solid ${props => (props.theme as SimpleTheme).black};
+  background: ${props => (props.theme as SimpleTheme).LightBackground};
+  border: 1px solid ${props => (props.theme as SimpleTheme).DarkForeground};
   border-radius: 5px;
 `;

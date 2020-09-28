@@ -1,17 +1,17 @@
 import React, {Component} from "react";
 import {SimpleTodoAppProps} from "./SimpleTodoAppProps";
 import {SimpleTodoAppState} from "./SimpleTodoAppState";
-import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
 import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
 import {SimpleList} from "../../components/SimpleList/SimpleList";
-import {simpleLightTheme} from "../../styles/SimpleTheme/SimpleTheme";
+import {simpleGracefulTheme} from "../../styles/SimpleTheme/SimpleTheme";
 import {ThemeProvider} from "styled-components";
+import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
         return (
-            <ThemeProvider theme={simpleLightTheme}>
+            <ThemeProvider theme={simpleGracefulTheme}>
                 <SimpleNavbar
                     brand={{
                         title: "Simple TODOs",
