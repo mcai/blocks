@@ -19,6 +19,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
 
         let SimpleNavbarBrandClass = styled.li`
           float: left;
+          text-decoration: none!important;
         `;
 
         let SimpleNavDropDownItemClass = styled.div`
@@ -26,7 +27,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
           color: ${props => (props.theme as SimpleTheme).LightBackground};
           text-align: center;
           padding: 14px 16px;
-          text-decoration: none;
+          text-decoration: none!important;
         `;
 
         let SimpleDropDownContentClass = styled.div`
@@ -42,6 +43,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
           float: left;
           display: inline-block;
           &:hover {
+            color: ${props => (props.theme as SimpleTheme).LightBackground};
             background-color: ${props => (props.theme as SimpleTheme).DarkForeground};
           }
           &:hover ${SimpleDropDownContentClass} {
@@ -54,8 +56,9 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
           color: ${props => (props.theme as SimpleTheme).LightBackground};
           text-align: center;
           padding: 14px 16px;
-          text-decoration: none;
+          text-decoration: none!important;
           &:hover {
+            color: ${props => (props.theme as SimpleTheme).LightBackground};
             background-color: ${props => (props.theme as SimpleTheme).DarkForeground};
           }
         `;
@@ -65,8 +68,9 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
           color: ${props => (props.theme as SimpleTheme).DarkBackground};
           text-align: left;
           padding: 12px 16px;
-          text-decoration: none;
+          text-decoration: none!important;
           &:hover {
+            color: ${props => (props.theme as SimpleTheme).LightBackground};
             background-color: ${props => (props.theme as SimpleTheme).LightForeground};
           }
         `;

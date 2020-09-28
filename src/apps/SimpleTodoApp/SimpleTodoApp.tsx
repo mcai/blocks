@@ -4,14 +4,14 @@ import {SimpleTodoAppState} from "./SimpleTodoAppState";
 import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
 import {SimpleList} from "../../components/SimpleList/SimpleList";
-import {simpleGracefulTheme} from "../../styles/SimpleTheme/SimpleTheme";
+import {simpleTheme2} from "../../styles/SimpleTheme/SimpleTheme";
 import {ThemeProvider} from "styled-components";
 import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
         return (
-            <ThemeProvider theme={simpleGracefulTheme}>
+            <ThemeProvider theme={simpleTheme2}>
                 <SimpleNavbar
                     brand={{
                         title: "Simple TODOs",

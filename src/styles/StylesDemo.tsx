@@ -4,7 +4,7 @@ import {
     SimpleH1,
     SimpleH2,
     SimpleP,
-    SimpleContainer, simpleGracefulTheme
+    SimpleContainer, simpleTheme1
 } from "./SimpleTheme/SimpleTheme";
 import {SimpleRow} from "./SimpleRow/SimpleRow";
 import { SimpleButton } from "./SimpleButton/SimpleButton";
@@ -69,7 +69,7 @@ export class StylesDemo extends React.Component<any> {
         );
 
         return (
-            <ThemeProvider theme={simpleGracefulTheme}>
+            <ThemeProvider theme={simpleTheme1}>
                 {fragment}
             </ThemeProvider>
         );

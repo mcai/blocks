@@ -9,13 +9,20 @@ export interface SimpleTheme {
     DarkBackground: string;
 }
 
-// Graceful
-export let simpleGracefulTheme: SimpleTheme = {
+export let simpleTheme1: SimpleTheme = {
     LightBackground: "#F3F2F4",
     LightForeground: "#6EA5C5",
     Main: "#3C7AB4",
     DarkForeground: "#657C9E",
     DarkBackground: "#242D57",
+}
+
+export let simpleTheme2: SimpleTheme = {
+    LightBackground: "#F4F4F2",
+    LightForeground: "#9390A0",
+    Main: "#F19673",
+    DarkForeground: "#EB4227",
+    DarkBackground: "#1E2827",
 }
 
 export let SimpleCenter = styled.div`
