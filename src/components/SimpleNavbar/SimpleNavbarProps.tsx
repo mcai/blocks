@@ -7,6 +7,7 @@ export interface SimpleNavbarProps {
         id: string,
         title: string,
         visible?: boolean,
+        rightAligned?: boolean,
         items: { key: string, title?: React.ReactNode, href?: string, onClick?: () => void, visible?: boolean }[]
     }[];
 

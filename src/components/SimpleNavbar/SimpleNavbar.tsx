@@ -40,7 +40,6 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
         `;
 
         let SimpleNavDropdownClass = styled.li`
-          float: left;
           display: inline-block;
           &:hover {
             color: ${props => (props.theme as SimpleTheme).LightBackground};
@@ -84,28 +83,32 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                 {
                     this.props.sections
                         .filter(section => section.visible == undefined || section.visible)
-                        .map(section => (
-                            <SimpleNavDropdownClass key={section.id}>
-                                <SimpleNavDropDownItemClass>
-                                    {section.title}
-                                </SimpleNavDropDownItemClass>
-                                <SimpleDropDownContentClass>
-                                    {
-                                        section.items
-                                            .filter(item => item.visible == undefined || item.visible)
-                                            .map(item => (
-                                                <SimpleDropDownContentItemClass
-                                                    href={item.href}
-                                                    onClick={item.onClick}
-                                                    key={item.key}
-                                                >
-                                                    {item.title}
-                                                </SimpleDropDownContentItemClass>
-                                            ))
-                                    }
-                                </SimpleDropDownContentClass>
-                            </SimpleNavDropdownClass>
-                        ))
+                        .map(section => {
+                            return (
+                                <SimpleNavDropdownClass key={section.id} style={{
+                                    float: section.rightAligned ? "right" : "left"
+                                }}>
+                                    <SimpleNavDropDownItemClass>
+                                        {section.title}
+                                    </SimpleNavDropDownItemClass>
+                                    <SimpleDropDownContentClass>
+                                        {
+                                            section.items
+                                                .filter(item => item.visible == undefined || item.visible)
+                                                .map(item => (
+                                                    <SimpleDropDownContentItemClass
+                                                        href={item.href}
+                                                        onClick={item.onClick}
+                                                        key={item.key}
+                                                    >
+                                                        {item.title}
+                                                    </SimpleDropDownContentItemClass>
+                                                ))
+                                        }
+                                    </SimpleDropDownContentClass>
+                                </SimpleNavDropdownClass>
+                            );
+                        })
                 }
 
                 {this.props.extra}

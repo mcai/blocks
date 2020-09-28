@@ -30,6 +30,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             ]
                         },
                         {
+                            rightAligned: true,
                             id: "settings",
                             title: "Settings",
                             items: [
