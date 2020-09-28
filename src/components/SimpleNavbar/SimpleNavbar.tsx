@@ -4,10 +4,6 @@ import {SimpleTheme} from "../../styles/SimpleTheme/SimpleTheme";
 import {SimpleNavbarProps} from "./SimpleNavbarProps";
 
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
-    constructor(props: SimpleNavbarProps) {
-        super(props);
-    }
-
     render() {
         let SimpleNavbarClass = styled.ul`
           list-style-type: none;
@@ -82,7 +78,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
 
                 {
                     this.props.sections
-                        .filter(section => section.visible == undefined || section.visible)
+                        .filter(section => section.visible === undefined || section.visible)
                         .map(section => {
                             return (
                                 <SimpleNavDropdownClass key={section.id} style={{
@@ -94,7 +90,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                                     <SimpleDropDownContentClass>
                                         {
                                             section.items
-                                                .filter(item => item.visible == undefined || item.visible)
+                                                .filter(item => item.visible === undefined || item.visible)
                                                 .map(item => (
                                                     <SimpleDropDownContentItemClass
                                                         href={item.href}

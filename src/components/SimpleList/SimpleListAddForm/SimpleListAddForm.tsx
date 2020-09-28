@@ -58,7 +58,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
                 <SimpleButton
                     type="submit"
-                    disabled={this.props.options?.[this.state.selectedIndex] == undefined}
+                    disabled={this.props.options?.[this.state.selectedIndex] === undefined}
                 >
                     添加
                 </SimpleButton>

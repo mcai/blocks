@@ -17,7 +17,7 @@ export class SimpleBreadcrumb extends Component<SimpleBreadcrumbProps, any> {
                         }
 
                         {
-                            index != this.props.items.length - 1 ? " / " : ""
+                            index !== this.props.items.length - 1 ? " / " : ""
                         }
                     </Fragment>
                 ))
