@@ -6,9 +6,9 @@ import {SimpleButtonProps} from "./SimpleButtonProps";
 export class SimpleButton extends Component<SimpleButtonProps, any> {
     render() {
         let ButtonClass = styled.button`
-            color: ${props => (props.theme as SimpleTheme).DarkBackground};
-            background: ${props => (props.theme as SimpleTheme).LightBackground};
-            border: 1px solid ${props => (props.theme as SimpleTheme).DarkBackground};
+            color: ${props => (props.theme as SimpleTheme).LightBackground};
+            background: ${props => (props.theme as SimpleTheme).LightForeground};
+            border: 1px solid ${props => (props.theme as SimpleTheme).LightBackground};
             
             margin: 0.5em;
             padding: 0.25em 0.5em;
