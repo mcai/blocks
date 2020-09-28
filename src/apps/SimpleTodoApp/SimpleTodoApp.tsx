@@ -1,13 +1,17 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {SimpleTodoAppProps} from "./SimpleTodoAppProps";
 import {SimpleTodoAppState} from "./SimpleTodoAppState";
 import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
 import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
+import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
+import {SimpleList} from "../../components/SimpleList/SimpleList";
+import {simpleLightTheme} from "../../styles/SimpleTheme/SimpleTheme";
+import {ThemeProvider} from "styled-components";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
         return (
-            <Fragment>
+            <ThemeProvider theme={simpleLightTheme}>
                 <SimpleNavbar
                     brand={{
                         title: "Simple TODOs",
@@ -72,7 +76,26 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         active: true
                     },
                 ]}/>
-            </Fragment>
+
+                <SimpleList
+                    addFormOptions={[
+                        {
+                            name: "simpleTodo",
+                            description: "Simple TODO",
+                            getValuesFunc: () => ({
+                                "content": ""
+                            })
+                        }
+                    ]}
+                />
+
+                <SimpleFooter brand={
+                    {
+                        title: "Simple TODOs (C) 2020",
+                        href: ""
+                    }
+                }/>
+            </ThemeProvider>
         );
     }
 }

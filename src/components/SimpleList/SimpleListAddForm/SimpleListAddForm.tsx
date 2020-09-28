@@ -2,6 +2,8 @@ import React from "react";
 import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
 import {SimpleListAddFormState} from "./SimpleListAddFormState";
 import {Button} from "react-bootstrap";
+import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
+import {SimpleRow} from "../../../styles/SimpleRow/SimpleRow";
 
 export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
@@ -42,22 +44,29 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
     render() {
         return (
-            <form onSubmit={(e) => this.onSubmit(e)}>
-                <select
-                    value={this.state.selectedIndex}
-                    onChange={(e) => this.onChange(e)}
-                >
-                    {
-                        this.props.options?.map((option, index) => (
-                            <option key={index} value={index}>{option.description}</option>
-                        ))
-                    }
-                </select>
+            <SimpleRow right={
+                <form onSubmit={(e) => this.onSubmit(e)}>
+                    <select
+                        value={this.state.selectedIndex}
+                        onChange={(e) => this.onChange(e)}
+                    >
+                        {
+                            this.props.options?.map((option, index) => (
+                                <option key={index} value={index}>{option.description}</option>
+                            ))
+                        }
+                    </select>
 
-                &nbsp;&nbsp;
+                    &nbsp;&nbsp;
 
-                <Button variant="primary" type="submit" disabled={this.props.options?.[this.state.selectedIndex] == undefined}>添加</Button>
-            </form>
+                    <SimpleButton
+                        type="submit"
+                        disabled={this.props.options?.[this.state.selectedIndex] == undefined}
+                    >
+                        添加
+                    </SimpleButton>
+                </form>
+            }/>
         );
     }
 }

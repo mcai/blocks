@@ -41,25 +41,27 @@ export let SimpleRight = styled.div`
 
 export let SimpleH1 = styled.h1`
   font-size: 2.0em;
-  text-align: center;
   color: ${props => (props.theme as SimpleTheme).darkgray};
 `;
 
 export let SimpleH2 = styled.h2`
   font-size: 1.5em;
-  text-align: center;
   color: ${props => (props.theme as SimpleTheme).gray};
 `;
 
 export let SimpleP = styled.p`
   font-size: 1.0em;
-  text-align: center;
   color: ${props => (props.theme as SimpleTheme).black};
 `;
 
-export let SimpleSection = styled.section`
-  padding: 4em;
+export let SimpleSpace = styled.div`
+  padding: 0.5em;
+`;
+
+export let SimpleContainer = styled.div`
+  padding: 1em;
+  margin: 1em;
   background: ${props => (props.theme as SimpleTheme).white};
-  border: 2px solid ${props => (props.theme as SimpleTheme).black};
+  border: 1px solid ${props => (props.theme as SimpleTheme).black};
   border-radius: 5px;
 `;

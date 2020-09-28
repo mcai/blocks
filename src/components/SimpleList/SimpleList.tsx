@@ -6,6 +6,8 @@ import {SimpleListState} from "./SimpleListState";
 import {SimpleListItemType} from "./SimpleListItemType";
 import {SimpleListItem} from "./SimpleListItem/SimpleListItem";
 import {Col, Row} from "react-bootstrap";
+import {SimpleRow} from "../../styles/SimpleRow/SimpleRow";
+import {SimpleContainer} from "../../styles/SimpleTheme/SimpleTheme";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     constructor(props: SimpleListProps) {
@@ -52,38 +54,36 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     render() {
         return(
             <Fragment>
-                <Row>
-                    <Col>
-                        <p>
-                            共 {this.state.items?.length ?? 0} 项
-                        </p>
+                <SimpleContainer>
+                    <SimpleRow right={(
+                        <Fragment>
+                            <p>
+                                共 {this.state.items?.length ?? 0} 项
+                            </p>
+                        </Fragment>
+                    )}/>
+                </SimpleContainer>
 
-                        <br/>
+                <SimpleContainer>
+                    {
+                        this.state.items?.map((item: any, index: number) => (
+                            <SimpleListItem
+                                key={index}
+                                item={item}
+                                index={index}
+                                onUpdate={(index1, key, value) => this.onUpdate(index1, key, value)}
+                                onRemove={(index1 => this.onRemove(index1))}
+                            />
+                        ))
+                    }
+                </SimpleContainer>
 
-                        {
-                            this.state.items?.map((item, index) => (
-                                <p key={index}>{JSON.stringify(item)}</p>
-                            ))
-                        }
-                    </Col>
-                </Row>
-
-                {
-                    this.state.items?.map((item: any, index: number) => (
-                        <SimpleListItem
-                            key={index}
-                            item={item}
-                            index={index}
-                            onUpdate={(index1, key, value) => this.onUpdate(index1, key, value)}
-                            onRemove={(index1 => this.onRemove(index1))}
-                        />
-                    ))
-                }
-
-                <SimpleListAddForm
-                    options={this.props.addFormOptions}
-                    onAdd={(item: SimpleListItemType) => this.onAdd(item)}
-                />
+                <SimpleContainer>
+                    <SimpleListAddForm
+                        options={this.props.addFormOptions}
+                        onAdd={(item: SimpleListItemType) => this.onAdd(item)}
+                    />
+                </SimpleContainer>
             </Fragment>
         );
     }

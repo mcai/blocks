@@ -1,14 +1,21 @@
 import React, {Fragment} from "react";
 import {ThemeProvider} from "styled-components";
-import {SimpleH1, SimpleH2, SimpleP, SimpleSection, simpleDarkTheme, simpleLightTheme} from "./SimpleTheme/SimpleTheme";
+import {
+    SimpleH1,
+    SimpleH2,
+    SimpleP,
+    simpleDarkTheme,
+    simpleLightTheme,
+    SimpleContainer
+} from "./SimpleTheme/SimpleTheme";
 import {SimpleRow} from "./SimpleRow/SimpleRow";
 import { SimpleButton } from "./SimpleButton/SimpleButton";
 
 export class StylesDemo extends React.Component<any> {
     render() {
         let fragment = (
-            <Fragment>
-                <SimpleSection>
+            <SimpleContainer>
+                <SimpleRow>
                     <SimpleH1>
                         一级标题
                     </SimpleH1>
@@ -59,8 +66,8 @@ export class StylesDemo extends React.Component<any> {
                             居中3
                         </SimpleButton>
                     </SimpleRow>
-                </SimpleSection>
-            </Fragment>
+                </SimpleRow>
+            </SimpleContainer>
         );
 
         let themes = [simpleLightTheme, simpleDarkTheme]
