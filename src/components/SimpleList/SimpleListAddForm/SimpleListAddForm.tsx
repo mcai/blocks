@@ -44,29 +44,27 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
     render() {
         return (
-            <SimpleRow right={
-                <form onSubmit={(e) => this.onSubmit(e)}>
-                    <select
-                        value={this.state.selectedIndex}
-                        onChange={(e) => this.onChange(e)}
-                    >
-                        {
-                            this.props.options?.map((option, index) => (
-                                <option key={index} value={index}>{option.description}</option>
-                            ))
-                        }
-                    </select>
+            <form onSubmit={(e) => this.onSubmit(e)}>
+                <select
+                    value={this.state.selectedIndex}
+                    onChange={(e) => this.onChange(e)}
+                >
+                    {
+                        this.props.options?.map((option, index) => (
+                            <option key={index} value={index}>{option.description}</option>
+                        ))
+                    }
+                </select>
 
-                    &nbsp;&nbsp;
+                &nbsp;&nbsp;
 
-                    <SimpleButton
-                        type="submit"
-                        disabled={this.props.options?.[this.state.selectedIndex] == undefined}
-                    >
-                        添加
-                    </SimpleButton>
-                </form>
-            }/>
+                <SimpleButton
+                    type="submit"
+                    disabled={this.props.options?.[this.state.selectedIndex] == undefined}
+                >
+                    添加
+                </SimpleButton>
+            </form>
         );
     }
 }
