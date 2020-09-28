@@ -1,64 +1,65 @@
 import React, {Fragment} from "react";
 import {ThemeProvider} from "styled-components";
-import {Button, H1, H2, P, Section, simpleDarkTheme, simpleLightTheme} from "./SimpleTheme";
-import {SimpleRow} from "./SimpleRow";
+import {SimpleH1, SimpleH2, SimpleP, SimpleSection, simpleDarkTheme, simpleLightTheme} from "./SimpleTheme/SimpleTheme";
+import {SimpleRow} from "./SimpleRow/SimpleRow";
+import { SimpleButton } from "./SimpleButton/SimpleButton";
 
 export class StylesDemo extends React.Component<any> {
     render() {
         let fragment = (
             <Fragment>
-                <Section>
-                    <H1>
+                <SimpleSection>
+                    <SimpleH1>
                         一级标题
-                    </H1>
+                    </SimpleH1>
 
-                    <H2>
+                    <SimpleH2>
                         二级标题
-                    </H2>
+                    </SimpleH2>
 
-                    <P>
+                    <SimpleP>
                         段落
-                    </P>
+                    </SimpleP>
 
                     <SimpleRow
                         left={
                             <Fragment>
-                                <Button>
+                                <SimpleButton onClick={() => alert("hello")}>
                                     左对齐1
-                                </Button>
-                                <Button>
+                                </SimpleButton>
+                                <SimpleButton>
                                     左对齐2
-                                </Button>
-                                <Button>
+                                </SimpleButton>
+                                <SimpleButton>
                                     左对齐3
-                                </Button>
+                                </SimpleButton>
                             </Fragment>
                         }
                         right={
                             <Fragment>
-                                <Button>
+                                <SimpleButton>
                                     右对齐1
-                                </Button>
-                                <Button>
+                                </SimpleButton>
+                                <SimpleButton>
                                     右对齐2
-                                </Button>
-                                <Button>
+                                </SimpleButton>
+                                <SimpleButton>
                                     右对齐3
-                                </Button>
+                                </SimpleButton>
                             </Fragment>
                         }
                     >
-                        <Button>
+                        <SimpleButton>
                             居中1
-                        </Button>
-                        <Button>
+                        </SimpleButton>
+                        <SimpleButton>
                             居中2
-                        </Button>
-                        <Button>
+                        </SimpleButton>
+                        <SimpleButton>
                             居中3
-                        </Button>
+                        </SimpleButton>
                     </SimpleRow>
-                </Section>
+                </SimpleSection>
             </Fragment>
         );
 

@@ -27,49 +27,39 @@ export let simpleDarkTheme: SimpleTheme = {
     black: "#EDEDED",
 }
 
-export let Center = styled.div`
+export let SimpleCenter = styled.div`
   text-align: center;
 `;
 
-export let Left = styled.div`
+export let SimpleLeft = styled.div`
   float: left;
 `;
 
-export let Right = styled.div`
+export let SimpleRight = styled.div`
   float: right;
 `;
 
-export let H1 = styled.h1`
+export let SimpleH1 = styled.h1`
   font-size: 2.0em;
   text-align: center;
   color: ${props => (props.theme as SimpleTheme).darkgray};
 `;
 
-export let H2 = styled.h2`
+export let SimpleH2 = styled.h2`
   font-size: 1.5em;
   text-align: center;
   color: ${props => (props.theme as SimpleTheme).gray};
 `;
 
-export let P = styled.p`
+export let SimpleP = styled.p`
   font-size: 1.0em;
   text-align: center;
   color: ${props => (props.theme as SimpleTheme).black};
 `;
 
-export let Section = styled.section`
+export let SimpleSection = styled.section`
   padding: 4em;
   background: ${props => (props.theme as SimpleTheme).white};
   border: 2px solid ${props => (props.theme as SimpleTheme).black};
-  border-radius: 5px;
-`;
-
-export let Button = styled.button`
-  color: ${props => (props.theme as SimpleTheme).black};
-  background: ${props => (props.theme as SimpleTheme).white};
-  border: 1px solid ${props => (props.theme as SimpleTheme).black};
-
-  margin: 0.5em;
-  padding: 0.25em 0.5em;
   border-radius: 5px;
 `;

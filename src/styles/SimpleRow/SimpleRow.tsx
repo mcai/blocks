@@ -1,26 +1,22 @@
 import React, {Component, Fragment} from "react";
-import {Center, Left, Right} from "./SimpleTheme";
-
-export interface SimpleRowProps {
-    left?: React.ReactNode
-    right?: React.ReactNode
-}
+import {SimpleCenter, SimpleLeft, SimpleRight} from "../SimpleTheme/SimpleTheme";
+import {SimpleRowProps} from "./SimpleRowProps";
 
 export class SimpleRow extends Component<SimpleRowProps, any> {
     render() {
         return (
             <Fragment>
-                <Left>
+                <SimpleLeft>
                     {this.props.left}
-                </Left>
+                </SimpleLeft>
 
-                <Right>
+                <SimpleRight>
                     {this.props.right}
-                </Right>
+                </SimpleRight>
 
-                <Center>
+                <SimpleCenter>
                     {this.props.children}
-                </Center>
+                </SimpleCenter>
             </Fragment>
         );
     }
