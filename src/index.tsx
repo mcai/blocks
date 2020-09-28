@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from "./styles/Button";
+import {StylesDemo} from "./styles/StylesDemo";
 
 ReactDOM.render(
   <React.StrictMode>
-      <Button/>
+      <StylesDemo/>
   </React.StrictMode>,
   document.getElementById('root')
 );
