@@ -19,14 +19,15 @@
     "isolatedModules": true,
     "sourceMap": true,
     "jsx": "react",
-    "rootDir": "./lib",
-    "outDir": "./dist"
+    "rootDir": "./src",
+    "outDir": "./build",
+    "noEmit": true
   },
   "include": [
-    "lib"
+    "src"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "build"
   ]
 }

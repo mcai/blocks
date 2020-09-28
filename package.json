@@ -1,21 +1,21 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.156",
+  "version": "0.0.157",
   "description": "blocks",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mcai/blocks.git"
   },
-  "main": "./dist/index.js",
+  "main": "./build/index.js",
   "files": [
     "README.md",
-    "dist"
+    "build"
   ],
   "scripts": {
     "build": "tsc",
-    "html": "cd lib && copyfiles **/*.css ../dist",
+    "html": "cd src && copyfiles **/*.css ../build",
     "prepare": "npm run build && npm run html",
-    "test": "jest"
+    "start": "PORT=3001 react-scripts start"
   },
   "keywords": [],
   "author": "Min Cai",
@@ -39,30 +39,38 @@
     "react-spinners": "^0.9.0",
     "react-spring": "^8.0.27",
     "react-toastify": "^6.0.8",
+    "styled-components": "^5.2.0",
     "superagent": "^6.1.0",
     "xlsx": "^0.16.6"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
-    "@types/gulp": "^4.0.6",
-    "@types/jest": "^26.0.14",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
-    "@types/react-test-renderer": "^16.9.3",
+    "@types/styled-components": "^5.1.3",
     "@types/superagent": "^4.1.10",
-    "babel-jest": "^26.3.0",
     "copyfiles": "^2.3.0",
-    "jest": "^26.4.2",
-    "react-test-renderer": "^16.13.1",
-    "ts-jest": "^26.4.0",
+    "react-scripts": "3.4.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
