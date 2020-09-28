@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 export interface SimpleTheme {
     white: string;
@@ -26,6 +27,18 @@ export let simpleDarkTheme: SimpleTheme = {
     black: "#EDEDED",
 }
 
+export let Center = styled.div`
+  text-align: center;
+`;
+
+export let Left = styled.div`
+  float: left;
+`;
+
+export let Right = styled.div`
+  float: right;
+`;
+
 export let H1 = styled.h1`
   font-size: 2.0em;
   text-align: center;
@@ -47,5 +60,16 @@ export let P = styled.p`
 export let Section = styled.section`
   padding: 4em;
   background: ${props => (props.theme as SimpleTheme).white};
+  border: 2px solid ${props => (props.theme as SimpleTheme).black};
+  border-radius: 5px;
+`;
+
+export let Button = styled.button`
+  color: ${props => (props.theme as SimpleTheme).black};
+  background: ${props => (props.theme as SimpleTheme).white};
   border: 1px solid ${props => (props.theme as SimpleTheme).black};
+
+  margin: 0.5em;
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
 `;

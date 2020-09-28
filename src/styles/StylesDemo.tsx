@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {ThemeProvider} from "styled-components";
-import {H1, H2, P, Section, simpleDarkTheme, simpleLightTheme} from "./SimpleTheme";
+import {Button, H1, H2, P, Section, simpleDarkTheme, simpleLightTheme} from "./SimpleTheme";
+import {SimpleRow} from "./SimpleRow";
 
 export class StylesDemo extends React.Component<any> {
     render() {
@@ -8,20 +9,55 @@ export class StylesDemo extends React.Component<any> {
             <Fragment>
                 <Section>
                     <H1>
-                        宋代：李之仪
+                        一级标题
                     </H1>
 
                     <H2>
-                        卜算子·我住长江头
+                        二级标题
                     </H2>
 
                     <P>
-                        我住长江头，君住长江尾。日日思君不见君，共饮长江水。
+                        段落
                     </P>
 
-                    <P>
-                        此水几时休，此恨何时已。只愿君心似我心，定不负相思意。
-                    </P>
+                    <SimpleRow
+                        left={
+                            <Fragment>
+                                <Button>
+                                    左对齐1
+                                </Button>
+                                <Button>
+                                    左对齐2
+                                </Button>
+                                <Button>
+                                    左对齐3
+                                </Button>
+                            </Fragment>
+                        }
+                        right={
+                            <Fragment>
+                                <Button>
+                                    右对齐1
+                                </Button>
+                                <Button>
+                                    右对齐2
+                                </Button>
+                                <Button>
+                                    右对齐3
+                                </Button>
+                            </Fragment>
+                        }
+                    >
+                        <Button>
+                            居中1
+                        </Button>
+                        <Button>
+                            居中2
+                        </Button>
+                        <Button>
+                            居中3
+                        </Button>
+                    </SimpleRow>
                 </Section>
             </Fragment>
         );
