@@ -1,7 +1,6 @@
 import React from "react";
 import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
 import {SimpleListAddFormState} from "./SimpleListAddFormState";
-import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
 
 export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
@@ -56,12 +55,13 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
                 &nbsp;&nbsp;
 
-                <SimpleButton
+                <button
+                    className="simple-button"
                     type="submit"
                     disabled={this.props.options?.[this.state.selectedIndex] === undefined}
                 >
                     添加
-                </SimpleButton>
+                </button>
             </form>
         );
     }

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {SimpleRowProps} from "./SimpleRowProps";
 
+// TODO: to be removed
 export class SimpleRow extends Component<SimpleRowProps, any> {
     render() {
         return (

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {SimpleFormProps} from "./SimpleFormProps";
 import {SimpleFormState} from "./SimpleFormState";
-import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
 import {SimpleRow} from "../../../styles/SimpleRow/SimpleRow";
 
 export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
@@ -42,7 +41,12 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                 }
 
                 <SimpleRow>
-                    <SimpleButton type="submit">{this.props.submitButtonText ?? "提交"}</SimpleButton>
+                    <button
+                        className="simple-button"
+                        type="submit"
+                    >
+                        {this.props.submitButtonText ?? "提交"}
+                    </button>
                 </SimpleRow>
             </form>
         );

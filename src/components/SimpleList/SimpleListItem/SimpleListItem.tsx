@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
 import {SimpleRow} from "../../../styles/SimpleRow/SimpleRow";
-import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: string) {
@@ -34,9 +33,12 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     )
                 }
 
-                <SimpleButton onClick={() => this.props.onRemove(this.props.index)}>
+                <button
+                    className="simple-button"
+                    onClick={() => this.props.onRemove(this.props.index)}
+                >
                     删除
-                </SimpleButton>
+                </button>
             </SimpleRow>
         );
     }
