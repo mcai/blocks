@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import {SimpleNavbarProps} from "./SimpleNavbarProps";
 
-import "./SimpleNavbar.scss";
-
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
     render() {
         return (
