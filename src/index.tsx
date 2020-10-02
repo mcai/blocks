@@ -9,12 +9,7 @@ import {SimpleFormDemo} from "./apps/SimpleFormDemo/SimpleFormDemo";
 ReactDOM.render(
     <React.StrictMode>
         <Fragment>
-            <SimpleFormDemo
-                initialValues={{
-                    "userId": "test1",
-                    "nickName": "Hello world"
-                }}
-            />
+            <SimpleFormDemo/>
             <SimpleTodoApp/>
             <StylesDemo/>
         </Fragment>
