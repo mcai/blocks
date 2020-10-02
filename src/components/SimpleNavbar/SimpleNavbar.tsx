@@ -1,75 +1,68 @@
 import React, {Component} from "react";
-import styled from "styled-components";
-import {SimpleTheme} from "../../styles/SimpleTheme/SimpleTheme";
 import {SimpleNavbarProps} from "./SimpleNavbarProps";
+
+import "./SimpleNavbar.scss";
+
+function SimpleNavbarClass(props: any) {
+    return (
+        <ul className={"SimpleNavbar"}>
+            {props.children}
+        </ul>
+    );
+}
+
+function SimpleNavbarBrandClass(props: any) {
+    return (
+        <li className={"SimpleNavbarBrand"}>
+            {props.children}
+        </li>
+    );
+}
+
+class SimpleNavDropDownItemClass extends Component<any> {
+    render() {
+        return (
+            <div className={"SimpleNavDropDownItem"}>
+                {this.props.children}
+            </div>
+        );
+    }
+}
+
+function SimpleDropDownContentClass(props: any) {
+    return (
+        <div className={"SimpleDropDownContent"}>
+            {props.children}
+        </div>
+    );
+}
+
+function SimpleNavDropdownClass(props: any) {
+    return (
+        <li className={"SimpleNavDropdown"}>
+            {props.children}
+        </li>
+    );
+}
+
+function SimpleNavbarBrandItemClass(props: any) {
+    return (
+        <a className={"SimpleNavbarBrandItem"}>
+            {props.children}
+        </a>
+    );
+}
+
+function SimpleDropDownContentItemClass(props: any) {
+    return (
+        <a className={"SimpleDropDownContentItem"}>
+            {props.children}
+        </a>
+    );
+}
 
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
     render() {
-        let SimpleNavbarClass = styled.ul`
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          background-color: ${props => (props.theme as SimpleTheme).DarkBackground};
-        `;
-
-        let SimpleNavbarBrandClass = styled.li`
-          float: left;
-          text-decoration: none!important;
-        `;
-
-        let SimpleNavDropDownItemClass = styled.div`
-          display: inline-block;
-          color: ${props => (props.theme as SimpleTheme).LightBackground};
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none!important;
-        `;
-
-        let SimpleDropDownContentClass = styled.div`
-          display: none;
-          position: absolute;
-          background-color: ${props => (props.theme as SimpleTheme).LightBackground};
-          min-width: 160px;
-          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-          z-index: 1;
-        `;
-
-        let SimpleNavDropdownClass = styled.li`
-          display: inline-block;
-          &:hover {
-            color: ${props => (props.theme as SimpleTheme).LightBackground};
-            background-color: ${props => (props.theme as SimpleTheme).DarkForeground};
-          }
-          &:hover ${SimpleDropDownContentClass} {
-            display: block;
-          }
-        `;
-
-        let SimpleNavbarBrandItemClass = styled.a`
-          display: inline-block;
-          color: ${props => (props.theme as SimpleTheme).LightBackground};
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none!important;
-          &:hover {
-            color: ${props => (props.theme as SimpleTheme).LightBackground};
-            background-color: ${props => (props.theme as SimpleTheme).DarkForeground};
-          }
-        `;
-
-        let SimpleDropDownContentItemClass = styled.a`
-          display: block;
-          color: ${props => (props.theme as SimpleTheme).DarkBackground};
-          text-align: left;
-          padding: 12px 16px;
-          text-decoration: none!important;
-          &:hover {
-            color: ${props => (props.theme as SimpleTheme).LightBackground};
-            background-color: ${props => (props.theme as SimpleTheme).LightForeground};
-          }
-        `;
-
         return (
             <SimpleNavbarClass>
                 <SimpleNavbarBrandClass>
