@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import React from "react";
 
 export interface SimpleTheme {
@@ -24,6 +23,8 @@ export let simpleTheme2: SimpleTheme = {
     DarkForeground: "#EB4227",
     DarkBackground: "#1E2827",
 }
+
+export let SimpleThemeContext = React.createContext(simpleTheme1);
 
 export function SimpleCenter(props: any) {
     return (
@@ -61,29 +62,93 @@ export function SimpleRight(props: any) {
     );
 }
 
-export let SimpleH1 = styled.h1`
-  font-size: 2.0em;
-  color: ${props => (props.theme as SimpleTheme).DarkForeground};
-`;
+export function SimpleH1(props: any) {
+    return (
+        <SimpleThemeContext.Consumer>
+            {
+                theme => (
+                    <h1
+                        style={{
+                            fontSize: "2.0em",
+                            color: theme.DarkForeground
+                        }}
+                    >
+                        {props.children}
+                    </h1>
+                )
+            }
+        </SimpleThemeContext.Consumer>
+    );
+}
 
-export let SimpleH2 = styled.h2`
-  font-size: 1.5em;
-  color: ${props => (props.theme as SimpleTheme).DarkForeground};
-`;
+export function SimpleH2(props: any) {
+    return (
+        <SimpleThemeContext.Consumer>
+            {
+                theme => (
+                    <h2
+                        style={{
+                            fontSize: "1.5em",
+                            color: theme.DarkForeground
+                        }}
+                    >
+                        {props.children}
+                    </h2>
+                )
+            }
+        </SimpleThemeContext.Consumer>
+    );
+}
 
-export let SimpleP = styled.p`
-  font-size: 1.0em;
-  color: ${props => (props.theme as SimpleTheme).Main};
-`;
+export function SimpleP(props: any) {
+    return (
+        <SimpleThemeContext.Consumer>
+            {
+                theme => (
+                    <p
+                        style={{
+                            fontSize: "1.0em",
+                            color: theme.Main
+                        }}
+                    >
+                        {props.children}
+                    </p>
+                )
+            }
+        </SimpleThemeContext.Consumer>
+    );
+}
 
-export let SimpleSpace = styled.div`
-  padding: 0.5em;
-`;
+export function SimpleSpace(props: any) {
+    return (
+        <div
+            style={{
+                padding: "0.5em"
+            }}
+        >
+            {props.children}
+        </div>
+    );
+}
 
-export let SimpleContainer = styled.div`
-  padding: 1em;
-  margin: 1em;
-  background: ${props => (props.theme as SimpleTheme).LightBackground};
-  border: 1px solid ${props => (props.theme as SimpleTheme).DarkForeground};
-  border-radius: 5px;
-`;
+export function SimpleContainer(props: any) {
+    return (
+        <SimpleThemeContext.Consumer>
+            {
+                theme => (
+                    <div
+                        style={{
+                            padding: "1em",
+                            margin: "1em",
+                            background: `${theme.LightBackground}`,
+                            border: `1px solid ${theme.DarkForeground}`,
+                            borderRadius: "5px"
+                        }}
+                    >
+                        {props.children}
+                    </div>
+                )
+            }
+        </SimpleThemeContext.Consumer>
+    );
+}

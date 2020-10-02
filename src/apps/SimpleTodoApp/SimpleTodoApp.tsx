@@ -4,14 +4,13 @@ import {SimpleTodoAppState} from "./SimpleTodoAppState";
 import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
 import {SimpleList} from "../../components/SimpleList/SimpleList";
-import {simpleTheme2} from "../../styles/SimpleTheme/SimpleTheme";
-import {ThemeProvider} from "styled-components";
+import {simpleTheme2, SimpleThemeContext} from "../../styles/SimpleTheme/SimpleTheme";
 import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
         return (
-            <ThemeProvider theme={simpleTheme2}>
+            <SimpleThemeContext.Provider value={simpleTheme2}>
                 <SimpleNavbar
                     brand={{
                         title: "Simple TODOs",
@@ -96,7 +95,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         href: ""
                     }
                 }/>
-            </ThemeProvider>
+            </SimpleThemeContext.Provider>
         );
     }
 }
