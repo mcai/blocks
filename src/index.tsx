@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import "./Simple.scss";
@@ -11,11 +11,11 @@ import {SimpleFormDemo} from "./apps/SimpleFormDemo/SimpleFormDemo";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Fragment>
+        <div className="SimpleTheme1">
             <SimpleFormDemo/>
             <SimpleTodoApp/>
             <StylesDemo/>
-        </Fragment>
+        </div>
     </React.StrictMode>,
     document.getElementById('root')
 );

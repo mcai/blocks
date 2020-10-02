@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {SimpleFormProps} from "./SimpleFormProps";
 import {SimpleFormState} from "./SimpleFormState";
 import {SimpleButton} from "../../../styles/SimpleButton/SimpleButton";
