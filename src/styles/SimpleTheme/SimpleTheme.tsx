@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 export interface SimpleTheme {
     LightBackground: string;
@@ -24,17 +25,41 @@ export let simpleTheme2: SimpleTheme = {
     DarkBackground: "#1E2827",
 }
 
-export let SimpleCenter = styled.div`
-  text-align: center;
-`;
+export function SimpleCenter(props: any) {
+    return (
+        <div
+            style={{
+                textAlign: "center"
+            }}
+        >
+            {props.children}
+        </div>
+    );
+}
 
-export let SimpleLeft = styled.div`
-  float: left;
-`;
+export function SimpleLeft(props: any) {
+    return (
+        <div
+            style={{
+                float: "left"
+            }}
+        >
+            {props.children}
+        </div>
+    );
+}
 
-export let SimpleRight = styled.div`
-  float: right;
-`;
+export function SimpleRight(props: any) {
+    return (
+        <div
+            style={{
+                float: "right"
+            }}
+        >
+            {props.children}
+        </div>
+    );
+}
 
 export let SimpleH1 = styled.h1`
   font-size: 2.0em;
