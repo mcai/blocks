@@ -1,16 +1,15 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {SimpleTodoAppProps} from "./SimpleTodoAppProps";
 import {SimpleTodoAppState} from "./SimpleTodoAppState";
 import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
 import {SimpleList} from "../../components/SimpleList/SimpleList";
-import {simpleTheme2, SimpleThemeContext} from "../../styles/SimpleTheme/SimpleTheme";
 import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
         return (
-            <SimpleThemeContext.Provider value={simpleTheme2}>
+            <Fragment>
                 <SimpleNavbar
                     brand={{
                         title: "Simple TODOs",
@@ -95,7 +94,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         href: ""
                     }
                 }/>
-            </SimpleThemeContext.Provider>
+            </Fragment>
         );
     }
 }

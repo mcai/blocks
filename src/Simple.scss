@@ -1,78 +1,132 @@
 @mixin simpleTheme(
   $theme-name,
-  $LightBackground,
-  $LightForeground,
-  $Main,
-  $DarkForeground,
-  $DarkBackground
+  $light-background,
+  $light-foreground,
+  $main,
+  $dark-foreground,
+  $dark-background
 ) {
   .#{$theme-name} {
-    .SimpleNavbar {
+    .simple-center {
+      text-align: center;
+    }
+
+    .simple-left {
+      float: left;
+    }
+
+    .simple-right {
+      float: right;
+    }
+
+    .simple-h1 {
+      font-size: 2.0em;
+      color: $dark-foreground;
+    }
+
+    .simple-h2 {
+      font-size: 1.5em;
+      color: $dark-foreground;
+    }
+
+    .simple-space {
+      padding: 0.5em;
+    }
+
+    .simple-p {
+      font-size: 1.0em;
+      color: $main;
+    }
+
+    .simple-container {
+      padding: 1em;
+      margin: 1em;
+      background: $light-background;
+      border: 1px solid $dark-foreground;
+      border-radius: 5px;
+    }
+
+    .simple-row {
+      padding: 0.5em;
+      margin: 0.5em;
+    }
+
+    .simple-button {
+      color: $light-background;
+      background: $light-foreground;
+      border: 1px solid $light-background;
+
+      margin: 0.5em;
+      padding: 0.25em 0.5em;
+      border-radius: 5px;
+    }
+
+    .simple-navbar {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background: $DarkBackground;
+      background: $dark-background;
     }
 
-    .SimpleNavbarBrand {
+    .simple-navbar-brand {
       float: left;
       text-decoration: none !important;
     }
 
-    .SimpleNavDropDownItem {
+    .simple-dropdownItem {
       display: inline-block;
-      color: $LightBackground;
+      color: $light-background;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none !important;
     }
 
-    .SimpleDropDownContent {
+    .simple-dropdown-content {
       display: none;
       position: absolute;
-      background-color: $LightBackground;
+      background-color: $light-background;
       min-width: 160px;
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       z-index: 1;
     }
 
-    .SimpleNavDropdown {
+    .simple-nav-dropdown {
       display: inline-block;
 
       &:hover {
-        color: $LightBackground;
-        background-color: $DarkForeground;
+        color: $light-background;
+        background-color: $dark-foreground;
       }
 
-      &:hover .SimpleDropDownContent {
+      &:hover .simple-dropdown-content {
         display: block;
       }
     }
 
-    .SimpleNavbarBrandItem {
+    .simple-navbar-brandItem {
       display: inline-block;
-      color: $LightBackground;
+      color: $light-background;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none !important;
 
       &:hover {
-        color: $LightBackground;
-        background-color: $LightForeground;
+        color: $light-background;
+        background-color: $light-foreground;
       }
     }
 
-    .SimpleDropDownContentItem {
+    .simple-dropdown-contentItem {
       display: block;
-      color: $DarkBackground;
+      color: $dark-background;
       text-align: left;
       padding: 12px 16px;
       text-decoration: none !important;
 
       &:hover {
-        color: $LightBackground;
-        background-color: $LightForeground;
+        color: $light-background;
+        background-color: $light-foreground;
       }
     }
   }

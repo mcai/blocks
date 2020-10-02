@@ -1,25 +1,21 @@
 import React, {Component} from "react";
-import {SimpleCenter, SimpleLeft, SimpleRight} from "../SimpleTheme/SimpleTheme";
 import {SimpleRowProps} from "./SimpleRowProps";
 
 export class SimpleRow extends Component<SimpleRowProps, any> {
     render() {
         return (
-            <div style={{
-                padding: "0.5em",
-                margin: "0.5em"
-            }}>
-                <SimpleLeft>
+            <div className="simple-row">
+                <div className="simple-left">
                     {this.props.left}
-                </SimpleLeft>
+                </div>
 
-                <SimpleRight>
+                <div className="simple-right">
                     {this.props.right}
-                </SimpleRight>
+                </div>
 
-                <SimpleCenter>
+                <div className="simple-center">
                     {this.props.children ?? <span>&nbsp;&nbsp;</span>}
-                </SimpleCenter>
+                </div>
             </div>
         );
     }

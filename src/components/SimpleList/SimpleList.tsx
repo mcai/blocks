@@ -6,7 +6,6 @@ import {SimpleListState} from "./SimpleListState";
 import {SimpleListItemType} from "./SimpleListItemType";
 import {SimpleListItem} from "./SimpleListItem/SimpleListItem";
 import {SimpleRow} from "../../styles/SimpleRow/SimpleRow";
-import {SimpleContainer} from "../../styles/SimpleTheme/SimpleTheme";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     constructor(props: SimpleListProps) {
@@ -53,7 +52,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     render() {
         return(
             <Fragment>
-                <SimpleContainer>
+                <div className="simple-container">
                     <SimpleRow
                         left={(
                             <p>
@@ -67,9 +66,9 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                             />
                         }
                     />
-                </SimpleContainer>
+                </div>
 
-                <SimpleContainer>
+                <div className="simple-container">
                     {
                         this.state.items?.map((item: any, index: number) => (
                             <SimpleListItem
@@ -81,7 +80,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                             />
                         ))
                     }
-                </SimpleContainer>
+                </div>
             </Fragment>
         );
     }

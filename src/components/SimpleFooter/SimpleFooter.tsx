@@ -1,11 +1,10 @@
 import React, {Component} from "react";
 import {SimpleFooterProps} from "./SimpleFooterProps";
-import {SimpleCenter} from "../../styles/SimpleTheme/SimpleTheme";
 
 export class SimpleFooter extends Component<SimpleFooterProps, any> {
     render(): React.ReactNode {
         return (
-            <SimpleCenter>
+            <div className="simple-center">
                 {this.props.brand.title}
 
                 {
@@ -13,7 +12,7 @@ export class SimpleFooter extends Component<SimpleFooterProps, any> {
                 }
 
                 {this.props.extra}
-            </SimpleCenter>
+            </div>
         );
     }
 }

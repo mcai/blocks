@@ -4,9 +4,9 @@ import {SimpleNavbarProps} from "./SimpleNavbarProps";
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
     render() {
         return (
-            <ul className="SimpleNavbar">
-                <li className="SimpleNavbarBrand">
-                    <a className="SimpleNavbarBrandItem" href={this.props.brand.href}>{this.props.brand.title}</a>
+            <ul className="simple-navbar">
+                <li className="simple-navbar-brand">
+                    <a className="simple-navbar-brandItem" href={this.props.brand.href}>{this.props.brand.title}</a>
                 </li>
 
                 {
@@ -14,13 +14,13 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                         .filter(section => section.visible === undefined || section.visible)
                         .map(section => {
                             return (
-                                <li className="SimpleNavDropdown" key={section.id} style={{
+                                <li className="simple-nav-dropdown" key={section.id} style={{
                                     float: section.rightAligned ? "right" : "left"
                                 }}>
-                                    <div className="SimpleNavDropDownItem">
+                                    <div className="simple-dropdownItem">
                                         {section.title}
                                     </div>
-                                    <div className="SimpleDropDownContent">
+                                    <div className="simple-dropdown-content">
                                         {
                                             section.items
                                                 .filter(item => item.visible === undefined || item.visible)
