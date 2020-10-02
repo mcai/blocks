@@ -6,9 +6,9 @@ import "./SimpleNavbar.scss";
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
     render() {
         return (
-            <ul className={"SimpleNavbar"}>
-                <li className={"SimpleNavbarBrand"}>
-                    <a className={"SimpleNavbarBrandItem"} href={this.props.brand.href}>{this.props.brand.title}</a>
+            <ul className="SimpleNavbar">
+                <li className="SimpleNavbarBrand">
+                    <a className="SimpleNavbarBrandItem" href={this.props.brand.href}>{this.props.brand.title}</a>
                 </li>
 
                 {
@@ -16,13 +16,13 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                         .filter(section => section.visible === undefined || section.visible)
                         .map(section => {
                             return (
-                                <li className={"SimpleNavDropdown"} key={section.id} style={{
+                                <li className="SimpleNavDropdown" key={section.id} style={{
                                     float: section.rightAligned ? "right" : "left"
                                 }}>
-                                    <div className={"SimpleNavDropDownItem"}>
+                                    <div className="SimpleNavDropDownItem">
                                         {section.title}
                                     </div>
-                                    <div className={"SimpleDropDownContent"}>
+                                    <div className="SimpleDropDownContent">
                                         {
                                             section.items
                                                 .filter(item => item.visible === undefined || item.visible)
