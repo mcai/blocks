@@ -6,7 +6,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
         return (
             <ul className="simple-navbar">
                 <li className="simple-navbar-brand">
-                    <a className="simple-navbar-brandItem" href={this.props.brand.href}>{this.props.brand.title}</a>
+                    <a className="simple-navbar-brand-item" href={this.props.brand.href}>{this.props.brand.title}</a>
                 </li>
 
                 {
@@ -17,7 +17,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                                 <li className="simple-nav-dropdown" key={section.id} style={{
                                     float: section.rightAligned ? "right" : "left"
                                 }}>
-                                    <div className="simple-dropdownItem">
+                                    <div className="simple-dropdown-item">
                                         {section.title}
                                     </div>
                                     <div className="simple-dropdown-content">
@@ -25,7 +25,7 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
                                             section.items
                                                 .filter(item => item.visible === undefined || item.visible)
                                                 .map(item => (
-                                                    <a className={"SimpleDropDownContentItem"}
+                                                    <a className="simple-dropdown-content-item"
                                                         href={item.href}
                                                         onClick={item.onClick}
                                                         key={item.key}
