@@ -22,7 +22,7 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
                     >
                         {
                             this.props.options.map(option => (
-                                <option value={option.value}>{option.text ?? option.value}</option>
+                                <option key={option.value} value={option.value}>{option.text ?? option.value}</option>
                             ))
                         }
                     </select>
