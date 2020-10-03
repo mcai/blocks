@@ -5,6 +5,7 @@ import {SimpleFormBooleanInput} from "../../forms/SimpleForm/Fields/SimpleFormBo
 import {SimpleFormNumberInput} from "../../forms/SimpleForm/Fields/SimpleFormNumberInput/SimpleFormNumberInput";
 import {SimpleFormTextAreaInput} from "../../forms/SimpleForm/Fields/SimpleFormTextAreaInput/SimpleFormTextAreaInput";
 import {SimpleFormSelectInput} from "../../forms/SimpleForm/Fields/SimpleFormSelectInput/SimpleFormSelectInput";
+import {SimpleFormFileInput} from "../../forms/SimpleForm/Fields/SimpleFormFileInput/SimpleFormFileInput";
 
 export class SimpleFormDemo extends Component<any, any> {
     render() {
@@ -37,6 +38,7 @@ export class SimpleFormDemo extends Component<any, any> {
                         text: "Female"
                     }
                 ]}/>
+                <SimpleFormFileInput label={"Avatar"} name={"avatar"}/>
             </SimpleForm>
         );
     }
