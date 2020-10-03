@@ -3,7 +3,7 @@ import {SimpleFormFileInputProps} from "./SimpleFormFileInputProps";
 
 export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any> {
     onUpdate(value: File | undefined) {
-        if (value == undefined) {
+        if (value === undefined) {
             return;
         }
 
