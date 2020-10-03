@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
-import {SimpleRow} from "../../../styles/SimpleRow/SimpleRow";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: string) {
@@ -11,35 +10,37 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
     render() {
         return (
-            <SimpleRow>
-                <b>{this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}</b>
+            <div className="simple-row">
+                <div className="simple-center">
+                    <b>{this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}</b>
 
-                {
-                    Object.keys(this.props.item.values).map(key =>
-                        <Fragment
-                            key={key}
-                        >
-                            <span>{key}: </span>
+                    {
+                        Object.keys(this.props.item.values).map(key =>
+                            <Fragment
+                                key={key}
+                            >
+                                <span>{key}: </span>
 
-                            <input
-                                type="text"
-                                placeholder={key}
-                                value={this.props.item.values[key]}
-                                onChange={(e) => this.onUpdate(key, e.target.value)}
-                            />
+                                <input
+                                    type="text"
+                                    placeholder={key}
+                                    value={this.props.item.values[key]}
+                                    onChange={(e) => this.onUpdate(key, e.target.value)}
+                                />
 
-                            &nbsp;&nbsp;
-                        </Fragment>
-                    )
-                }
+                                &nbsp;&nbsp;
+                            </Fragment>
+                        )
+                    }
 
-                <button
-                    className="simple-button"
-                    onClick={() => this.props.onRemove(this.props.index)}
-                >
-                    删除
-                </button>
-            </SimpleRow>
+                    <button
+                        className="simple-button"
+                        onClick={() => this.props.onRemove(this.props.index)}
+                    >
+                        删除
+                    </button>
+                </div>
+            </div>
         );
     }
 }

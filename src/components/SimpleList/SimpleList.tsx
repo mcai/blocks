@@ -5,7 +5,6 @@ import {SimpleListProps} from "./SimpleListProps";
 import {SimpleListState} from "./SimpleListState";
 import {SimpleListItemType} from "./SimpleListItemType";
 import {SimpleListItem} from "./SimpleListItem/SimpleListItem";
-import {SimpleRow} from "../../styles/SimpleRow/SimpleRow";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     constructor(props: SimpleListProps) {
@@ -53,19 +52,22 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         return(
             <Fragment>
                 <div className="simple-container">
-                    <SimpleRow
-                        left={(
+                    <div className="simple-row">
+                        <div className="simple-left">
                             <p>
                                 共 {this.state.items?.length ?? 0} 项
                             </p>
-                        )}
-                        right={
+                        </div>
+                        <div className="simple-right">
                             <SimpleListAddForm
                                 options={this.props.addFormOptions}
                                 onAdd={(item: SimpleListItemType) => this.onAdd(item)}
                             />
-                        }
-                    />
+                        </div>
+                        <div className="simple-center">
+                            &nbsp;&nbsp;
+                        </div>
+                    </div>
                 </div>
 
                 <div className="simple-container">
