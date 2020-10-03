@@ -46,7 +46,28 @@
       border-radius: 5px;
     }
 
+    .simple-container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
     .simple-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      padding: 0.5em;
+      margin: 0.5em;
+    }
+
+    .simple-col {
+      background: $light-background;
+      border: 1px solid $dark-foreground;
+      border-radius: 5px;
+
       padding: 0.5em;
       margin: 0.5em;
     }
