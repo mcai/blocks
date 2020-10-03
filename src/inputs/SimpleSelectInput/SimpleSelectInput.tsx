@@ -17,7 +17,7 @@ export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
                         <Field as="select" name={this.props.name}>
                             {
                                 this.props.options.map(option => (
-                                    <option value={option.value}>{option.text}</option>
+                                    <option value={option.value}>{option.text ?? option.value}</option>
                                 ))
                             }
                         </Field>

@@ -4,6 +4,7 @@ import {SimpleFormTextInput} from "../../forms/SimpleForm/Fields/SimpleFormTextI
 import {SimpleFormBooleanInput} from "../../forms/SimpleForm/Fields/SimpleFormBooleanInput/SimpleFormBooleanInput";
 import {SimpleFormNumberInput} from "../../forms/SimpleForm/Fields/SimpleFormNumberInput/SimpleFormNumberInput";
 import {SimpleFormTextAreaInput} from "../../forms/SimpleForm/Fields/SimpleFormTextAreaInput/SimpleFormTextAreaInput";
+import {SimpleFormSelectInput} from "../../forms/SimpleForm/Fields/SimpleFormSelectInput/SimpleFormSelectInput";
 
 export class SimpleFormDemo extends Component<any, any> {
     render() {
@@ -14,7 +15,8 @@ export class SimpleFormDemo extends Component<any, any> {
                     "nickName": "Hello world",
                     "rememberPassword": true,
                     "count": 3,
-                    "description": "sample description"
+                    "description": "sample description",
+                    "gender": "female"
                 }}
                 onSubmit={values => {
                     alert(`SimpleFormDemo.onSubmit: values=${JSON.stringify(values)}`);
@@ -25,6 +27,16 @@ export class SimpleFormDemo extends Component<any, any> {
                 <SimpleFormBooleanInput label={"Remember Password"} name={"rememberPassword"}/>
                 <SimpleFormNumberInput label={"Count"} name={"count"}/>
                 <SimpleFormTextAreaInput label={"Description"} name={"description"}/>
+                <SimpleFormSelectInput label={"Gender"} name={"gender"} options={[
+                    {
+                        value: "male",
+                        text: "Male"
+                    },
+                    {
+                        value: "female",
+                        text: "Female"
+                    }
+                ]}/>
             </SimpleForm>
         );
     }
