@@ -9,8 +9,6 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
         this.state = {
             ...this.props.initialValues
         };
-
-        console.log(`SimpleForm.constructor: this.props.state=${JSON.stringify(this.state)}`);
     }
 
     private onUpdate(name: string, value: string) {
