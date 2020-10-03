@@ -13,16 +13,15 @@ export class SimpleFormTextInput extends Component<SimpleFormTextInputProps, any
 
         return (
             <div className="simple-row">
-                <div className="simple-center">
-                    <span>{this.props.label}: </span>
+                <span className="simple-input-label">{this.props.label}: </span>
 
-                    <input
-                        type={this.props.password ? "password" : "text"}
-                        placeholder={this.props.placeholder}
-                        value={this.props.values?.[this.props.name]}
-                        onChange={(e) => this.onUpdate(e.target.value)}
-                    />
-                </div>
+                <input
+                    className="simple-input"
+                    type={this.props.password ? "password" : "text"}
+                    placeholder={this.props.placeholder}
+                    value={this.props.values?.[this.props.name]}
+                    onChange={(e) => this.onUpdate(e.target.value)}
+                />
             </div>
         );
     }

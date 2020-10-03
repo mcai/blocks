@@ -51,22 +51,20 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     render() {
         return(
             <Fragment>
-                <div className="simple-card">
-                    <div className="simple-row">
-                        <div className="simple-left">
-                            <p>
-                                共 {this.state.items?.length ?? 0} 项
-                            </p>
-                        </div>
-                        <div className="simple-right">
-                            <SimpleListAddForm
-                                options={this.props.addFormOptions}
-                                onAdd={(item: SimpleListItemType) => this.onAdd(item)}
-                            />
-                        </div>
-                        <div className="simple-center">
-                            &nbsp;&nbsp;
-                        </div>
+                <div className="simple-section">
+                    <div className="simple-left">
+                        <p>
+                            共 {this.state.items?.length ?? 0} 项
+                        </p>
+                    </div>
+                    <div className="simple-right">
+                        <SimpleListAddForm
+                            options={this.props.addFormOptions}
+                            onAdd={(item: SimpleListItemType) => this.onAdd(item)}
+                        />
+                    </div>
+                    <div className="simple-center">
+                        &nbsp;&nbsp;
                     </div>
                 </div>
 

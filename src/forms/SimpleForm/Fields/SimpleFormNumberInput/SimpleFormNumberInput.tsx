@@ -13,15 +13,14 @@ export class SimpleFormNumberInput extends Component<SimpleFormNumberInputProps,
 
         return (
             <div className="simple-row">
-                <div className="simple-center">
-                    <span>{this.props.label}: </span>
+                <span className="simple-input-label">{this.props.label}: </span>
 
-                    <input
-                        type="number"
-                        value={this.props.values?.[this.props.name]}
-                        onChange={(e) => this.onUpdate(e.target.value)}
-                    />
-                </div>
+                <input
+                    className="simple-input"
+                    type="number"
+                    value={this.props.values?.[this.props.name]}
+                    onChange={(e) => this.onUpdate(e.target.value)}
+                />
             </div>
         );
     }

@@ -10,7 +10,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
     render() {
         return (
-            <div className="simple-row">
+            <div className="simple-section">
                 <div className="simple-center">
                     <b>{this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}</b>
 

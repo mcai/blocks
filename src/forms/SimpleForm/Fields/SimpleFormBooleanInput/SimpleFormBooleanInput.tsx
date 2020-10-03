@@ -13,15 +13,14 @@ export class SimpleFormBooleanInput extends Component<SimpleFormBooleanInputProp
 
         return (
             <div className="simple-row">
-                <div className="simple-center">
-                    <span>{this.props.label}: </span>
+                <span className="simple-input-label">{this.props.label}: </span>
 
-                    <input
-                        type="checkbox"
-                        checked={this.props.values?.[this.props.name]}
-                        onChange={(e) => this.onUpdate(e.target.checked)}
-                    />
-                </div>
+                <input
+                    className="simple-input"
+                    type="checkbox"
+                    checked={this.props.values?.[this.props.name]}
+                    onChange={(e) => this.onUpdate(e.target.checked)}
+                />
             </div>
         );
     }

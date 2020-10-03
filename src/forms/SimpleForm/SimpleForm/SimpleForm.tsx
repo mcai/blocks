@@ -38,7 +38,9 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                 }
 
                 <div className="simple-row">
-                    <div className="simple-center">
+                    <span className="simple-input-label">&nbsp;</span>
+
+                    <div className="simple-input">
                         <button
                             className="simple-button"
                             type="submit"

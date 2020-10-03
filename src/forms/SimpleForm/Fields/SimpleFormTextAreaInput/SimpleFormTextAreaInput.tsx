@@ -13,15 +13,14 @@ export class SimpleFormTextAreaInput extends Component<SimpleFormTextAreaInputPr
 
         return (
             <div className="simple-row">
-                <div className="simple-center">
-                    <span>{this.props.label}: </span>
+                <span className="simple-input-label">{this.props.label}: </span>
 
-                    <textarea
-                        placeholder={this.props.placeholder}
-                        value={this.props.values?.[this.props.name]}
-                        onChange={(e) => this.onUpdate(e.target.value)}
-                    />
-                </div>
+                <textarea
+                    className="simple-input"
+                    placeholder={this.props.placeholder}
+                    value={this.props.values?.[this.props.name]}
+                    onChange={(e) => this.onUpdate(e.target.value)}
+                />
             </div>
         );
     }

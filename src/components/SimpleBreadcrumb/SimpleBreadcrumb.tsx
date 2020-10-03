@@ -4,7 +4,7 @@ import {SimpleBreadcrumbProps} from "./SimpleBreadcrumbProps";
 export class SimpleBreadcrumb extends Component<SimpleBreadcrumbProps, any> {
     render() {
         return (
-            <div className="simple-row">
+            <div className="simple-section">
                 <div className="simple-left">
                     {
                         this.props.items.map((item, index) => (

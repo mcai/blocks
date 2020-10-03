@@ -13,20 +13,19 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
 
         return (
             <div className="simple-row">
-                <div className="simple-center">
-                    <span>{this.props.label}: </span>
+                <span className="simple-input-label">{this.props.label}: </span>
 
-                    <select
-                        value={this.props.values?.[this.props.name]}
-                        onChange={(e) => this.onUpdate(e.target.value)}
-                    >
-                        {
-                            this.props.options.map(option => (
-                                <option key={option.value} value={option.value}>{option.text ?? option.value}</option>
-                            ))
-                        }
-                    </select>
-                </div>
+                <select
+                    className="simple-input"
+                    value={this.props.values?.[this.props.name]}
+                    onChange={(e) => this.onUpdate(e.target.value)}
+                >
+                    {
+                        this.props.options.map(option => (
+                            <option key={option.value} value={option.value}>{option.text ?? option.value}</option>
+                        ))
+                    }
+                </select>
             </div>
         );
     }

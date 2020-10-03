@@ -24,14 +24,13 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
         return (
             <div className="simple-row">
-                <div className="simple-center">
-                    <span>{this.props.label}: </span>
+                <span className="simple-input-label">{this.props.label}: </span>
 
-                    <input
-                        type="file"
-                        onChange={(e) => this.onUpdate(e.target.files?.[0])}
-                    />
-                </div>
+                <input
+                    className="simple-input"
+                    type="file"
+                    onChange={(e) => this.onUpdate(e.target.files?.[0])}
+                />
             </div>
         );
     }
