@@ -7,6 +7,10 @@
   $dark-background
 ) {
   .#{$theme-name} {
+    * {
+      box-sizing: border-box;
+    }
+
     .simple-center {
       text-align: center;
     }
