@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SimpleTextFieldInputProps {
+export interface SimpleTextAreaInputProps {
     label: React.ReactNode;
     name: string;
     placeholder?: string

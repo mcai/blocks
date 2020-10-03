@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from "react";
-import {SimpleTextFieldInputProps} from "./SimpleTextFieldInputProps";
+import {SimpleTextAreaInputProps} from "./SimpleTextAreaInputProps";
 import {Field} from "formik";
 import {Col, Row} from "react-bootstrap";
 
-export class SimpleTextFieldInput extends Component<SimpleTextFieldInputProps, any> {
+export class SimpleTextAreaInput extends Component<SimpleTextAreaInputProps, any> {
     render() {
         return (
             <Fragment>
