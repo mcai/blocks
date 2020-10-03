@@ -6,7 +6,7 @@ import "./Simple.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {SimpleTodoApp} from "./apps/SimpleTodoApp/SimpleTodoApp";
-import {StylesDemo} from "./styles/StylesDemo";
+import {StylesDemo} from "./apps/StylesDemo/StylesDemo";
 import {SimpleFormDemo} from "./apps/SimpleFormDemo/SimpleFormDemo";
 
 ReactDOM.render(
