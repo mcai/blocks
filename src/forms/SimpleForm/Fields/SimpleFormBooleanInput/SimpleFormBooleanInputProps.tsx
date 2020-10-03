@@ -1,13 +1,9 @@
 import React from "react";
 
-export interface SimpleFormTextInputProps {
+export interface SimpleFormBooleanInputProps {
     label: React.ReactNode;
 
     name: string;
-
-    placeholder?: string;
-
-    password?: boolean;
 
     values?: { [name: string]: any };
 

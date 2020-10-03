@@ -1,3 +1,3 @@
 export interface SimpleFormState {
-    [name: string]: string;
+    [name: string]: any;
 }

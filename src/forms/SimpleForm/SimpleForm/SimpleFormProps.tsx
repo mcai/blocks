@@ -1,9 +1,9 @@
 import React from "react";
 
 export interface SimpleFormProps {
-    initialValues?: { [name: string]: string };
+    initialValues?: { [name: string]: any };
 
-    onSubmit?: (values: { [name: string]: string }) => void;
+    onSubmit?: (values: { [name: string]: any }) => void;
 
     submitButtonText?: string;
 }
