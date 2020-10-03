@@ -51,7 +51,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     render() {
         return(
             <Fragment>
-                <div className="simple-container">
+                <div className="simple-card">
                     <div className="simple-row">
                         <div className="simple-left">
                             <p>
@@ -70,7 +70,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     </div>
                 </div>
 
-                <div className="simple-container">
+                <div className="simple-card">
                     {
                         this.state.items?.map((item: any, index: number) => (
                             <SimpleListItem

@@ -3,7 +3,7 @@ import React, {Fragment} from "react";
 export class StylesDemo extends React.Component<any> {
     render() {
         return (
-            <div className="simple-container simple-row">
+            <div className="simple-card simple-row">
                 <div className="simple-center">
                     <h1 className="simple-h1">
                         一级标题
