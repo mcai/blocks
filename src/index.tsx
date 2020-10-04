@@ -11,7 +11,7 @@ import {SimpleFormDemo} from "./apps/SimpleFormDemo/SimpleFormDemo";
 
 ReactDOM.render(
     <React.StrictMode>
-        <div className="SimpleTheme1">
+        <div className="SimpleTheme3">
             <SimpleFormDemo/>
             <SimpleTodoApp/>
             <StylesDemo/>

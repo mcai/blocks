@@ -119,14 +119,32 @@
       background: $dark-background;
     }
 
-    .simple-navbar-brand {
+    .simple-brand {
       float: left;
       text-decoration: none !important;
+    }
+
+    .simple-brand-item {
+      display: inline-block;
+      color: $light-background;
+      background-color: $light-foreground;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none !important;
+    }
+
+    .simple-dropdown {
+      display: inline-block;
+
+      &:hover .simple-dropdown-content {
+        display: block;
+      }
     }
 
     .simple-dropdown-item {
       display: inline-block;
       color: $light-background;
+      background-color: $light-foreground;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none !important;
@@ -135,52 +153,27 @@
     .simple-dropdown-content {
       display: none;
       position: absolute;
-      background-color: $light-background;
       min-width: 160px;
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       z-index: 1;
     }
 
-    .simple-nav-dropdown {
-      display: inline-block;
-
-      &:hover {
-        color: $light-background;
-        background-color: $dark-foreground;
-      }
-
-      &:hover .simple-dropdown-content {
-        display: block;
-      }
-    }
-
-    .simple-navbar-brand-item {
-      display: inline-block;
-      color: $light-background;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none !important;
-
-      &:hover {
-        color: $light-background;
-        background-color: $light-foreground;
-      }
-    }
-
     .simple-dropdown-content-item {
       display: block;
-      color: $dark-background;
+      color: $light-background;
+      background-color: $light-foreground;
       text-align: left;
       padding: 12px 16px;
       text-decoration: none !important;
 
       &:hover {
-        color: $light-background;
-        background-color: $light-foreground;
+        color: $light-foreground;
+        background-color: $light-background;
       }
     }
   }
 }
 
-@include simpleTheme(SimpleTheme1, #F3F2F4, #6EA5C5, #3C7AB4, #657C9E, #242D57);
+@include simpleTheme(SimpleTheme1, #f3f2f4, #6ea5c5, #3c7ab4, #657c9e, #242D57);
 @include simpleTheme(SimpleTheme2, #F4F4F2, #9390A0, #F19673, #EB4227, #1E2827);
+@include simpleTheme(SimpleTheme3, #FFFFFF, #3850D8, #3850D8, #FFFFFF, #3850D8);
