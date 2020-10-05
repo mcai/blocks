@@ -1,3 +1,3 @@
 export interface SimpleListItemValuesType {
-    [name: string]: string;
+    [name: string]: {label: string, value: any};
 }

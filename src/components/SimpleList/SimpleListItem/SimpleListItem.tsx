@@ -21,12 +21,12 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                             <Fragment
                                 key={key}
                             >
-                                <span>{key}: </span>
+                                <span>{this.props.item.values[key].label}: </span>
 
                                 <input
                                     type="text"
-                                    placeholder={key}
-                                    value={this.props.item.values[key]}
+                                    placeholder={this.props.item.values[key].label}
+                                    value={this.props.item.values[key].value}
                                     onChange={(e) => this.onUpdate(key, e.target.value)}
                                 />
 

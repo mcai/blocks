@@ -82,7 +82,10 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             name: "simpleTodo",
                             description: "Simple TODO",
                             getValuesFunc: () => ({
-                                "content": ""
+                                "content": {
+                                    label: "内容",
+                                    value: ""
+                                }
                             })
                         }
                     ]}
