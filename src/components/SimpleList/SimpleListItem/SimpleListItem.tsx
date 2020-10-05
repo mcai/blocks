@@ -10,10 +10,12 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
     render() {
         return (
-            <div className="simple-section">
-                <div className="simple-center">
-                    <b>{this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}</b>
+            <div className="simple-row">
+                <b className="simple-input-label">
+                    {this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}
+                </b>
 
+                <div className="simple-input">
                     {
                         Object.keys(this.props.item.values).map(key =>
                             <Fragment

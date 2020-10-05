@@ -53,31 +53,33 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             <Fragment>
                 <div className="simple-section">
                     <div className="simple-left">
+                        <p>
+                            共 {this.state.items?.length ?? 0} 项
+                        </p>
+                    </div>
+                    <div className="simple-right">
                         <SimpleListAddForm
                             options={this.props.addFormOptions}
                             onAdd={(item: SimpleListItemType) => this.onAdd(item)}
                         />
-                    </div>
-                    <div className="simple-right">
-                        <p>
-                            共 {this.state.items?.length ?? 0} 项
-                        </p>
                     </div>
                     <div className="simple-center">
                         &nbsp;&nbsp;
                     </div>
                 </div>
 
-                <div className="simple-card">
+                <div className="simple-section">
                     {
                         this.state.items?.map((item: any, index: number) => (
-                            <SimpleListItem
-                                key={index}
-                                item={item}
-                                index={index}
-                                onUpdate={(index1, key, value) => this.onUpdate(index1, key, value)}
-                                onRemove={(index1 => this.onRemove(index1))}
-                            />
+                            <div>
+                                <SimpleListItem
+                                    key={index}
+                                    item={item}
+                                    index={index}
+                                    onUpdate={(index1, key, value) => this.onUpdate(index1, key, value)}
+                                    onRemove={(index1 => this.onRemove(index1))}
+                                />
+                            </div>
                         ))
                     }
                 </div>
