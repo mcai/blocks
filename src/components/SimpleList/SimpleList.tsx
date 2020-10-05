@@ -50,7 +50,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     render() {
         return(
-            <Fragment>
+            <div>
                 <div className="simple-section">
                     <div className="simple-left">
                         <p>
@@ -83,7 +83,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                         ))
                     }
                 </div>
-            </Fragment>
+            </div>
         );
     }
 }
