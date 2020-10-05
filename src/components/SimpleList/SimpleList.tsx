@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {SimpleListAddForm} from "./SimpleListAddForm/SimpleListAddForm";
 
 import {SimpleListProps} from "./SimpleListProps";
@@ -15,26 +15,33 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         };
     }
 
-    getItems(): SimpleListItemType[] | undefined {
-        return this.state.items;
+    componentDidMount() {
+        this.props.onUpdate?.(this.state.items);
     }
 
     private onAdd(item: SimpleListItemType) {
+        let newItems = [...(this.state.items ?? []), item];
+
         this.setState({
-            items: [...(this.state.items ?? []), item]
+            items: newItems
         });
 
         console.log(`SimpleList.onAdd: item=${JSON.stringify(item)}`);
+
+        this.props.onUpdate?.(newItems);
     }
 
     private onUpdate(index: number, key: string, value: string) {
         let newItems = [...(this.state.items ?? [])];
         newItems[index].values[key].value = value;
+
         this.setState({
             items: newItems
         });
 
         console.log(`SimpleList.onUpdate: index=${index}, key=${key}, value=${value}`);
+
+        this.props.onUpdate?.(newItems);
     }
 
     private onRemove(index: number) {
@@ -46,6 +53,8 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         });
 
         console.log(`SimpleList.onRemove: index=${index}`);
+
+        this.props.onUpdate?.(newItems);
     }
 
     render() {
