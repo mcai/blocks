@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
 import {SimpleFormTextInput} from "../../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
 
