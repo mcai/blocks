@@ -13,11 +13,16 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             <Fragment>
                 <div className="simple-row">
                     <b className="simple-input-label">
-                        {this.props.index + 1}. {this.props.item.description} {this.props.item.values ? ": " : ""}
+                        {this.props.index + 1}. {this.props.item.description}
                     </b>
 
                     <div className="simple-input">
-                        &nbsp;
+                        <button
+                            className="simple-button"
+                            onClick={() => this.props.onRemove(this.props.index)}
+                        >
+                            删除
+                        </button>
                     </div>
                 </div>
 
@@ -40,19 +45,6 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                         }
                     )
                 }
-
-                <div className="simple-row">
-                    <span className="simple-input-label">&nbsp;</span>
-
-                    <div className="simple-input">
-                        <button
-                            className="simple-button"
-                            onClick={() => this.props.onRemove(this.props.index)}
-                        >
-                            删除
-                        </button>
-                    </div>
-                </div>
             </Fragment>
         );
     }
