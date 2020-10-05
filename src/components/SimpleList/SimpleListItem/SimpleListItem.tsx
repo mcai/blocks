@@ -35,7 +35,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                                     key: key,
                                     name: key,
                                     values: {
-                                        key: this.props.item.values[key].value
+                                        [key]: this.props.item.values[key].value
                                     },
                                     onUpdate: (name: string, value: any) => {
                                         this.onUpdate(name, value);
