@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
+import {SimpleFormTextInput} from "../../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: string) {
@@ -18,20 +19,19 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 <div className="simple-input">
                     {
                         Object.keys(this.props.item.values).map(key =>
-                            <Fragment
+                            <SimpleFormTextInput
                                 key={key}
-                            >
-                                <span>{this.props.item.values[key].label}: </span>
-
-                                <input
-                                    type="text"
-                                    placeholder={this.props.item.values[key].label}
-                                    value={this.props.item.values[key].value}
-                                    onChange={(e) => this.onUpdate(key, e.target.value)}
-                                />
-
-                                &nbsp;&nbsp;
-                            </Fragment>
+                                label={this.props.item.values[key].label}
+                                name={key}
+                                placeholder={this.props.item.values[key].label}
+                                password={false}
+                                values={{
+                                    key: this.props.item.values[key].value
+                                }}
+                                onUpdate={((name, value) => {
+                                    this.onUpdate(key, value);
+                                })}
+                            />
                         )
                     }
 
