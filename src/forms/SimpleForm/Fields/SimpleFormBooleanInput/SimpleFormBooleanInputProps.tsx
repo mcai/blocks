@@ -8,4 +8,6 @@ export interface SimpleFormBooleanInputProps {
     values?: { [name: string]: any };
 
     onUpdate?: (name: string, value: any) => void;
+
+    readonly?: boolean;
 }

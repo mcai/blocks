@@ -7,4 +7,6 @@ export interface SimpleListProps {
     addFormOptions?: SimpleListAddFormOption[];
 
     onUpdate?: (items?: SimpleListItemType[]) => void;
+
+    readonly?: boolean;
 }

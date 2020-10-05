@@ -3,7 +3,7 @@ import {SimpleListItemProps} from "./SimpleListItemProps";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: any) {
-        this.props.onUpdate(this.props.index, key, value);
+        this.props.onUpdate?.(this.props.index, key, value);
 
         console.log(`SimpleListItem.onUpdate: index=${this.props.index}, key=${key}, value=${value}`);
     }
@@ -17,12 +17,18 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     </b>
 
                     <div className="simple-input">
-                        <button
-                            className="simple-button"
-                            onClick={() => this.props.onRemove(this.props.index)}
-                        >
-                            删除
-                        </button>
+                        {
+                            (this.props.readonly == undefined || !this.props.readonly)
+                                ? (
+                                    <button
+                                        className="simple-button"
+                                        onClick={() => this.props.onRemove?.(this.props.index)}
+                                    >
+                                        删除
+                                    </button>
+                                )
+                                : <span>&nbsp;</span>
+                        }
                     </div>
                 </div>
 
@@ -39,7 +45,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                                     },
                                     onUpdate: (name: string, value: any) => {
                                         this.onUpdate(name, value);
-                                    }
+                                    },
+                                    readonly: this.props.readonly
                                 })
                                 : input;
                         }

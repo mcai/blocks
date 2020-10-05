@@ -6,4 +6,6 @@ export interface SimpleFormFileInputProps {
     name?: string;
 
     onUpdate?: (name: string, value: any) => void;
+
+    readonly?: boolean;
 }

@@ -10,4 +10,6 @@ export interface SimpleFormSelectInputProps {
     options: { value: string, text?: React.ReactNode }[];
 
     onUpdate?: (name: string, value: any) => void;
+
+    readonly?: boolean;
 }
