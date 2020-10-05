@@ -11,7 +11,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
         reader.addEventListener('loadend', async () => {
             let data = new Uint8Array(reader.result as ArrayBuffer);
-            this.props.onUpdate?.(this.props.name, data);
+            this.props.onUpdate?.(this.props.name ?? "", data);
 
             console.log(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
         });

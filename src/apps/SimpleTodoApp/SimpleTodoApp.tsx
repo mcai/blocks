@@ -5,6 +5,7 @@ import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcru
 import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
 import {SimpleList} from "../../components/SimpleList/SimpleList";
 import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
+import {SimpleFormTextInput} from "../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
@@ -83,8 +84,8 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             description: "Simple TODO",
                             getValuesFunc: () => ({
                                 "content": {
-                                    label: "内容",
-                                    value: ""
+                                    value: "",
+                                    input: <SimpleFormTextInput label="内容"/>
                                 }
                             })
                         }

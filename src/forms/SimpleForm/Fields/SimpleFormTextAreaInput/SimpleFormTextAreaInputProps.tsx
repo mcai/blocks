@@ -1,9 +1,9 @@
 import React from "react";
 
 export interface SimpleFormTextAreaInputProps {
-    label: React.ReactNode;
+    label?: React.ReactNode;
 
-    name: string;
+    name?: string;
 
     placeholder?: string;
 

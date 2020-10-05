@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
-import {SimpleFormTextInput} from "../../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
-    onUpdate(key: string, value: string) {
+    onUpdate(key: string, value: any) {
         this.props.onUpdate(this.props.index, key, value);
 
         console.log(`SimpleListItem.onUpdate: index=${this.props.index}, key=${key}, value=${value}`);
@@ -23,20 +22,22 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 </div>
 
                 {
-                    Object.keys(this.props.item.values).map(key =>
-                        <SimpleFormTextInput
-                            key={key}
-                            label={this.props.item.values[key].label}
-                            name={key}
-                            placeholder={this.props.item.values[key].label}
-                            password={false}
-                            values={{
-                                key: this.props.item.values[key].value
-                            }}
-                            onUpdate={((name, value) => {
-                                this.onUpdate(key, value);
-                            })}
-                        />
+                    Object.keys(this.props.item.values).map(key => {
+                            let input = this.props.item.values[key].input;
+
+                            return React.isValidElement(input)
+                                ? React.cloneElement(input, {
+                                    key: key,
+                                    name: key,
+                                    values: {
+                                        key: this.props.item.values[key].value
+                                    },
+                                    onUpdate: (name: string, value: any) => {
+                                        this.onUpdate(name, value);
+                                    }
+                                })
+                                : input;
+                        }
                     )
                 }
 

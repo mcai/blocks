@@ -2,14 +2,14 @@ import React, {Component} from "react";
 import {SimpleFormNumberInputProps} from "./SimpleFormNumberInputProps";
 
 export class SimpleFormNumberInput extends Component<SimpleFormNumberInputProps, any> {
-    onUpdate(value: string) {
-        this.props.onUpdate?.(this.props.name, value);
+    onUpdate(value: any) {
+        this.props.onUpdate?.(this.props.name ?? "", value);
 
         console.log(`SimpleFormNumberInput.onUpdate: name=${this.props.name}, value=${value}`);
     }
 
     render() {
-        console.log(`SimpleFormNumberInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name]}`);
+        console.log(`SimpleFormNumberInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name ?? ""]}`);
 
         return (
             <div className="simple-row">
@@ -18,7 +18,7 @@ export class SimpleFormNumberInput extends Component<SimpleFormNumberInputProps,
                 <input
                     className="simple-input"
                     type="number"
-                    value={this.props.values?.[this.props.name]}
+                    value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
                 />
             </div>

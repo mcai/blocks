@@ -2,14 +2,14 @@ import React, {Component} from "react";
 import {SimpleFormSelectInputProps} from "./SimpleFormSelectInputProps";
 
 export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps, any> {
-    onUpdate(value: string) {
-        this.props.onUpdate?.(this.props.name, value);
+    onUpdate(value: any) {
+        this.props.onUpdate?.(this.props.name ?? "", value);
 
         console.log(`SimpleFormSelectInput.onUpdate: name=${this.props.name}, value=${value}`);
     }
 
     render() {
-        console.log(`SimpleFormSelectInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name]}`);
+        console.log(`SimpleFormSelectInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name ?? ""]}`);
 
         return (
             <div className="simple-row">
@@ -17,7 +17,7 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
 
                 <select
                     className="simple-input"
-                    value={this.props.values?.[this.props.name]}
+                    value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
                 >
                     {

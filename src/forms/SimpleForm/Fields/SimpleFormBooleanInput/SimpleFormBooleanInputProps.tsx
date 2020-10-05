@@ -1,9 +1,9 @@
 import React from "react";
 
 export interface SimpleFormBooleanInputProps {
-    label: React.ReactNode;
+    label?: React.ReactNode;
 
-    name: string;
+    name?: string;
 
     values?: { [name: string]: any };
 

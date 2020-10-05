@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface SimpleListItemValuesType {
-    [name: string]: {label: string, value: any};
+    [name: string]: {value?: any, input?: React.ReactNode};
 }
