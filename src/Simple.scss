@@ -87,6 +87,20 @@
       margin: 0.5em;
     }
 
+    .simple-section-label {
+      flex-basis: 15%;
+      text-align: left;
+
+      padding: 0.5em;
+    }
+
+    .simple-section-items {
+      flex-basis: 85%;
+      text-align: right;
+
+      padding: 0.5em;
+    }
+
     .simple-input-label {
       flex-basis: 15%;
       text-align: right;

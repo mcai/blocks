@@ -12,11 +12,11 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
         return (
             <Fragment>
                 <div className="simple-row">
-                    <b className="simple-input-label">
+                    <b className="simple-section-label">
                         {this.props.index + 1}. {this.props.item.description}
                     </b>
 
-                    <div className="simple-input">
+                    <div className="simple-section-items">
                         {
                             (this.props.readonly == undefined || !this.props.readonly)
                                 ? (
