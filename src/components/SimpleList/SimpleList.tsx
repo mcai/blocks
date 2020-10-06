@@ -68,7 +68,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     </div>
                     <div className="simple-right">
                         {
-                            (this.props.readonly == undefined || !this.props.readonly) && <SimpleListAddForm
+                            (this.props.readonly === undefined || !this.props.readonly) && <SimpleListAddForm
                                 options={this.props.addFormOptions}
                                 onAdd={(item: SimpleListItemType) => this.onAdd(item)}
                             />

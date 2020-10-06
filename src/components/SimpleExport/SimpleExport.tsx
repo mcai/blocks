@@ -43,7 +43,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             this.props.onExporting?.(result.pageCount, pageNum);
 
-            if (pageNum == result?.pageCount - 1 || (this.props.endPageNum != undefined && pageNum == this.props.endPageNum))
+            if (pageNum == result?.pageCount - 1 || (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum))
             {
                 break;
             }

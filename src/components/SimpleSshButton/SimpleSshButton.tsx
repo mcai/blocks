@@ -29,7 +29,7 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                 password: this.props.password
             });
 
-            if (this.props.filesToUpload != undefined && this.props.filesToUpload?.length > 0) {
+            if (this.props.filesToUpload !== undefined && this.props.filesToUpload?.length > 0) {
                 await ssh.putFiles(
                     this.props.filesToUpload?.map(
                         x => {

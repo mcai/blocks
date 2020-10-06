@@ -31,12 +31,12 @@ export class SimpleActionsField implements SimpleField {
         if (Enumerable
             .from(this.actions ?? [])
             .any(action =>
-                action.type != undefined
+                action.type !== undefined
                 && action.type != SimpleActionsFieldType.none
-                && action.hrefFunc != undefined
+                && action.hrefFunc !== undefined
             )
         ) {
-            throw new Error("The combination of action.type != none and action.hrefFunc != undefined is not supported.");
+            throw new Error("The combination of action.type != none and action.hrefFunc !== undefined is not supported.");
         }
     }
 
@@ -48,7 +48,7 @@ export class SimpleActionsField implements SimpleField {
                         this.actions?.map(action => {
                             let modalConfirmType = SimpleModalConfirmType.primary;
 
-                            if (action.type != undefined) {
+                            if (action.type !== undefined) {
                                 switch (action.type) {
                                     case SimpleActionsFieldType.none:
                                         break;

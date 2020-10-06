@@ -38,7 +38,7 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
     render() {
         let confirmButtonClass = "primary";
 
-        if (this.props.type != undefined) {
+        if (this.props.type !== undefined) {
             switch (this.props.type) {
                 case SimpleModalConfirmType.primary:
                     break;

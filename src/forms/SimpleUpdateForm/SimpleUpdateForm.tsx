@@ -39,7 +39,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
             }
         });
 
-        if (result != undefined) {
+        if (result !== undefined) {
             this.props.onSuccess?.(result);
 
             if (this.props.onSuccessRedirect) {
@@ -54,7 +54,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
 
     render() {
         return (
-            <SimpleIf condition={this.state.item != undefined}>
+            <SimpleIf condition={this.state.item !== undefined}>
                 {
                     this.state.redirect && <Redirect to={this.state.redirect}/>
                 }

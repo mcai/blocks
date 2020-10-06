@@ -18,7 +18,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
                     <div className="simple-section-items">
                         {
-                            (this.props.readonly == undefined || !this.props.readonly)
+                            (this.props.readonly === undefined || !this.props.readonly)
                                 ? (
                                     <button
                                         className="simple-button"

@@ -167,7 +167,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                             return (
                                                 <th key={field.name}>
                                                     {
-                                                        field.ascendingOrdering != undefined && field.descendingOrdering != undefined
+                                                        field.ascendingOrdering !== undefined && field.descendingOrdering !== undefined
                                                             ? (
                                                                 <a href={"#"} onClick={() => {
                                                                     this.setState({
@@ -181,11 +181,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     }
 
                                                     {
-                                                        this.state.ordering != undefined && this.state.ordering == field.ascendingOrdering && <BsCaretUp/>
+                                                        this.state.ordering !== undefined && this.state.ordering == field.ascendingOrdering && <BsCaretUp/>
                                                     }
 
                                                     {
-                                                        this.state.ordering != undefined && this.state.ordering == field.descendingOrdering && <BsCaretDown/>
+                                                        this.state.ordering !== undefined && this.state.ordering == field.descendingOrdering && <BsCaretDown/>
                                                     }
                                                 </th>
                                             );
@@ -198,7 +198,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                     this.state.itemsInCurrentPage.map(item => {
                                         let trClass = "";
 
-                                        if (this.props.getRowTypeFunc != undefined) {
+                                        if (this.props.getRowTypeFunc !== undefined) {
                                             switch (this.props.getRowTypeFunc(item)) {
                                                 case SimpleTableRowType.none:
                                                     break;
