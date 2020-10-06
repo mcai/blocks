@@ -82,7 +82,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         {
                             name: "simpleTodo",
                             descriptionAsText: "Simple TODO",
-                            values: {
+                            fields: {
                                 "content": {
                                     value: "",
                                     input: <SimpleFormTextInput label="内容"/>

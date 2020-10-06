@@ -1,4 +1,4 @@
-import {SimpleListItemValuesType} from "../SimpleListItemValuesType";
+import {SimpleListItemFieldsType} from "../SimpleListItemFieldsType";
 import React from "react";
 
 export interface SimpleListAddFormOption {
@@ -8,5 +8,5 @@ export interface SimpleListAddFormOption {
 
     descriptionAsText?: string;
 
-    values: SimpleListItemValuesType;
+    fields: SimpleListItemFieldsType;
 }

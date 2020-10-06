@@ -1,4 +1,4 @@
-import {SimpleListItemValuesType} from "./SimpleListItemValuesType";
+import {SimpleListItemFieldsType} from "./SimpleListItemFieldsType";
 import React from "react";
 
 export interface SimpleListItemType {
@@ -6,5 +6,5 @@ export interface SimpleListItemType {
 
     description?: React.ReactNode;
 
-    values: SimpleListItemValuesType;
+    fields: SimpleListItemFieldsType;
 }

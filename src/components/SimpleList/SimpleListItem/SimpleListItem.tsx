@@ -9,10 +9,10 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     }
 
     render() {
-        let keyValueArray = Object.keys(this.props.item.values)
+        let keyValueArray = Object.keys(this.props.item.fields)
             .map(key => ({
                 "key": key,
-                "value": this.props.item.values[key].value
+                "value": this.props.item.fields[key].value
             }));
 
         let values: any = {};
@@ -45,8 +45,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 </div>
 
                 {
-                    Object.keys(this.props.item.values).map(key => {
-                            let input = this.props.item.values[key].input;
+                    Object.keys(this.props.item.fields).map(key => {
+                            let input = this.props.item.fields[key].input;
 
                             return React.isValidElement(input)
                                 ? React.cloneElement(input, {
