@@ -9,6 +9,18 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     }
 
     render() {
+        let keyValueArray = Object.keys(this.props.item.values)
+            .map(key => ({
+                "key": key,
+                "value": this.props.item.values[key].value
+            }));
+
+        let values: any = {};
+
+        keyValueArray.forEach((pair: { key: string; value?: any }) => {
+            values[pair.key] = pair.value;
+        });
+
         return (
             <Fragment>
                 <div className="simple-row">
@@ -40,9 +52,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                                 ? React.cloneElement(input, {
                                     key: key,
                                     name: key,
-                                    values: {
-                                        [key]: this.props.item.values[key].value
-                                    },
+                                    values: values,
                                     onUpdate: (name: string, value: any) => {
                                         this.onUpdate(name, value);
                                     },
