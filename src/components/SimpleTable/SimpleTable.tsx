@@ -216,7 +216,26 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                         return (
                                             <tr className={trClass}>
                                                 {
-                                                    this.props.fields.map(field => <td key={field.name}>{field.render(item)}</td>)
+                                                    this.props.fields.map(field => {
+                                                        let tdClass = "";
+
+                                                        if (this.props.getCellTypeFunc !== undefined) {
+                                                            switch (this.props.getCellTypeFunc(item, field)) {
+                                                                case SimpleTableRowType.none:
+                                                                    break;
+                                                                case SimpleTableRowType.danger:
+                                                                    tdClass = "table-danger";
+                                                                    break;
+                                                                case SimpleTableRowType.warning:
+                                                                    tdClass = "table-warning";
+                                                                    break;
+                                                            }
+                                                        }
+
+                                                        return <td key={field.name} className={trClass}>
+                                                            {field.render(item)}
+                                                        </td>;
+                                                    })
                                                 }
                                             </tr>
                                         );
