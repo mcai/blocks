@@ -48,7 +48,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
                 >
                     {
                         this.props.options?.map((option, index) => (
-                            <option key={index} value={index}>{option.descriptionAsText ?? `${option.description}`}</option>
+                            <option key={index} value={index}>{option.descriptionAsText}</option>
                         ))
                     }
                 </select>
