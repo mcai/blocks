@@ -32,7 +32,9 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
             this.props.onAdd({
                 name: option.name,
                 description: option.description ?? option.descriptionAsText,
-                values: option.getValuesFunc()
+                values: {
+                    ...option.values
+                }
             });
         }
 

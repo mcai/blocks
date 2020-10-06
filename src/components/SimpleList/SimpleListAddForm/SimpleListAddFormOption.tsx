@@ -8,5 +8,5 @@ export interface SimpleListAddFormOption {
 
     descriptionAsText?: string;
 
-    getValuesFunc: () => SimpleListItemValuesType;
+    values: SimpleListItemValuesType;
 }
