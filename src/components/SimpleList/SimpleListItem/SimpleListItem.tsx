@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from "react";
 import {SimpleListItemProps} from "./SimpleListItemProps";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
@@ -19,6 +19,14 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
         keyValueArray.forEach((pair: { key: string; value?: any }) => {
             values[pair.key] = pair.value;
+        });
+
+        keyValueArray.forEach((pair: { key: string; value?: any }) => {
+            let value = pair.value;
+
+            if (typeof value === "function") {
+                values[pair.key] = value(values);
+            }
         });
 
         return (
