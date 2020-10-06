@@ -81,7 +81,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                     addFormOptions={[
                         {
                             name: "simpleTodo",
-                            description: "Simple TODO",
+                            descriptionAsText: "Simple TODO",
                             getValuesFunc: () => ({
                                 "content": {
                                     value: "",

@@ -6,5 +6,7 @@ export interface SimpleListAddFormOption {
 
     description?: React.ReactNode;
 
+    descriptionAsText?: string;
+
     getValuesFunc: () => SimpleListItemValuesType;
 }
