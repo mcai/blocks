@@ -26,7 +26,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             items: newItems
         });
 
-        console.log(`SimpleList.onAdd: item.name=${item.name}, item.values=${JSON.stringify(item.values)}`);
+        console.log(`SimpleList.onAdd: item.name=${item.name}`);
 
         this.props.onUpdate?.(newItems);
     }
