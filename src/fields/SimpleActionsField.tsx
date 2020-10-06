@@ -14,7 +14,7 @@ export class SimpleActionsField implements SimpleField {
         hrefFunc?: (item: any) => string,
         onClick?: (item: any) => void,
         type?: SimpleActionsFieldType,
-        visible?: boolean
+        visible?: boolean | ((item: any) => boolean)
     }[];
 
     visible?: boolean;
@@ -26,7 +26,7 @@ export class SimpleActionsField implements SimpleField {
             hrefFunc?: (item: any) => string,
             onClick?: (item: any) => void,
             type?: SimpleActionsFieldType,
-            visible?: boolean
+            visible?: boolean | ((item: any) => boolean)
         }[],
         visible?: boolean
     ) {
@@ -51,7 +51,15 @@ export class SimpleActionsField implements SimpleField {
             <Fragment>
                 <DropdownButton title={this.title}>
                     {
-                        this.actions?.filter(action => action.visible == undefined || action.visible)
+                        this.actions?.filter(action => {
+                            let visible = action.visible;
+
+                            if (typeof visible === "function") {
+                                visible = visible(item);
+                            }
+
+                            return visible == undefined || visible;
+                        })
                             .map(action => {
                                 let modalConfirmType = SimpleModalConfirmType.primary;
 
