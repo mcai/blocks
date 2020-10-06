@@ -13,7 +13,8 @@ export class SimpleActionsField implements SimpleField {
         text?: React.ReactNode,
         hrefFunc?: (item: any) => string,
         onClick?: (item: any) => void,
-        type?: SimpleActionsFieldType
+        type?: SimpleActionsFieldType,
+        visible?: boolean
     }[];
 
     visible?: boolean;
@@ -49,46 +50,48 @@ export class SimpleActionsField implements SimpleField {
             <Fragment>
                 <DropdownButton title={this.title}>
                     {
-                        this.actions?.map(action => {
-                            let modalConfirmType = SimpleModalConfirmType.primary;
+                        this.actions?.filter(action => action.visible == undefined || action.visible)
+                            .map(action => {
+                                let modalConfirmType = SimpleModalConfirmType.primary;
 
-                            if (action.type !== undefined) {
-                                switch (action.type) {
-                                    case SimpleActionsFieldType.none:
-                                        break;
-                                    case SimpleActionsFieldType.danger:
-                                        modalConfirmType = SimpleModalConfirmType.danger;
-                                        break;
-                                    case SimpleActionsFieldType.warning:
-                                        modalConfirmType = SimpleModalConfirmType.warning;
-                                        break;
+                                if (action.type !== undefined) {
+                                    switch (action.type) {
+                                        case SimpleActionsFieldType.none:
+                                            break;
+                                        case SimpleActionsFieldType.danger:
+                                            modalConfirmType = SimpleModalConfirmType.danger;
+                                            break;
+                                        case SimpleActionsFieldType.warning:
+                                            modalConfirmType = SimpleModalConfirmType.warning;
+                                            break;
+                                    }
                                 }
-                            }
 
-                            return action.type == undefined || action.type == SimpleActionsFieldType.none
-                                ? <Dropdown.Item
-                                    href={action.hrefFunc?.(item)}
-                                    onClick={() => action.onClick?.(item)}
-                                    className={"mr-3"}
-                                >
-                                    {action.text}
-                                </Dropdown.Item>
-                                : <SimpleModalConfirm
-                                    title={`确定${action.text}`}
-                                    subtitle={`${action.text}后不可撤销.`}
-                                    onConfirm={() => action.onClick?.(item)}
-                                    type={modalConfirmType}
-                                    onCancel={() => {}}
-                                    okText="确定"
-                                    cancelText="取消"
-                                >
-                                    <Dropdown.Item
+                                return action.type == undefined || action.type == SimpleActionsFieldType.none
+                                    ? <Dropdown.Item
+                                        href={action.hrefFunc?.(item)}
+                                        onClick={() => action.onClick?.(item)}
                                         className={"mr-3"}
                                     >
                                         {action.text}
                                     </Dropdown.Item>
-                                </SimpleModalConfirm>;
-                        })
+                                    : <SimpleModalConfirm
+                                        title={`确定${action.text}`}
+                                        subtitle={`${action.text}后不可撤销.`}
+                                        onConfirm={() => action.onClick?.(item)}
+                                        type={modalConfirmType}
+                                        onCancel={() => {
+                                        }}
+                                        okText="确定"
+                                        cancelText="取消"
+                                    >
+                                        <Dropdown.Item
+                                            className={"mr-3"}
+                                        >
+                                            {action.text}
+                                        </Dropdown.Item>
+                                    </SimpleModalConfirm>;
+                            })
                     }
                 </DropdownButton>
             </Fragment>
