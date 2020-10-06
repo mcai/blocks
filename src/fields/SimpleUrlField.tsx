@@ -6,21 +6,25 @@ export class SimpleUrlField implements SimpleField {
     name?: string;
     text?: React.ReactNode;
 
-    ascendingOrdering?: any
-    descendingOrdering?: any
+    ascendingOrdering?: any;
+    descendingOrdering?: any;
+
+    visible?: boolean;
 
     constructor(
         title?: React.ReactNode,
         name?: string,
         text?: React.ReactNode,
         ascendingOrdering?: any,
-        descendingOrdering?: any
+        descendingOrdering?: any,
+        visible?: boolean
     ) {
         this.title = title;
         this.name = name;
         this.text = text;
         this.ascendingOrdering = ascendingOrdering;
         this.descendingOrdering = descendingOrdering;
+        this.visible = visible;
     }
 
     render(item: any): React.ReactNode {

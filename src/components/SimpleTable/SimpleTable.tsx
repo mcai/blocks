@@ -163,7 +163,9 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 <thead>
                                 <tr>
                                     {
-                                        this.props.fields.map(field => {
+                                        this.props.fields
+                                            .filter(field => field.visible == undefined || field.visible)
+                                            .map(field => {
                                             return (
                                                 <th key={field.name}>
                                                     {

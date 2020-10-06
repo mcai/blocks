@@ -6,21 +6,25 @@ export class SimpleNumberField implements SimpleField {
     name?: string;
     fractionDigits?: number;
 
-    ascendingOrdering?: any
-    descendingOrdering?: any
+    ascendingOrdering?: any;
+    descendingOrdering?: any;
+
+    visible?: boolean;
 
     constructor(
         title?: React.ReactNode,
         field?: string,
         fractionDigits?: number,
         ascendingOrdering?: any,
-        descendingOrdering?: any
+        descendingOrdering?: any,
+        visible?: boolean
     ) {
         this.title = title;
         this.name = field;
         this.fractionDigits = fractionDigits;
         this.ascendingOrdering = ascendingOrdering;
         this.descendingOrdering = descendingOrdering;
+        this.visible = visible;
     }
 
     render(item: any): React.ReactNode {

@@ -14,7 +14,9 @@ export class SimpleActionsField implements SimpleField {
         hrefFunc?: (item: any) => string,
         onClick?: (item: any) => void,
         type?: SimpleActionsFieldType
-    }[]
+    }[];
+
+    visible?: boolean;
 
     constructor(
         title?: React.ReactNode,
@@ -23,10 +25,12 @@ export class SimpleActionsField implements SimpleField {
             hrefFunc?: (item: any) => string,
             onClick?: (item: any) => void,
             type?: SimpleActionsFieldType
-        }[]
+        }[],
+        visible?: boolean
     ) {
         this.title = title;
         this.actions = actions;
+        this.visible = visible;
 
         if (Enumerable
             .from(this.actions ?? [])
