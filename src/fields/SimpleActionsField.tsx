@@ -25,7 +25,8 @@ export class SimpleActionsField implements SimpleField {
             text?: React.ReactNode,
             hrefFunc?: (item: any) => string,
             onClick?: (item: any) => void,
-            type?: SimpleActionsFieldType
+            type?: SimpleActionsFieldType,
+            visible?: boolean
         }[],
         visible?: boolean
     ) {
