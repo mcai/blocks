@@ -1,6 +1,44 @@
 import {SimpleDataProvider} from "./SimpleDataProvider";
+import {connect, model, Schema} from "mongoose";
+
+console.log("Hello world");
+
+export interface SimpleMongoDbDataProviderProps {
+
+}
 
 export class SimpleMongoDbDataProvider implements SimpleDataProvider {
+    constructor() {
+        this.test().then(() => {
+            // TODO
+        });
+    }
+
+    private async test() {
+        let connectionString = "mongodb://localhost:27017";
+        let databaseName = "test";
+
+        await connect(
+            connectionString + "/" + databaseName,
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            }
+        );
+
+        let Cat = model('Cat', new Schema({
+            name: String
+        }));
+
+        let kitty = new Cat({
+            name: 'Zildjian'
+        });
+
+        await kitty.save();
+
+        console.log('meow');
+    }
+
     get<ResultT>(
         resource: string,
         action: string,

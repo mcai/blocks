@@ -80,9 +80,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     render(): React.ReactNode {
         let exportAll = <SimpleExport
             pageSize={this.props.pageSize}
+            ordering={this.state.ordering}
             dataProvider={this.props.dataProvider}
             resource={this.props.resource}
             action={this.props.action}
+            extraData={this.props.extraData}
             fields={this.props.fields}
             ref={(ref: any) => {this.refExportAll = ref}}
             onBeginExport={() => {
@@ -111,9 +113,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             pageSize={this.props.pageSize}
             startPageNum={this.state.pageNum}
             endPageNum={this.state.pageNum}
+            ordering={this.state.ordering}
             dataProvider={this.props.dataProvider}
             resource={this.props.resource}
             action={this.props.action}
+            extraData={this.props.extraData}
             fields={this.props.fields}
             ref={(ref: any) => {
                 this.refExportCurrentPage = ref

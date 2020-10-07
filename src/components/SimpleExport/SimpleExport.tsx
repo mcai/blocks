@@ -32,7 +32,11 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
-                pageNum: pageNum
+                pageNum: pageNum,
+                ordering: this.props.ordering,
+                filter: {
+                    ...this.props.extraData
+                }
             });
 
             if (result == undefined) {
