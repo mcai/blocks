@@ -12,7 +12,7 @@
     "build"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf build && tsc",
     "html": "cd src && copyfiles **/*.css ../build && copyfiles **/*.scss ../build",
     "prepare": "npm run build && npm run html",
     "test-mongodb": "cd src && ts-node -O '{\"module\":\"commonjs\"}' data/SimpleMongoDbDataProvider.tsx",
