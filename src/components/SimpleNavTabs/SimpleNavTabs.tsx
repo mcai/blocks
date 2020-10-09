@@ -11,7 +11,7 @@ export class SimpleNavTabs extends Component<SimpleNavTabsProps, any> {
                     this.props.options.map(option => (
                             <Nav.Item>
                                 <Nav.Link
-                                    active={option.value == this.state.value}
+                                    active={option.value == this.props.value}
                                     onSelect={() => {
                                         this.props.onChange?.(option.value);
                                     }}
