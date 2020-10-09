@@ -6,12 +6,12 @@ import {SimpleTabsProps} from "./SimpleTabsProps";
 export class SimpleTabs extends Component<SimpleTabsProps, any> {
     render() {
         return (
-            <Nav variant={"tabs"}>
+            <Nav variant={"tabs"} defaultActiveKey={this.props.value}>
                 {
                     this.props.options.map(option => (
                             <Nav.Item>
                                 <Nav.Link
-                                    active={option.value == this.props.value}
+                                    eventKey={option.value}
                                     onSelect={() => {
                                         this.props.onChange?.(option.value);
                                     }}
