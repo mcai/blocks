@@ -1,5 +1,12 @@
-import {SimpleNavTabsItem} from "./SimpleNavTabsItem";
+import React from "react";
 
 export interface SimpleNavTabsProps {
-    items: SimpleNavTabsItem[]
+    options: {
+        text?: React.ReactNode,
+        value?: any
+    }[];
+
+    value?: any;
+
+    onChange?: (value?: any) => void;
 }

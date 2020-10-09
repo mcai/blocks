@@ -1,8 +1,7 @@
 import {Component} from "react";
-import {Badge, Nav} from "react-bootstrap";
+import {Nav} from "react-bootstrap";
 import React from "react";
 import {SimpleNavTabsProps} from "./SimpleNavTabsProps";
-import {SimpleNavTabsItem} from "./SimpleNavTabsItem";
 import {SimpleNavTabsState} from "./SimpleNavTabsState";
 
 export class SimpleNavTabs extends Component<SimpleNavTabsProps, SimpleNavTabsState> {
@@ -10,7 +9,7 @@ export class SimpleNavTabs extends Component<SimpleNavTabsProps, SimpleNavTabsSt
         super(props);
 
         this.state = {
-            items: this.props.items
+            value: this.props.value
         }
     }
 
@@ -18,22 +17,25 @@ export class SimpleNavTabs extends Component<SimpleNavTabsProps, SimpleNavTabsSt
         return (
             <Nav variant={"tabs"}>
                 {
-                    this.state.items.map(item => <Nav.Item>
-                        <Nav.Link active={item.active} href={item.href} onSelect={() => this.setActive(item)}>
-                            {item.text}
+                    this.props.options.map(option => (
+                            <Nav.Item>
+                                <Nav.Link
+                                    active={option.value == this.state.value}
+                                    onSelect={() => {
+                                        this.setState({
+                                            value: option.value
+                                        });
 
-                            {
-                                item.badge != "" && <Badge variant={"primary"}>{item.badge}</Badge>
-                            }
-                        </Nav.Link>
-                    </Nav.Item>)
+                                        this.props.onChange?.(option.value);
+                                    }}
+                                >
+                                    {option.text}
+                                </Nav.Link>
+                            </Nav.Item>
+                        )
+                    )
                 }
             </Nav>
         );
-    }
-
-    private setActive(item: SimpleNavTabsItem) {
-        item.onClick();
-        this.state.items.forEach(x => x.active = x == item);
     }
 }

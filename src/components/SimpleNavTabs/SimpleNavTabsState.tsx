@@ -1,5 +1,5 @@
-import {SimpleNavTabsItem} from "./SimpleNavTabsItem";
+import React from "react";
 
 export interface SimpleNavTabsState {
-    items: SimpleNavTabsItem[]
+    value?: any;
 }
