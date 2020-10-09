@@ -1,9 +1,9 @@
 import {Component} from "react";
 import {Nav} from "react-bootstrap";
 import React from "react";
-import {SimpleNavTabsProps} from "./SimpleNavTabsProps";
+import {SimpleTabsProps} from "./SimpleTabsProps";
 
-export class SimpleNavTabs extends Component<SimpleNavTabsProps, any> {
+export class SimpleTabs extends Component<SimpleTabsProps, any> {
     render() {
         return (
             <Nav variant={"tabs"}>

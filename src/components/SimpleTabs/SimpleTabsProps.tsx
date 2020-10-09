@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SimpleNavTabsProps {
+export interface SimpleTabsProps {
     options: {
         text?: React.ReactNode,
         value?: any
