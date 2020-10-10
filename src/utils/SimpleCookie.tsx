@@ -42,7 +42,7 @@ export class SimpleCookie {
         Cookies.remove(this.sessionKeyUserGuid);
     }
 
-    get<T>(name: string): T | undefined {
+    static get<T>(name: string): T | undefined {
         let str = Cookies.get(name);
 
         if (str != undefined) {
@@ -52,7 +52,7 @@ export class SimpleCookie {
         return undefined;
     }
 
-    set<T>(name: string, value?: T): void {
+    static set<T>(name: string, value?: T): void {
         if (value != undefined) {
             let str = JSON.stringify(value);
 
