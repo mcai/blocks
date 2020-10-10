@@ -2,9 +2,8 @@ import React, {Component} from "react";
 import {SimpleUpdateFormProps} from "./SimpleUpdateFormProps";
 import {SimpleUpdateFormState} from "./SimpleUpdateFormState";
 import {SimpleIf} from "../../components/SimpleIf/SimpleIf";
-import {Button} from "react-bootstrap";
-import {Form, Formik, FormikProps} from "formik";
 import {Redirect} from "react-router-dom";
+import {SimpleForm} from "../SimpleForm/SimpleForm/SimpleForm";
 
 export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpdateFormState> {
     constructor(props: SimpleUpdateFormProps) {
@@ -59,22 +58,18 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
                     this.state.redirect && <Redirect to={this.state.redirect}/>
                 }
 
-                <Formik
+                <SimpleForm
                     initialValues={{
                         ...this.props.initialValues,
                         ...this.state.item
                     }}
                     onSubmit={values => this.onSubmit(values)}
+                    submitButtonText={this.props.submitButtonText}
                 >
-                    {(props: FormikProps<any>) => (
-                        <Form>
-                            {
-                                this.props.inputs
-                            }
-                            <Button variant={"primary"} type="submit">{this.props.submitButtonText ?? "提交"}</Button>
-                        </Form>
-                    )}
-                </Formik>
+                    {
+                        this.props.inputs
+                    }
+                </SimpleForm>
             </SimpleIf>
         );
     }
