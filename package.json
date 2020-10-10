@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "rm -rf build && tsc",
+    "scss": "node-sass src/simple.scss src/simple.css",
     "html": "cd src && copyfiles **/*.css ../build && copyfiles **/*.scss ../build",
     "prepare": "npm run build && npm run html",
     "test-mongodb": "cd src && ts-node -O '{\"module\":\"commonjs\"}' data/SimpleMongoDbDataProvider.tsx",
