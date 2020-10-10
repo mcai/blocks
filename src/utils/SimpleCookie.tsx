@@ -41,4 +41,24 @@ export class SimpleCookie {
     signOut(): void {
         Cookies.remove(this.sessionKeyUserGuid);
     }
+
+    get<T>(name: string): T | undefined {
+        let str = Cookies.get(name);
+
+        if (str != undefined) {
+            return JSON.parse(str);
+        }
+
+        return undefined;
+    }
+
+    set<T>(name: string, value?: T): void {
+        if (value != undefined) {
+            let str = JSON.stringify(value);
+
+            Cookies.set(name, str);
+        } else {
+            Cookies.remove(name);
+        }
+    }
 }
