@@ -19,6 +19,18 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         this.props.onUpdate?.(this.state.items);
     }
 
+    componentDidUpdate(
+        prevProps: Readonly<SimpleListProps>,
+        prevState: Readonly<SimpleListState>,
+        snapshot?: any
+    ) {
+        if (prevProps.initialItems != this.props.initialItems) {
+            this.setState({
+                items: this.props.initialItems
+            });
+        }
+    }
+
     private onAdd(item: SimpleListItemType) {
         let newItems = [...(this.state.items ?? []), item];
 
