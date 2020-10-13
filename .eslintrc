@@ -30,13 +30,6 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-inferrable-types": "off",
-    "react/jsx-curly-newline": ["warn", {
-      "singleline": "consistent",
-      "multiline": "consistent"
-    }],
-    "react/state-in-constructor": "warn",
-    "react/jsx-props-no-spreading": "warn",
-    "react/static-property-placement": "warn"
+    "@typescript-eslint/no-inferrable-types": "off"
   }
 }
