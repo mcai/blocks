@@ -6,6 +6,6 @@ export interface SimpleResourceAppProps {
         title: string;
         href: string;
     };
-    resource: SimpleResource;
+    resources: SimpleResource[];
     serverDataProviderUrl: string;
 }
