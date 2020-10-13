@@ -4,7 +4,7 @@ export interface SimpleTableState {
     count: number;
     pageCount: number;
     itemsInCurrentPage: {
-        key: string;
+        key: string | number;
         [name: string]: any;
     }[];
     loadingData: boolean;

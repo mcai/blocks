@@ -17,7 +17,7 @@ export interface SimpleDataProvider {
 
     find<
         ItemT extends {
-            key: string;
+            key: string | number;
             [name: string]: any;
         }
     >(
@@ -42,7 +42,7 @@ export interface SimpleDataProvider {
 
     all<
         ItemT extends {
-            key: string;
+            key: string | number;
             [name: string]: any;
         }
     >(
