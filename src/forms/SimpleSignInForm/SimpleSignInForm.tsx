@@ -3,7 +3,7 @@ import { SimpleSignInFormProps } from "./SimpleSignInFormProps";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { SimpleAddForm } from "../SimpleAddForm/SimpleAddForm";
-import { SimpleFormTextInput } from "../SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
+import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
     constructor(props: Readonly<any>) {

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { SimpleAddFormProps } from "./SimpleAddFormProps";
 import { SimpleAddFormState } from "./SimpleAddFormState";
 import { Redirect } from "react-router-dom";
-import { SimpleForm } from "../SimpleForm/SimpleForm/SimpleForm";
+import { SimpleForm } from "../SimpleForm/SimpleForm";
 
 export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormState> {
     constructor(props: SimpleAddFormProps) {

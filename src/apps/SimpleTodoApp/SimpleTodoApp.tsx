@@ -5,7 +5,7 @@ import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadc
 import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";
 import { SimpleList } from "../../components/SimpleList/SimpleList";
 import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
-import { SimpleFormTextInput } from "../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
+import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {

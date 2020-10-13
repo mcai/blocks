@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.209",
+  "version": "0.0.210",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -27,7 +27,6 @@
   "dependencies": {
     "bootstrap": "^4.5.2",
     "final-form": "^4.20.1",
-    "formik": "^2.1.5",
     "js-cookie": "^2.2.1",
     "linq": "^3.2.2",
     "moment": "^2.27.0",

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { SimpleForm } from "../../forms/SimpleForm/SimpleForm/SimpleForm";
-import { SimpleFormTextInput } from "../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
-import { SimpleFormBooleanInput } from "../../forms/SimpleForm/Fields/SimpleFormBooleanInput/SimpleFormBooleanInput";
-import { SimpleFormNumberInput } from "../../forms/SimpleForm/Fields/SimpleFormNumberInput/SimpleFormNumberInput";
-import { SimpleFormTextAreaInput } from "../../forms/SimpleForm/Fields/SimpleFormTextAreaInput/SimpleFormTextAreaInput";
-import { SimpleFormSelectInput } from "../../forms/SimpleForm/Fields/SimpleFormSelectInput/SimpleFormSelectInput";
-import { SimpleFormFileInput } from "../../forms/SimpleForm/Fields/SimpleFormFileInput/SimpleFormFileInput";
+import { SimpleForm } from "../../forms/SimpleForm/SimpleForm";
+import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
+import { SimpleFormBooleanInput } from "../../inputs/SimpleFormBooleanInput/SimpleFormBooleanInput";
+import { SimpleFormNumberInput } from "../../inputs/SimpleFormNumberInput/SimpleFormNumberInput";
+import { SimpleFormTextAreaInput } from "../../inputs/SimpleFormTextAreaInput/SimpleFormTextAreaInput";
+import { SimpleFormSelectInput } from "../../inputs/SimpleFormSelectInput/SimpleFormSelectInput";
+import { SimpleFormFileInput } from "../../inputs/SimpleFormFileInput/SimpleFormFileInput";
 
 export class SimpleFormDemo extends Component<any, any> {
     render() {

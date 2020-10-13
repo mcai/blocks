@@ -3,7 +3,7 @@ import { SimpleUpdateFormProps } from "./SimpleUpdateFormProps";
 import { SimpleUpdateFormState } from "./SimpleUpdateFormState";
 import { SimpleIf } from "../../components/SimpleIf/SimpleIf";
 import { Redirect } from "react-router-dom";
-import { SimpleForm } from "../SimpleForm/SimpleForm/SimpleForm";
+import { SimpleForm } from "../SimpleForm/SimpleForm";
 
 export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpdateFormState> {
     constructor(props: SimpleUpdateFormProps) {
