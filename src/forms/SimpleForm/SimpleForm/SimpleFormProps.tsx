@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface SimpleFormProps {
     initialValues?: { [name: string]: any };
 

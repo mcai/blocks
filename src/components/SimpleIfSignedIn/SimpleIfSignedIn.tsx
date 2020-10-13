@@ -19,14 +19,14 @@ export class SimpleIfSignedIn extends Component<SimpleIfSignedInProps, SimpleIfS
     }
 
     private async loadData() {
-        let user = await this.props.cookie.getUser();
+        const user = await this.props.cookie.getUser();
 
         this.setState({
             isDataLoaded: true,
             user: user
         });
 
-        if (user != null && this.props.extraCondition != null && !this.props.extraCondition(this.state.user!)) {
+        if (user != null && this.props.extraCondition != null && !this.props.extraCondition(this.state.user)) {
             this.setState({
                 denied: true
             });

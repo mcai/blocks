@@ -20,7 +20,7 @@ export class SimpleCookie {
     }
 
     async getUser<UserT>(): Promise<UserT | undefined> {
-        let guid = Cookies.get(this.sessionKeyUserGuid) ?? "";
+        const guid = Cookies.get(this.sessionKeyUserGuid) ?? "";
         if (guid == null || guid === "") {
             return undefined;
         } else {
@@ -43,7 +43,7 @@ export class SimpleCookie {
     }
 
     static get<T>(name: string): T | undefined {
-        let str = Cookies.get(name);
+        const str = Cookies.get(name);
 
         if (str != undefined) {
             return JSON.parse(str);
@@ -54,7 +54,7 @@ export class SimpleCookie {
 
     static set<T>(name: string, value?: T): void {
         if (value != undefined) {
-            let str = JSON.stringify(value);
+            const str = JSON.stringify(value);
 
             Cookies.set(name, str);
         } else {

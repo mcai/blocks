@@ -15,7 +15,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     async componentDidMount() {
-        let item = await this.props.dataProvider.one(this.props.resource, this.props.getByIdAction, {
+        const item = await this.props.dataProvider.one(this.props.resource, this.props.getByIdAction, {
             filter: {
                 ...this.props.getByIdExtraData,
                 id: this.props.id
@@ -30,7 +30,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     private async onSubmit(values: any) {
-        let result = await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
+        const result = await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
             id: this.props.id,
             data: {
                 ...this.props.updateExtraData,

@@ -7,10 +7,10 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
             return;
         }
 
-        let reader = new FileReader();
+        const reader = new FileReader();
 
         reader.addEventListener('loadend', async () => {
-            let data = new Uint8Array(reader.result as ArrayBuffer);
+            const data = new Uint8Array(reader.result as ArrayBuffer);
             this.props.onUpdate?.(this.props.name ?? "", data);
 
             console.log(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);

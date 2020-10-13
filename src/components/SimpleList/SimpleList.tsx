@@ -32,7 +32,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     }
 
     private onAdd(item: SimpleListItemType) {
-        let newItems = [...(this.state.items ?? []), item];
+        const newItems = [...(this.state.items ?? []), item];
 
         this.setState({
             items: newItems
@@ -44,7 +44,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     }
 
     private onUpdate(index: number, key: string, value: string) {
-        let newItems = [...(this.state.items ?? [])];
+        const newItems = [...(this.state.items ?? [])];
         newItems[index].fields[key].value = value;
 
         this.setState({
@@ -57,7 +57,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     }
 
     private onRemove(index: number) {
-        let newItems = [...(this.state.items ?? [])];
+        const newItems = [...(this.state.items ?? [])];
         newItems.splice(index, 1);
 
         this.setState({

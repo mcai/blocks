@@ -60,7 +60,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             loadingData: true
         });
 
-        let result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
+        const result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
             pageSize: this.props.pageSize,
             pageNum: this.state.pageNum,
             ordering: this.state.ordering,
@@ -78,7 +78,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     }
 
     render(): React.ReactNode {
-        let exportAll = <SimpleExport
+        const exportAll = <SimpleExport
             pageSize={this.props.pageSize}
             ordering={this.state.ordering}
             dataProvider={this.props.dataProvider}
@@ -109,7 +109,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             }}
         />;
 
-        let exportCurrentPage = <SimpleExport
+        const exportCurrentPage = <SimpleExport
             pageSize={this.props.pageSize}
             startPageNum={this.state.pageNum}
             endPageNum={this.state.pageNum}

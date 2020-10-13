@@ -20,7 +20,7 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
         });
 
         try {
-            let ssh = new NodeSSH();
+            const ssh = new NodeSSH();
 
             await ssh.connect({
                 host: this.props.host,
@@ -42,8 +42,8 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                 );
             }
 
-            for (let command of commands) {
-                let result = await ssh.execCommand(command, {cwd: workingDirectory});
+            for (const command of commands) {
+                const result = await ssh.execCommand(command, {cwd: workingDirectory});
                 this.props.onStdout?.(result.stdout);
                 this.props.onStderr?.(result.stderr);
             }

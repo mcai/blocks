@@ -29,12 +29,12 @@ export class SimpleSelectField implements SimpleField {
     }
 
     render(item: any): React.ReactNode {
-        let value = item[this.name ?? ""];
+        const value = item[this.name ?? ""];
         return Enumerable.from(this.options ?? []).firstOrDefault(option => option.value == value)?.text;
     }
 
     renderAsText(item: any): string | undefined {
-        let value = item[this.name ?? ""];
+        const value = item[this.name ?? ""];
         return Enumerable.from(this.options ?? []).firstOrDefault(option => option.value == value)?.text;
     }
 }

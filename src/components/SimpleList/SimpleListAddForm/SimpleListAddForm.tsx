@@ -12,7 +12,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
     }
 
     private onChange(e: React.ChangeEvent<HTMLSelectElement>) {
-        let selectedIndex = Number(e.target.value);
+        const selectedIndex = Number(e.target.value);
 
         this.setState({
             selectedIndex: selectedIndex
@@ -24,9 +24,9 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
     private onSubmit(e: any) {
         e.preventDefault();
 
-        let selectedIndex = this.state.selectedIndex;
+        const selectedIndex = this.state.selectedIndex;
 
-        let option = this.props.options?.[selectedIndex];
+        const option = this.props.options?.[selectedIndex];
 
         if (option) {
             this.props.onAdd({

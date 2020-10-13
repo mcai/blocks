@@ -1,7 +1,8 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {SimpleExportProps} from "./SimpleExportProps";
 import {SimpleExportState} from "./SimpleExportState";
 import {SimpleFormatting} from "../../utils/SimpleFormatting";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactExport from "react-data-export";
 
@@ -25,12 +26,12 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
         let pageNum = Math.max(0, this.props.startPageNum ?? 0);
 
-        let allItems = [];
+        const allItems = [];
 
         while (this.props.endPageNum == undefined || pageNum <= this.props.endPageNum) {
             console.log(`[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${pageNum}`);
 
-            let result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
+            const result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
                 pageNum: pageNum,
                 ordering: this.props.ordering,

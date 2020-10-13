@@ -9,20 +9,20 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     }
 
     render() {
-        let keyValueArray = Object.keys(this.props.item.fields)
+        const keyValueArray = Object.keys(this.props.item.fields)
             .map(key => ({
                 "key": key,
                 "value": this.props.item.fields[key].value
             }));
 
-        let values: any = {};
+        const values: any = {};
 
         keyValueArray.forEach((pair: { key: string; value?: any }) => {
             values[pair.key] = pair.value;
         });
 
         keyValueArray.forEach((pair: { key: string; value?: any }) => {
-            let value = pair.value;
+            const value = pair.value;
 
             if (typeof value === "function") {
                 values[pair.key] = value(values);
@@ -54,7 +54,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
                 {
                     Object.keys(this.props.item.fields).map(key => {
-                            let input = this.props.item.fields[key].input;
+                            const input = this.props.item.fields[key].input;
 
                             return React.isValidElement(input)
                                 ? React.cloneElement(input, {

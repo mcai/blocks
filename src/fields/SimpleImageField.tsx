@@ -29,7 +29,7 @@ export class SimpleImageField implements SimpleField {
     }
 
     render(item: any): React.ReactNode {
-        let src = item[this.name ?? ""];
+        const src = item[this.name ?? ""];
         return (
             <a href={src}>
                 <Image src={src} title={this.text} thumbnail/>
