@@ -113,7 +113,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            id: number;
+            id: any;
             data: {
                 [key: string]: any;
             };
@@ -129,7 +129,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            id: number;
+            id: any;
             data: {
                 [key: string]: any;
             };

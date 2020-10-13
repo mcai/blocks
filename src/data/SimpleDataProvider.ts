@@ -80,7 +80,7 @@ export interface SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            id: number;
+            id: any;
             data: {
                 [key: string]: any;
             };
@@ -91,7 +91,7 @@ export interface SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            id: number;
+            id: any;
             data: {
                 [key: string]: any;
             };
