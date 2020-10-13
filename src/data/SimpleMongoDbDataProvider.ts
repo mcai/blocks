@@ -59,7 +59,7 @@ export class SimpleMongoDbDataProvider implements SimpleDataProvider {
         return Promise.resolve(undefined);
     }
 
-    getList<ItemT>(
+    find<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -78,7 +78,7 @@ export class SimpleMongoDbDataProvider implements SimpleDataProvider {
         return Promise.resolve(undefined);
     }
 
-    getAll<ItemT>(
+    all<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -91,7 +91,7 @@ export class SimpleMongoDbDataProvider implements SimpleDataProvider {
         return Promise.resolve(undefined);
     }
 
-    getOne<RecordT>(
+    one<RecordT>(
         resource: string,
         action: string,
         params: {
@@ -103,7 +103,7 @@ export class SimpleMongoDbDataProvider implements SimpleDataProvider {
         return Promise.resolve(undefined);
     }
 
-    add<RecordT>(
+    create<RecordT>(
         resource: string,
         action: string,
         params: {

@@ -15,7 +15,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     async componentDidMount() {
-        let item = await this.props.dataProvider.getOne(this.props.resource, this.props.getByIdAction, {
+        let item = await this.props.dataProvider.one(this.props.resource, this.props.getByIdAction, {
             filter: {
                 ...this.props.getByIdExtraData,
                 id: this.props.id

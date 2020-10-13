@@ -48,7 +48,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getList<ItemT>(
+    async find<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -80,7 +80,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getAll<ItemT>(
+    async all<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -100,7 +100,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async getOne<ItemT>(
+    async one<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -118,7 +118,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async add<ItemT>(
+    async create<ItemT>(
         resource: string,
         action: string,
         params: {

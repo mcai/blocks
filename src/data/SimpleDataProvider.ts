@@ -15,7 +15,7 @@ export interface SimpleDataProvider {
         }
     ): Promise<ResultT | undefined>;
 
-    getList<ItemT>(
+    find<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -32,7 +32,7 @@ export interface SimpleDataProvider {
         itemsInCurrentPage: ItemT[]
     } | undefined>;
 
-    getAll<ItemT>(
+    all<ItemT>(
         resource: string,
         action: string,
         params: {
@@ -43,7 +43,7 @@ export interface SimpleDataProvider {
         }
     ): Promise<ItemT[] | undefined>;
 
-    getOne<RecordT>(
+    one<RecordT>(
         resource: string,
         action: string,
         params: {
@@ -53,7 +53,7 @@ export interface SimpleDataProvider {
         }
     ): Promise<RecordT | undefined>
 
-    add<RecordT>(
+    create<RecordT>(
         resource: string,
         action: string,
         params: {

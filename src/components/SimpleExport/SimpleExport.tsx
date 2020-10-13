@@ -30,7 +30,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         while (this.props.endPageNum == undefined || pageNum <= this.props.endPageNum) {
             console.log(`[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${pageNum}`);
 
-            let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
+            let result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
                 pageNum: pageNum,
                 ordering: this.props.ordering,

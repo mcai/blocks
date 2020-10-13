@@ -60,7 +60,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             loadingData: true
         });
 
-        let result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
+        let result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
             pageSize: this.props.pageSize,
             pageNum: this.state.pageNum,
             ordering: this.state.ordering,
