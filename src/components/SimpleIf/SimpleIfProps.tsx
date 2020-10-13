@@ -1,4 +1,4 @@
 export interface SimpleIfProps {
-    condition: boolean
-    otherwiseComponent?: React.ReactNode
+    condition: boolean;
+    otherwiseComponent?: React.ReactNode;
 }

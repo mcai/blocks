@@ -18,7 +18,8 @@
     "prepare": "npm run scss && npm run build && npm run html",
     "test-mongodb": "cd src && ts-node -O '{\"module\":\"commonjs\"}' data/SimpleMongoDbDataProvider.tsx",
     "start": "PORT=3001 react-scripts start",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "prettier": "prettier --config .prettierrc 'src/**/*.{js,ts,tsx}' --write"
   },
   "keywords": [],
   "author": "Min Cai",
@@ -60,6 +61,10 @@
     "@typescript-eslint/parser": "^4.4.1",
     "copyfiles": "^2.3.0",
     "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
+    "prettier": "^2.1.2",
     "react-scripts": "3.4.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"

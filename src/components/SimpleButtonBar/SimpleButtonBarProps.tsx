@@ -1,5 +1,10 @@
 import React from "react";
 
 export interface SimpleButtonBarProps {
-    items: { title?: React.ReactNode, href?: string, onClick?: () => void }[]
+    items: {
+        key: string;
+        title?: React.ReactNode;
+        href?: string;
+        onClick?: () => void;
+    }[];
 }

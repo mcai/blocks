@@ -1,7 +1,7 @@
-import {SimpleField} from "../../fields/SimpleField";
+import { SimpleField } from "../../fields/SimpleField";
 import React from "react";
-import {SimpleDataProvider} from "../../data/SimpleDataProvider";
-import {SimpleTableRowType} from "./SimpleTableRowType";
+import { SimpleDataProvider } from "../../data/SimpleDataProvider";
+import { SimpleTableRowType } from "./SimpleTableRowType";
 
 export interface SimpleTableProps {
     pageSize: number;

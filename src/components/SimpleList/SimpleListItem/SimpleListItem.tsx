@@ -1,5 +1,5 @@
-import React, {Fragment} from "react";
-import {SimpleListItemProps} from "./SimpleListItemProps";
+import React, { Fragment } from "react";
+import { SimpleListItemProps } from "./SimpleListItemProps";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(key: string, value: any) {
@@ -9,11 +9,10 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     }
 
     render() {
-        const keyValueArray = Object.keys(this.props.item.fields)
-            .map(key => ({
-                "key": key,
-                "value": this.props.item.fields[key].value
-            }));
+        const keyValueArray = Object.keys(this.props.item.fields).map((key) => ({
+            key: key,
+            value: this.props.item.fields[key].value,
+        }));
 
         const values: any = {};
 
@@ -37,39 +36,31 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     </b>
 
                     <div className="simple-section-items">
-                        {
-                            (this.props.readonly === undefined || !this.props.readonly)
-                                ? (
-                                    <button
-                                        className="simple-button"
-                                        onClick={() => this.props.onRemove?.(this.props.index)}
-                                    >
-                                        删除
-                                    </button>
-                                )
-                                : <span>&nbsp;</span>
-                        }
+                        {this.props.readonly === undefined || !this.props.readonly ? (
+                            <button className="simple-button" onClick={() => this.props.onRemove?.(this.props.index)}>
+                                删除
+                            </button>
+                        ) : (
+                            <span>&nbsp;</span>
+                        )}
                     </div>
                 </div>
 
-                {
-                    Object.keys(this.props.item.fields).map(key => {
-                            const input = this.props.item.fields[key].input;
+                {Object.keys(this.props.item.fields).map((key) => {
+                    const input = this.props.item.fields[key].input;
 
-                            return React.isValidElement(input)
-                                ? React.cloneElement(input, {
-                                    key: key,
-                                    name: key,
-                                    values: values,
-                                    onUpdate: (name: string, value: any) => {
-                                        this.onUpdate(name, value);
-                                    },
-                                    readonly: input.props.readonly || this.props.readonly
-                                })
-                                : input;
-                        }
-                    )
-                }
+                    return React.isValidElement(input)
+                        ? React.cloneElement(input, {
+                              key: key,
+                              name: key,
+                              values: values,
+                              onUpdate: (name: string, value: any) => {
+                                  this.onUpdate(name, value);
+                              },
+                              readonly: input.props.readonly || this.props.readonly,
+                          })
+                        : input;
+                })}
             </Fragment>
         );
     }

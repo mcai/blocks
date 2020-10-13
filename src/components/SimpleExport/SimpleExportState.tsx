@@ -1,3 +1,3 @@
 export interface SimpleExportState {
-    allItems?: any[]
+    allItems?: any[];
 }

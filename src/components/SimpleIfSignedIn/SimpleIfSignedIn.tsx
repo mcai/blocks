@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {SimpleIfSignedInState} from "./SimpleIfSignedInState";
-import {SimpleIfSignedInProps} from "./SimpleIfSignedInProps";
-import {SimpleIf} from "../SimpleIf/SimpleIf";
+import React, { Component } from "react";
+import { SimpleIfSignedInState } from "./SimpleIfSignedInState";
+import { SimpleIfSignedInProps } from "./SimpleIfSignedInProps";
+import { SimpleIf } from "../SimpleIf/SimpleIf";
 
 export class SimpleIfSignedIn extends Component<SimpleIfSignedInProps, SimpleIfSignedInState> {
     constructor(props: SimpleIfSignedInProps) {
@@ -10,7 +10,7 @@ export class SimpleIfSignedIn extends Component<SimpleIfSignedInProps, SimpleIfS
         this.state = {
             isDataLoaded: false,
             user: undefined,
-            denied: false
+            denied: false,
         };
     }
 
@@ -23,12 +23,12 @@ export class SimpleIfSignedIn extends Component<SimpleIfSignedInProps, SimpleIfS
 
         this.setState({
             isDataLoaded: true,
-            user: user
+            user: user,
         });
 
         if (user != null && this.props.extraCondition != null && !this.props.extraCondition(this.state.user)) {
             this.setState({
-                denied: true
+                denied: true,
             });
         }
     }
@@ -40,11 +40,7 @@ export class SimpleIfSignedIn extends Component<SimpleIfSignedInProps, SimpleIfS
 
         return (
             <SimpleIf condition={this.state.isDataLoaded}>
-                {
-                    this.state.user
-                        ? this.props.children
-                        : this.props.signInComponent
-                }
+                {this.state.user ? this.props.children : this.props.signInComponent}
             </SimpleIf>
         );
     }

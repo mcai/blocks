@@ -1,3 +1,3 @@
 export interface SimpleSpacingProps {
-    value?: number
+    value?: number;
 }

@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import {SimpleDataProvider} from "../data/SimpleDataProvider";
+import { SimpleDataProvider } from "../data/SimpleDataProvider";
 
 export class SimpleCookie {
     private readonly dataProvider: SimpleDataProvider;
@@ -11,7 +11,7 @@ export class SimpleCookie {
         dataProvider: SimpleDataProvider,
         resource: string,
         getUserByGuidAction: string,
-        sessionKeyUserGuid: string = "user_guid"
+        sessionKeyUserGuid: string = "user_guid",
     ) {
         this.dataProvider = dataProvider;
         this.resource = resource;
@@ -26,15 +26,15 @@ export class SimpleCookie {
         } else {
             return await this.dataProvider.one(this.resource, this.getUserByGuidAction, {
                 filter: {
-                    guid: guid
-                }
+                    guid: guid,
+                },
             });
         }
     }
 
     signIn(guid: string): void {
         Cookies.set(this.sessionKeyUserGuid, guid, {
-            expires: 180
+            expires: 180,
         });
     }
 

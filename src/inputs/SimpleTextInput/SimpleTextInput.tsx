@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from "react";
-import {SimpleTextInputProps} from "./SimpleTextInputProps";
-import {Field} from "formik";
-import {Col, Row} from "react-bootstrap";
+import React, { Component, Fragment } from "react";
+import { SimpleTextInputProps } from "./SimpleTextInputProps";
+import { Field } from "formik";
+import { Col, Row } from "react-bootstrap";
 
 export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     render() {
@@ -14,7 +14,11 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
                 </Row>
                 <Row className={"mb-3"}>
                     <Col>
-                        <Field type={this.props.password ? "password" : "text"} name={this.props.name} placeholder={this.props.placeholder}/>
+                        <Field
+                            type={this.props.password ? "password" : "text"}
+                            name={this.props.name}
+                            placeholder={this.props.placeholder}
+                        />
                     </Col>
                 </Row>
             </Fragment>

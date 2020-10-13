@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {SimpleFormBooleanInputProps} from "./SimpleFormBooleanInputProps";
+import React, { Component } from "react";
+import { SimpleFormBooleanInputProps } from "./SimpleFormBooleanInputProps";
 
 export class SimpleFormBooleanInput extends Component<SimpleFormBooleanInputProps, any> {
     onUpdate(value: any) {
@@ -9,7 +9,11 @@ export class SimpleFormBooleanInput extends Component<SimpleFormBooleanInputProp
     }
 
     render() {
-        console.log(`SimpleFormBooleanInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name ?? ""]}`);
+        console.log(
+            `SimpleFormBooleanInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
+                this.props.values,
+            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
+        );
 
         return (
             <div className="simple-row">

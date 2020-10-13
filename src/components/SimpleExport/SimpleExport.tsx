@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {SimpleExportProps} from "./SimpleExportProps";
-import {SimpleExportState} from "./SimpleExportState";
-import {SimpleFormatting} from "../../utils/SimpleFormatting";
+import React, { Component } from "react";
+import { SimpleExportProps } from "./SimpleExportProps";
+import { SimpleExportState } from "./SimpleExportState";
+import { SimpleFormatting } from "../../utils/SimpleFormatting";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactExport from "react-data-export";
@@ -13,7 +13,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         super(props);
 
         this.state = {
-            allItems: undefined
+            allItems: undefined,
         };
     }
 
@@ -21,7 +21,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         this.props.onBeginExport?.();
 
         this.setState({
-            allItems: undefined
+            allItems: undefined,
         });
 
         let pageNum = Math.max(0, this.props.startPageNum ?? 0);
@@ -29,15 +29,17 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         const allItems = [];
 
         while (this.props.endPageNum == undefined || pageNum <= this.props.endPageNum) {
-            console.log(`[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${pageNum}`);
+            console.log(
+                `[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${pageNum}`,
+            );
 
             const result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
                 pageSize: this.props.pageSize,
                 pageNum: pageNum,
                 ordering: this.props.ordering,
                 filter: {
-                    ...this.props.extraData
-                }
+                    ...this.props.extraData,
+                },
             });
 
             if (result == undefined) {
@@ -48,8 +50,10 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             this.props.onExporting?.(result.pageCount, pageNum);
 
-            if (pageNum == result?.pageCount - 1 || (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum))
-            {
+            if (
+                pageNum == result?.pageCount - 1 ||
+                (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum)
+            ) {
                 break;
             }
 
@@ -57,7 +61,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         }
 
         this.setState({
-            allItems: allItems
+            allItems: allItems,
         });
 
         console.log(`[SimpleExport] handle download`);
@@ -71,16 +75,22 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
         return (
             <ReactExport.ExcelFile
                 filename={SimpleFormatting.toFormattedDateTimeStringAsFileName()}
-                element={<div/>}
+                element={<div />}
                 hideElement={false}
-                ref={(ref: any) => {this.refExcelFile = ref}}
+                ref={(ref: any) => {
+                    this.refExcelFile = ref;
+                }}
             >
                 <ReactExport.ExcelSheet data={this.state.allItems} name="Sheet1">
-                    {
-                        this.props.fields.filter(field => field.renderAsText !== undefined).map(field =>
-                            <ReactExport.ExcelColumn label={field.title}
-                                                     value={(item: any) => field.renderAsText?.(item)}/>)
-                    }
+                    {this.props.fields
+                        .filter((field) => field.renderAsText !== undefined)
+                        .map((field) => (
+                            <ReactExport.ExcelColumn
+                                key={field.name}
+                                label={field.title}
+                                value={(item: any) => field.renderAsText?.(item)}
+                            />
+                        ))}
                 </ReactExport.ExcelSheet>
             </ReactExport.ExcelFile>
         );

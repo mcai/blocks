@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {SimpleFormTextAreaInputProps} from "./SimpleFormTextAreaInputProps";
+import React, { Component } from "react";
+import { SimpleFormTextAreaInputProps } from "./SimpleFormTextAreaInputProps";
 
 export class SimpleFormTextAreaInput extends Component<SimpleFormTextAreaInputProps, any> {
     onUpdate(value: any) {
@@ -9,7 +9,11 @@ export class SimpleFormTextAreaInput extends Component<SimpleFormTextAreaInputPr
     }
 
     render() {
-        console.log(`SimpleFormTextAreaInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name ?? ""]}`);
+        console.log(
+            `SimpleFormTextAreaInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
+                this.props.values,
+            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
+        );
 
         return (
             <div className="simple-row">

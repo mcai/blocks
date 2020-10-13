@@ -1,9 +1,9 @@
-import {SimpleDataProvider} from "./SimpleDataProvider";
-import {SimpleHttpClient} from "./SimpleHttpClient";
-import {SimpleHttpClientMethod} from "./SimpleHttpClientMethod";
+import { SimpleDataProvider } from "./SimpleDataProvider";
+import { SimpleHttpClient } from "./SimpleHttpClient";
+import { SimpleHttpClientMethod } from "./SimpleHttpClientMethod";
 
 export class SimpleRestDataProvider implements SimpleDataProvider {
-    private readonly url: string
+    private readonly url: string;
 
     constructor(url: string) {
         this.url = url;
@@ -13,91 +13,72 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         resource: string,
         action: string,
         method: SimpleHttpClientMethod,
-        params: { [key: string]: any }
+        params: {
+            [key: string]: any;
+        },
     ): Promise<ResultT | undefined> {
-        return await SimpleHttpClient.call<ResultT | undefined>(
-            this.url + resource + action,
-            method,
-            params
-        );
+        return await SimpleHttpClient.call<ResultT | undefined>(this.url + resource + action, method, params);
     }
 
-    async get<ResultT>(
-        resource: string,
-        action: string,
-        params: { [key: string]: any }
-    ): Promise<ResultT | undefined> {
-        return await this.call<ResultT | undefined>(
-            resource,
-            action,
-            SimpleHttpClientMethod.get,
-            params
-        );
+    async get<ResultT>(resource: string, action: string, params: { [key: string]: any }): Promise<ResultT | undefined> {
+        return await this.call<ResultT | undefined>(resource, action, SimpleHttpClientMethod.get, params);
     }
 
     async post<ResultT>(
         resource: string,
         action: string,
-        params: { [key: string]: any }
+        params: {
+            [key: string]: any;
+        },
     ): Promise<ResultT | undefined> {
-        return await this.call<ResultT | undefined>(
-            resource,
-            action,
-            SimpleHttpClientMethod.post,
-            params
-        );
+        return await this.call<ResultT | undefined>(resource, action, SimpleHttpClientMethod.post, params);
     }
 
     async find<ItemT>(
         resource: string,
         action: string,
         params: {
-            pageSize: number,
-            pageNum: number,
-            ordering?: any,
+            pageSize: number;
+            pageNum: number;
+            ordering?: any;
             filter?: {
-                [key: string]: any
-            }
-        }
-    ): Promise<{
-        count: number,
-        pageCount: number,
-        itemsInCurrentPage: ItemT[]
-    } | undefined> {
+                [key: string]: any;
+            };
+        },
+    ): Promise<
+        | {
+              count: number;
+              pageCount: number;
+              itemsInCurrentPage: ItemT[];
+          }
+        | undefined
+    > {
         return await SimpleHttpClient.call<{
-            count: number,
-            pageCount: number,
-            itemsInCurrentPage: ItemT[]
-        }>(
-            this.url + resource + action,
-            SimpleHttpClientMethod.get,
-            {
-                pageSize: params.pageSize,
-                pageNum: params.pageNum,
-                ordering: params.ordering,
-                ...params.filter
-            }
-        );
+            count: number;
+            pageCount: number;
+            itemsInCurrentPage: ItemT[];
+        }>(this.url + resource + action, SimpleHttpClientMethod.get, {
+            pageSize: params.pageSize,
+            pageNum: params.pageNum,
+            ordering: params.ordering,
+            ...params.filter,
+        });
     }
 
     async all<ItemT>(
         resource: string,
         action: string,
         params: {
-            ordering?: any,
+            ordering?: any;
             filter?: {
-                [key: string]: any
-            }
-        }
+                [key: string]: any;
+            };
+        },
     ): Promise<ItemT[] | undefined> {
-        return await SimpleHttpClient.call<ItemT[]>(
-            this.url + resource + action,
-            SimpleHttpClientMethod.get,
-            {
-                ordering: params.ordering,
-                ...params.filter
-            }
-        );
+        return await SimpleHttpClient.call<ItemT[]>(this.url + resource + action, SimpleHttpClientMethod.get, {
+            ordering: params.ordering,
+            ...params.filter,
+        });
     }
 
     async one<ItemT>(
@@ -105,17 +86,13 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             filter?: {
-                [key: string]: any
-            }
-        }
-    ): Promise<ItemT | undefined>{
-        return await SimpleHttpClient.call<ItemT>(
-            this.url + resource + action,
-            SimpleHttpClientMethod.get,
-            {
-                ...params.filter
-            }
-        );
+                [key: string]: any;
+            };
+        },
+    ): Promise<ItemT | undefined> {
+        return await SimpleHttpClient.call<ItemT>(this.url + resource + action, SimpleHttpClientMethod.get, {
+            ...params.filter,
+        });
     }
 
     async create<ItemT>(
@@ -123,56 +100,44 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             data: {
-                [key: string]: any
-            }
-        }
-    ): Promise<ItemT | undefined>{
-        return await SimpleHttpClient.call<ItemT>(
-            this.url + resource + action,
-            SimpleHttpClientMethod.post,
-            {
-                ...params.data
-            }
-        );
+                [key: string]: any;
+            };
+        },
+    ): Promise<ItemT | undefined> {
+        return await SimpleHttpClient.call<ItemT>(this.url + resource + action, SimpleHttpClientMethod.post, {
+            ...params.data,
+        });
     }
 
     async update<ItemT>(
         resource: string,
         action: string,
         params: {
-            id: number,
+            id: number;
             data: {
-                [key: string]: any
-            }
-        }
-    ): Promise<ItemT | undefined>{
-        return await SimpleHttpClient.call<ItemT>(
-            this.url + resource + action,
-            SimpleHttpClientMethod.post,
-            {
-                id: params.id,
-                ...params.data
-            }
-        );
+                [key: string]: any;
+            };
+        },
+    ): Promise<ItemT | undefined> {
+        return await SimpleHttpClient.call<ItemT>(this.url + resource + action, SimpleHttpClientMethod.post, {
+            id: params.id,
+            ...params.data,
+        });
     }
 
     async remove(
         resource: string,
         action: string,
         params: {
-            id: number,
+            id: number;
             data: {
-                [key: string]: any
-            }
-        }
-    ): Promise<void>{
-        return await SimpleHttpClient.call<void>(
-            this.url + resource + action,
-            SimpleHttpClientMethod.post,
-            {
-                id: params.id,
-                ...params.data
-            }
-        );
+                [key: string]: any;
+            };
+        },
+    ): Promise<void> {
+        return await SimpleHttpClient.call<void>(this.url + resource + action, SimpleHttpClientMethod.post, {
+            id: params.id,
+            ...params.data,
+        });
     }
 }

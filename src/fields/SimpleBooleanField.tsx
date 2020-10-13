@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 
 export class SimpleBooleanField implements SimpleField {
     title?: React.ReactNode;
@@ -15,7 +15,7 @@ export class SimpleBooleanField implements SimpleField {
         name?: string,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = name;

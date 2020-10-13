@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {SimpleFormNumberInputProps} from "./SimpleFormNumberInputProps";
+import React, { Component } from "react";
+import { SimpleFormNumberInputProps } from "./SimpleFormNumberInputProps";
 
 export class SimpleFormNumberInput extends Component<SimpleFormNumberInputProps, any> {
     onUpdate(value: any) {
@@ -9,7 +9,11 @@ export class SimpleFormNumberInput extends Component<SimpleFormNumberInputProps,
     }
 
     render() {
-        console.log(`SimpleFormNumberInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name ?? ""]}`);
+        console.log(
+            `SimpleFormNumberInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
+                this.props.values,
+            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
+        );
 
         return (
             <div className="simple-row">

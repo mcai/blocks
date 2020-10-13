@@ -1,3 +1,3 @@
 export interface SimpleListAddFormState {
-    selectedIndex: number
+    selectedIndex: number;
 }

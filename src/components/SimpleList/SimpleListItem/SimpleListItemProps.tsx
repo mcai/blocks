@@ -1,4 +1,4 @@
-import {SimpleListItemType} from "../SimpleListItemType";
+import { SimpleListItemType } from "../SimpleListItemType";
 
 export interface SimpleListItemProps {
     item: SimpleListItemType;

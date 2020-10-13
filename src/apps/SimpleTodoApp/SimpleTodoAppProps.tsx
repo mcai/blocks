@@ -1,2 +1,1 @@
-export interface SimpleTodoAppProps {
-}
+export interface SimpleTodoAppProps {}

@@ -1,2 +1,1 @@
-export interface SimpleAnimationState {
-}
+export interface SimpleAnimationState {}

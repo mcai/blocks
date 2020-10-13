@@ -1,2 +1,1 @@
-export interface SimpleChatState {
-}
+export interface SimpleChatState {}

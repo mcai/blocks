@@ -1,3 +1,3 @@
 export interface SimpleSshButtonState {
-    running: boolean
+    running: boolean;
 }

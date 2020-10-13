@@ -1,4 +1,4 @@
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 import React from "react";
 
 export class SimpleFuncField implements SimpleField {
@@ -16,10 +16,10 @@ export class SimpleFuncField implements SimpleField {
         title: React.ReactNode,
         name: string,
         renderFunc: (value: any) => React.ReactNode,
-        renderAsTextFunc: (value: any) => (string | undefined),
+        renderAsTextFunc: (value: any) => string | undefined,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = name;

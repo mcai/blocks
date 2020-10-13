@@ -1,5 +1,5 @@
-import {SimpleDataProvider} from "../../data/SimpleDataProvider";
-import {SimpleField} from "../../fields/SimpleField";
+import { SimpleDataProvider } from "../../data/SimpleDataProvider";
+import { SimpleField } from "../../fields/SimpleField";
 
 export interface SimpleExportProps {
     pageSize: number;

@@ -1,2 +1,1 @@
-export interface SimpleAnimationProps {
-}
+export interface SimpleAnimationProps {}

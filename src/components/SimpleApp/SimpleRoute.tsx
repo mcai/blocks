@@ -1,6 +1,6 @@
 import React from "react";
 
 export interface SimpleRoute {
-    path: string
-    page: React.ReactNode
+    path: string;
+    page: React.ReactNode;
 }

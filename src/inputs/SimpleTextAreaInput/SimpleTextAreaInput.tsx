@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from "react";
-import {SimpleTextAreaInputProps} from "./SimpleTextAreaInputProps";
-import {Field} from "formik";
-import {Col, Row} from "react-bootstrap";
+import React, { Component, Fragment } from "react";
+import { SimpleTextAreaInputProps } from "./SimpleTextAreaInputProps";
+import { Field } from "formik";
+import { Col, Row } from "react-bootstrap";
 
 export class SimpleTextAreaInput extends Component<SimpleTextAreaInputProps, any> {
     render() {
@@ -14,7 +14,7 @@ export class SimpleTextAreaInput extends Component<SimpleTextAreaInputProps, any
                 </Row>
                 <Row className={"mb-3"}>
                     <Col>
-                        <Field as="textarea" name={this.props.name} placeholder={this.props.placeholder}/>
+                        <Field as="textarea" name={this.props.name} placeholder={this.props.placeholder} />
                     </Col>
                 </Row>
             </Fragment>

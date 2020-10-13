@@ -1,2 +1,1 @@
-export interface SimpleTodoAppState {
-}
+export interface SimpleTodoAppState {}

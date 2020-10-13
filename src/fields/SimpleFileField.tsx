@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 
 export class SimpleFileField implements SimpleField {
     title?: React.ReactNode;
@@ -17,7 +17,7 @@ export class SimpleFileField implements SimpleField {
         text?: React.ReactNode,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = name;
@@ -28,9 +28,7 @@ export class SimpleFileField implements SimpleField {
     }
 
     render(item: any): React.ReactNode {
-        return (
-            <a href={item[this.name ?? ""]}>{this.text}</a>
-        );
+        return <a href={item[this.name ?? ""]}>{this.text}</a>;
     }
 
     renderAsText(item: any): string | undefined {

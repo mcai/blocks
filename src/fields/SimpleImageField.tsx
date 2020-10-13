@@ -1,6 +1,6 @@
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 import React from "react";
-import {Image} from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 export class SimpleImageField implements SimpleField {
     title?: React.ReactNode;
@@ -18,7 +18,7 @@ export class SimpleImageField implements SimpleField {
         text?: string,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = field;
@@ -32,7 +32,7 @@ export class SimpleImageField implements SimpleField {
         const src = item[this.name ?? ""];
         return (
             <a href={src}>
-                <Image src={src} title={this.text} thumbnail/>
+                <Image src={src} title={this.text} thumbnail />
             </a>
         );
     }

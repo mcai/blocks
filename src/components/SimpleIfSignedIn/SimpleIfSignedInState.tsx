@@ -1,5 +1,5 @@
 export interface SimpleIfSignedInState {
-    isDataLoaded: boolean
-    user?: any
-    denied: boolean
+    isDataLoaded: boolean;
+    user?: any;
+    denied: boolean;
 }

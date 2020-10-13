@@ -2,8 +2,9 @@ import React from "react";
 
 export interface SimpleTabsProps {
     options: {
-        text?: React.ReactNode,
-        value?: any
+        key: string;
+        text?: React.ReactNode;
+        value?: any;
     }[];
 
     value?: any;

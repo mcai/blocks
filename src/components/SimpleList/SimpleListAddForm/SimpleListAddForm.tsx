@@ -1,13 +1,13 @@
 import React from "react";
-import {SimpleListAddFormProps} from "./SimpleListAddFormProps";
-import {SimpleListAddFormState} from "./SimpleListAddFormState";
+import { SimpleListAddFormProps } from "./SimpleListAddFormProps";
+import { SimpleListAddFormState } from "./SimpleListAddFormState";
 
 export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
     constructor(props: SimpleListAddFormProps) {
         super(props);
 
         this.state = {
-            selectedIndex: 0
+            selectedIndex: 0,
         };
     }
 
@@ -15,7 +15,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
         const selectedIndex = Number(e.target.value);
 
         this.setState({
-            selectedIndex: selectedIndex
+            selectedIndex: selectedIndex,
         });
 
         console.log(`SimpleListItem.onChange: selectedIndex=${selectedIndex}`);
@@ -33,8 +33,8 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
                 name: option.name,
                 description: option.description ?? option.descriptionAsText,
                 fields: {
-                    ...option.fields
-                }
+                    ...option.fields,
+                },
             });
         }
 
@@ -44,19 +44,14 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
     render() {
         return (
             <form onSubmit={(e) => this.onSubmit(e)}>
-                <select
-                    value={this.state.selectedIndex}
-                    onChange={(e) => this.onChange(e)}
-                >
-                    {
-                        this.props.options?.map((option, index) => (
-                            <option key={index} value={index}>{option.descriptionAsText}</option>
-                        ))
-                    }
+                <select value={this.state.selectedIndex} onChange={(e) => this.onChange(e)}>
+                    {this.props.options?.map((option, index) => (
+                        <option key={index} value={index}>
+                            {option.descriptionAsText}
+                        </option>
+                    ))}
                 </select>
-
                 &nbsp;&nbsp;
-
                 <button
                     className="simple-button"
                     type="submit"

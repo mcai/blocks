@@ -3,7 +3,10 @@ export interface SimpleTableState {
     ordering?: any;
     count: number;
     pageCount: number;
-    itemsInCurrentPage: any[];
+    itemsInCurrentPage: {
+        key: string;
+        [name: string]: any;
+    }[];
     loadingData: boolean;
 
     exportLoadingActive: boolean;

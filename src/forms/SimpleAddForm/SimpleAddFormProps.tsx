@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleDataProvider} from "../../data/SimpleDataProvider";
+import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 
 export interface SimpleAddFormProps {
     dataProvider: SimpleDataProvider;

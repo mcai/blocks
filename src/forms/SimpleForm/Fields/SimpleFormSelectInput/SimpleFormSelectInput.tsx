@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {SimpleFormSelectInputProps} from "./SimpleFormSelectInputProps";
+import React, { Component } from "react";
+import { SimpleFormSelectInputProps } from "./SimpleFormSelectInputProps";
 
 export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps, any> {
     onUpdate(value: any) {
@@ -9,7 +9,11 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
     }
 
     render() {
-        console.log(`SimpleFormSelectInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(this.props.values)}, value=${this.props.values?.[this.props.name ?? ""]}`);
+        console.log(
+            `SimpleFormSelectInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
+                this.props.values,
+            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
+        );
 
         return (
             <div className="simple-row">
@@ -20,11 +24,11 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
                     value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
                 >
-                    {
-                        this.props.options.map(option => (
-                            <option key={option.value} value={option.value}>{option.text ?? option.value}</option>
-                        ))
-                    }
+                    {this.props.options.map((option) => (
+                        <option key={option.value} value={option.value}>
+                            {option.text ?? option.value}
+                        </option>
+                    ))}
                     disabled={this.props.readonly !== undefined && this.props.readonly}
                 </select>
             </div>

@@ -1,11 +1,11 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 import Enumerable from "linq";
 
 export class SimpleSelectField implements SimpleField {
     title?: React.ReactNode;
     name?: string;
-    options?: {value: string, text: string}[];
+    options?: { value: string; text: string }[];
 
     ascendingOrdering?: any;
     descendingOrdering?: any;
@@ -15,10 +15,10 @@ export class SimpleSelectField implements SimpleField {
     constructor(
         title?: React.ReactNode,
         name?: string,
-        options?: {value: string, text: string}[],
+        options?: { value: string; text: string }[],
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = name;
@@ -30,12 +30,11 @@ export class SimpleSelectField implements SimpleField {
 
     render(item: any): React.ReactNode {
         const value = item[this.name ?? ""];
-        return Enumerable.from(this.options ?? []).firstOrDefault(option => option.value == value)?.text;
+        return Enumerable.from(this.options ?? []).firstOrDefault((option) => option.value == value)?.text;
     }
 
     renderAsText(item: any): string | undefined {
         const value = item[this.name ?? ""];
-        return Enumerable.from(this.options ?? []).firstOrDefault(option => option.value == value)?.text;
+        return Enumerable.from(this.options ?? []).firstOrDefault((option) => option.value == value)?.text;
     }
 }
-

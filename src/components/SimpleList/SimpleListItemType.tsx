@@ -1,4 +1,4 @@
-import {SimpleListItemFieldsType} from "./SimpleListItemFieldsType";
+import { SimpleListItemFieldsType } from "./SimpleListItemFieldsType";
 import React from "react";
 
 export interface SimpleListItemType {

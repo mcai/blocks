@@ -1,16 +1,15 @@
-import React, {Component} from "react";
-import {SimpleSignInFormProps} from "./SimpleSignInFormProps";
-import {Toastify} from "../../components/SimpleToast/SimpleToast";
-import {SimpleToastType} from "../../components/SimpleToast/SimpleToastType";
-import {SimpleAddForm} from "../SimpleAddForm/SimpleAddForm";
-import {SimpleFormTextInput} from "../SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
+import React, { Component } from "react";
+import { SimpleSignInFormProps } from "./SimpleSignInFormProps";
+import { Toastify } from "../../components/SimpleToast/SimpleToast";
+import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
+import { SimpleAddForm } from "../SimpleAddForm/SimpleAddForm";
+import { SimpleFormTextInput } from "../SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
     constructor(props: Readonly<any>) {
         super(props);
 
-        this.state = {
-        };
+        this.state = {};
     }
 
     render(): React.ReactNode {
@@ -19,26 +18,18 @@ export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
                 dataProvider={this.props.dataProvider}
                 resource={this.props.resource}
                 addAction={this.props.signInAction}
-                inputs={
-                    [
-                        <SimpleFormTextInput label={"用户名"} name={"name"}/>,
-                        <SimpleFormTextInput label={"密码"} name={"password"} password={true}/>
-                    ]
-                }
+                inputs={[
+                    <SimpleFormTextInput key={"name"} label={"用户名"} name={"name"} />,
+                    <SimpleFormTextInput key={"password"} label={"密码"} name={"password"} password={true} />,
+                ]}
                 submitButtonText={"登陆"}
-                onSuccess={item => {
+                onSuccess={(item) => {
                     this.props.cookie.signIn(item.guid);
 
-                    Toastify(
-                        SimpleToastType.Success,
-                        "登陆成功!"
-                    );
+                    Toastify(SimpleToastType.Success, "登陆成功!");
                 }}
                 onFailure={() => {
-                    Toastify(
-                        SimpleToastType.Error,
-                        "登陆失败!"
-                    );
+                    Toastify(SimpleToastType.Error, "登陆失败!");
                 }}
             />
         );

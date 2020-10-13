@@ -1,5 +1,5 @@
-import {SimpleDataProvider} from "../../data/SimpleDataProvider";
-import {SimpleCookie} from "../../utils/SimpleCookie";
+import { SimpleDataProvider } from "../../data/SimpleDataProvider";
+import { SimpleCookie } from "../../utils/SimpleCookie";
 
 export interface SimpleSignInFormProps {
     dataProvider: SimpleDataProvider;

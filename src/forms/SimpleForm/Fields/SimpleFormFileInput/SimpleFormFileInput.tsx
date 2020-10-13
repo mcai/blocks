@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {SimpleFormFileInputProps} from "./SimpleFormFileInputProps";
+import React, { Component } from "react";
+import { SimpleFormFileInputProps } from "./SimpleFormFileInputProps";
 
 export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any> {
     onUpdate(value: File | undefined) {
@@ -9,7 +9,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
         const reader = new FileReader();
 
-        reader.addEventListener('loadend', async () => {
+        reader.addEventListener("loadend", async () => {
             const data = new Uint8Array(reader.result as ArrayBuffer);
             this.props.onUpdate?.(this.props.name ?? "", data);
 

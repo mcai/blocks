@@ -1,22 +1,22 @@
-import React, {Component, Fragment} from "react";
-import {SimpleSshButtonProps} from "./SimpleSshButtonProps";
-import {SimpleSshButtonState} from "./SimpleSshButtonState";
-import {Button} from "react-bootstrap";
-import {NodeSSH} from "node-ssh";
-import {SimpleSpinner} from "../SimpleSpinner/SimpleSpinner";
+import React, { Component, Fragment } from "react";
+import { SimpleSshButtonProps } from "./SimpleSshButtonProps";
+import { SimpleSshButtonState } from "./SimpleSshButtonState";
+import { Button } from "react-bootstrap";
+import { NodeSSH } from "node-ssh";
+import { SimpleSpinner } from "../SimpleSpinner/SimpleSpinner";
 
 export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshButtonState> {
     constructor(props: SimpleSshButtonProps) {
         super(props);
 
         this.state = {
-            running: false
+            running: false,
         };
     }
 
     private async exec(workingDirectory: string, commands: string[]) {
         this.setState({
-            running: false
+            running: false,
         });
 
         try {
@@ -26,24 +26,22 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                 host: this.props.host,
                 port: this.props.port,
                 username: this.props.username,
-                password: this.props.password
+                password: this.props.password,
             });
 
             if (this.props.filesToUpload !== undefined && this.props.filesToUpload?.length > 0) {
                 await ssh.putFiles(
-                    this.props.filesToUpload?.map(
-                        x => {
-                            return {
-                                local: x.localFileName,
-                                remote: x.remoteFileName
-                            };
-                        }
-                    ) ?? []
+                    this.props.filesToUpload?.map((x) => {
+                        return {
+                            local: x.localFileName,
+                            remote: x.remoteFileName,
+                        };
+                    }) ?? [],
                 );
             }
 
             for (const command of commands) {
-                const result = await ssh.execCommand(command, {cwd: workingDirectory});
+                const result = await ssh.execCommand(command, { cwd: workingDirectory });
                 this.props.onStdout?.(result.stdout);
                 this.props.onStderr?.(result.stderr);
             }
@@ -52,7 +50,7 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
         }
 
         this.setState({
-            running: false
+            running: false,
         });
     }
 
@@ -64,16 +62,14 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                     disabled={this.state.running}
                     onClick={async () => await this.exec(this.props.workingDirectory, this.props.commands)}
                 >
-                    {
-                        !this.state.running
-                            ? this.props.buttonText ?? "Run"
-                            : (
-                                <Fragment>
-                                    <SimpleSpinner/>
-                                    {this.props.buttonRunningText ?? "Running"}
-                                </Fragment>
-                            )
-                    }
+                    {!this.state.running ? (
+                        this.props.buttonText ?? "Run"
+                    ) : (
+                        <Fragment>
+                            <SimpleSpinner />
+                            {this.props.buttonRunningText ?? "Running"}
+                        </Fragment>
+                    )}
                 </Button>
             </Fragment>
         );

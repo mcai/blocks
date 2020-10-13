@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 
 export class SimpleHexField implements SimpleField {
     title?: React.ReactNode;
@@ -15,7 +15,7 @@ export class SimpleHexField implements SimpleField {
         field?: string,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = field;

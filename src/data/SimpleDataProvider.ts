@@ -3,85 +3,98 @@ export interface SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            [key: string]: any
-        }
+            [key: string]: any;
+        },
     ): Promise<ResultT | undefined>;
 
     post<ResultT>(
         resource: string,
         action: string,
         params: {
-            [key: string]: any
-        }
+            [key: string]: any;
+        },
     ): Promise<ResultT | undefined>;
 
-    find<ItemT>(
+    find<
+        ItemT extends {
+            key: string;
+            [name: string]: any;
+        }
+    >(
         resource: string,
         action: string,
         params: {
-            pageSize: number,
-            pageNum: number,
-            ordering?: any,
+            pageSize: number;
+            pageNum: number;
+            ordering?: any;
             filter?: {
-                [key: string]: any
-            }
-        }
-    ): Promise<{
-        count: number,
-        pageCount: number,
-        itemsInCurrentPage: ItemT[]
-    } | undefined>;
+                [key: string]: any;
+            };
+        },
+    ): Promise<
+        | {
+              count: number;
+              pageCount: number;
+              itemsInCurrentPage: ItemT[];
+          }
+        | undefined
+    >;
 
-    all<ItemT>(
+    all<
+        ItemT extends {
+            key: string;
+            [name: string]: any;
+        }
+    >(
         resource: string,
         action: string,
         params: {
-            ordering?: any,
+            ordering?: any;
             filter?: {
-                [key: string]: any
-            }
-        }
+                [key: string]: any;
+            };
+        },
     ): Promise<ItemT[] | undefined>;
 
-    one<RecordT>(
+    one<ItemT>(
         resource: string,
         action: string,
         params: {
             filter?: {
-                [key: string]: any
-            }
-        }
-    ): Promise<RecordT | undefined>
+                [key: string]: any;
+            };
+        },
+    ): Promise<ItemT | undefined>;
 
-    create<RecordT>(
+    create<ItemT>(
         resource: string,
         action: string,
         params: {
             data: {
-                [key: string]: any
-            }
-        }
-    ): Promise<RecordT | undefined>;
+                [key: string]: any;
+            };
+        },
+    ): Promise<ItemT | undefined>;
 
-    update<RecordT>(
+    update<ItemT>(
         resource: string,
         action: string,
         params: {
-            id: number,
+            id: number;
             data: {
-                [key: string]: any
-            }
-        }
-    ): Promise<RecordT | undefined>;
+                [key: string]: any;
+            };
+        },
+    ): Promise<ItemT | undefined>;
 
     remove(
         resource: string,
         action: string,
         params: {
-            id: number,
+            id: number;
             data: {
-                [key: string]: any
-            }
-        }
+                [key: string]: any;
+            };
+        },
     ): Promise<void>;
 }

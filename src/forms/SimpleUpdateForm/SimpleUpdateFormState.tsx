@@ -1,4 +1,4 @@
 export interface SimpleUpdateFormState {
-    item?: any
+    item?: any;
     redirect?: string;
 }

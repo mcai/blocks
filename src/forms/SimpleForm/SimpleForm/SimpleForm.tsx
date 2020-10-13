@@ -1,19 +1,19 @@
-import React, {Component} from "react";
-import {SimpleFormProps} from "./SimpleFormProps";
-import {SimpleFormState} from "./SimpleFormState";
+import React, { Component } from "react";
+import { SimpleFormProps } from "./SimpleFormProps";
+import { SimpleFormState } from "./SimpleFormState";
 
 export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     constructor(props: SimpleFormProps) {
         super(props);
 
         this.state = {
-            ...this.props.initialValues
+            ...this.props.initialValues,
         };
     }
 
     private onUpdate(name: string, value: string) {
         this.setState({
-            [name]: value
+            [name]: value,
         });
     }
 
@@ -25,26 +25,22 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     render() {
         return (
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
-                {
-                    React.Children.map(this.props.children, input => React.isValidElement(input)
+                {React.Children.map(this.props.children, (input) =>
+                    React.isValidElement(input)
                         ? React.cloneElement(input, {
-                            values: this.state,
-                            onUpdate: (name: string, value: string) => {
-                                this.onUpdate(name, value);
-                            }
-                        })
-                        : input
-                    )
-                }
+                              values: this.state,
+                              onUpdate: (name: string, value: string) => {
+                                  this.onUpdate(name, value);
+                              },
+                          })
+                        : input,
+                )}
 
                 <div className="simple-row">
                     <span className="simple-input-label">&nbsp;</span>
 
                     <div className="simple-input">
-                        <button
-                            className="simple-button"
-                            type="submit"
-                        >
+                        <button className="simple-button" type="submit">
                             {this.props.submitButtonText ?? "提交"}
                         </button>
                     </div>

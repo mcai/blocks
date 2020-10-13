@@ -1,31 +1,31 @@
-import React, {Component} from "react";
-import {SimpleUpdateFormProps} from "./SimpleUpdateFormProps";
-import {SimpleUpdateFormState} from "./SimpleUpdateFormState";
-import {SimpleIf} from "../../components/SimpleIf/SimpleIf";
-import {Redirect} from "react-router-dom";
-import {SimpleForm} from "../SimpleForm/SimpleForm/SimpleForm";
+import React, { Component } from "react";
+import { SimpleUpdateFormProps } from "./SimpleUpdateFormProps";
+import { SimpleUpdateFormState } from "./SimpleUpdateFormState";
+import { SimpleIf } from "../../components/SimpleIf/SimpleIf";
+import { Redirect } from "react-router-dom";
+import { SimpleForm } from "../SimpleForm/SimpleForm/SimpleForm";
 
 export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpdateFormState> {
     constructor(props: SimpleUpdateFormProps) {
         super(props);
 
         this.state = {
-            item: undefined
-        }
+            item: undefined,
+        };
     }
 
     async componentDidMount() {
         const item = await this.props.dataProvider.one(this.props.resource, this.props.getByIdAction, {
             filter: {
                 ...this.props.getByIdExtraData,
-                id: this.props.id
-            }
+                id: this.props.id,
+            },
         });
 
         this.props.onGetIdResult?.(item);
 
         this.setState({
-            item: item
+            item: item,
         });
     }
 
@@ -34,8 +34,8 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
             id: this.props.id,
             data: {
                 ...this.props.updateExtraData,
-                ...values
-            }
+                ...values,
+            },
         });
 
         if (result !== undefined) {
@@ -43,8 +43,8 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
 
             if (this.props.onSuccessRedirect) {
                 this.setState({
-                    redirect: this.props.onSuccessRedirect?.(result)
-                })
+                    redirect: this.props.onSuccessRedirect?.(result),
+                });
             }
         } else {
             this.props.onFailure?.();
@@ -54,21 +54,17 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     render() {
         return (
             <SimpleIf condition={this.state.item !== undefined}>
-                {
-                    this.state.redirect && <Redirect to={this.state.redirect}/>
-                }
+                {this.state.redirect && <Redirect to={this.state.redirect} />}
 
                 <SimpleForm
                     initialValues={{
                         ...this.props.initialValues,
-                        ...this.state.item
+                        ...this.state.item,
                     }}
-                    onSubmit={values => this.onSubmit(values)}
+                    onSubmit={(values) => this.onSubmit(values)}
                     submitButtonText={this.props.submitButtonText}
                 >
-                    {
-                        this.props.inputs
-                    }
+                    {this.props.inputs}
                 </SimpleForm>
             </SimpleIf>
         );

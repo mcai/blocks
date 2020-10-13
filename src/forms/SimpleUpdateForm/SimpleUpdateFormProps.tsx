@@ -1,10 +1,10 @@
 import React from "react";
-import {SimpleDataProvider} from "../../data/SimpleDataProvider";
+import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 
 export interface SimpleUpdateFormProps {
     dataProvider: SimpleDataProvider;
     resource: string;
-    initialValues?: any
+    initialValues?: any;
     getByIdAction: string;
     onGetIdResult?: (item: any) => void;
     updateAction: string;

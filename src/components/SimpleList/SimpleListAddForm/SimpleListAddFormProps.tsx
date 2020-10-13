@@ -1,5 +1,5 @@
-import {SimpleListItemType} from "../SimpleListItemType";
-import {SimpleListAddFormOption} from "./SimpleListAddFormOption";
+import { SimpleListItemType } from "../SimpleListItemType";
+import { SimpleListAddFormOption } from "./SimpleListAddFormOption";
 
 export interface SimpleListAddFormProps {
     options?: SimpleListAddFormOption[];

@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 
 export class SimpleNumberField implements SimpleField {
     title?: React.ReactNode;
@@ -17,7 +17,7 @@ export class SimpleNumberField implements SimpleField {
         fractionDigits?: number,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = field;

@@ -1,5 +1,5 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
+import { SimpleField } from "./SimpleField";
 
 export class SimpleUrlField implements SimpleField {
     title?: React.ReactNode;
@@ -17,7 +17,7 @@ export class SimpleUrlField implements SimpleField {
         text?: React.ReactNode,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = name;
@@ -29,7 +29,9 @@ export class SimpleUrlField implements SimpleField {
 
     render(item: any): React.ReactNode {
         return (
-            <a href={item[this.name ?? ""]} target={"_blank"}>{this.text}</a>
+            <a href={item[this.name ?? ""]} target={"_blank"} rel="noopener noreferrer">
+                {this.text}
+            </a>
         );
     }
 

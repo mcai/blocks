@@ -1,4 +1,4 @@
 export enum SimpleHttpClientMethod {
     get,
-    post
+    post,
 }

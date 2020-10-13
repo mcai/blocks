@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from "react";
-import {SimpleTodoAppProps} from "./SimpleTodoAppProps";
-import {SimpleTodoAppState} from "./SimpleTodoAppState";
-import {SimpleBreadcrumb} from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
-import {SimpleFooter} from "../../components/SimpleFooter/SimpleFooter";
-import {SimpleList} from "../../components/SimpleList/SimpleList";
-import {SimpleNavbar} from "../../components/SimpleNavbar/SimpleNavbar";
-import {SimpleFormTextInput} from "../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
+import React, { Component, Fragment } from "react";
+import { SimpleTodoAppProps } from "./SimpleTodoAppProps";
+import { SimpleTodoAppState } from "./SimpleTodoAppState";
+import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
+import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";
+import { SimpleList } from "../../components/SimpleList/SimpleList";
+import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
+import { SimpleFormTextInput } from "../../forms/SimpleForm/Fields/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     render() {
@@ -14,7 +14,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                 <SimpleNavbar
                     brand={{
                         title: "Simple TODOs",
-                        href: "/"
+                        href: "/",
                     }}
                     sections={[
                         {
@@ -24,9 +24,9 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                                 {
                                     key: "todos",
                                     title: "TODOs",
-                                    href: "/todos"
-                                }
-                            ]
+                                    href: "/todos",
+                                },
+                            ],
                         },
                         {
                             rightAligned: true,
@@ -36,14 +36,14 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                                 {
                                     key: "users",
                                     title: "Users",
-                                    href: "/users"
+                                    href: "/users",
                                 },
                                 {
                                     key: "eventLogs",
                                     title: "Event Logs",
-                                    href: "/eventLogs"
-                                }
-                            ]
+                                    href: "/eventLogs",
+                                },
+                            ],
                         },
                         {
                             id: "help",
@@ -52,30 +52,32 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                                 {
                                     key: "help",
                                     title: "Help",
-                                    href: "/help"
+                                    href: "/help",
                                 },
                                 {
                                     key: "about",
                                     title: "About",
-                                    href: "/about"
-                                }
-                            ]
-                        }
+                                    href: "/about",
+                                },
+                            ],
+                        },
                     ]}
                 />
 
-                <SimpleBreadcrumb items={[
-                    {
-                        key: "home",
-                        title: "Home",
-                        href: "/"
-                    },
-                    {
-                        key: "todos",
-                        title: "TODOs",
-                        active: true
-                    },
-                ]}/>
+                <SimpleBreadcrumb
+                    items={[
+                        {
+                            key: "home",
+                            title: "Home",
+                            href: "/",
+                        },
+                        {
+                            key: "todos",
+                            title: "TODOs",
+                            active: true,
+                        },
+                    ]}
+                />
 
                 <SimpleList
                     addFormOptions={[
@@ -83,21 +85,21 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             name: "simpleTodo",
                             descriptionAsText: "Simple TODO",
                             fields: {
-                                "content": {
+                                content: {
                                     value: "",
-                                    input: <SimpleFormTextInput label="内容"/>
-                                }
-                            }
-                        }
+                                    input: <SimpleFormTextInput label="内容" />,
+                                },
+                            },
+                        },
                     ]}
                 />
 
-                <SimpleFooter brand={
-                    {
+                <SimpleFooter
+                    brand={{
                         title: "Simple TODOs (C) 2020",
-                        href: ""
-                    }
-                }/>
+                        href: "",
+                    }}
+                />
             </Fragment>
         );
     }

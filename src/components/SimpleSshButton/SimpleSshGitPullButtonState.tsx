@@ -1,2 +1,1 @@
-export interface SimpleSshGitPullButtonState {
-}
+export interface SimpleSshGitPullButtonState {}

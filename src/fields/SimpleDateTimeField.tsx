@@ -1,6 +1,6 @@
 import React from "react";
-import {SimpleField} from "./SimpleField";
-import {SimpleFormatting} from "../utils/SimpleFormatting";
+import { SimpleField } from "./SimpleField";
+import { SimpleFormatting } from "../utils/SimpleFormatting";
 
 export class SimpleDateTimeField implements SimpleField {
     title?: React.ReactNode;
@@ -16,7 +16,7 @@ export class SimpleDateTimeField implements SimpleField {
         name?: string,
         ascendingOrdering?: any,
         descendingOrdering?: any,
-        visible?: boolean
+        visible?: boolean,
     ) {
         this.title = title;
         this.name = name;
