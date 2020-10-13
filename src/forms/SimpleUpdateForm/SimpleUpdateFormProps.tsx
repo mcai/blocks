@@ -9,7 +9,7 @@ export interface SimpleUpdateFormProps {
     onGetIdResult?: (item: any) => void;
     updateAction: string;
 
-    id: number;
+    id: any;
 
     getByIdExtraData?: any;
     updateExtraData?: any;
