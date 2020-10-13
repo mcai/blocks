@@ -18,7 +18,7 @@
     "prepare": "npm run scss && npm run build && npm run html",
     "test-mongodb": "cd src && ts-node -O '{\"module\":\"commonjs\"}' data/SimpleMongoDbDataProvider.tsx",
     "start": "PORT=3001 react-scripts start",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}' --fix",
     "prettier": "prettier --config .prettierrc 'src/**/*.{js,ts,tsx}' --write"
   },
   "keywords": [],
