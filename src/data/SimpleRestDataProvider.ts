@@ -156,7 +156,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         );
     }
 
-    async remove<ItemT>(
+    async remove(
         resource: string,
         action: string,
         params: {

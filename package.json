@@ -17,7 +17,8 @@
     "html": "cd src && copyfiles **/*.css ../build && copyfiles **/*.scss ../build",
     "prepare": "npm run scss && npm run build && npm run html",
     "test-mongodb": "cd src && ts-node -O '{\"module\":\"commonjs\"}' data/SimpleMongoDbDataProvider.tsx",
-    "start": "PORT=3001 react-scripts start"
+    "start": "PORT=3001 react-scripts start",
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "Min Cai",
@@ -55,7 +56,10 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
     "@types/superagent": "^4.1.10",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
     "copyfiles": "^2.3.0",
+    "eslint": "^7.11.0",
     "react-scripts": "3.4.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"

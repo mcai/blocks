@@ -74,7 +74,7 @@ export interface SimpleDataProvider {
         }
     ): Promise<RecordT | undefined>;
 
-    remove<RecordT>(
+    remove(
         resource: string,
         action: string,
         params: {
