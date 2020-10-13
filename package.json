@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.214",
+  "version": "0.0.215",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   "author": "Min Cai",
   "license": "MIT",
   "dependencies": {
+    "@uiw/react-md-editor": "^1.14.4",
     "bootstrap": "^4.5.2",
     "final-form": "^4.20.1",
     "js-cookie": "^2.2.1",
