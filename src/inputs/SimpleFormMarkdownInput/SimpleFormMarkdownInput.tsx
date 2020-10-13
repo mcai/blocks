@@ -27,6 +27,7 @@ export class SimpleFormMarkdownInput extends Component<SimpleFormMarkdownInputPr
                         className="simple-input"
                         value={this.props.values?.[this.props.name ?? ""]}
                         onChange={(value) => this.onUpdate(value)}
+                        height={this.props.height ?? 350}
                     />
                 )}
             </div>
