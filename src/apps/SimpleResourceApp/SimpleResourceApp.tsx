@@ -12,64 +12,71 @@ import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
 import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";
 import { SimpleResource } from "../../data/SimpleResource";
 
-function useParams(props: any) {
+export function useParams(props: any) {
     return props.match.params;
 }
 
-function useQuery(props: any) {
+export function useQuery(props: any) {
     const search = props.location.search;
     return queryString.parse(search.startsWith("?") ? search.substring(1) : search);
 }
 
+export function getRoutes(resource: SimpleResource, serverDataProviderUrl: string) {
+    return [
+        {
+            path: `/${pluralize(resource.name)}`,
+            page: <FindPage resource={resource} serverDataProviderUrl={serverDataProviderUrl} />,
+        },
+        {
+            path: `/add${resource.name}`,
+            page: <CreatePage resource={resource} serverDataProviderUrl={serverDataProviderUrl} />,
+        },
+        {
+            path: `/${resource.name}/:id`,
+            page: withRouter((props) => {
+                const { id } = useParams(props);
+
+                return <UpdatePage id={id} resource={resource} serverDataProviderUrl={serverDataProviderUrl} />;
+            }),
+        },
+    ];
+}
+
+export function getSections(resource: SimpleResource) {
+    return [
+        {
+            id: `${pluralize(resource.name)}`,
+            title: `${resource.title}`,
+            items: [
+                {
+                    key: `${pluralize(resource.name)}`,
+                    title: `${resource.title}`,
+                    href: `/${pluralize(resource.name)}`,
+                },
+            ],
+        },
+    ];
+}
+
 export class SimpleResourceApp extends Component<SimpleResourceAppProps, any> {
     render() {
-        let routes: SimpleRoute[] = [];
-        let sections: any[] = [];
+        let allRoutes: SimpleRoute[] = [];
+        let allSections: any[] = [];
 
         this.props.resources.forEach((resource: SimpleResource) => {
-            routes = routes.concat([
-                {
-                    path: `/${pluralize(resource.name)}`,
-                    page: <FindPage resource={resource} serverDataProviderUrl={this.props.serverDataProviderUrl} />,
-                },
-                {
-                    path: `/add${resource.name}`,
-                    page: <CreatePage resource={resource} serverDataProviderUrl={this.props.serverDataProviderUrl} />,
-                },
-                {
-                    path: `/${resource.name}/:id`,
-                    page: withRouter((props) => {
-                        const { id } = useParams(props);
+            const routes = getRoutes(resource, this.props.serverDataProviderUrl);
+            const sections = getSections(resource);
 
-                        return (
-                            <UpdatePage
-                                id={id}
-                                resource={resource}
-                                serverDataProviderUrl={this.props.serverDataProviderUrl}
-                            />
-                        );
-                    }),
-                },
-            ]);
-
-            sections = sections.concat([
-                {
-                    id: `${pluralize(resource.name)}`,
-                    title: `${resource.title}`,
-                    items: [
-                        {
-                            key: `${pluralize(resource.name)}`,
-                            title: `${resource.title}`,
-                            href: `/${pluralize(resource.name)}`,
-                        },
-                    ],
-                },
-            ]);
+            allRoutes = allRoutes.concat(routes);
+            allSections = allSections.concat(sections);
         });
 
         return (
             <div className="SimpleTheme3">
-                <SimpleApp navbar={<SimpleNavbar brand={this.props.brand} sections={sections} />} routes={routes} />
+                <SimpleApp
+                    navbar={<SimpleNavbar brand={this.props.brand} sections={allSections} />}
+                    routes={allRoutes}
+                />
                 <div className="simple-space" />
                 <SimpleFooter brand={this.props.brand} />
             </div>
