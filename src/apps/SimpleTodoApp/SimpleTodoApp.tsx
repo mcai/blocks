@@ -12,7 +12,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
         super(props);
 
         this.state = {
-            items: [],
+            items: undefined,
         };
     }
 
