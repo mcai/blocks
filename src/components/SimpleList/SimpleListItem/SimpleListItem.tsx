@@ -2,29 +2,29 @@ import React, { Fragment } from "react";
 import { SimpleListItemProps } from "./SimpleListItemProps";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
-    onUpdate(key: string, value: any) {
-        this.props.onUpdate?.(this.props.index, key, value);
+    onUpdate(name: string, value: any) {
+        this.props.onUpdate?.(this.props.index, name, value);
 
-        console.log(`SimpleListItem.onUpdate: index=${this.props.index}, key=${key}, value=${value}`);
+        console.log(`SimpleListItem.onUpdate: index=${this.props.index}, name=${name}, value=${value}`);
     }
 
     render() {
-        const keyValueArray = Object.keys(this.props.item.fields).map((key) => ({
-            key: key,
-            value: this.props.item.fields[key].value,
+        const nameValueArray = Object.keys(this.props.item.fields).map((name) => ({
+            name: name,
+            value: this.props.item.fields[name].value,
         }));
 
         const values: any = {};
 
-        keyValueArray.forEach((pair: { key: string; value?: any }) => {
-            values[pair.key] = pair.value;
+        nameValueArray.forEach((pair: { name: string; value?: any }) => {
+            values[pair.name] = pair.value;
         });
 
-        keyValueArray.forEach((pair: { key: string; value?: any }) => {
+        nameValueArray.forEach((pair: { name: string; value?: any }) => {
             const value = pair.value;
 
             if (typeof value === "function") {
-                values[pair.key] = value(values);
+                values[pair.name] = value(values);
             }
         });
 
@@ -46,13 +46,13 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     </div>
                 </div>
 
-                {Object.keys(this.props.item.fields).map((key) => {
-                    const input = this.props.item.fields[key].input;
+                {Object.keys(this.props.item.fields).map((name) => {
+                    const input = this.props.item.fields[name].input;
 
                     return React.isValidElement(input)
                         ? React.cloneElement(input, {
-                              key: key,
-                              name: key,
+                              key: name,
+                              name: name,
                               values: values,
                               onUpdate: (name: string, value: any) => {
                                   this.onUpdate(name, value);

@@ -5,7 +5,7 @@ export interface SimpleListItemProps {
 
     index: number;
 
-    onUpdate?: (index: number, key: string, value: any) => void;
+    onUpdate?: (index: number, name: string, value: any) => void;
 
     onRemove?: (index: number) => void;
 
