@@ -9,15 +9,12 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     }
 
     render() {
-        const values = { ...this.props.item.values };
+        const values: any = {};
 
-        for (const name in Object.keys(values)) {
-            const value = values[name];
-
-            if (typeof value === "function") {
-                values[name] = value(values);
-            }
-        }
+        Object.keys(this.props.item.values).forEach((name) => {
+            const value = this.props.item.values[name];
+            values[name] = typeof value === "function" ? value(values) : value;
+        });
 
         return (
             <Fragment>
