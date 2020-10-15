@@ -12,7 +12,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
         super(props);
 
         this.state = {
-            items: undefined,
+            rows: undefined,
         };
     }
 
@@ -90,7 +90,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                 <SimpleList
                     addFormOptions={[
                         {
-                            name: "simpleTodo",
+                            type: "simpleTodo",
                             descriptionAsText: "Simple TODO",
                             inputs: {
                                 content: <SimpleFormTextInput label="内容" />,
@@ -100,10 +100,10 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             },
                         },
                     ]}
-                    items={this.state.items}
-                    onUpdate={(items) => {
+                    rows={this.state.rows}
+                    onUpdate={(rows) => {
                         this.setState({
-                            items: items,
+                            rows: rows,
                         });
                     }}
                 />

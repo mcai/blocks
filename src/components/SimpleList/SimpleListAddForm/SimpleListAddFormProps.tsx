@@ -1,8 +1,8 @@
-import { SimpleListItemType } from "../SimpleListItemType";
 import { SimpleListAddFormOption } from "./SimpleListAddFormOption";
+import React from "react";
 
 export interface SimpleListAddFormProps {
     options?: SimpleListAddFormOption[];
 
-    onAdd: (item: SimpleListItemType) => void;
+    onAdd: (row: { type: string; [name: string]: any }) => void;
 }

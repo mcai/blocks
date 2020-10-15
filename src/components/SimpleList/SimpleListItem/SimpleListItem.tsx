@@ -11,8 +11,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     render() {
         const values: any = {};
 
-        Object.keys(this.props.item.values).forEach((name) => {
-            const value = this.props.item.values[name];
+        Object.keys(this.props.values).forEach((name) => {
+            const value = this.props.values[name];
             values[name] = typeof value === "function" ? value(values) : value;
         });
 
@@ -20,7 +20,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             <Fragment>
                 <div className="simple-section">
                     <div className="simple-left">
-                        {this.props.index + 1}. {this.props.item.description}
+                        {this.props.index + 1}. {this.props.description}
                         &nbsp;
                         {this.props.readonly === undefined || !this.props.readonly ? (
                             <button className="simple-button" onClick={() => this.props.onRemove?.(this.props.index)}>
@@ -34,8 +34,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 </div>
 
                 <div className="simple-section">
-                    {Object.keys(this.props.item.inputs).map((name) => {
-                        const input = this.props.item.inputs[name];
+                    {Object.keys(this.props.inputs).map((name) => {
+                        const input = this.props.inputs[name];
 
                         return React.isValidElement(input)
                             ? React.cloneElement(input, {

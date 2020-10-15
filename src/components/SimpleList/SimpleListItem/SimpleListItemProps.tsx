@@ -1,9 +1,15 @@
-import { SimpleListItemType } from "../SimpleListItemType";
+import React from "react";
 
 export interface SimpleListItemProps {
-    item: SimpleListItemType;
+    type: string;
+
+    description?: React.ReactNode;
+
+    inputs: { [name: string]: React.ReactNode | undefined };
 
     index: number;
+
+    values: { [name: string]: any };
 
     onUpdate?: (index: number, name: string, value: any) => void;
 

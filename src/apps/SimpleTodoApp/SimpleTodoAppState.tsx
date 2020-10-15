@@ -1,5 +1,3 @@
-import { SimpleListItemType } from "../../components/SimpleList/SimpleListItemType";
-
 export interface SimpleTodoAppState {
-    items?: SimpleListItemType[];
+    rows?: { type: string; [name: string]: any }[];
 }
