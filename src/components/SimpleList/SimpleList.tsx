@@ -10,13 +10,13 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     private onAdd(item: SimpleListItemType) {
         console.log(`SimpleList.onAdd: item.name=${item.name}`);
 
-        const newItems = [...this.props.items, item];
+        const newItems = [...(this.props.items ?? []), item];
 
         this.props.onUpdate(newItems);
     }
 
     private onUpdate(index: number, name: string, value: string) {
-        const newItems = [...this.props.items];
+        const newItems = [...(this.props.items ?? [])];
         newItems[index].fields[name].value = value;
 
         console.log(`SimpleList.onUpdate: index=${index}, name=${name}, value=${value}`);
@@ -25,7 +25,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     }
 
     private onRemove(index: number) {
-        const newItems = [...this.props.items];
+        const newItems = [...(this.props.items ?? [])];
         newItems.splice(index, 1);
 
         console.log(`SimpleList.onRemove: index=${index}`);
@@ -38,7 +38,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             <div>
                 <div className="simple-section">
                     <div className="simple-left">
-                        <p>共 {this.props.items.length ?? 0} 项</p>
+                        <p>共 {this.props.items?.length ?? 0} 项</p>
                     </div>
                     <div className="simple-right">
                         {(this.props.readonly === undefined || !this.props.readonly) && (
@@ -52,7 +52,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                 </div>
 
                 <div className="simple-section">
-                    {this.props.items.map((item: any, index: number) => (
+                    {this.props.items?.map((item: any, index: number) => (
                         <div key={index}>
                             <SimpleListItem
                                 item={item}
