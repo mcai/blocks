@@ -100,7 +100,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             },
                         },
                     ]}
-                    items={[]}
+                    items={this.state.items}
                     onUpdate={(items) => {
                         this.setState({
                             items: items,
