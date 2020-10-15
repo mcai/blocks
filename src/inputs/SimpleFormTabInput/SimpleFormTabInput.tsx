@@ -13,7 +13,7 @@ export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, Simpl
     }
 
     onUpdate(tabId: any, name: string, value: any) {
-        const values = this.props.values?.[this.props.name ?? ""];
+        const values = this.props.values?.[this.props.name ?? ""] ?? {};
         values[tabId][name] = value;
 
         this.props.onUpdate?.(this.props.name ?? "", values);
