@@ -1,3 +1,3 @@
 export interface SimpleTodoAppState {
-    rows?: { type: string; [name: string]: any }[];
+    rows?: { id: any; [name: string]: any }[];
 }

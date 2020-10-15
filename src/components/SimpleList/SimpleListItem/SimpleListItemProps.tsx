@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface SimpleListItemProps {
-    type: string;
+    id: any;
 
     description?: React.ReactNode;
 

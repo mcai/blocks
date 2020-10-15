@@ -4,5 +4,5 @@ import React from "react";
 export interface SimpleListAddFormProps {
     options?: SimpleListAddFormOption[];
 
-    onAdd: (row: { type: string; [name: string]: any }) => void;
+    onAdd: (row: { id: any; [name: string]: any }) => void;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface SimpleListAddFormOption {
-    type: string;
+    id: any;
 
     description?: React.ReactNode;
 

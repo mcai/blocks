@@ -90,7 +90,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                 <SimpleList
                     addFormOptions={[
                         {
-                            type: "simpleTodo",
+                            id: "simpleTodo",
                             descriptionAsText: "Simple TODO",
                             inputs: {
                                 content: <SimpleFormTextInput label="内容" />,

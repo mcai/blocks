@@ -3,9 +3,9 @@ import { SimpleListAddFormOption } from "./SimpleListAddForm/SimpleListAddFormOp
 export interface SimpleListProps {
     addFormOptions?: SimpleListAddFormOption[];
 
-    rows?: { type: string; [name: string]: any }[];
+    rows?: { id: any; [name: string]: any }[];
 
-    onUpdate: (rows?: { type: string; [name: string]: any }[]) => void;
+    onUpdate: (rows?: { id: any; [name: string]: any }[]) => void;
 
     readonly?: boolean;
 }

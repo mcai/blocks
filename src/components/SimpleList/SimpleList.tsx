@@ -6,8 +6,8 @@ import { SimpleListState } from "./SimpleListState";
 import { SimpleListItem } from "./SimpleListItem/SimpleListItem";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
-    private onAdd(row: { type: string; [name: string]: any }) {
-        console.log(`SimpleList.onAdd: row.type=${row.type}`);
+    private onAdd(row: { id: string; [name: string]: any }) {
+        console.log(`SimpleList.onAdd: row.id=${row.id}`);
 
         const newRows = [...(this.props.rows ?? []), row];
 
@@ -41,22 +41,19 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     </div>
                     <div className="simple-right">
                         {(this.props.readonly === undefined || !this.props.readonly) && (
-                            <SimpleListAddForm
-                                options={this.props.addFormOptions}
-                                onAdd={(row: { type: string; [name: string]: any }) => this.onAdd(row)}
-                            />
+                            <SimpleListAddForm options={this.props.addFormOptions} onAdd={(row) => this.onAdd(row)} />
                         )}
                     </div>
                     <div className="simple-center">&nbsp;&nbsp;</div>
                 </div>
 
                 {this.props.rows?.map((row: any, index: number) => {
-                    const option = this.props.addFormOptions?.filter((x) => x.type == row.type)?.[0];
+                    const option = this.props.addFormOptions?.filter((x) => x.id == row.id)?.[0];
 
                     return (
                         <div key={index}>
                             <SimpleListItem
-                                type={row.type}
+                                id={row.id}
                                 description={option?.description}
                                 inputs={option?.inputs ?? {}}
                                 values={option?.values ?? {}}

@@ -30,7 +30,7 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
 
         if (option) {
             this.props.onAdd({
-                type: option.type,
+                id: option.id,
                 ...option.values,
             });
         }
