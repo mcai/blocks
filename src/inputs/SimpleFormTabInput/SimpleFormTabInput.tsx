@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { SimpleFormTabInputProps } from "./SimpleFormTabInputProps";
-import { SimpleList } from "../../components/SimpleList/SimpleList";
 import { SimpleTabs } from "../../components/SimpleTabs/SimpleTabs";
 import { SimpleFormTabInputState } from "./SimpleFormTabInputState";
 
@@ -15,7 +14,7 @@ export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, Simpl
 
     onUpdate(tabId: any, name: string, value: any) {
         const values = this.props.values?.[this.props.name ?? ""];
-        values[tabId]?.[name] = value;
+        values[tabId][name] = value;
 
         this.props.onUpdate?.(this.props.name ?? "", values);
 
@@ -67,13 +66,6 @@ export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, Simpl
                             </Fragment>
                         ),
                 )}
-
-                <SimpleList
-                    options={this.props.options}
-                    rows={this.props.values?.[this.props.name ?? ""]}
-                    onUpdate={(rows?: any) => this.onUpdate(rows)}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly}
-                />
             </Fragment>
         );
     }
