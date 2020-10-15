@@ -23,7 +23,11 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                         {this.props.index + 1}. {this.props.description}
                         &nbsp;
                         {this.props.readOnly === undefined || !this.props.readOnly ? (
-                            <button className="simple-button" onClick={() => this.props.onRemove?.(this.props.index)}>
+                            <button
+                                className="simple-button"
+                                type="button"
+                                onClick={() => this.props.onRemove?.(this.props.index)}
+                            >
                                 删除
                             </button>
                         ) : (
