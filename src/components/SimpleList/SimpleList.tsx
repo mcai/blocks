@@ -10,13 +10,13 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     private onAdd(item: SimpleListItemType) {
         console.log(`SimpleList.onAdd: item.name=${item.name}`);
 
-        const newItems = [...(this.props.items ?? []), item];
+        const newItems = [...this.props.items, item];
 
         this.props.onUpdate(newItems);
     }
 
     private onUpdate(index: number, name: string, value: string) {
-        const newItems = [...(this.props.items ?? [])];
+        const newItems = [...this.props.items];
         newItems[index].fields[name].value = value;
 
         console.log(`SimpleList.onUpdate: index=${index}, name=${name}, value=${value}`);
@@ -25,7 +25,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     }
 
     private onRemove(index: number) {
-        const newItems = [...(this.props.items ?? [])];
+        const newItems = [...this.props.items];
         newItems.splice(index, 1);
 
         console.log(`SimpleList.onRemove: index=${index}`);
