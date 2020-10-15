@@ -49,6 +49,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                 &nbsp;&nbsp;
                 <button
                     className="simple-button"
+                    type="button"
                     onClick={() => this.add()}
                     disabled={this.props.options?.[this.state.selectedIndex] === undefined}
                 >
