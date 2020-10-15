@@ -8,6 +8,14 @@ import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
 import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
+    constructor(props: SimpleTodoAppProps) {
+        super(props);
+
+        this.state = {
+            items: [],
+        };
+    }
+
     render() {
         return (
             <Fragment>
@@ -92,6 +100,12 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                             },
                         },
                     ]}
+                    items={[]}
+                    onUpdate={(items) => {
+                        this.setState({
+                            items: items,
+                        });
+                    }}
                 />
 
                 <SimpleFooter
