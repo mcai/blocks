@@ -18,12 +18,10 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
         return (
             <Fragment>
-                <div className="simple-row">
-                    <b className="simple-section-label">
+                <div className="simple-section">
+                    <div className="simple-left">
                         {this.props.index + 1}. {this.props.item.description}
-                    </b>
-
-                    <div className="simple-section-items">
+                        &nbsp;
                         {this.props.readonly === undefined || !this.props.readonly ? (
                             <button className="simple-button" onClick={() => this.props.onRemove?.(this.props.index)}>
                                 删除
@@ -32,6 +30,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                             <span>&nbsp;</span>
                         )}
                     </div>
+                    <div className="simple-center">&nbsp;&nbsp;</div>
                 </div>
 
                 {Object.keys(this.props.item.inputs).map((name) => {
