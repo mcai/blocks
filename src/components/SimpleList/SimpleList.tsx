@@ -47,16 +47,17 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     <div className="simple-center">&nbsp;&nbsp;</div>
                 </div>
 
-                {this.props.rows?.map((row: any, index: number) => {
+                {this.props.rows?.map((row, index) => {
+                    const { id, ...values } = row;
                     const option = this.props.addFormOptions?.filter((x) => x.id == row.id)?.[0];
 
                     return (
                         <div key={index}>
                             <SimpleListItem
-                                id={row.id}
+                                id={id}
                                 description={option?.description}
                                 inputs={option?.inputs ?? {}}
-                                values={option?.values ?? {}}
+                                values={values ?? {}}
                                 index={index}
                                 onUpdate={(index1, name, value) => this.onUpdate(index1, name, value)}
                                 onRemove={(index1) => this.onRemove(index1)}
