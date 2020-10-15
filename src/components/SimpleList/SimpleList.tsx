@@ -51,19 +51,17 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     <div className="simple-center">&nbsp;&nbsp;</div>
                 </div>
 
-                <div className="simple-section">
-                    {this.props.items?.map((item: any, index: number) => (
-                        <div key={index}>
-                            <SimpleListItem
-                                item={item}
-                                index={index}
-                                onUpdate={(index1, name, value) => this.onUpdate(index1, name, value)}
-                                onRemove={(index1) => this.onRemove(index1)}
-                                readonly={this.props.readonly}
-                            />
-                        </div>
-                    ))}
-                </div>
+                {this.props.items?.map((item: any, index: number) => (
+                    <div key={index}>
+                        <SimpleListItem
+                            item={item}
+                            index={index}
+                            onUpdate={(index1, name, value) => this.onUpdate(index1, name, value)}
+                            onRemove={(index1) => this.onRemove(index1)}
+                            readonly={this.props.readonly}
+                        />
+                    </div>
+                ))}
             </div>
         );
     }

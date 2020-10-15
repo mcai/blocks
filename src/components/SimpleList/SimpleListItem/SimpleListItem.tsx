@@ -33,21 +33,23 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     <div className="simple-center">&nbsp;&nbsp;</div>
                 </div>
 
-                {Object.keys(this.props.item.inputs).map((name) => {
-                    const input = this.props.item.inputs[name];
+                <div className="simple-section">
+                    {Object.keys(this.props.item.inputs).map((name) => {
+                        const input = this.props.item.inputs[name];
 
-                    return React.isValidElement(input)
-                        ? React.cloneElement(input, {
-                              key: name,
-                              name: name,
-                              values: values,
-                              onUpdate: (name: string, value: any) => {
-                                  this.onUpdate(name, value);
-                              },
-                              readonly: input.props.readonly || this.props.readonly,
-                          })
-                        : input;
-                })}
+                        return React.isValidElement(input)
+                            ? React.cloneElement(input, {
+                                  key: name,
+                                  name: name,
+                                  values: values,
+                                  onUpdate: (name: string, value: any) => {
+                                      this.onUpdate(name, value);
+                                  },
+                                  readonly: input.props.readonly || this.props.readonly,
+                              })
+                            : input;
+                    })}
+                </div>
             </Fragment>
         );
     }
