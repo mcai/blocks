@@ -23,7 +23,7 @@ export class SimpleFormListInput extends Component<SimpleFormListInputProps, any
                 </div>
 
                 <SimpleList
-                    addFormOptions={this.props.addFormOptions}
+                    options={this.props.options}
                     rows={this.props.values?.[this.props.name ?? ""]}
                     onUpdate={(rows?: any) => this.onUpdate(rows)}
                     readOnly={this.props.readOnly !== undefined && this.props.readOnly}

@@ -1,9 +1,9 @@
-import React from "react";
-import { SimpleListAddFormProps } from "./SimpleListAddFormProps";
-import { SimpleListAddFormState } from "./SimpleListAddFormState";
+import React, { Fragment } from "react";
+import { SimpleListToolbarProps } from "./SimpleListToolbarProps";
+import { SimpleListToolbarState } from "./SimpleListToolbarState";
 
-export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, SimpleListAddFormState> {
-    constructor(props: SimpleListAddFormProps) {
+export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, SimpleListToolbarState> {
+    constructor(props: SimpleListToolbarProps) {
         super(props);
 
         this.state = {
@@ -18,12 +18,10 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
             selectedIndex: selectedIndex,
         });
 
-        console.log(`SimpleListItem.onChange: selectedIndex=${selectedIndex}`);
+        console.log(`SimpleListToolbar.onChange: selectedIndex=${selectedIndex}`);
     }
 
-    private onSubmit(e: any) {
-        e.preventDefault();
-
+    private add() {
         const selectedIndex = this.state.selectedIndex;
 
         const option = this.props.options?.[selectedIndex];
@@ -35,12 +33,12 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
             });
         }
 
-        console.log(`SimpleListItem.onSubmit: selectedIndex=${selectedIndex}, option=${option}`);
+        console.log(`SimpleListToolbar.onSubmit: selectedIndex=${selectedIndex}, option=${option}`);
     }
 
     render() {
         return (
-            <form onSubmit={(e) => this.onSubmit(e)}>
+            <Fragment>
                 <select value={this.state.selectedIndex} onChange={(e) => this.onChange(e)}>
                     {this.props.options?.map((option, index) => (
                         <option key={index} value={index}>
@@ -51,12 +49,12 @@ export class SimpleListAddForm extends React.Component<SimpleListAddFormProps, S
                 &nbsp;&nbsp;
                 <button
                     className="simple-button"
-                    type="submit"
+                    onClick={() => this.add()}
                     disabled={this.props.options?.[this.state.selectedIndex] === undefined}
                 >
                     添加
                 </button>
-            </form>
+            </Fragment>
         );
     }
 }

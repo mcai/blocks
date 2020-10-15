@@ -1,5 +1,5 @@
 import React from "react";
-import { SimpleListAddForm } from "./SimpleListAddForm/SimpleListAddForm";
+import { SimpleListToolbar } from "./SimpleListToolbar/SimpleListToolbar";
 
 import { SimpleListProps } from "./SimpleListProps";
 import { SimpleListState } from "./SimpleListState";
@@ -41,7 +41,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     </div>
                     <div className="simple-right">
                         {(this.props.readOnly === undefined || !this.props.readOnly) && (
-                            <SimpleListAddForm options={this.props.addFormOptions} onAdd={(row) => this.onAdd(row)} />
+                            <SimpleListToolbar options={this.props.options} onAdd={(row) => this.onAdd(row)} />
                         )}
                     </div>
                     <div className="simple-center">&nbsp;&nbsp;</div>
@@ -49,7 +49,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
                 {this.props.rows?.map((row, index) => {
                     const { id, ...values } = row;
-                    const option = this.props.addFormOptions?.filter((x) => x.id == row.id)?.[0];
+                    const option = this.props.options?.filter((x) => x.id == row.id)?.[0];
 
                     return (
                         <div key={index}>

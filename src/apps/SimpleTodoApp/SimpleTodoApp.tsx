@@ -88,7 +88,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                 />
 
                 <SimpleList
-                    addFormOptions={[
+                    options={[
                         {
                             id: "simpleTodo",
                             descriptionAsText: "Simple TODO",

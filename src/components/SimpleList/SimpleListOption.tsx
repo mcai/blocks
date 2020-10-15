@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SimpleListAddFormOption {
+export interface SimpleListOption {
     id: any;
 
     description?: React.ReactNode;

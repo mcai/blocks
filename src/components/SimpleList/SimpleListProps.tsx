@@ -1,7 +1,7 @@
-import { SimpleListAddFormOption } from "./SimpleListAddForm/SimpleListAddFormOption";
+import { SimpleListOption } from "./SimpleListOption";
 
 export interface SimpleListProps {
-    addFormOptions?: SimpleListAddFormOption[];
+    options?: SimpleListOption[];
 
     rows?: { id: any; [name: string]: any }[];
 
