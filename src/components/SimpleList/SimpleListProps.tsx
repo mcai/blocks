@@ -2,9 +2,9 @@ import { SimpleListItemType } from "./SimpleListItemType";
 import { SimpleListAddFormOption } from "./SimpleListAddForm/SimpleListAddFormOption";
 
 export interface SimpleListProps {
-    items?: SimpleListItemType[];
-
     addFormOptions?: SimpleListAddFormOption[];
+
+    items?: SimpleListItemType[];
 
     onUpdate: (items?: SimpleListItemType[]) => void;
 
