@@ -1,4 +1,3 @@
-import { SimpleListItemFieldsType } from "../SimpleListItemFieldsType";
 import React from "react";
 
 export interface SimpleListAddFormOption {
@@ -8,5 +7,7 @@ export interface SimpleListAddFormOption {
 
     descriptionAsText?: string;
 
-    fields: SimpleListItemFieldsType;
+    inputs: { [name: string]: React.ReactNode | undefined };
+
+    values: { [name: string]: any };
 }

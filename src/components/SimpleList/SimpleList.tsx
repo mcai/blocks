@@ -17,7 +17,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     private onUpdate(index: number, name: string, value: string) {
         const newItems = [...(this.props.items ?? [])];
-        newItems[index].fields[name].value = value;
+        newItems[index].values[name] = value;
 
         console.log(`SimpleList.onUpdate: index=${index}, name=${name}, value=${value}`);
 

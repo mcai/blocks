@@ -9,24 +9,15 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     }
 
     render() {
-        const nameValueArray = Object.keys(this.props.item.fields).map((name) => ({
-            name: name,
-            value: this.props.item.fields[name].value,
-        }));
+        const values = { ...this.props.item.values };
 
-        const values: any = {};
-
-        nameValueArray.forEach((pair: { name: string; value?: any }) => {
-            values[pair.name] = pair.value;
-        });
-
-        nameValueArray.forEach((pair: { name: string; value?: any }) => {
-            const value = pair.value;
+        for (const name in Object.keys(values)) {
+            const value = values[name];
 
             if (typeof value === "function") {
-                values[pair.name] = value(values);
+                values[name] = value(values);
             }
-        });
+        }
 
         return (
             <Fragment>
@@ -46,8 +37,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     </div>
                 </div>
 
-                {Object.keys(this.props.item.fields).map((name) => {
-                    const input = this.props.item.fields[name].input;
+                {Object.keys(this.props.item.inputs).map((name) => {
+                    const input = this.props.item.inputs[name];
 
                     return React.isValidElement(input)
                         ? React.cloneElement(input, {

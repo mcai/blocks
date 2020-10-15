@@ -1,4 +1,3 @@
-import { SimpleListItemFieldsType } from "./SimpleListItemFieldsType";
 import React from "react";
 
 export interface SimpleListItemType {
@@ -6,5 +5,7 @@ export interface SimpleListItemType {
 
     description?: React.ReactNode;
 
-    fields: SimpleListItemFieldsType;
+    inputs: { [name: string]: React.ReactNode | undefined };
+
+    values: { [name: string]: any };
 }
