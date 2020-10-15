@@ -92,9 +92,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         {
                             id: "simpleTodo",
                             descriptionAsText: "Simple TODO",
-                            inputs: {
-                                content: <SimpleFormTextInput label="内容" />,
-                            },
+                            inputs: [<SimpleFormTextInput key="content" label="内容" name="content" />],
                             values: {
                                 content: "",
                             },

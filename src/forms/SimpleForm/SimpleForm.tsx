@@ -11,7 +11,7 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
         };
     }
 
-    private onUpdate(name: string, value: string) {
+    private onUpdate(name: string, value: any) {
         this.setState({
             [name]: value,
         });
@@ -29,7 +29,7 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                     React.isValidElement(input)
                         ? React.cloneElement(input, {
                               values: this.state,
-                              onUpdate: (name: string, value: string) => {
+                              onUpdate: (name: string, value: any) => {
                                   this.onUpdate(name, value);
                               },
                           })

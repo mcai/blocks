@@ -7,7 +7,7 @@ export interface SimpleListAddFormOption {
 
     descriptionAsText?: string;
 
-    inputs: { [name: string]: React.ReactNode | undefined };
+    inputs: React.ReactNode[];
 
     values: { [name: string]: any };
 }
