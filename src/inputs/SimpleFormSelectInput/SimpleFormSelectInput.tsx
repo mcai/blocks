@@ -29,7 +29,7 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
                             {option.text ?? option.value}
                         </option>
                     ))}
-                    disabled={this.props.readonly !== undefined && this.props.readonly}
+                    disabled={this.props.readOnly !== undefined && this.props.readOnly}
                 </select>
             </div>
         );

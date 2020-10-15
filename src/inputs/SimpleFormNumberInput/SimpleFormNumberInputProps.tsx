@@ -9,5 +9,5 @@ export interface SimpleFormNumberInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
-    readonly?: boolean;
+    readOnly?: boolean;
 }

@@ -7,5 +7,5 @@ export interface SimpleListProps {
 
     onUpdate: (rows?: { id: any; [name: string]: any }[]) => void;
 
-    readonly?: boolean;
+    readOnly?: boolean;
 }

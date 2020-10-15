@@ -15,5 +15,5 @@ export interface SimpleListItemProps {
 
     onRemove?: (index: number) => void;
 
-    readonly?: boolean;
+    readOnly?: boolean;
 }

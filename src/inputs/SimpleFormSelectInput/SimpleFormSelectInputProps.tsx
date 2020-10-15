@@ -16,5 +16,5 @@ export interface SimpleFormSelectInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
-    readonly?: boolean;
+    readOnly?: boolean;
 }

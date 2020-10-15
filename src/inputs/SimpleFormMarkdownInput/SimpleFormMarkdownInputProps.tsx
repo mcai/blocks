@@ -9,7 +9,7 @@ export interface SimpleFormMarkdownInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
-    readonly?: boolean;
+    readOnly?: boolean;
 
     height?: string | number;
 }

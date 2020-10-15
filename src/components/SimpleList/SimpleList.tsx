@@ -40,7 +40,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                         <p>共 {this.props.rows?.length ?? 0} 项</p>
                     </div>
                     <div className="simple-right">
-                        {(this.props.readonly === undefined || !this.props.readonly) && (
+                        {(this.props.readOnly === undefined || !this.props.readOnly) && (
                             <SimpleListAddForm options={this.props.addFormOptions} onAdd={(row) => this.onAdd(row)} />
                         )}
                     </div>
@@ -61,7 +61,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                                 index={index}
                                 onUpdate={(index1, name, value) => this.onUpdate(index1, name, value)}
                                 onRemove={(index1) => this.onRemove(index1)}
-                                readonly={this.props.readonly}
+                                readOnly={this.props.readOnly}
                             />
                         </div>
                     );

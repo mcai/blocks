@@ -22,7 +22,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     <div className="simple-left">
                         {this.props.index + 1}. {this.props.description}
                         &nbsp;
-                        {this.props.readonly === undefined || !this.props.readonly ? (
+                        {this.props.readOnly === undefined || !this.props.readOnly ? (
                             <button className="simple-button" onClick={() => this.props.onRemove?.(this.props.index)}>
                                 删除
                             </button>
@@ -45,7 +45,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                                   onUpdate: (name: string, value: any) => {
                                       this.onUpdate(name, value);
                                   },
-                                  readonly: input.props.readonly || this.props.readonly,
+                                  readOnly: input.props.readOnly || this.props.readOnly,
                               })
                             : input;
                     })}

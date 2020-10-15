@@ -13,5 +13,5 @@ export interface SimpleFormTextInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
-    readonly?: boolean;
+    readOnly?: boolean;
 }
