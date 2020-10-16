@@ -17,18 +17,12 @@ export class SimpleFormListInput extends Component<SimpleFormListInputProps, any
         );
 
         return (
-            <Fragment>
-                <div className="simple-row">
-                    <span className="simple-input-label">{this.props.label}: </span>
-                </div>
-
-                <SimpleList
-                    options={this.props.options}
-                    rows={this.props.values?.[this.props.name ?? ""]}
-                    onUpdate={(rows?: any) => this.onUpdate(rows)}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly}
-                />
-            </Fragment>
+            <SimpleList
+                options={this.props.options}
+                rows={this.props.values?.[this.props.name ?? ""]}
+                onUpdate={(rows?: any) => this.onUpdate(rows)}
+                readOnly={this.props.readOnly !== undefined && this.props.readOnly}
+            />
         );
     }
 }

@@ -35,10 +35,6 @@ export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, Simpl
 
         return (
             <Fragment>
-                <div className="simple-row">
-                    <span className="simple-input-label">{this.props.label}: </span>
-                </div>
-
                 <SimpleTabs
                     options={this.props.tabs.map((tab) => ({
                         key: `${tab.id}`,

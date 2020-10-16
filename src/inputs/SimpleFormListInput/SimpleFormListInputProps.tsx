@@ -2,8 +2,6 @@ import React from "react";
 import { SimpleListOption } from "../../components/SimpleList/SimpleListOption";
 
 export interface SimpleFormListInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     options?: SimpleListOption[];

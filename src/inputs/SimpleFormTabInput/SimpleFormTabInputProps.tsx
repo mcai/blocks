@@ -1,8 +1,6 @@
 import React from "react";
 
 export interface SimpleFormTabInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     selectedTabId: any;
