@@ -12,9 +12,17 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     }
 
     private onUpdate(name: string, value: any) {
-        this.setState({
-            [name]: value,
-        });
+        const newValues = { ...this.state };
+
+        newValues[name] = value;
+
+        const extraValues = this.props.onGetExtraValues?.(newValues) ?? {};
+
+        for (const key in Object.keys(extraValues)) {
+            newValues[key] = extraValues[key];
+        }
+
+        this.setState(newValues);
     }
 
     private async onSubmit(e: React.FormEvent<HTMLFormElement>) {
