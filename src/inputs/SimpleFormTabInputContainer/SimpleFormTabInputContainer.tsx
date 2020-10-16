@@ -11,18 +11,14 @@ export class SimpleFormTabInputContainer extends Component<
         super(props);
 
         this.state = {
-            selectedTabName: this.props.selectedTabName,
+            selectedTabKey: this.props.selectedTabKey,
         };
     }
 
-    onUpdate(tabName: any, name: string, value: any) {
-        const values = this.props.values?.[tabName ?? ""] ?? {};
+    onUpdate(name: string, value: any) {
+        this.props.onUpdate?.(name, value);
 
-        values[name] = value;
-
-        this.props.onUpdate?.(tabName, values);
-
-        console.log(`SimpleFormTabInputContainer.onUpdate: tabName=${tabName}, name=${name}, value=${value}`);
+        console.log(`SimpleFormTabInputContainer.onUpdate: name=${name}, value=${value}`);
     }
 
     render() {
@@ -31,29 +27,29 @@ export class SimpleFormTabInputContainer extends Component<
         return (
             <Fragment>
                 <SimpleTabs
-                    options={this.props.tabs.map((tab) => ({
-                        key: `${tab.name}`,
+                    options={this.props.tabs.map((tab, index) => ({
+                        key: `${tab.key}`,
                         text: tab.description,
-                        value: tab.name,
+                        value: tab.key,
                     }))}
-                    value={this.state.selectedTabName}
+                    value={this.state.selectedTabKey}
                     onChange={(value) =>
                         this.setState({
-                            selectedTabName: value,
+                            selectedTabKey: value,
                         })
                     }
                 />
 
                 {this.props.tabs.map(
                     (tab) =>
-                        tab.name == this.state.selectedTabName && (
+                        tab.key == this.state.selectedTabKey && (
                             <Fragment>
                                 {tab.inputs.map((input) =>
                                     React.isValidElement(input)
                                         ? React.cloneElement(input, {
-                                              values: this.props.values?.[tab.name],
+                                              values: this.props.values,
                                               onUpdate: (name: string, value: any) => {
-                                                  this.onUpdate(tab.name, name, value);
+                                                  this.onUpdate(name, value);
                                               },
                                               readOnly: input.props.readOnly || this.props.readOnly,
                                           })
