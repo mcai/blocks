@@ -1,3 +1,3 @@
 export interface SimpleFormTabInputContainerState {
-    selectedTabId: any;
+    selectedTabName: any;
 }

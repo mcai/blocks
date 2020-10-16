@@ -1,10 +1,10 @@
 import React from "react";
 
 export interface SimpleFormTabInputContainerProps {
-    selectedTabId: any;
+    selectedTabName: any;
 
     tabs: {
-        id: any;
+        name: any;
         description?: React.ReactNode;
         inputs: React.ReactNode[];
     }[];

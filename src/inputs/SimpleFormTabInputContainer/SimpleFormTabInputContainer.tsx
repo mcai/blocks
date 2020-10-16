@@ -11,49 +11,49 @@ export class SimpleFormTabInputContainer extends Component<
         super(props);
 
         this.state = {
-            selectedTabId: this.props.selectedTabId,
+            selectedTabName: this.props.selectedTabName,
         };
     }
 
-    onUpdate(tabId: any, name: string, value: any) {
-        const values = this.props.values?.[tabId ?? ""] ?? {};
+    onUpdate(tabName: any, name: string, value: any) {
+        const values = this.props.values?.[tabName ?? ""] ?? {};
 
         values[name] = value;
 
-        this.props.onUpdate?.(tabId, values);
+        this.props.onUpdate?.(tabName, values);
 
-        console.log(`SimpleFormTabInput.onUpdate: tabId=${tabId}, name=${name}, value=${value}`);
+        console.log(`SimpleFormTabInputContainer.onUpdate: tabName=${tabName}, name=${name}, value=${value}`);
     }
 
     render() {
-        console.log(`SimpleFormTabInput.render: this.props.values=${JSON.stringify(this.props.values)}`);
+        console.log(`SimpleFormTabInputContainer.render: this.props.values=${JSON.stringify(this.props.values)}`);
 
         return (
             <Fragment>
                 <SimpleTabs
                     options={this.props.tabs.map((tab) => ({
-                        key: `${tab.id}`,
+                        key: `${tab.name}`,
                         text: tab.description,
-                        value: tab.id,
+                        value: tab.name,
                     }))}
-                    value={this.state.selectedTabId}
+                    value={this.state.selectedTabName}
                     onChange={(value) =>
                         this.setState({
-                            selectedTabId: value,
+                            selectedTabName: value,
                         })
                     }
                 />
 
                 {this.props.tabs.map(
                     (tab) =>
-                        tab.id == this.state.selectedTabId && (
+                        tab.name == this.state.selectedTabName && (
                             <Fragment>
                                 {tab.inputs.map((input) =>
                                     React.isValidElement(input)
                                         ? React.cloneElement(input, {
-                                              values: this.props.values?.[tab.id],
+                                              values: this.props.values?.[tab.name],
                                               onUpdate: (name: string, value: any) => {
-                                                  this.onUpdate(tab.id, name, value);
+                                                  this.onUpdate(tab.name, name, value);
                                               },
                                               readOnly: input.props.readOnly || this.props.readOnly,
                                           })
