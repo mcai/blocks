@@ -1,10 +1,13 @@
 import React, { Component, Fragment } from "react";
-import { SimpleFormTabInputProps } from "./SimpleFormTabInputProps";
+import { SimpleFormTabInputContainerProps } from "./SimpleFormTabInputContainerProps";
 import { SimpleTabs } from "../../components/SimpleTabs/SimpleTabs";
-import { SimpleFormTabInputState } from "./SimpleFormTabInputState";
+import { SimpleFormTabInputContainerState } from "./SimpleFormTabInputContainerState";
 
-export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, SimpleFormTabInputState> {
-    constructor(props: SimpleFormTabInputProps) {
+export class SimpleFormTabInputContainer extends Component<
+    SimpleFormTabInputContainerProps,
+    SimpleFormTabInputContainerState
+> {
+    constructor(props: SimpleFormTabInputContainerProps) {
         super(props);
 
         this.state = {
@@ -13,25 +16,17 @@ export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, Simpl
     }
 
     onUpdate(tabId: any, name: string, value: any) {
-        const values = this.props.values?.[this.props.name ?? ""] ?? {};
+        const values = this.props.values?.[tabId ?? ""] ?? {};
 
-        if (values[tabId] == undefined) {
-            values[tabId] = {};
-        }
+        values[name] = value;
 
-        values[tabId][name] = value;
-
-        this.props.onUpdate?.(this.props.name ?? "", values);
+        this.props.onUpdate?.(tabId, values);
 
         console.log(`SimpleFormTabInput.onUpdate: tabId=${tabId}, name=${name}, value=${value}`);
     }
 
     render() {
-        console.log(
-            `SimpleFormTabInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
-                this.props.values,
-            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
-        );
+        console.log(`SimpleFormTabInput.render: this.props.values=${JSON.stringify(this.props.values)}`);
 
         return (
             <Fragment>
@@ -56,7 +51,7 @@ export class SimpleFormTabInput extends Component<SimpleFormTabInputProps, Simpl
                                 {tab.inputs.map((input) =>
                                     React.isValidElement(input)
                                         ? React.cloneElement(input, {
-                                              values: this.props.values?.[this.props.name ?? ""]?.[tab.id],
+                                              values: this.props.values?.[tab.id],
                                               onUpdate: (name: string, value: any) => {
                                                   this.onUpdate(tab.id, name, value);
                                               },

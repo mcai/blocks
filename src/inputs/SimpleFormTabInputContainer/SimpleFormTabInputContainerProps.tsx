@@ -1,8 +1,6 @@
 import React from "react";
 
-export interface SimpleFormTabInputProps {
-    name?: string;
-
+export interface SimpleFormTabInputContainerProps {
     selectedTabId: any;
 
     tabs: {
