@@ -6,4 +6,5 @@ export interface SimpleResource {
     title: string;
     fields: SimpleField[];
     inputs: React.ReactNode[];
+    initialValues?: any;
 }
