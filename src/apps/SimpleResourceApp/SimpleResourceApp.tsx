@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import * as queryString from "querystring";
 import { SimpleResourceAppProps } from "./SimpleResourceAppProps";
@@ -21,22 +21,34 @@ export function useQuery(props: any) {
     return queryString.parse(search.startsWith("?") ? search.substring(1) : search);
 }
 
-export function getRoutes(baseUrl: string, resource: SimpleResource) {
+export function getRoutes(
+    baseUrl: string,
+    resource: SimpleResource,
+    findPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
+    createPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
+    updatePageFunc?: (baseUrl: string, resource: SimpleResource, id: number) => React.ReactNode,
+) {
     return [
         {
             path: `/${pluralize(resource.name)}`,
-            page: <FindPage baseUrl={baseUrl} resource={resource} />,
+            page: findPageFunc?.(baseUrl, resource) || <FindPage baseUrl={baseUrl} resource={resource} />,
         },
         {
             path: `/add${resource.name}`,
-            page: <CreatePage baseUrl={baseUrl} resource={resource} />,
+            page: createPageFunc?.(baseUrl, resource) || <CreatePage baseUrl={baseUrl} resource={resource} />,
         },
         {
             path: `/${resource.name}/:id`,
             page: withRouter((props) => {
                 const { id } = useParams(props);
 
-                return <UpdatePage baseUrl={baseUrl} resource={resource} id={id} />;
+                return (
+                    <Fragment>
+                        {updatePageFunc?.(baseUrl, resource, id) || (
+                            <UpdatePage baseUrl={baseUrl} resource={resource} id={id} />
+                        )}
+                    </Fragment>
+                );
             }),
         },
     ];
