@@ -55,7 +55,10 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                 <SimpleUpdateForm
                     dataProvider={this.dataProvider}
                     resource={resource}
-                    initialValues={this.props.resource.initialValues}
+                    initialValues={{
+                        ...this.props.resource.initialValues,
+                        ...this.props.initialValues,
+                    }}
                     getByIdAction={"one/"}
                     updateAction={"update/"}
                     updateExtraData={{}}

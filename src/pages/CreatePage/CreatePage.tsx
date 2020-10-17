@@ -57,7 +57,10 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                 <SimpleAddForm
                     dataProvider={this.dataProvider}
                     resource={resource}
-                    initialValues={this.props.resource.initialValues}
+                    initialValues={{
+                        ...this.props.resource.initialValues,
+                        ...this.props.initialValues,
+                    }}
                     addAction={"create/"}
                     addExtraData={{}}
                     inputs={this.props.resource.inputs}
