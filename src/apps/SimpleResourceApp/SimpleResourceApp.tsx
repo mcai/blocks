@@ -21,22 +21,22 @@ export function useQuery(props: any) {
     return queryString.parse(search.startsWith("?") ? search.substring(1) : search);
 }
 
-export function getRoutes(resource: SimpleResource, serverDataProviderUrl: string) {
+export function getRoutes(baseUrl: string, resource: SimpleResource) {
     return [
         {
             path: `/${pluralize(resource.name)}`,
-            page: <FindPage resource={resource} serverDataProviderUrl={serverDataProviderUrl} />,
+            page: <FindPage resource={resource} baseUrl={baseUrl} />,
         },
         {
             path: `/add${resource.name}`,
-            page: <CreatePage resource={resource} serverDataProviderUrl={serverDataProviderUrl} />,
+            page: <CreatePage resource={resource} baseUrl={baseUrl} />,
         },
         {
             path: `/${resource.name}/:id`,
             page: withRouter((props) => {
                 const { id } = useParams(props);
 
-                return <UpdatePage id={id} resource={resource} serverDataProviderUrl={serverDataProviderUrl} />;
+                return <UpdatePage id={id} resource={resource} baseUrl={baseUrl} />;
             }),
         },
     ];
@@ -64,7 +64,7 @@ export class SimpleResourceApp extends Component<SimpleResourceAppProps, any> {
         let allSections: any[] = [];
 
         this.props.resources.forEach((resource: SimpleResource) => {
-            const routes = getRoutes(resource, this.props.serverDataProviderUrl);
+            const routes = getRoutes(this.props.baseUrl, resource);
             const sections = getSections(resource);
 
             allRoutes = allRoutes.concat(routes);

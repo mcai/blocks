@@ -7,5 +7,5 @@ export interface SimpleResourceAppProps {
         href: string;
     };
     resources: SimpleResource[];
-    serverDataProviderUrl: string;
+    baseUrl: string;
 }

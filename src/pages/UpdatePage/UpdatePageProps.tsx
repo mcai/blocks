@@ -4,5 +4,5 @@ import { SimpleResource } from "../../data/SimpleResource";
 export interface UpdatePageProps {
     id: string;
     resource: SimpleResource;
-    serverDataProviderUrl: string;
+    baseUrl: string;
 }

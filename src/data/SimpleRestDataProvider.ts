@@ -3,10 +3,10 @@ import { SimpleHttpClient } from "./SimpleHttpClient";
 import { SimpleHttpClientMethod } from "./SimpleHttpClientMethod";
 
 export class SimpleRestDataProvider implements SimpleDataProvider {
-    private readonly url: string;
+    private readonly baseUrl: string;
 
-    constructor(url: string) {
-        this.url = url;
+    constructor(baseUrl: string) {
+        this.baseUrl = baseUrl;
     }
 
     private async call<ResultT>(
@@ -17,7 +17,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             [key: string]: any;
         },
     ): Promise<ResultT | undefined> {
-        return await SimpleHttpClient.call<ResultT | undefined>(this.url + resource + action, method, params);
+        return await SimpleHttpClient.call<ResultT | undefined>(this.baseUrl + resource + action, method, params);
     }
 
     async get<ResultT>(resource: string, action: string, params: { [key: string]: any }): Promise<ResultT | undefined> {
@@ -57,7 +57,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             count: number;
             pageCount: number;
             itemsInCurrentPage: ItemT[];
-        }>(this.url + resource + action, SimpleHttpClientMethod.get, {
+        }>(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
             pageSize: params.pageSize,
             pageNum: params.pageNum,
             ordering: params.ordering,
@@ -75,7 +75,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             };
         },
     ): Promise<ItemT[] | undefined> {
-        return await SimpleHttpClient.call<ItemT[]>(this.url + resource + action, SimpleHttpClientMethod.get, {
+        return await SimpleHttpClient.call<ItemT[]>(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
             ordering: params.ordering,
             ...params.filter,
         });
@@ -90,7 +90,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             };
         },
     ): Promise<ItemT | undefined> {
-        return await SimpleHttpClient.call<ItemT>(this.url + resource + action, SimpleHttpClientMethod.get, {
+        return await SimpleHttpClient.call<ItemT>(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
             ...params.filter,
         });
     }
@@ -104,7 +104,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             };
         },
     ): Promise<ItemT | undefined> {
-        return await SimpleHttpClient.call<ItemT>(this.url + resource + action, SimpleHttpClientMethod.post, {
+        return await SimpleHttpClient.call<ItemT>(this.baseUrl + resource + action, SimpleHttpClientMethod.post, {
             ...params.data,
         });
     }
@@ -119,7 +119,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             };
         },
     ): Promise<ItemT | undefined> {
-        return await SimpleHttpClient.call<ItemT>(this.url + resource + action, SimpleHttpClientMethod.post, {
+        return await SimpleHttpClient.call<ItemT>(this.baseUrl + resource + action, SimpleHttpClientMethod.post, {
             id: params.id,
             ...params.data,
         });
@@ -135,7 +135,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             };
         },
     ): Promise<void> {
-        return await SimpleHttpClient.call<void>(this.url + resource + action, SimpleHttpClientMethod.post, {
+        return await SimpleHttpClient.call<void>(this.baseUrl + resource + action, SimpleHttpClientMethod.post, {
             id: params.id,
             ...params.data,
         });

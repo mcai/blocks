@@ -18,7 +18,7 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
 
         this.state = {};
 
-        this.serverDataProvider = new SimpleRestDataProvider(this.props.serverDataProviderUrl);
+        this.serverDataProvider = new SimpleRestDataProvider(this.props.baseUrl);
     }
 
     async componentDidMount() {

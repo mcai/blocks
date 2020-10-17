@@ -20,7 +20,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
             signedInOperator: undefined,
         };
 
-        this.serverDataProvider = new SimpleRestDataProvider(this.props.serverDataProviderUrl);
+        this.serverDataProvider = new SimpleRestDataProvider(this.props.baseUrl);
     }
 
     async componentDidMount() {
