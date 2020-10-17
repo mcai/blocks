@@ -11,7 +11,7 @@ import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 
 export class CreatePage extends Component<CreatePageProps, CreatePageState> {
-    serverDataProvider: SimpleDataProvider;
+    dataProvider: SimpleDataProvider;
 
     constructor(props: CreatePageProps) {
         super(props);
@@ -20,7 +20,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
             signedInOperator: undefined,
         };
 
-        this.serverDataProvider = new SimpleRestDataProvider(this.props.baseUrl);
+        this.dataProvider = new SimpleRestDataProvider(this.props.baseUrl);
     }
 
     async componentDidMount() {
@@ -55,7 +55,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                 />
 
                 <SimpleAddForm
-                    dataProvider={this.serverDataProvider}
+                    dataProvider={this.dataProvider}
                     resource={resource}
                     initialValues={this.props.resource.initialValues}
                     addAction={"create/"}

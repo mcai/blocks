@@ -11,14 +11,14 @@ import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 
 export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
-    serverDataProvider: SimpleDataProvider;
+    dataProvider: SimpleDataProvider;
 
     constructor(props: UpdatePageProps) {
         super(props);
 
         this.state = {};
 
-        this.serverDataProvider = new SimpleRestDataProvider(this.props.baseUrl);
+        this.dataProvider = new SimpleRestDataProvider(this.props.baseUrl);
     }
 
     async componentDidMount() {
@@ -53,7 +53,7 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                 />
 
                 <SimpleUpdateForm
-                    dataProvider={this.serverDataProvider}
+                    dataProvider={this.dataProvider}
                     resource={resource}
                     initialValues={this.props.resource.initialValues}
                     getByIdAction={"one/"}

@@ -15,7 +15,7 @@ import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadc
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
 
 export class FindPage extends Component<FindPageProps, FindPageState> {
-    serverDataProvider: SimpleDataProvider;
+    dataProvider: SimpleDataProvider;
     refTable: any;
 
     constructor(props: FindPageProps) {
@@ -23,7 +23,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
 
         this.state = {};
 
-        this.serverDataProvider = new SimpleRestDataProvider(this.props.baseUrl);
+        this.dataProvider = new SimpleRestDataProvider(this.props.baseUrl);
     }
 
     async componentDidMount() {
@@ -46,7 +46,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                 {
                     text: "删除",
                     onClick: async (item) => {
-                        await this.serverDataProvider.remove(resource, "remove/", {
+                        await this.dataProvider.remove(resource, "remove/", {
                             id: item.id,
                             data: {},
                         });
@@ -85,7 +85,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     }}
                     pageSize={10}
                     initialPageNum={0}
-                    dataProvider={this.serverDataProvider}
+                    dataProvider={this.dataProvider}
                     resource={resource}
                     action={"find/"}
                     fields={fields}
