@@ -25,18 +25,18 @@ export function getRoutes(baseUrl: string, resource: SimpleResource) {
     return [
         {
             path: `/${pluralize(resource.name)}`,
-            page: <FindPage resource={resource} baseUrl={baseUrl} />,
+            page: <FindPage baseUrl={baseUrl} resource={resource} />,
         },
         {
             path: `/add${resource.name}`,
-            page: <CreatePage resource={resource} baseUrl={baseUrl} />,
+            page: <CreatePage baseUrl={baseUrl} resource={resource} />,
         },
         {
             path: `/${resource.name}/:id`,
             page: withRouter((props) => {
                 const { id } = useParams(props);
 
-                return <UpdatePage id={id} resource={resource} baseUrl={baseUrl} />;
+                return <UpdatePage baseUrl={baseUrl} resource={resource} id={id} />;
             }),
         },
     ];
