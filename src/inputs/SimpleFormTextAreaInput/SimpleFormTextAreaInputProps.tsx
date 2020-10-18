@@ -7,9 +7,9 @@ export interface SimpleFormTextAreaInputProps {
 
     placeholder?: string;
 
-    values?: { [name: string]: any };
+    values?: any;
 
     onUpdate?: (name: string, value: any) => void;
 
-    readOnly?: boolean;
+    readOnly?: (values: any) => boolean;
 }

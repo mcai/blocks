@@ -21,11 +21,13 @@ export class SimpleFormTextInput extends Component<SimpleFormTextInputProps, any
 
                 <input
                     className="simple-input"
-                    type={this.props.password ? "password" : "text"}
+                    type={
+                        this.props.password != undefined && this.props.password(this.props.values) ? "password" : "text"
+                    }
                     placeholder={this.props.placeholder}
                     value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly}
+                    readOnly={this.props.readOnly !== undefined && this.props.readOnly(this.props.values)}
                 />
             </div>
         );

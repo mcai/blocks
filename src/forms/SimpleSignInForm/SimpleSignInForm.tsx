@@ -20,7 +20,7 @@ export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
                 addAction={this.props.signInAction}
                 inputs={[
                     <SimpleFormTextInput key={"name"} label={"用户名"} name={"name"} />,
-                    <SimpleFormTextInput key={"password"} label={"密码"} name={"password"} password={true} />,
+                    <SimpleFormTextInput key={"password"} label={"密码"} name={"password"} password={() => true} />,
                 ]}
                 submitButtonText={"登陆"}
                 onSuccess={(item) => {

@@ -7,11 +7,11 @@ export interface SimpleFormTextInputProps {
 
     placeholder?: string;
 
-    password?: boolean;
+    password?: (values: any) => boolean;
 
     values?: { [name: string]: any };
 
     onUpdate?: (name: string, value: any) => void;
 
-    readOnly?: boolean;
+    readOnly?: (values: any) => boolean;
 }

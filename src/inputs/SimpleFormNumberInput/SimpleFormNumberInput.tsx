@@ -24,7 +24,7 @@ export class SimpleFormNumberInput extends Component<SimpleFormNumberInputProps,
                     type="number"
                     value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly}
+                    readOnly={this.props.readOnly !== undefined && this.props.readOnly(this.props.values)}
                 />
             </div>
         );

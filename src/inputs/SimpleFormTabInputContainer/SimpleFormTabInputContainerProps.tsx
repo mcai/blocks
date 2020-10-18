@@ -9,9 +9,9 @@ export interface SimpleFormTabInputContainerProps {
         inputs: React.ReactNode[];
     }[];
 
-    values?: { [name: string]: any };
+    values?: any;
 
     onUpdate?: (name: string, value: any) => void;
 
-    readOnly?: boolean;
+    readOnly?: (values: any) => boolean;
 }

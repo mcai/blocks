@@ -5,9 +5,7 @@ export interface SimpleFormSelectInputProps {
 
     name?: string;
 
-    values?: {
-        [name: string]: any;
-    };
+    values?: any;
 
     options: {
         value: string;
@@ -16,5 +14,5 @@ export interface SimpleFormSelectInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
-    readOnly?: boolean;
+    readOnly?: (values: any) => boolean;
 }

@@ -5,11 +5,11 @@ export interface SimpleFormMarkdownInputProps {
 
     name?: string;
 
-    values?: { [name: string]: any };
+    values?: any;
 
     onUpdate?: (name: string, value: any) => void;
 
-    readOnly?: boolean;
+    readOnly?: (values: any) => boolean;
 
-    height?: string | number;
+    height?: (values: any) => string | number;
 }
