@@ -8,6 +8,7 @@ export interface SimpleFormSelectInputProps {
     values?: any;
 
     options: {
+        key: string;
         value: string;
         text?: React.ReactNode;
     }[];

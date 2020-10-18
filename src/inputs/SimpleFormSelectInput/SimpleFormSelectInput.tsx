@@ -26,7 +26,7 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
                     disabled={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
                 >
                     {this.props.options.map((option) => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.key} value={option.value}>
                             {option.text ?? option.value}
                         </option>
                     ))}
