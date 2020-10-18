@@ -1,15 +1,10 @@
-import { Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { FindPageProps } from "./FindPageProps";
 import { FindPageState } from "./FindPageState";
 import { Button } from "react-bootstrap";
-import React from "react";
 import pluralize from "pluralize";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
-import { SimpleActionsField } from "../../fields/SimpleActionsField";
-import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
-import { Toastify } from "../../components/SimpleToast/SimpleToast";
-import { SimpleActionsFieldType } from "../../fields/SimpleActionsFieldType";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
 
@@ -33,32 +28,6 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
 
     render() {
         const resource = `${pluralize(this.props.resource.name)}/`;
-
-        const fields = [
-            ...this.props.resource.fields,
-            new SimpleActionsField("操作", [
-                {
-                    text: "编辑",
-                    hrefFunc: (item) => `/${this.props.resource.name}/${item.id}`,
-                },
-                {
-                    text: "删除",
-                    onClick: async (item) => {
-                        await this.dataProvider.remove(resource, "remove/", {
-                            id: item.id,
-                            data: {},
-                        });
-
-                        if (this.refTable !== undefined) {
-                            await this.refTable.loadData();
-                        }
-
-                        Toastify(SimpleToastType.Success, `删除${this.props.resource.title}成功!`);
-                    },
-                    type: SimpleActionsFieldType.danger,
-                },
-            ]),
-        ];
 
         return (
             <Fragment>
@@ -86,7 +55,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     dataProvider={this.dataProvider}
                     resource={resource}
                     action={"find/"}
-                    fields={fields}
+                    fields={this.props.resource.fieldsFunc(this.dataProvider, this.refTable)}
                     extra={
                         <Button variant={"primary"} className={"ml-3"} href={`/add${this.props.resource.name}`}>
                             添加{this.props.resource.title}
