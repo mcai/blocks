@@ -14,7 +14,7 @@ export interface SimpleUpdateFormProps {
     getByIdExtraData?: any;
     updateExtraData?: any;
 
-    inputsFunc: (item: any) => React.ReactNode[];
+    inputs: React.ReactNode[];
 
     submitButtonText?: string;
 
