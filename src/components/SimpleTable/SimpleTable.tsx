@@ -144,12 +144,19 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 <Row>
                     <Col>
                         <div className={"float-right"}>
-                            <Button onClick={async () => await this.refExportAll.download()} className={"ml-3"}>
-                                导出全部
-                            </Button>
-                            <Button onClick={async () => await this.refExportCurrentPage.download()} className={"ml-3"}>
-                                导出当前页
-                            </Button>
+                            {this.state.itemsInCurrentPage && (
+                                <Button onClick={async () => await this.refExportAll.download()} className={"ml-3"}>
+                                    导出全部
+                                </Button>
+                            )}
+                            {this.state.itemsInCurrentPage && (
+                                <Button
+                                    onClick={async () => await this.refExportCurrentPage.download()}
+                                    className={"ml-3"}
+                                >
+                                    导出当前页
+                                </Button>
+                            )}
 
                             {this.props.extra}
                         </div>
