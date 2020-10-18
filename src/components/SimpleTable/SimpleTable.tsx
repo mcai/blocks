@@ -144,12 +144,12 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 <Row>
                     <Col>
                         <div className={"float-right"}>
-                            {this.state.itemsInCurrentPage && (
+                            {this.state.count > 0 && (
                                 <Button onClick={async () => await this.refExportAll.download()} className={"ml-3"}>
                                     导出全部
                                 </Button>
                             )}
-                            {this.state.count && (
+                            {this.state.itemsInCurrentPage.length > 0 && (
                                 <Button
                                     onClick={async () => await this.refExportCurrentPage.download()}
                                     className={"ml-3"}
