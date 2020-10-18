@@ -6,7 +6,6 @@ import React from "react";
 import pluralize from "pluralize";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
-import { SimpleTextField } from "../../fields/SimpleTextField";
 import { SimpleActionsField } from "../../fields/SimpleActionsField";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
