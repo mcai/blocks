@@ -33,10 +33,12 @@ export class SimpleFormDemo extends Component<any, any> {
                     name={"gender"}
                     options={[
                         {
+                            key: "male",
                             value: "male",
                             text: "Male",
                         },
                         {
+                            key: "female",
                             value: "female",
                             text: "Female",
                         },
