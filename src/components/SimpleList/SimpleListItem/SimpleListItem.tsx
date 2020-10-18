@@ -45,7 +45,10 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                                   onUpdate: (name: string, value: any) => {
                                       this.onUpdate(name, value);
                                   },
-                                  readOnly: input.props.readOnly || this.props.readOnly,
+                                  readOnly: (values: any) =>
+                                      (input.props.readOnly !== undefined && input.props.readOnly?.(values)) ||
+                                      (this.props.readOnly != undefined && this.props.readOnly) ||
+                                      false,
                               })
                             : input,
                     )}

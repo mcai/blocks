@@ -9,7 +9,7 @@ export interface SimpleListItemProps {
 
     index: number;
 
-    values: { [name: string]: any };
+    values: any;
 
     onUpdate?: (index: number, name: string, value: any) => void;
 
