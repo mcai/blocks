@@ -11,7 +11,10 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
         reader.addEventListener("loadend", async () => {
             const data = new Uint8Array(reader.result as ArrayBuffer);
-            this.props.onUpdate?.(this.props.name ?? "", data);
+            this.props.onUpdate?.(this.props.name ?? "", {
+                name: value.name,
+                data: data,
+            });
 
             console.log(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
         });
@@ -38,7 +41,18 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                     />
 
                     {value != undefined ? (
-                        <button className="simple-button" onClick={() => {}}>
+                        <button
+                            className="simple-button"
+                            onClick={() => {
+                                const blob = new Blob([value.data]);
+                                const url = URL.createObjectURL(blob);
+                                const link = document.createElement("a");
+                                link.href = url;
+                                link.setAttribute("download", value.name);
+                                document.body.appendChild(link);
+                                link.click();
+                            }}
+                        >
                             下载
                         </button>
                     ) : (
