@@ -30,7 +30,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                     className="simple-input"
                     type="file"
                     onChange={(e) => this.onUpdate(e.target.files?.[0])}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly(this.props.values)}
+                    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
                 />
             </div>
         );

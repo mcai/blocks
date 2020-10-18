@@ -24,7 +24,7 @@ export class SimpleFormTextAreaInput extends Component<SimpleFormTextAreaInputPr
                     placeholder={this.props.placeholder}
                     value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly(this.props.values)}
+                    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
                 />
             </div>
         );

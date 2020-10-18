@@ -24,7 +24,7 @@ export class SimpleFormBooleanInput extends Component<SimpleFormBooleanInputProp
                     type="checkbox"
                     checked={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.checked)}
-                    readOnly={this.props.readOnly !== undefined && this.props.readOnly(this.props.values)}
+                    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
                 />
             </div>
         );

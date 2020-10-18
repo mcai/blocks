@@ -23,13 +23,13 @@ export class SimpleFormSelectInput extends Component<SimpleFormSelectInputProps,
                     className="simple-input"
                     value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
+                    disabled={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
                 >
                     {this.props.options.map((option) => (
                         <option key={option.value} value={option.value}>
                             {option.text ?? option.value}
                         </option>
                     ))}
-                    disabled={this.props.readOnly !== undefined && this.props.readOnly}
                 </select>
             </div>
         );
