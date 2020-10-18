@@ -45,7 +45,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                         }
                     />
 
-                    {value != undefined ? (
+                    {value != undefined && value.name != undefined && value.name != "" ? (
                         <Fragment>
                             <span>{value.name}&nbsp;</span>
 
@@ -74,7 +74,10 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                                         this.refFile.value = "";
                                     }
 
-                                    this.props.onUpdate?.(this.props.name ?? "", "");
+                                    this.props.onUpdate?.(this.props.name ?? "", {
+                                        name: "",
+                                        data: {},
+                                    });
                                 }}
                             >
                                 删除
