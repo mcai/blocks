@@ -13,9 +13,14 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
         reader.addEventListener("loadend", async () => {
             const data = new Uint8Array(reader.result as ArrayBuffer);
+
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            const base64Data = btoa(String.fromCharCode.apply(null, data));
+
             this.props.onUpdate?.(this.props.name ?? "", {
                 name: value.name,
-                data: data,
+                data: base64Data,
             });
 
             console.log(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
@@ -53,7 +58,13 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                                 className="simple-button"
                                 type={"button"}
                                 onClick={() => {
-                                    const blob = new Blob([value.data]);
+                                    const data = new Uint8Array(
+                                        atob(value.data)
+                                            .split("")
+                                            .map((char) => char.charCodeAt(0)),
+                                    );
+
+                                    const blob = new Blob([data]);
                                     const url = URL.createObjectURL(blob);
                                     const link = document.createElement("a");
                                     link.href = url;
