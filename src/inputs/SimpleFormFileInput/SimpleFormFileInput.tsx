@@ -22,16 +22,29 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
     render() {
         console.log(`SimpleFormFileInput.render: name=${this.props.name}`);
 
+        const value = this.props.values?.[this.props.name ?? ""];
+
         return (
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
 
-                <input
-                    className="simple-input"
-                    type="file"
-                    onChange={(e) => this.onUpdate(e.target.files?.[0])}
-                    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
-                />
+                <div className="simple-input">
+                    <input
+                        type="file"
+                        onChange={(e) => this.onUpdate(e.target.files?.[0])}
+                        readOnly={
+                            (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false
+                        }
+                    />
+
+                    {value != undefined ? (
+                        <button className="simple-button" onClick={() => {}}>
+                            下载
+                        </button>
+                    ) : (
+                        ""
+                    )}
+                </div>
             </div>
         );
     }
