@@ -149,7 +149,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                     导出全部
                                 </Button>
                             )}
-                            {this.state.itemsInCurrentPage && (
+                            {this.state.count && (
                                 <Button
                                     onClick={async () => await this.refExportCurrentPage.download()}
                                     className={"ml-3"}
