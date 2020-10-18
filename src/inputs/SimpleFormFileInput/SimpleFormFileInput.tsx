@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { SimpleFormFileInputProps } from "./SimpleFormFileInputProps";
+import { decode, encode } from "base64-arraybuffer";
 
 export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any> {
     private refFile: any;
@@ -12,17 +13,11 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
         const reader = new FileReader();
 
         reader.addEventListener("loadend", async () => {
-            const data = new Uint8Array(reader.result as ArrayBuffer);
-
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const base64Data = btoa(String.fromCharCode.apply(null, data));
-
+            const data = encode(reader.result as ArrayBuffer);
             this.props.onUpdate?.(this.props.name ?? "", {
                 name: value.name,
-                data: base64Data,
+                data: data,
             });
-
             console.log(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
         });
 
@@ -58,12 +53,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                                 className="simple-button"
                                 type={"button"}
                                 onClick={() => {
-                                    const data = new Uint8Array(
-                                        atob(value.data)
-                                            .split("")
-                                            .map((char) => char.charCodeAt(0)),
-                                    );
-
+                                    const data = decode(value.data);
                                     const blob = new Blob([data]);
                                     const url = URL.createObjectURL(blob);
                                     const link = document.createElement("a");

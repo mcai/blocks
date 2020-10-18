@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.280",
+  "version": "0.0.281",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "@uiw/react-md-editor": "^1.14.4",
+    "base64-arraybuffer": "^0.2.0",
     "bootstrap": "^4.5.2",
     "final-form": "^4.20.1",
     "js-cookie": "^2.2.1",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
+    "@types/base64-arraybuffer": "^0.1.0",
     "@types/js-cookie": "^2.2.6",
     "@types/mongoose": "^5.7.36",
     "@types/node": "^12.0.0",
