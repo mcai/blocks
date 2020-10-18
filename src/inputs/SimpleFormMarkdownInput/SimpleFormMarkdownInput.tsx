@@ -20,7 +20,7 @@ export class SimpleFormMarkdownInput extends Component<SimpleFormMarkdownInputPr
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
 
-                {this.props.readOnly !== undefined && this.props.readOnly ? (
+                {this.props.readOnly !== undefined && this.props.readOnly(this.props.values) ? (
                     <MDEditor.Markdown className="simple-input" source={this.props.values?.[this.props.name ?? ""]} />
                 ) : (
                     <MDEditor
