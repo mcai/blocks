@@ -29,12 +29,14 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
         const value = this.props.values?.[this.props.name ?? ""];
 
+        const notReadOnly = this.props.readOnly === undefined || !this.props.readOnly(this.props.values);
+
         return (
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
 
                 <div className="simple-input">
-                    {(this.props.readOnly === undefined || !this.props.readOnly(this.props.values)) && (
+                    {notReadOnly && (
                         <input
                             ref={(ref: any) => {
                                 this.refFile = ref;
@@ -65,22 +67,24 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                                 下载
                             </button>
 
-                            <button
-                                className="simple-button"
-                                type={"button"}
-                                onClick={() => {
-                                    if (this.refFile != undefined) {
-                                        this.refFile.value = "";
-                                    }
+                            {notReadOnly && (
+                                <button
+                                    className="simple-button"
+                                    type={"button"}
+                                    onClick={() => {
+                                        if (this.refFile != undefined) {
+                                            this.refFile.value = "";
+                                        }
 
-                                    this.props.onUpdate?.(this.props.name ?? "", {
-                                        name: "",
-                                        data: {},
-                                    });
-                                }}
-                            >
-                                删除
-                            </button>
+                                        this.props.onUpdate?.(this.props.name ?? "", {
+                                            name: "",
+                                            data: {},
+                                        });
+                                    }}
+                                >
+                                    删除
+                                </button>
+                            )}
                         </Fragment>
                     ) : (
                         ""
