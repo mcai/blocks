@@ -43,6 +43,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                     {value != undefined ? (
                         <button
                             className="simple-button"
+                            type={"button"}
                             onClick={() => {
                                 const blob = new Blob([value.data]);
                                 const url = URL.createObjectURL(blob);
