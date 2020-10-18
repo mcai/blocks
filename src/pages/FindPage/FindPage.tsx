@@ -32,18 +32,20 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
         return (
             <Fragment>
                 <SimpleBreadcrumb
-                    items={[
-                        {
-                            key: "home",
-                            title: "主页",
-                            href: "/",
-                        },
-                        {
-                            key: `${pluralize(this.props.resource.name)}`,
-                            title: `${this.props.resource.title}管理`,
-                            active: true,
-                        },
-                    ]}
+                    items={
+                        this.props.breadCrumbItems ?? [
+                            {
+                                key: "home",
+                                title: "主页",
+                                href: "/",
+                            },
+                            {
+                                key: `${pluralize(this.props.resource.name)}`,
+                                title: `${this.props.resource.title}管理`,
+                                active: true,
+                            },
+                        ]
+                    }
                 />
 
                 <SimpleTable

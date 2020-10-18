@@ -6,4 +6,10 @@ export interface UpdatePageProps {
     resource: SimpleResource;
     id: any;
     initialValues?: any;
+    breadCrumbItems?: {
+        key: string;
+        title?: React.ReactNode;
+        href?: string;
+        active?: boolean;
+    }[];
 }

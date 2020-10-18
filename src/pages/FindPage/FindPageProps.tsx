@@ -5,4 +5,10 @@ export interface FindPageProps {
     baseUrl: string;
     resource: SimpleResource;
     filter?: any;
+    breadCrumbItems?: {
+        key: string;
+        title?: React.ReactNode;
+        href?: string;
+        active?: boolean;
+    }[];
 }

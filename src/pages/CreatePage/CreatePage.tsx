@@ -35,23 +35,25 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
         return (
             <Fragment>
                 <SimpleBreadcrumb
-                    items={[
-                        {
-                            key: "home",
-                            title: "主页",
-                            href: "/",
-                        },
-                        {
-                            key: `${pluralize(this.props.resource.name)}`,
-                            title: `${this.props.resource.title}管理`,
-                            href: `/${pluralize(this.props.resource.name)}`,
-                        },
-                        {
-                            key: `add${this.props.resource.name}`,
-                            title: `添加${this.props.resource.title}`,
-                            active: true,
-                        },
-                    ]}
+                    items={
+                        this.props.breadCrumbItems ?? [
+                            {
+                                key: "home",
+                                title: "主页",
+                                href: "/",
+                            },
+                            {
+                                key: `${pluralize(this.props.resource.name)}`,
+                                title: `${this.props.resource.title}管理`,
+                                href: `/${pluralize(this.props.resource.name)}`,
+                            },
+                            {
+                                key: `add${this.props.resource.name}`,
+                                title: `添加${this.props.resource.title}`,
+                                active: true,
+                            },
+                        ]
+                    }
                 />
 
                 <SimpleAddForm

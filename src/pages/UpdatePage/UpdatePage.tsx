@@ -33,23 +33,25 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
         return (
             <Fragment>
                 <SimpleBreadcrumb
-                    items={[
-                        {
-                            key: "home",
-                            title: "主页",
-                            href: "/",
-                        },
-                        {
-                            key: `${pluralize(this.props.resource.name)}`,
-                            title: `${this.props.resource.title}管理`,
-                            href: `/${pluralize(this.props.resource.name)}`,
-                        },
-                        {
-                            key: `${this.props.resource.name}`,
-                            title: this.props.resource.titleFunc?.(this.state.item) ?? "untitled",
-                            active: true,
-                        },
-                    ]}
+                    items={
+                        this.props.breadCrumbItems ?? [
+                            {
+                                key: "home",
+                                title: "主页",
+                                href: "/",
+                            },
+                            {
+                                key: `${pluralize(this.props.resource.name)}`,
+                                title: `${this.props.resource.title}管理`,
+                                href: `/${pluralize(this.props.resource.name)}`,
+                            },
+                            {
+                                key: `${this.props.resource.name}`,
+                                title: this.props.resource.titleFunc?.(this.state.item) ?? "untitled",
+                                active: true,
+                            },
+                        ]
+                    }
                 />
 
                 <SimpleUpdateForm
