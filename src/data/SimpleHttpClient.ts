@@ -12,7 +12,7 @@ export class SimpleHttpClient {
         try {
             const res =
                 method === SimpleHttpClientMethod.post
-                    ? await request.post(url).type("form").send(params)
+                    ? await request.post(url).type("form").send(JSON.stringify(params))
                     : await request.get(url).query(params);
 
             const result = res.body;
