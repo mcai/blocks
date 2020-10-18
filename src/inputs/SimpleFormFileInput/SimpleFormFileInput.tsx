@@ -34,16 +34,15 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                 <span className="simple-input-label">{this.props.label}: </span>
 
                 <div className="simple-input">
-                    <input
-                        ref={(ref: any) => {
-                            this.refFile = ref;
-                        }}
-                        type="file"
-                        onChange={(e) => this.onUpdate(e.target.files?.[0])}
-                        readOnly={
-                            (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false
-                        }
-                    />
+                    {(this.props.readOnly === undefined || !this.props.readOnly(this.props.values)) && (
+                        <input
+                            ref={(ref: any) => {
+                                this.refFile = ref;
+                            }}
+                            type="file"
+                            onChange={(e) => this.onUpdate(e.target.files?.[0])}
+                        />
+                    )}
 
                     {value != undefined && value.name != undefined && value.name != "" ? (
                         <Fragment>
