@@ -36,7 +36,6 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
         const resource = `${pluralize(this.props.resource.name)}/`;
 
         const fields = [
-            new SimpleTextField("编号", "id"),
             ...this.props.resource.fields,
             new SimpleActionsField("操作", [
                 {
