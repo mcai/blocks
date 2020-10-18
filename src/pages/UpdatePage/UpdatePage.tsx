@@ -46,7 +46,7 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                         },
                         {
                             key: `${this.props.resource.name}`,
-                            title: this.state.item?.title,
+                            title: this.props.resource.titleFunc?.(this.state.item) ?? "untitled",
                             active: true,
                         },
                     ]}
