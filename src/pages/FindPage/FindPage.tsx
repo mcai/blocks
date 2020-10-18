@@ -55,7 +55,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     dataProvider={this.dataProvider}
                     resource={resource}
                     action={"find/"}
-                    fields={this.props.resource.fieldsFunc(this.dataProvider, this.refTable)}
+                    fields={this.props.resource.fieldsFunc(this.props.resource, this.dataProvider, this.refTable)}
                     extra={
                         <Button variant={"primary"} className={"ml-3"} href={`/add${this.props.resource.name}`}>
                             添加{this.props.resource.title}
