@@ -48,6 +48,8 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     }
                 />
 
+                {this.props.children}
+
                 <SimpleTable
                     ref={(ref) => {
                         this.refTable = ref;

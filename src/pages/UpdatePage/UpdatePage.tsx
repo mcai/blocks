@@ -54,6 +54,8 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                     }
                 />
 
+                {this.props.children}
+
                 <SimpleUpdateForm
                     dataProvider={this.dataProvider}
                     resource={resource}

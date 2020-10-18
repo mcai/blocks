@@ -56,6 +56,8 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                     }
                 />
 
+                {this.props.children}
+
                 <SimpleAddForm
                     dataProvider={this.dataProvider}
                     resource={resource}
