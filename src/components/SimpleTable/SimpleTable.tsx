@@ -41,7 +41,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         prevState: Readonly<SimpleTableState>,
         snapshot?: any,
     ) {
-        if (prevState.pageNum !== this.state.pageNum || prevState.ordering !== this.state.ordering) {
+        if (
+            prevProps.filter !== this.props.filter ||
+            prevState.pageNum !== this.state.pageNum ||
+            prevState.ordering !== this.state.ordering
+        ) {
             await this.loadData();
         }
     }
