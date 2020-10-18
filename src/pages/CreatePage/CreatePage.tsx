@@ -65,7 +65,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                     }}
                     addAction={"create/"}
                     addExtraData={{}}
-                    inputs={this.props.resource.inputs}
+                    inputs={this.props.resource.inputsFunc(undefined)}
                     submitButtonText={"添加"}
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `添加${this.props.resource.title}成功!`);

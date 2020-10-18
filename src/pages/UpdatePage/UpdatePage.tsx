@@ -70,7 +70,7 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                             item: item,
                         });
                     }}
-                    inputs={this.props.resource.inputs}
+                    inputsFunc={(item: any) => this.props.resource.inputsFunc(item)}
                     submitButtonText={"更新"}
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `更新${this.props.resource.title}成功!`);

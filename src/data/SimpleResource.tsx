@@ -5,7 +5,7 @@ export interface SimpleResource {
     name: string;
     title: string;
     fieldsFunc: (resource: SimpleResource, dataProvider: any, loadTableDataFunc: () => Promise<void>) => SimpleField[];
-    inputs: React.ReactNode[];
+    inputsFunc: (item: any) => React.ReactNode[];
     initialValues?: any;
     titleFunc?: (item: any) => React.ReactNode;
 }
