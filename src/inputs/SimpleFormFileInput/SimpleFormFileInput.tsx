@@ -53,9 +53,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                                 className="simple-button"
                                 type={"button"}
                                 onClick={() => {
-                                    const blob = new Blob([JSON.parse(value.data)], {
-                                        type: "application/octet-stream",
-                                    });
+                                    const blob = new Blob([JSON.parse(value.data)]);
                                     const url = URL.createObjectURL(blob);
                                     const link = document.createElement("a");
                                     link.href = url;
