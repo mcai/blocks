@@ -38,7 +38,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                 pageNum: pageNum,
                 ordering: this.props.ordering,
                 filter: {
-                    ...this.props.extraData,
+                    ...this.props.filter,
                 },
             });
 

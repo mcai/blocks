@@ -22,7 +22,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
             },
         });
 
-        this.props.onGetIdResult?.(item);
+        this.props.onGetByIdResult?.(item);
 
         this.setState({
             item: item,

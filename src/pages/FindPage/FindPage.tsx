@@ -55,6 +55,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     dataProvider={this.dataProvider}
                     resource={resource}
                     action={"find/"}
+                    filter={this.props.filter}
                     fields={this.props.resource.fieldsFunc(this.props.resource, this.dataProvider, async () => {
                         if (this.refTable !== undefined) {
                             await this.refTable.loadData();

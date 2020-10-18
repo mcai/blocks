@@ -12,7 +12,7 @@ export interface SimpleTableProps {
     resource: string;
     action: string;
 
-    extraData?: any;
+    filter?: any;
 
     fields: SimpleField[];
 

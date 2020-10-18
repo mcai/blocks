@@ -65,7 +65,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             pageNum: this.state.pageNum,
             ordering: this.state.ordering,
             filter: {
-                ...this.props.extraData,
+                ...this.props.filter,
             },
         });
 
@@ -85,7 +85,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 dataProvider={this.props.dataProvider}
                 resource={this.props.resource}
                 action={this.props.action}
-                extraData={this.props.extraData}
+                filter={this.props.filter}
                 fields={this.props.fields}
                 ref={(ref: any) => {
                     this.refExportAll = ref;
@@ -122,7 +122,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 dataProvider={this.props.dataProvider}
                 resource={this.props.resource}
                 action={this.props.action}
-                extraData={this.props.extraData}
+                filter={this.props.filter}
                 fields={this.props.fields}
                 ref={(ref: any) => {
                     this.refExportCurrentPage = ref;

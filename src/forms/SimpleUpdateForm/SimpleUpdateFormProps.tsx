@@ -6,7 +6,7 @@ export interface SimpleUpdateFormProps {
     resource: string;
     initialValues?: any;
     getByIdAction: string;
-    onGetIdResult?: (item: any) => void;
+    onGetByIdResult?: (item: any) => void;
     updateAction: string;
 
     id: any;
