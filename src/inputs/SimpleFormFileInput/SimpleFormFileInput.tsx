@@ -74,7 +74,7 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                                         this.refFile.value = "";
                                     }
 
-                                    this.props.onUpdate?.(this.props.name ?? "", undefined);
+                                    this.props.onUpdate?.(this.props.name ?? "", "");
                                 }}
                             >
                                 删除
