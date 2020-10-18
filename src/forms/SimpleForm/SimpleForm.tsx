@@ -11,6 +11,18 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
         };
     }
 
+    async componentDidUpdate(
+        prevProps: Readonly<SimpleFormProps>,
+        prevState: Readonly<SimpleFormState>,
+        snapshot?: any,
+    ) {
+        if (prevProps.initialValues != this.props.initialValues) {
+            this.setState({
+                ...this.props.initialValues,
+            });
+        }
+    }
+
     private onUpdate(name: string, value: any) {
         const newValues = { ...this.state };
 
