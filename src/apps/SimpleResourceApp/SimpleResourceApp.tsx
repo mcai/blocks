@@ -26,7 +26,7 @@ export function getRoutes(
     resource: SimpleResource,
     findPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
     createPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
-    updatePageFunc?: (baseUrl: string, resource: SimpleResource, id: number) => React.ReactNode,
+    updatePageFunc?: (baseUrl: string, resource: SimpleResource, id: string) => React.ReactNode,
 ) {
     return [
         {
