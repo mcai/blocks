@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { SimpleFormFileInputProps } from "./SimpleFormFileInputProps";
 
 export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any> {
+    private refFile: any;
+
     onUpdate(value: File | undefined) {
         if (value === undefined) {
             return;
@@ -33,6 +35,9 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
 
                 <div className="simple-input">
                     <input
+                        ref={(ref: any) => {
+                            this.refFile = ref;
+                        }}
                         type="file"
                         onChange={(e) => this.onUpdate(e.target.files?.[0])}
                         readOnly={
@@ -41,21 +46,37 @@ export class SimpleFormFileInput extends Component<SimpleFormFileInputProps, any
                     />
 
                     {value != undefined ? (
-                        <button
-                            className="simple-button"
-                            type={"button"}
-                            onClick={() => {
-                                const blob = new Blob([value.data]);
-                                const url = URL.createObjectURL(blob);
-                                const link = document.createElement("a");
-                                link.href = url;
-                                link.setAttribute("download", value.name);
-                                document.body.appendChild(link);
-                                link.click();
-                            }}
-                        >
-                            下载
-                        </button>
+                        <Fragment>
+                            <button
+                                className="simple-button"
+                                type={"button"}
+                                onClick={() => {
+                                    const blob = new Blob([value.data]);
+                                    const url = URL.createObjectURL(blob);
+                                    const link = document.createElement("a");
+                                    link.href = url;
+                                    link.setAttribute("download", value.name);
+                                    document.body.appendChild(link);
+                                    link.click();
+                                }}
+                            >
+                                下载
+                            </button>
+
+                            <button
+                                className="simple-button"
+                                type={"button"}
+                                onClick={() => {
+                                    this.props.onUpdate?.(this.props.name ?? "", undefined);
+
+                                    if (this.refFile != undefined) {
+                                        this.refFile.value = "";
+                                    }
+                                }}
+                            >
+                                删除
+                            </button>
+                        </Fragment>
                     ) : (
                         ""
                     )}
