@@ -56,6 +56,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     }}
                     pageSize={10}
                     initialPageNum={0}
+                    initialOrdering={this.props.initialOrdering}
                     dataProvider={this.dataProvider}
                     resource={resource}
                     action={"find/"}
