@@ -25,10 +25,10 @@ export class SimpleHexField implements SimpleField {
     }
 
     render(item: any): React.ReactNode {
-        return item[this.name ?? ""];
+        return item[this.name ?? ""]; // TODO
     }
 
     renderAsText(item: any): string | undefined {
-        return item[this.name ?? ""];
+        return item[this.name ?? ""]; // TODO
     }
 }
