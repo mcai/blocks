@@ -81,6 +81,20 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         });
     }
 
+    async count<ItemT>(
+        resource: string,
+        action: string,
+        params: {
+            filter?: {
+                [key: string]: any;
+            };
+        },
+    ): Promise<number | undefined> {
+        return await SimpleHttpClient.call<number>(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
+            ...params.filter,
+        });
+    }
+
     async one<ItemT>(
         resource: string,
         action: string,

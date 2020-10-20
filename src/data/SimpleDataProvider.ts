@@ -56,6 +56,21 @@ export interface SimpleDataProvider {
         },
     ): Promise<ItemT[] | undefined>;
 
+    count<
+        ItemT extends {
+            key: string | number;
+            [name: string]: any;
+        }
+    >(
+        resource: string,
+        action: string,
+        params: {
+            filter?: {
+                [key: string]: any;
+            };
+        },
+    ): Promise<number | undefined>;
+
     one<ItemT>(
         resource: string,
         action: string,
