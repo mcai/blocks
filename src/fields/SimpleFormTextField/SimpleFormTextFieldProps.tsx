@@ -6,8 +6,6 @@ export interface SimpleFormTextFieldProps {
 
     values?: any;
 
-    renderAsText?: (item: any) => string | undefined;
-
     ascendingOrdering?: any;
     descendingOrdering?: any;
 }
