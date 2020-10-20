@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { SimpleFormDateInputProps } from "./SimpleFormDateInputProps";
+import { SimpleFormatting } from "../../utils/SimpleFormatting";
 
 export class SimpleFormDateInput extends Component<SimpleFormDateInputProps, any> {
     onUpdate(value: any) {
@@ -19,14 +20,13 @@ export class SimpleFormDateInput extends Component<SimpleFormDateInputProps, any
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
 
-                {/*TODO*/}
-                {/*<input*/}
-                {/*    className="simple-input"*/}
-                {/*    type="text"*/}
-                {/*    value={this.props.values?.[this.props.name ?? ""]}*/}
-                {/*    onChange={(e) => this.onUpdate(e.target.value)}*/}
-                {/*    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}*/}
-                {/*/>*/}
+                <input
+                    className="simple-input"
+                    type="date"
+                    value={SimpleFormatting.toFormattedDateString(this.props.values?.[this.props.name ?? ""])}
+                    onChange={(e) => this.onUpdate(SimpleFormatting.toFormattedDateTimeString(e.target.value))}
+                    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
+                />
             </div>
         );
     }
