@@ -34,7 +34,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             pageNum: number;
             ordering?: any;
             filter?: any;
-            [name: string]: any;
         },
     ): Promise<
         | {
@@ -53,7 +52,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         params: {
             ordering?: any;
             filter?: any;
-            [name: string]: any;
         },
     ): Promise<any | undefined> {
         return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
@@ -64,7 +62,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
-            [name: string]: any;
         },
     ): Promise<number | undefined> {
         return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
@@ -75,7 +72,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
-            [name: string]: any;
         },
     ): Promise<any | undefined> {
         return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
@@ -86,7 +82,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             data?: any;
-            [name: string]: any;
         },
     ): Promise<any | undefined> {
         return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
@@ -98,7 +93,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         params: {
             filter?: any;
             data?: any;
-            [name: string]: any;
         },
     ): Promise<any | undefined> {
         return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
@@ -109,7 +103,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
-            [name: string]: any;
         },
     ): Promise<void> {
         return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
