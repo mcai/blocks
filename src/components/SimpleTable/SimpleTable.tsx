@@ -227,8 +227,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                             {this.state.itemsInCurrentPage.map((values) => {
                                 let trClass = "";
 
-                                if (this.props.getRowTypeFunc !== undefined) {
-                                    switch (this.props.getRowTypeFunc(values)) {
+                                if (this.props.rowTypeFunc !== undefined) {
+                                    switch (this.props.rowTypeFunc(values)) {
                                         case SimpleTableRowType.none:
                                             break;
                                         case SimpleTableRowType.danger:
@@ -241,12 +241,12 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 }
 
                                 return (
-                                    <tr className={trClass} key={this.props.getKeyFunc?.(values)}>
+                                    <tr className={trClass} key={this.props.keyFunc?.(values)}>
                                         {React.Children.map(this.props.children, (field) => {
                                             let tdClass = "";
 
-                                            if (this.props.getCellTypeFunc !== undefined) {
-                                                switch (this.props.getCellTypeFunc(values, field)) {
+                                            if (this.props.cellTypeFunc !== undefined) {
+                                                switch (this.props.cellTypeFunc(values, field)) {
                                                     case SimpleTableRowType.none:
                                                         break;
                                                     case SimpleTableRowType.danger:

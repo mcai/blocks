@@ -6,6 +6,7 @@ export interface FindPageProps {
     resource: SimpleResource;
     initialOrdering?: any;
     filter?: any;
+
     breadCrumbItems?: {
         key: string;
         title?: React.ReactNode;
