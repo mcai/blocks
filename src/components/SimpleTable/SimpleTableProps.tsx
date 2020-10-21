@@ -17,7 +17,7 @@ export interface SimpleTableProps {
 
     cellTypeFunc?: (values: any, field: React.ReactNode) => SimpleTableRowType;
 
-    keyFunc?: (values: any) => string | number;
+    keyFunc?: (values: any) => string | number | undefined;
 
     extra?: React.ReactNode;
 }
