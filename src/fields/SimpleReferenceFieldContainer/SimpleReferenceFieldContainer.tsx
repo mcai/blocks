@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { SimpleReferenceContainerProps } from "./SimpleReferenceContainerProps";
-import { SimpleReferenceContainerState } from "./SimpleReferenceContainerState";
+import { SimpleReferenceFieldContainerProps } from "./SimpleReferenceFieldContainerProps";
+import { SimpleReferenceFieldContainerState } from "./SimpleReferenceFieldContainerState";
 
-export class SimpleReferenceContainer extends Component<SimpleReferenceContainerProps, SimpleReferenceContainerState> {
-    constructor(props: SimpleReferenceContainerProps) {
+export class SimpleReferenceFieldContainer extends Component<
+    SimpleReferenceFieldContainerProps,
+    SimpleReferenceFieldContainerState
+> {
+    constructor(props: SimpleReferenceFieldContainerProps) {
         super(props);
 
         this.state = {
@@ -22,21 +25,15 @@ export class SimpleReferenceContainer extends Component<SimpleReferenceContainer
         });
     }
 
-    onUpdate(name: string, value: any) {
-        this.props.onUpdate?.(name, value);
-    }
-
     render() {
         return (
             <Fragment>
                 {React.Children.map(this.props.children, (input) =>
                     React.isValidElement(input)
                         ? React.cloneElement(input, {
-                              values: this.props.values,
                               options: this.state.options,
-                              onUpdate: (name: string, value: any) => {
-                                  this.onUpdate(name, value);
-                              },
+                              values: this.props.values,
+                              title: this.props.title,
                           })
                         : input,
                 )}
