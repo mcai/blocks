@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.293",
+  "version": "0.0.294",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -28,9 +28,7 @@
     "@uiw/react-md-editor": "^1.14.4",
     "base64-arraybuffer": "^0.2.0",
     "bootstrap": "^4.5.2",
-    "final-form": "^4.20.1",
     "js-cookie": "^2.2.1",
-    "linq": "^3.2.2",
     "moment": "^2.27.0",
     "mongoose": "^5.10.2",
     "node-ssh": "^11.0.0",

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { SimpleActionsFieldProps } from "./SimpleActionsFieldProps";
-import Enumerable from "linq";
 import { SimpleActionsFieldType } from "./SimpleActionsFieldType";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { SimpleModalConfirmType } from "../../components/SimpleModalConfirm/SimpleModalConfirmType";
@@ -9,7 +8,7 @@ import { SimpleModalConfirm } from "../../components/SimpleModalConfirm/SimpleMo
 export class SimpleActionsField extends Component<SimpleActionsFieldProps, any> {
     render() {
         if (
-            Enumerable.from(this.props.actions ?? []).any(
+            this.props.actions?.some(
                 (action) =>
                     action.type !== undefined &&
                     action.type != SimpleActionsFieldType.none &&
