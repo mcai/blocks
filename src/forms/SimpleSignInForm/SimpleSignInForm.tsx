@@ -3,7 +3,7 @@ import { SimpleSignInFormProps } from "./SimpleSignInFormProps";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { SimpleAddForm } from "../SimpleAddForm/SimpleAddForm";
-import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
+import { SimpleTextInput } from "../../inputs/SimpleTextInput/SimpleTextInput";
 
 export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
     constructor(props: Readonly<any>) {
@@ -19,8 +19,8 @@ export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
                 resource={this.props.resource}
                 addAction={this.props.signInAction}
                 inputs={[
-                    <SimpleFormTextInput key={"name"} label={"用户名"} name={"name"} />,
-                    <SimpleFormTextInput key={"password"} label={"密码"} name={"password"} password={() => true} />,
+                    <SimpleTextInput key={"name"} label={"用户名"} name={"name"} />,
+                    <SimpleTextInput key={"password"} label={"密码"} name={"password"} password={() => true} />,
                 ]}
                 submitButtonText={"登陆"}
                 onSuccess={(item) => {

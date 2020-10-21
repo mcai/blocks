@@ -5,7 +5,7 @@ import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadc
 import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";
 import { SimpleList } from "../../components/SimpleList/SimpleList";
 import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
-import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
+import { SimpleTextInput } from "../../inputs/SimpleTextInput/SimpleTextInput";
 
 export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppState> {
     constructor(props: SimpleTodoAppProps) {
@@ -92,7 +92,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         {
                             id: "simpleTodo",
                             descriptionAsText: "Simple TODO",
-                            inputs: [<SimpleFormTextInput key="content" label="内容" name="content" />],
+                            inputs: [<SimpleTextInput key="content" label="内容" name="content" />],
                             values: {
                                 content: "",
                             },

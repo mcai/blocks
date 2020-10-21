@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { SimpleForm } from "../../forms/SimpleForm/SimpleForm";
-import { SimpleFormTextInput } from "../../inputs/SimpleFormTextInput/SimpleFormTextInput";
-import { SimpleFormBooleanInput } from "../../inputs/SimpleFormBooleanInput/SimpleFormBooleanInput";
-import { SimpleFormNumberInput } from "../../inputs/SimpleFormNumberInput/SimpleFormNumberInput";
-import { SimpleFormTextAreaInput } from "../../inputs/SimpleFormTextAreaInput/SimpleFormTextAreaInput";
-import { SimpleFormSelectInput } from "../../inputs/SimpleFormSelectInput/SimpleFormSelectInput";
-import { SimpleFormFileInput } from "../../inputs/SimpleFormFileInput/SimpleFormFileInput";
+import { SimpleTextInput } from "../../inputs/SimpleTextInput/SimpleTextInput";
+import { SimpleBooleanInput } from "../../inputs/SimpleBooleanInput/SimpleBooleanInput";
+import { SimpleNumberInput } from "../../inputs/SimpleNumberInput/SimpleNumberInput";
+import { SimpleTextAreaInput } from "../../inputs/SimpleTextAreaInput/SimpleTextAreaInput";
+import { SimpleSelectInput } from "../../inputs/SimpleSelectInput/SimpleSelectInput";
+import { SimpleFileInput } from "../../inputs/SimpleFileInput/SimpleFileInput";
 
 export class SimpleFormDemo extends Component<any, any> {
     render() {
@@ -23,12 +23,12 @@ export class SimpleFormDemo extends Component<any, any> {
                     alert(`SimpleFormDemo.onSubmit: values=${JSON.stringify(values)}`);
                 }}
             >
-                <SimpleFormTextInput label={"User ID"} name={"userId"} />
-                <SimpleFormTextInput label={"Nickname"} name={"nickName"} />
-                <SimpleFormBooleanInput label={"Remember Password"} name={"rememberPassword"} />
-                <SimpleFormNumberInput label={"Count"} name={"count"} />
-                <SimpleFormTextAreaInput label={"Description"} name={"description"} />
-                <SimpleFormSelectInput
+                <SimpleTextInput label={"User ID"} name={"userId"} />
+                <SimpleTextInput label={"Nickname"} name={"nickName"} />
+                <SimpleBooleanInput label={"Remember Password"} name={"rememberPassword"} />
+                <SimpleNumberInput label={"Count"} name={"count"} />
+                <SimpleTextAreaInput label={"Description"} name={"description"} />
+                <SimpleSelectInput
                     label={"Gender"}
                     name={"gender"}
                     options={[
@@ -44,7 +44,7 @@ export class SimpleFormDemo extends Component<any, any> {
                         },
                     ]}
                 />
-                <SimpleFormFileInput label={"Avatar"} name={"avatar"} />
+                <SimpleFileInput label={"Avatar"} name={"avatar"} />
             </SimpleForm>
         );
     }
