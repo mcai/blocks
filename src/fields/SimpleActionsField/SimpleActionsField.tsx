@@ -51,6 +51,7 @@ export class SimpleActionsField extends Component<SimpleActionsFieldProps, any> 
 
                             return action.type == undefined || action.type == SimpleActionsFieldType.none ? (
                                 <Dropdown.Item
+                                    key={action.key}
                                     href={action.hrefFunc?.(this.props.values)}
                                     onClick={() => action.onClick?.(this.props.values)}
                                     className={"mr-3"}
@@ -59,6 +60,7 @@ export class SimpleActionsField extends Component<SimpleActionsFieldProps, any> 
                                 </Dropdown.Item>
                             ) : (
                                 <SimpleModalConfirm
+                                    key={action.key}
                                     title={`确定${action.text}`}
                                     subtitle={`${action.text}后不可撤销.`}
                                     onConfirm={() => action.onClick?.(this.props.values)}
