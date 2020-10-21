@@ -241,7 +241,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 }
 
                                 return (
-                                    <tr className={trClass} key={values.key}>
+                                    <tr className={trClass} key={this.props.getKeyFunc?.(values)}>
                                         {React.Children.map(this.props.children, (field) => {
                                             let tdClass = "";
 
