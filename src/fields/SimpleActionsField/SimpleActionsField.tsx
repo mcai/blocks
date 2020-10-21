@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from "react";
-import { SimpleFormActionsFieldProps } from "./SimpleFormActionsFieldProps";
+import { SimpleActionsFieldProps } from "./SimpleActionsFieldProps";
 import Enumerable from "linq";
-import { SimpleFormActionsFieldType } from "./SimpleFormActionsFieldType";
+import { SimpleActionsFieldType } from "./SimpleActionsFieldType";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { SimpleModalConfirmType } from "../../components/SimpleModalConfirm/SimpleModalConfirmType";
 import { SimpleModalConfirm } from "../../components/SimpleModalConfirm/SimpleModalConfirm";
 
-export class SimpleFormActionsField extends Component<SimpleFormActionsFieldProps, any> {
+export class SimpleActionsField extends Component<SimpleActionsFieldProps, any> {
     render() {
         if (
             Enumerable.from(this.props.actions ?? []).any(
                 (action) =>
                     action.type !== undefined &&
-                    action.type != SimpleFormActionsFieldType.none &&
+                    action.type != SimpleActionsFieldType.none &&
                     action.hrefFunc !== undefined,
             )
         ) {
@@ -39,18 +39,18 @@ export class SimpleFormActionsField extends Component<SimpleFormActionsFieldProp
 
                             if (action.type !== undefined) {
                                 switch (action.type) {
-                                    case SimpleFormActionsFieldType.none:
+                                    case SimpleActionsFieldType.none:
                                         break;
-                                    case SimpleFormActionsFieldType.danger:
+                                    case SimpleActionsFieldType.danger:
                                         modalConfirmType = SimpleModalConfirmType.danger;
                                         break;
-                                    case SimpleFormActionsFieldType.warning:
+                                    case SimpleActionsFieldType.warning:
                                         modalConfirmType = SimpleModalConfirmType.warning;
                                         break;
                                 }
                             }
 
-                            return action.type == undefined || action.type == SimpleFormActionsFieldType.none ? (
+                            return action.type == undefined || action.type == SimpleActionsFieldType.none ? (
                                 <Dropdown.Item
                                     href={action.hrefFunc?.(this.props.values)}
                                     onClick={() => action.onClick?.(this.props.values)}

@@ -1,14 +1,14 @@
 import React from "react";
-import { SimpleFormActionsFieldType } from "./SimpleFormActionsFieldType";
+import { SimpleActionsFieldType } from "./SimpleActionsFieldType";
 
-export interface SimpleFormActionsFieldProps {
+export interface SimpleActionsFieldProps {
     title?: React.ReactNode;
 
     actions?: {
         text?: React.ReactNode;
         hrefFunc?: (values: any) => string;
         onClick?: (values: any) => void;
-        type?: SimpleFormActionsFieldType;
+        type?: SimpleActionsFieldType;
         visible?: boolean | ((values: any) => boolean);
     }[];
 

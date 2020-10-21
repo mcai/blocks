@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { SimpleFormNumberFieldProps } from "./SimpleFormNumberFieldProps";
+import { SimpleNumberFieldProps } from "./SimpleNumberFieldProps";
 
-export class SimpleFormNumberField extends Component<SimpleFormNumberFieldProps, any> {
+export class SimpleNumberField extends Component<SimpleNumberFieldProps, any> {
     render() {
         return (this.props.values?.[this.props.name ?? ""] as number)?.toFixed(this.props.fractionDigits);
     }

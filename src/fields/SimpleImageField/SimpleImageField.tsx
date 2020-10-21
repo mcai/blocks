@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { SimpleFormImageFieldProps } from "./SimpleFormImageFieldProps";
+import { SimpleImageFieldProps } from "./SimpleImageFieldProps";
 import { Image } from "react-bootstrap";
 
-export class SimpleFormImageField extends Component<SimpleFormImageFieldProps, any> {
+export class SimpleImageField extends Component<SimpleImageFieldProps, any> {
     render() {
         const src = this.props.values?.[this.props.name ?? ""];
         return (

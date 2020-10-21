@@ -1,8 +1,8 @@
 import React from "react";
 
-export interface SimpleFormDateTimeFieldProps {
+export interface SimpleFuncFieldProps {
     title?: React.ReactNode;
-    name?: string;
+    renderFunc?: (item: any) => React.ReactNode;
 
     values?: any;
 

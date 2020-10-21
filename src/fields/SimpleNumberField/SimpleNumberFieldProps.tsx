@@ -1,8 +1,9 @@
 import React from "react";
 
-export interface SimpleFormFuncFieldProps {
+export interface SimpleNumberFieldProps {
     title?: React.ReactNode;
-    renderFunc?: (item: any) => React.ReactNode;
+    name?: string;
+    fractionDigits?: number;
 
     values?: any;
 

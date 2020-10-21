@@ -1,8 +1,9 @@
 import React from "react";
 
-export interface SimpleFormDateFieldProps {
+export interface SimpleImageFieldProps {
     title?: React.ReactNode;
     name?: string;
+    text?: string;
 
     values?: any;
 

@@ -1,9 +1,10 @@
 import React from "react";
 
-export interface SimpleFormNumberFieldProps {
+export interface SimpleSelectFieldProps {
     title?: React.ReactNode;
     name?: string;
-    fractionDigits?: number;
+
+    options?: { value: string; text: string }[];
 
     values?: any;
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface SimpleFormTextFieldProps {
+export interface SimpleBooleanFieldProps {
     title?: React.ReactNode;
     name?: string;
 

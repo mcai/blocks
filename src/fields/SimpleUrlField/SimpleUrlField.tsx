@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { SimpleFormUrlFieldProps } from "./SimpleFormUrlFieldProps";
+import { SimpleUrlFieldProps } from "./SimpleUrlFieldProps";
 
-export class SimpleFormUrlField extends Component<SimpleFormUrlFieldProps, any> {
+export class SimpleUrlField extends Component<SimpleUrlFieldProps, any> {
     render() {
         return (
             <a href={this.props.values?.[this.props.name ?? ""]} target={"_blank"} rel="noopener noreferrer">

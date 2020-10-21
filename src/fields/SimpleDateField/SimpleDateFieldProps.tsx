@@ -1,10 +1,8 @@
 import React from "react";
 
-export interface SimpleFormSelectFieldProps {
+export interface SimpleDateFieldProps {
     title?: React.ReactNode;
     name?: string;
-
-    options?: { value: string; text: string }[];
 
     values?: any;
 

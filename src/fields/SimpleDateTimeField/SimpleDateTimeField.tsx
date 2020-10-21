@@ -1,8 +1,8 @@
 import { Component } from "react";
-import { SimpleFormDateTimeFieldProps } from "./SimpleFormDateTimeFieldProps";
+import { SimpleDateTimeFieldProps } from "./SimpleDateTimeFieldProps";
 import { SimpleFormatting } from "../../utils/SimpleFormatting";
 
-export class SimpleFormDateTimeField extends Component<SimpleFormDateTimeFieldProps, any> {
+export class SimpleDateTimeField extends Component<SimpleDateTimeFieldProps, any> {
     render() {
         return SimpleFormatting.toFormattedDateTimeString(this.props.values?.[this.props.name ?? ""]);
     }
