@@ -4,7 +4,11 @@ export interface SimpleSelectFieldProps {
     title?: React.ReactNode;
     name?: string;
 
-    options?: { value: string; text: string }[];
+    options?: {
+        key: string;
+        value: string;
+        text?: React.ReactNode;
+    }[];
 
     values?: any;
 
