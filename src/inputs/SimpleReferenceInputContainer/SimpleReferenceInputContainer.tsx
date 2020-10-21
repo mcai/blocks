@@ -27,13 +27,9 @@ export class SimpleReferenceInputContainer extends Component<
 
     onUpdate(name: string, value: any) {
         this.props.onUpdate?.(name, value);
-
-        console.log(`SimpleFormReferenceInputContainer.onUpdate: name=${name}, value=${value}`);
     }
 
     render() {
-        console.log(`SimpleFormReferenceInputContainer.render: this.props.values=${JSON.stringify(this.props.values)}`);
-
         return (
             <Fragment>
                 {React.Children.map(this.props.children, (input) =>

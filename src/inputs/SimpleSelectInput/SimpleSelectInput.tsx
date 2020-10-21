@@ -4,17 +4,9 @@ import { SimpleSelectInputProps } from "./SimpleSelectInputProps";
 export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
     onUpdate(value: any) {
         this.props.onUpdate?.(this.props.name ?? "", value);
-
-        console.log(`SimpleFormSelectInput.onUpdate: name=${this.props.name}, value=${value}`);
     }
 
     render() {
-        console.log(
-            `SimpleFormSelectInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
-                this.props.values,
-            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
-        );
-
         const inline = this.props.inline != undefined && this.props.inline;
 
         const select = (

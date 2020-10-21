@@ -4,17 +4,9 @@ import { SimpleBooleanInputProps } from "./SimpleBooleanInputProps";
 export class SimpleBooleanInput extends Component<SimpleBooleanInputProps, any> {
     onUpdate(value: any) {
         this.props.onUpdate?.(this.props.name ?? "", value);
-
-        console.log(`SimpleFormBooleanInput.onUpdate: name=${this.props.name}, value=${value}`);
     }
 
     render() {
-        console.log(
-            `SimpleFormBooleanInput.render: name=${this.props.name}, this.props.values=${JSON.stringify(
-                this.props.values,
-            )}, value=${this.props.values?.[this.props.name ?? ""]}`,
-        );
-
         return (
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>

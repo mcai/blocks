@@ -14,13 +14,9 @@ export class SimpleTabInputContainer extends Component<SimpleTabInputContainerPr
 
     onUpdate(name: string, value: any) {
         this.props.onUpdate?.(name, value);
-
-        console.log(`SimpleFormTabInputContainer.onUpdate: name=${name}, value=${value}`);
     }
 
     render() {
-        console.log(`SimpleFormTabInputContainer.render: this.props.values=${JSON.stringify(this.props.values)}`);
-
         return (
             <Fragment>
                 <SimpleTabs

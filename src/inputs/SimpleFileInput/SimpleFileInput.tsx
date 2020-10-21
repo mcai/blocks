@@ -25,8 +25,6 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
     }
 
     render() {
-        console.log(`SimpleFormFileInput.render: name=${this.props.name}`);
-
         const value = this.props.values?.[this.props.name ?? ""];
 
         const notReadOnly = this.props.readOnly === undefined || !this.props.readOnly(this.props.values);
