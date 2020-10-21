@@ -11,6 +11,7 @@ export interface SimpleDataProvider {
             pageNum: number;
             ordering?: any;
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<
         | {
@@ -27,6 +28,7 @@ export interface SimpleDataProvider {
         params: {
             ordering?: any;
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<any[] | undefined>;
 
@@ -35,6 +37,7 @@ export interface SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<number | undefined>;
 
@@ -43,6 +46,7 @@ export interface SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined>;
 
@@ -51,6 +55,7 @@ export interface SimpleDataProvider {
         action: string,
         params: {
             data?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined>;
 
@@ -60,6 +65,7 @@ export interface SimpleDataProvider {
         params: {
             filter?: any;
             data?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined>;
 
@@ -67,7 +73,8 @@ export interface SimpleDataProvider {
         resource: string,
         action: string,
         params: {
-            filter: any;
+            filter?: any;
+            [name: string]: any;
         },
     ): Promise<void>;
 }

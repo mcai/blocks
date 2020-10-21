@@ -34,6 +34,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             pageNum: number;
             ordering?: any;
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<
         | {
@@ -43,12 +44,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
           }
         | undefined
     > {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
-            pageSize: params.pageSize,
-            pageNum: params.pageNum,
-            ordering: params.ordering,
-            filter: params.filter,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
     }
 
     async all(
@@ -57,12 +53,10 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         params: {
             ordering?: any;
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
-            ordering: params.ordering,
-            filter: params.filter,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
     }
 
     async count(
@@ -70,11 +64,10 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<number | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
-            filter: params.filter,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
     }
 
     async one(
@@ -82,48 +75,43 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         action: string,
         params: {
             filter?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, {
-            filter: params.filter,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
     }
 
     async create(
         resource: string,
         action: string,
         params: {
-            data: any;
+            data?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, {
-            data: params.data,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
     }
 
     async update(
         resource: string,
         action: string,
         params: {
-            filter: any;
-            data: any;
+            filter?: any;
+            data?: any;
+            [name: string]: any;
         },
     ): Promise<any | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, {
-            filter: params.filter,
-            data: params.data,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
     }
 
     async remove(
         resource: string,
         action: string,
         params: {
-            filter: any;
+            filter?: any;
+            [name: string]: any;
         },
     ): Promise<void> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, {
-            filter: params.filter,
-        });
+        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
     }
 }
