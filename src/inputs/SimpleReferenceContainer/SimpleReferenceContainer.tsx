@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from "react";
-import { SimpleReferenceInputContainerProps } from "./SimpleReferenceInputContainerProps";
-import { SimpleReferenceInputContainerState } from "./SimpleReferenceInputContainerState";
+import { SimpleReferenceContainerProps } from "./SimpleReferenceContainerProps";
+import { SimpleReferenceContainerState } from "./SimpleReferenceContainerState";
 
-export class SimpleReferenceInputContainer extends Component<
-    SimpleReferenceInputContainerProps,
-    SimpleReferenceInputContainerState
-> {
-    constructor(props: SimpleReferenceInputContainerProps) {
+export class SimpleReferenceContainer extends Component<SimpleReferenceContainerProps, SimpleReferenceContainerState> {
+    constructor(props: SimpleReferenceContainerProps) {
         super(props);
 
         this.state = {

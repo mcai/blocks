@@ -1,7 +1,7 @@
 import React from "react";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 
-export interface SimpleReferenceInputContainerProps {
+export interface SimpleReferenceContainerProps {
     dataProvider: SimpleDataProvider;
     resource: string;
 
