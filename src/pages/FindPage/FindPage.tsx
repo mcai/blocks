@@ -61,17 +61,18 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     resource={resource}
                     action={"find/"}
                     filter={this.props.filter}
-                    fields={this.props.resource.fieldsFunc(this.props.resource, this.dataProvider, async () => {
-                        if (this.refTable !== undefined) {
-                            await this.refTable.loadData();
-                        }
-                    })}
                     extra={
                         <Button variant={"primary"} className={"ml-3"} href={`/add${this.props.resource.name}`}>
                             添加{this.props.resource.title}
                         </Button>
                     }
-                />
+                >
+                    {this.props.resource.fieldsFunc(this.props.resource, this.dataProvider, async () => {
+                        if (this.refTable !== undefined) {
+                            await this.refTable.loadData();
+                        }
+                    })}
+                </SimpleTable>
             </Fragment>
         );
     }
