@@ -90,7 +90,6 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 resource={this.props.resource}
                 action={this.props.action}
                 filter={this.props.filter}
-                fields={this.props.fields}
                 ref={(ref: any) => {
                     this.refExportAll = ref;
                 }}
@@ -114,7 +113,9 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
 
                     Toastify(SimpleToastType.Info, "已导出Excel文件到本地，请查看文件.");
                 }}
-            />
+            >
+                {this.props.children}
+            </SimpleExport>
         );
 
         const exportCurrentPage = (
@@ -127,14 +128,15 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 resource={this.props.resource}
                 action={this.props.action}
                 filter={this.props.filter}
-                fields={this.props.fields}
                 ref={(ref: any) => {
                     this.refExportCurrentPage = ref;
                 }}
                 onEndExport={() => {
                     Toastify(SimpleToastType.Info, "已导出Excel文件到本地，请查看文件.");
                 }}
-            />
+            >
+                {this.props.children}
+            </SimpleExport>
         );
 
         return (
@@ -185,46 +187,48 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                     <Table striped={true} bordered={true} hover={true}>
                         <thead>
                             <tr>
-                                {this.props.fields
-                                    .filter((field) => field.visible == undefined || field.visible)
-                                    .map((field) => {
-                                        return (
-                                            <th key={field.name}>
-                                                {field.ascendingOrdering !== undefined &&
-                                                field.descendingOrdering !== undefined ? (
-                                                    <a
-                                                        href={"#"}
-                                                        onClick={() => {
-                                                            this.setState({
-                                                                ordering:
-                                                                    this.state.ordering == field.ascendingOrdering
-                                                                        ? field.descendingOrdering
-                                                                        : field.ascendingOrdering,
-                                                            });
-                                                        }}
-                                                    >
-                                                        {field.title}
-                                                    </a>
-                                                ) : (
-                                                    field.title
+                                {React.Children.map(this.props.children, (field) => {
+                                    return React.isValidElement(field) ? (
+                                        <th key={field.props.name}>
+                                            {field.props.ascendingOrdering !== undefined &&
+                                            field.props.descendingOrdering !== undefined ? (
+                                                <a
+                                                    href={"#"}
+                                                    onClick={() => {
+                                                        this.setState({
+                                                            ordering:
+                                                                this.state.ordering == field.props.ascendingOrdering
+                                                                    ? field.props.descendingOrdering
+                                                                    : field.props.ascendingOrdering,
+                                                        });
+                                                    }}
+                                                >
+                                                    {field.props.title}
+                                                </a>
+                                            ) : (
+                                                field.props.title
+                                            )}
+
+                                            {this.state.ordering !== undefined &&
+                                                this.state.ordering == field.props.ascendingOrdering && <BsCaretUp />}
+
+                                            {this.state.ordering !== undefined &&
+                                                this.state.ordering == field.props.descendingOrdering && (
+                                                    <BsCaretDown />
                                                 )}
-
-                                                {this.state.ordering !== undefined &&
-                                                    this.state.ordering == field.ascendingOrdering && <BsCaretUp />}
-
-                                                {this.state.ordering !== undefined &&
-                                                    this.state.ordering == field.descendingOrdering && <BsCaretDown />}
-                                            </th>
-                                        );
-                                    })}
+                                        </th>
+                                    ) : (
+                                        <th />
+                                    );
+                                })}
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.itemsInCurrentPage.map((item) => {
+                            {this.state.itemsInCurrentPage.map((values) => {
                                 let trClass = "";
 
                                 if (this.props.getRowTypeFunc !== undefined) {
-                                    switch (this.props.getRowTypeFunc(item)) {
+                                    switch (this.props.getRowTypeFunc(values)) {
                                         case SimpleTableRowType.none:
                                             break;
                                         case SimpleTableRowType.danger:
@@ -237,12 +241,12 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 }
 
                                 return (
-                                    <tr className={trClass} key={item.key}>
-                                        {this.props.fields.map((field) => {
+                                    <tr className={trClass} key={values.key}>
+                                        {React.Children.map(this.props.children, (field) => {
                                             let tdClass = "";
 
                                             if (this.props.getCellTypeFunc !== undefined) {
-                                                switch (this.props.getCellTypeFunc(item, field)) {
+                                                switch (this.props.getCellTypeFunc(values, field)) {
                                                     case SimpleTableRowType.none:
                                                         break;
                                                     case SimpleTableRowType.danger:
@@ -254,11 +258,17 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                 }
                                             }
 
-                                            return (
-                                                <td key={field.name} className={trClass}>
-                                                    {field.render(item)}
-                                                </td>
-                                            );
+                                            if (React.isValidElement(field)) {
+                                                return (
+                                                    <td key={field.props.name} className={trClass}>
+                                                        {React.cloneElement(field, {
+                                                            values: values,
+                                                        })}
+                                                    </td>
+                                                );
+                                            } else {
+                                                return <td className={trClass}>{field}</td>;
+                                            }
                                         })}
                                     </tr>
                                 );

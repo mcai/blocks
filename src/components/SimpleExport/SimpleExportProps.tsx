@@ -1,5 +1,4 @@
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
-import { SimpleField } from "../../fields/SimpleField";
 
 export interface SimpleExportProps {
     pageSize: number;
@@ -13,8 +12,6 @@ export interface SimpleExportProps {
     action: string;
 
     filter?: any;
-
-    fields: SimpleField[];
 
     onBeginExport?: () => void;
     onExporting?: (pageCount: number, pageNum: number) => void;

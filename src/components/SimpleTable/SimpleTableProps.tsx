@@ -1,4 +1,3 @@
-import { SimpleField } from "../../fields/SimpleField";
 import React from "react";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleTableRowType } from "./SimpleTableRowType";
@@ -14,11 +13,9 @@ export interface SimpleTableProps {
 
     filter?: any;
 
-    fields: SimpleField[];
+    getRowTypeFunc?: (values: any) => SimpleTableRowType;
 
-    getRowTypeFunc?: (item: any) => SimpleTableRowType;
-
-    getCellTypeFunc?: (item: any, field: SimpleField) => SimpleTableRowType;
+    getCellTypeFunc?: (values: any, field: React.ReactNode) => SimpleTableRowType;
 
     extra?: React.ReactNode;
 }

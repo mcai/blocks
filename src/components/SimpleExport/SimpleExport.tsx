@@ -5,6 +5,7 @@ import { SimpleFormatting } from "../../utils/SimpleFormatting";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactExport from "react-data-export";
+import innerText from "react-innertext";
 
 export class SimpleExport extends Component<SimpleExportProps, SimpleExportState> {
     private refExcelFile: any;
@@ -82,15 +83,15 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                 }}
             >
                 <ReactExport.ExcelSheet data={this.state.allItems} name="Sheet1">
-                    {this.props.fields
-                        .filter((field) => field.renderAsText !== undefined)
-                        .map((field) => (
+                    {React.Children.map(this.props.children, (field) => {
+                        return React.isValidElement(field) ? (
                             <ReactExport.ExcelColumn
-                                key={field.name}
-                                label={field.title}
-                                value={(item: any) => field.renderAsText?.(item)}
+                                key={field.props.name}
+                                label={field.props.title}
+                                value={(values: any) => innerText(field)}
                             />
-                        ))}
+                        ) : undefined;
+                    })?.filter((e) => e != undefined)}
                 </ReactExport.ExcelSheet>
             </ReactExport.ExcelFile>
         );
