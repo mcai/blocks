@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { ListPageProps } from "./ListPageProps";
 import { FindPageState } from "./FindPageState";
 import { Button } from "react-bootstrap";
-import pluralize from "pluralize";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
@@ -27,7 +26,7 @@ export class ListPage extends Component<ListPageProps, FindPageState> {
     private async loadData() {}
 
     render() {
-        const resource = `${pluralize(this.props.resource.name)}/`;
+        const resource = `${this.props.resource.name}/`;
 
         return (
             <Fragment>
@@ -40,7 +39,7 @@ export class ListPage extends Component<ListPageProps, FindPageState> {
                                 href: "/",
                             },
                             {
-                                key: `${pluralize(this.props.resource.name)}`,
+                                key: `${this.props.resource.name}/list`,
                                 title: `${this.props.resource.title}管理`,
                                 active: true,
                             },

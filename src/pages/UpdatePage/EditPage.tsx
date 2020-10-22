@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import { UpdatePageProps } from "./UpdatePageProps";
 import { UpdatePageState } from "./UpdatePageState";
 import React from "react";
-import pluralize from "pluralize";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleUpdateForm } from "../../forms/SimpleUpdateForm/SimpleUpdateForm";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
@@ -28,7 +27,7 @@ export class EditPage extends Component<UpdatePageProps, UpdatePageState> {
     private async loadData() {}
 
     render() {
-        const resource = `${pluralize(this.props.resource.name)}/`;
+        const resource = `${this.props.resource.name}/`;
 
         return (
             <Fragment>
@@ -41,9 +40,9 @@ export class EditPage extends Component<UpdatePageProps, UpdatePageState> {
                                 href: "/",
                             },
                             {
-                                key: `${pluralize(this.props.resource.name)}`,
+                                key: `${this.props.resource.name}/list`,
                                 title: `${this.props.resource.title}管理`,
-                                href: `/${pluralize(this.props.resource.name)}`,
+                                href: `${this.props.resource.name}/list`,
                             },
                             {
                                 key: `${this.props.resource.name}`,
@@ -77,7 +76,7 @@ export class EditPage extends Component<UpdatePageProps, UpdatePageState> {
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `更新${this.props.resource.title}成功!`);
                     }}
-                    onSuccessRedirect={() => `/${pluralize(this.props.resource.name)}`}
+                    onSuccessRedirect={() => `/${this.props.resource.name}/list`}
                     onFailure={() => {
                         Toastify(SimpleToastType.Error, `更新${this.props.resource.title}失败!`);
                     }}

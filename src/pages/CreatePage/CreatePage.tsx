@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import { CreatePageProps } from "./CreatePageProps";
 import { CreatePageState } from "./CreatePageState";
 import React from "react";
-import pluralize from "pluralize";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleAddForm } from "../../forms/SimpleAddForm/SimpleAddForm";
@@ -30,7 +29,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
     private async loadData() {}
 
     render() {
-        const resource = `${pluralize(this.props.resource.name)}/`;
+        const resource = `${this.props.resource.name}/`;
 
         return (
             <Fragment>
@@ -43,9 +42,9 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                                 href: "/",
                             },
                             {
-                                key: `${pluralize(this.props.resource.name)}`,
+                                key: `${this.props.resource.name}/list`,
                                 title: `${this.props.resource.title}管理`,
-                                href: `/${pluralize(this.props.resource.name)}`,
+                                href: `${this.props.resource.name}/list`,
                             },
                             {
                                 key: `add${this.props.resource.name}`,
@@ -72,7 +71,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `添加${this.props.resource.title}成功!`);
                     }}
-                    onSuccessRedirect={() => `/${pluralize(this.props.resource.name)}`}
+                    onSuccessRedirect={() => `/${this.props.resource.name}/list`}
                     onFailure={() => {
                         Toastify(SimpleToastType.Error, `添加${this.props.resource.title}失败!`);
                     }}

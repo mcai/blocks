@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import * as queryString from "querystring";
 import { SimpleResourceAppProps } from "./SimpleResourceAppProps";
-import pluralize from "pluralize";
 import { SimpleRoute } from "../../components/SimpleApp/SimpleRoute";
 import { ListPage } from "../../pages/ListPage/ListPage";
 import { CreatePage } from "../../pages/CreatePage/CreatePage";
@@ -64,13 +63,13 @@ export function getRoutes(
 export function getSections(resource: SimpleResource) {
     return [
         {
-            id: `${pluralize(resource.name)}`,
+            id: `${resource.name}/list`,
             title: `${resource.title}`,
             items: [
                 {
-                    key: `${pluralize(resource.name)}`,
+                    key: `${resource.name}/list`,
                     title: `${resource.title}`,
-                    href: `/${pluralize(resource.name)}`,
+                    href: `/${resource.name}/list`,
                 },
             ],
         },
