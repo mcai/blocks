@@ -62,7 +62,7 @@ export class ListPage extends Component<ListPageProps, FindPageState> {
                     filter={this.props.filter}
                     keyFunc={(values) => this.props.resource.keyFunc?.(values)}
                     extra={
-                        <Button variant={"primary"} className={"ml-3"} href={`/add${this.props.resource.name}`}>
+                        <Button variant={"primary"} className={"ml-3"} href={`/${this.props.resource.name}/create`}>
                             添加{this.props.resource.title}
                         </Button>
                     }
