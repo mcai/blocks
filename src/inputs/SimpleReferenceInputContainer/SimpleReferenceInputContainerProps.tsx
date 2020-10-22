@@ -6,7 +6,10 @@ export interface SimpleReferenceInputContainerProps {
     resource: string;
 
     action: string;
-    ordering?: any;
+    ordering: {
+        key: string;
+        descending: boolean;
+    };
     filter?: {
         [key: string]: any;
     };
