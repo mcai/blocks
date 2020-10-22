@@ -20,7 +20,7 @@ export interface SimpleReferenceFieldContainerProps {
         text: React.ReactNode;
     };
 
-    title?: React.ReactNode;
-
     values?: any;
+
+    title?: React.ReactNode;
 }

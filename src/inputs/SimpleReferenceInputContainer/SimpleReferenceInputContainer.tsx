@@ -35,8 +35,8 @@ export class SimpleReferenceInputContainer extends Component<
                 {React.Children.map(this.props.children, (input) =>
                     React.isValidElement(input)
                         ? React.cloneElement(input, {
-                              values: this.props.values,
                               options: this.state.options,
+                              values: this.props.values,
                               onUpdate: (name: string, value: any) => {
                                   this.onUpdate(name, value);
                               },
