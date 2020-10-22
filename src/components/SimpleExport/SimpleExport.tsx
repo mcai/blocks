@@ -83,7 +83,13 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                             <ReactExport.ExcelColumn
                                 key={field.props.name}
                                 label={field.props.title}
-                                value={(values: any) => innerText(field) ?? JSON.stringify(values)}
+                                value={(values: any) =>
+                                    innerText(
+                                        React.cloneElement(field, {
+                                            values: values,
+                                        }),
+                                    )
+                                }
                             />
                         ) : undefined;
                     })?.filter((e) => e != undefined)}
