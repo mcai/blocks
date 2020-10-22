@@ -33,19 +33,23 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
     }
 
     render() {
+        const toolbar = (
+            <div className="simple-section">
+                <div className="simple-left">
+                    <p>共 {this.props.rows?.length ?? 0} 项</p>
+                </div>
+                <div className="simple-right">
+                    {(this.props.readOnly === undefined || !this.props.readOnly) && (
+                        <SimpleListToolbar options={this.props.options} onAdd={(row) => this.onAdd(row)} />
+                    )}
+                </div>
+                <div className="simple-center">&nbsp;&nbsp;</div>
+            </div>
+        );
+
         return (
             <div>
-                <div className="simple-section">
-                    <div className="simple-left">
-                        <p>共 {this.props.rows?.length ?? 0} 项</p>
-                    </div>
-                    <div className="simple-right">
-                        {(this.props.readOnly === undefined || !this.props.readOnly) && (
-                            <SimpleListToolbar options={this.props.options} onAdd={(row) => this.onAdd(row)} />
-                        )}
-                    </div>
-                    <div className="simple-center">&nbsp;&nbsp;</div>
-                </div>
+                {toolbar}
 
                 {this.props.rows?.map((row, index) => {
                     const { id, ...values } = row;
@@ -66,6 +70,8 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                         </div>
                     );
                 })}
+
+                {this.props.rows && toolbar}
             </div>
         );
     }

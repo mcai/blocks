@@ -141,6 +141,20 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             </SimpleExport>
         );
 
+        const pagination = (
+            <SimplePagination
+                pageCount={this.state.pageCount}
+                pageNum={this.state.pageNum}
+                count={this.state.count}
+                pageSize={this.props.pageSize}
+                onClick={(pageNum) =>
+                    this.setState({
+                        pageNum: pageNum,
+                    })
+                }
+            />
+        );
+
         return (
             <SimpleLoading
                 active={this.state.loadingData || this.state.exportLoadingActive}
@@ -171,17 +185,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
 
                         <SimpleSpacing />
 
-                        <SimplePagination
-                            pageCount={this.state.pageCount}
-                            pageNum={this.state.pageNum}
-                            count={this.state.count}
-                            pageSize={this.props.pageSize}
-                            onClick={(pageNum) =>
-                                this.setState({
-                                    pageNum: pageNum,
-                                })
-                            }
-                        />
+                        {pagination}
                     </Col>
                 </Row>
 
@@ -281,6 +285,10 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 ) : (
                     <span>没有数据。</span>
                 )}
+
+                <Row>
+                    <Col>{pagination}</Col>
+                </Row>
             </SimpleLoading>
         );
     }
