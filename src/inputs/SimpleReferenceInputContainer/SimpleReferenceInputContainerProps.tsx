@@ -10,9 +10,7 @@ export interface SimpleReferenceInputContainerProps {
         key: string;
         descending: boolean;
     };
-    filter?: {
-        [key: string]: any;
-    };
+    filter: any;
 
     toOptionFunc: (
         item: any,
