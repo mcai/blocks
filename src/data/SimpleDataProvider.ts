@@ -36,16 +36,6 @@ export interface SimpleDataProvider {
         data: any[];
     }>;
 
-    count(
-        resource: string,
-        action: string,
-        params: {
-            filter: any;
-        },
-    ): Promise<{
-        data: number;
-    }>;
-
     getOne(
         resource: string,
         action: string,
@@ -64,6 +54,26 @@ export interface SimpleDataProvider {
         },
     ): Promise<{
         data: any[];
+    }>;
+
+    countOne(
+        resource: string,
+        action: string,
+        params: {
+            filter: any;
+        },
+    ): Promise<{
+        data: number;
+    }>;
+
+    countMany(
+        resource: string,
+        action: string,
+        params: {
+            filters: any[];
+        },
+    ): Promise<{
+        data: number[];
     }>;
 
     create(

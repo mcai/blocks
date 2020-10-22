@@ -43,18 +43,6 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
         return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 
-    async count(
-        resource: string,
-        action: string,
-        params: {
-            filter: any;
-        },
-    ): Promise<{
-        data: number;
-    }> {
-        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
-    }
-
     async getOne(
         resource: string,
         action: string,
@@ -76,6 +64,28 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
     ): Promise<{
         data: any[];
     }> {
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
+    }
+
+    async countOne(
+        resource: string,
+        action: string,
+        params: {
+            filter: any;
+        },
+    ): Promise<{
+        data: number;
+    }> {
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
+    }
+
+    async countMany(
+        resource: string,
+        action: string,
+        params: {
+            filters: any[];
+        },
+    ): Promise<{ data: number[] }> {
         return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 

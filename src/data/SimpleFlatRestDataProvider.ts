@@ -63,18 +63,6 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
         };
     }
 
-    async count(
-        resource: string,
-        action: string,
-        params: {
-            filter: any;
-        },
-    ): Promise<{
-        data: number;
-    }> {
-        throw new Error("Not supported");
-    }
-
     async getOne(
         resource: string,
         action: string,
@@ -104,6 +92,28 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
     ): Promise<{
         data: any[];
     }> {
+        throw new Error("Not supported");
+    }
+
+    async countOne(
+        resource: string,
+        action: string,
+        params: {
+            filter: any;
+        },
+    ): Promise<{
+        data: number;
+    }> {
+        throw new Error("Not supported");
+    }
+
+    countMany(
+        resource: string,
+        action: string,
+        params: {
+            filters: any[];
+        },
+    ): Promise<{ data: number[] }> {
         throw new Error("Not supported");
     }
 
