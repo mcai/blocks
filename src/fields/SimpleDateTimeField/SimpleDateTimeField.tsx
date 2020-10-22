@@ -4,6 +4,6 @@ import { SimpleFormatting } from "../../utils/SimpleFormatting";
 
 export class SimpleDateTimeField extends Component<SimpleDateTimeFieldProps, any> {
     render() {
-        return SimpleFormatting.toFormattedDateTimeString(this.props.values?.[this.props.name ?? ""]);
+        return SimpleFormatting.toFormattedDateTimeString(this.props.values?.[this.props.name ?? ""] ?? "");
     }
 }
