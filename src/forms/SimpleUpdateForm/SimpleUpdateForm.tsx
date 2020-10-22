@@ -15,14 +15,13 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     async componentDidMount() {
-        const item = await this.props.dataProvider.one(this.props.resource, this.props.getByIdAction, {
-            filter: {
-                ...this.props.getByIdExtraData,
-                id: this.props.id,
-            },
+        const result = await this.props.dataProvider.getOne(this.props.resource, this.props.oneAction, {
+            filter: this.props.filter,
         });
 
-        this.props.onGetByIdResult?.(item);
+        const item = result.data;
+
+        this.props.onOneResult?.(item);
 
         this.setState({
             item: item,
@@ -31,19 +30,21 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
 
     private async onSubmit(values: any) {
         const result = await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
-            id: this.props.id,
+            filter: this.props.filter,
             data: {
                 ...this.props.updateExtraData,
                 ...values,
             },
         });
 
-        if (result !== undefined) {
-            this.props.onSuccess?.(result);
+        const item = result.data;
+
+        if (item !== undefined) {
+            this.props.onSuccess?.(item);
 
             if (this.props.onSuccessRedirect) {
                 this.setState({
-                    redirect: this.props.onSuccessRedirect?.(result),
+                    redirect: this.props.onSuccessRedirect?.(item),
                 });
             }
         } else {

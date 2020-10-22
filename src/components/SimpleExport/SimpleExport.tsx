@@ -34,27 +34,26 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                 `[SimpleExport] download data from ${this.props.resource}${this.props.action}, pageNum=${pageNum}`,
             );
 
-            const result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
-                pageSize: this.props.pageSize,
-                pageNum: pageNum,
-                ordering: this.props.ordering,
-                filter: {
-                    ...this.props.filter,
+            const result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
+                paging: {
+                    pageSize: this.props.pageSize,
+                    pageNum: pageNum,
                 },
+                ordering: this.props.ordering,
+                filter: this.props.filter,
             });
 
             if (result == undefined) {
                 break;
             }
 
-            allItems.push(...result.itemsInCurrentPage);
+            allItems.push(...result.data);
 
-            this.props.onExporting?.(result.pageCount, pageNum);
+            const pageCount = result.total / this.props.pageSize;
 
-            if (
-                pageNum == result?.pageCount - 1 ||
-                (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum)
-            ) {
+            this.props.onExporting?.(pageCount, pageNum);
+
+            if (pageNum == pageCount - 1 || (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum)) {
                 break;
             }
 

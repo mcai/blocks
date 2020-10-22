@@ -24,11 +24,13 @@ export class SimpleCookie {
         if (guid == null || guid === "") {
             return undefined;
         } else {
-            return await this.dataProvider.one(this.resource, this.getUserByGuidAction, {
+            const result = await this.dataProvider.getOne(this.resource, this.getUserByGuidAction, {
                 filter: {
                     guid: guid,
                 },
             });
+
+            return result.data;
         }
     }
 

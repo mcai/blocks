@@ -63,11 +63,11 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
-                    getByIdAction={"one/"}
+                    oneAction={"one/"}
                     updateAction={"update/"}
                     updateExtraData={{}}
-                    id={this.props.id}
-                    onGetByIdResult={(item) => {
+                    filter={this.props.id}
+                    onOneResult={(item) => {
                         this.setState({
                             item: item,
                         });

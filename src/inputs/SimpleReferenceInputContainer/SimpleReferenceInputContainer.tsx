@@ -15,13 +15,13 @@ export class SimpleReferenceInputContainer extends Component<
     }
 
     async componentDidMount() {
-        const items = await this.props.dataProvider.all(this.props.resource, this.props.action, {
+        const result = await this.props.dataProvider.getAll(this.props.resource, this.props.action, {
             ordering: this.props.ordering,
             filter: this.props.filter,
         });
 
         this.setState({
-            options: items?.map((item) => this.props.toOptionFunc(item)),
+            options: result.data.map((item) => this.props.toOptionFunc(item)),
         });
     }
 

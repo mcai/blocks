@@ -3,71 +3,95 @@ export interface SimpleDataProvider {
 
     post(resource: string, action: string, params: any): Promise<any | undefined>;
 
-    find(
+    getList(
         resource: string,
         action: string,
         params: {
-            pageSize: number;
-            pageNum: number;
-            ordering?: any;
-            filter?: any;
+            paging: {
+                pageSize: number;
+                pageNum: number;
+            };
+            ordering: {
+                key: string;
+                descending: boolean;
+            };
+            filter: any;
         },
-    ): Promise<
-        | {
-              count: number;
-              pageCount: number;
-              itemsInCurrentPage: any[];
-          }
-        | undefined
-    >;
+    ): Promise<{
+        data: any[];
+        total: number;
+    }>;
 
-    all(
+    getAll(
         resource: string,
         action: string,
         params: {
-            ordering?: any;
-            filter?: any;
+            ordering: {
+                key: string;
+                descending: boolean;
+            };
+            filter: any;
         },
-    ): Promise<any[] | undefined>;
+    ): Promise<{
+        data: any[];
+    }>;
 
     count(
         resource: string,
         action: string,
         params: {
-            filter?: any;
+            filter: any;
         },
-    ): Promise<number | undefined>;
+    ): Promise<{
+        data: number;
+    }>;
 
-    one(
+    getOne(
         resource: string,
         action: string,
         params: {
-            filter?: any;
+            filter: any;
         },
-    ): Promise<any | undefined>;
+    ): Promise<{
+        data: any;
+    }>;
+
+    getMany(
+        resource: string,
+        action: string,
+        params: {
+            filters: any[];
+        },
+    ): Promise<{
+        data: any[];
+    }>;
 
     create(
         resource: string,
         action: string,
         params: {
-            data?: any;
+            data: any;
         },
-    ): Promise<any | undefined>;
+    ): Promise<{
+        data: any;
+    }>;
 
     update(
         resource: string,
         action: string,
         params: {
-            filter?: any;
-            data?: any;
+            filter: any;
+            data: any;
         },
-    ): Promise<any | undefined>;
+    ): Promise<{
+        data: any;
+    }>;
 
-    remove(
+    delete(
         resource: string,
         action: string,
         params: {
-            filter?: any;
+            filter: any;
         },
     ): Promise<void>;
 }

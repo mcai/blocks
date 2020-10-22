@@ -5,20 +5,20 @@ export interface SimpleUpdateFormProps {
     dataProvider: SimpleDataProvider;
     resource: string;
     initialValues?: any;
-    getByIdAction: string;
-    onGetByIdResult?: (item: any) => void;
+
+    filter: any;
+
+    oneAction: string;
+    oneExtraData?: any;
+    onOneResult?: (item: any) => void;
+
     updateAction: string;
-
-    id: any;
-
-    getByIdExtraData?: any;
     updateExtraData?: any;
+    onSuccess?: (item: any) => void;
+    onSuccessRedirect?: (item: any) => string;
+    onFailure?: () => void;
 
     inputs: React.ReactNode[];
 
     submitButtonText?: string;
-
-    onSuccess?: (item: any) => void;
-    onSuccessRedirect?: (item: any) => string;
-    onFailure?: () => void;
 }

@@ -64,19 +64,21 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             loadingData: true,
         });
 
-        const result = await this.props.dataProvider.find(this.props.resource, this.props.action, {
-            pageSize: this.props.pageSize,
-            pageNum: this.state.pageNum,
-            ordering: this.state.ordering,
-            filter: {
-                ...this.props.filter,
+        const result = await this.props.dataProvider.getList(this.props.resource, this.props.action, {
+            paging: {
+                pageSize: this.props.pageSize,
+                pageNum: this.state.pageNum,
             },
+            ordering: this.state.ordering,
+            filter: this.props.filter,
         });
 
+        const pageCount = result.total / this.props.pageSize;
+
         this.setState({
-            count: result?.count ?? 0,
-            pageCount: result?.pageCount ?? 0,
-            itemsInCurrentPage: result?.itemsInCurrentPage ?? [],
+            count: result.total ?? 0,
+            pageCount: pageCount ?? 0,
+            itemsInCurrentPage: result.data ?? [],
             loadingData: false,
         });
     }
