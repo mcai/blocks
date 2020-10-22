@@ -30,7 +30,12 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
             ...params.filter,
         };
 
-        return await SimpleHttpClient.get(this.baseUrl, resource, action, params1);
+        const result = await SimpleHttpClient.get(this.baseUrl, resource, action, params1);
+
+        return {
+            data: result.itemsInCurrentPage,
+            total: result.count,
+        };
     }
 
     async getAll(
@@ -51,7 +56,11 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
             ...params.filter,
         };
 
-        return await SimpleHttpClient.get(this.baseUrl, resource, action, params1);
+        const result = await SimpleHttpClient.get(this.baseUrl, resource, action, params1);
+
+        return {
+            data: result,
+        };
     }
 
     async count(
@@ -79,7 +88,11 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
             ...params.filter,
         };
 
-        return await SimpleHttpClient.get(this.baseUrl, resource, action, params1);
+        const result = await SimpleHttpClient.get(this.baseUrl, resource, action, params1);
+
+        return {
+            data: result,
+        };
     }
 
     async getMany(
@@ -105,7 +118,11 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
             ...params.data,
         };
 
-        return await SimpleHttpClient.post(this.baseUrl, resource, action, params1);
+        const result = await SimpleHttpClient.post(this.baseUrl, resource, action, params1);
+
+        return {
+            data: result,
+        };
     }
 
     async update(
@@ -123,7 +140,11 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
             ...params.data,
         };
 
-        return await SimpleHttpClient.post(this.baseUrl, resource, action, params1);
+        const result = await SimpleHttpClient.post(this.baseUrl, resource, action, params1);
+
+        return {
+            data: result,
+        };
     }
 
     async delete(
