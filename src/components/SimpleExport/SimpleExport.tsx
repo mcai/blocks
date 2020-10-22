@@ -5,6 +5,7 @@ import { SimpleFormatting } from "../../utils/SimpleFormatting";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactExport from "react-data-export";
+import { shallow } from "enzyme";
 
 export class SimpleExport extends Component<SimpleExportProps, SimpleExportState> {
     private refExcelFile: any;
@@ -83,9 +84,11 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                                 key={field.props.name}
                                 label={field.props.title}
                                 value={(values: any) => {
-                                    return React.cloneElement(field, {
+                                    const cloned = React.cloneElement(field, {
                                         values: values,
                                     });
+                                    const wrapper = shallow(cloned);
+                                    return wrapper.text();
                                 }}
                             />
                         ) : undefined;
