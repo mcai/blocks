@@ -49,7 +49,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             allItems.push(...result.data);
 
-            const pageCount = result.total / this.props.pageSize;
+            const pageCount = Math.ceil(result.total / this.props.pageSize);
 
             this.props.onExporting?.(pageCount, pageNum);
 
