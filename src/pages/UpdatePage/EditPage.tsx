@@ -10,7 +10,7 @@ import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 
-export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
+export class EditPage extends Component<UpdatePageProps, UpdatePageState> {
     dataProvider: SimpleDataProvider;
 
     constructor(props: UpdatePageProps) {
@@ -63,10 +63,10 @@ export class UpdatePage extends Component<UpdatePageProps, UpdatePageState> {
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
-                    oneAction={"one/"}
+                    oneAction={"getOne/"}
                     updateAction={"update/"}
                     updateExtraData={{}}
-                    filter={this.props.id}
+                    filter={this.props.filter}
                     onOneResult={(item) => {
                         this.setState({
                             item: item,

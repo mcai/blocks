@@ -4,7 +4,7 @@ import { SimpleResource } from "../../data/SimpleResource";
 export interface UpdatePageProps {
     baseUrl: string;
     resource: SimpleResource;
-    id: any;
+    filter: any;
     initialValues?: any;
     breadCrumbItems?: {
         key: string;

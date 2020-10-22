@@ -6,7 +6,7 @@ import pluralize from "pluralize";
 import { SimpleRoute } from "../../components/SimpleApp/SimpleRoute";
 import { ListPage } from "../../pages/ListPage/ListPage";
 import { CreatePage } from "../../pages/CreatePage/CreatePage";
-import { UpdatePage } from "../../pages/UpdatePage/UpdatePage";
+import { EditPage } from "../../pages/UpdatePage/EditPage";
 import { SimpleApp } from "../../components/SimpleApp/SimpleApp";
 import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
 import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";
@@ -26,11 +26,11 @@ export function getRoutes(
     resource: SimpleResource,
     findPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
     createPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
-    updatePageFunc?: (baseUrl: string, resource: SimpleResource, id: any) => React.ReactNode,
+    editPageFunc?: (baseUrl: string, resource: SimpleResource, filter: any) => React.ReactNode,
 ) {
     return [
         {
-            path: `/${pluralize(resource.name)}`,
+            path: `/${resource.name}/list`,
             page: findPageFunc?.(baseUrl, resource) || (
                 <ListPage
                     baseUrl={baseUrl}
@@ -41,18 +41,18 @@ export function getRoutes(
             ),
         },
         {
-            path: `/add${resource.name}`,
+            path: `/${resource.name}/create`,
             page: createPageFunc?.(baseUrl, resource) || <CreatePage baseUrl={baseUrl} resource={resource} />,
         },
         {
-            path: `/${resource.name}/:id`,
+            path: `/${resource.name}/edit`,
             page: withRouter((props) => {
-                const { id } = useParams(props);
+                const { filter } = useQuery(props);
 
                 return (
                     <Fragment>
-                        {updatePageFunc?.(baseUrl, resource, id) || (
-                            <UpdatePage baseUrl={baseUrl} resource={resource} id={id} />
+                        {editPageFunc?.(baseUrl, resource, filter) || (
+                            <EditPage baseUrl={baseUrl} resource={resource} filter={filter} />
                         )}
                     </Fragment>
                 );
