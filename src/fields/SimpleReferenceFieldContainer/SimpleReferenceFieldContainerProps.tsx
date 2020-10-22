@@ -6,10 +6,11 @@ export interface SimpleReferenceFieldContainerProps {
     resource: string;
 
     action: string;
-    ordering?: any;
-    filter?: {
-        [key: string]: any;
+    ordering: {
+        key: string;
+        descending: boolean;
     };
+    filter: any;
 
     toOptionFunc: (
         item: any,
