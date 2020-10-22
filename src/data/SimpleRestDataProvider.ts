@@ -1,21 +1,9 @@
-import { SimpleDataProvider } from "./SimpleDataProvider";
 import { SimpleHttpClient } from "./SimpleHttpClient";
-import urljoin from "url-join";
-import { SimpleHttpClientMethod } from "./SimpleHttpClientMethod";
+import { AbstractRestDataProvider } from "./AbstractRestDataProvider";
 
-export class SimpleRestDataProvider implements SimpleDataProvider {
-    private readonly baseUrl: string;
-
+export class SimpleRestDataProvider extends AbstractRestDataProvider {
     constructor(baseUrl: string) {
-        this.baseUrl = baseUrl;
-    }
-
-    async get(resource: string, action: string, params: any): Promise<any | undefined> {
-        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
-    }
-
-    async post(resource: string, action: string, params: any): Promise<any | undefined> {
-        return await SimpleHttpClient.post(this.baseUrl, resource, action, params);
+        super(baseUrl);
     }
 
     async getList(
