@@ -83,11 +83,9 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                                 key={field.props.name}
                                 label={field.props.title}
                                 value={(values: any) => {
-                                    const cloned = React.cloneElement(field, {
+                                    return React.cloneElement(field, {
                                         values: values,
                                     });
-
-                                    return innerText(cloned);
                                 }}
                             />
                         ) : undefined;
@@ -96,34 +94,4 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
             </ReactExport.ExcelFile>
         );
     }
-}
-
-export function innerText(obj: any) {
-    let buf = "";
-    if (obj) {
-        const type = typeof obj;
-        if (type === "string" || type === "number") {
-            buf += obj;
-        } else if (type === "object") {
-            let children = null;
-            if (Array.isArray(obj)) {
-                children = obj;
-            } else {
-                const props = obj.props;
-                if (props) {
-                    children = props.children;
-                }
-            }
-            if (children) {
-                if (Array.isArray(children)) {
-                    children.forEach(function (o) {
-                        buf += innerText(o);
-                    });
-                } else {
-                    buf += innerText(children);
-                }
-            }
-        }
-    }
-    return buf;
 }
