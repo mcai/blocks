@@ -8,7 +8,7 @@ import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
 
-export class FindPage extends Component<FindPageProps, FindPageState> {
+export class ListPage extends Component<FindPageProps, FindPageState> {
     dataProvider: SimpleDataProvider;
     refTable: any;
 
@@ -59,7 +59,7 @@ export class FindPage extends Component<FindPageProps, FindPageState> {
                     initialOrdering={this.props.initialOrdering}
                     dataProvider={this.dataProvider}
                     resource={resource}
-                    action={"find/"}
+                    action={"getList/"}
                     filter={this.props.filter}
                     keyFunc={(values) => this.props.resource.keyFunc?.(values)}
                     extra={

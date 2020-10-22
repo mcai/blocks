@@ -4,7 +4,7 @@ import * as queryString from "querystring";
 import { SimpleResourceAppProps } from "./SimpleResourceAppProps";
 import pluralize from "pluralize";
 import { SimpleRoute } from "../../components/SimpleApp/SimpleRoute";
-import { FindPage } from "../../pages/FindPage/FindPage";
+import { ListPage } from "../../pages/FindPage/ListPage";
 import { CreatePage } from "../../pages/CreatePage/CreatePage";
 import { UpdatePage } from "../../pages/UpdatePage/UpdatePage";
 import { SimpleApp } from "../../components/SimpleApp/SimpleApp";
@@ -31,7 +31,7 @@ export function getRoutes(
     return [
         {
             path: `/${pluralize(resource.name)}`,
-            page: findPageFunc?.(baseUrl, resource) || <FindPage baseUrl={baseUrl} resource={resource} />,
+            page: findPageFunc?.(baseUrl, resource) || <ListPage baseUrl={baseUrl} resource={resource} />,
         },
         {
             path: `/add${resource.name}`,
