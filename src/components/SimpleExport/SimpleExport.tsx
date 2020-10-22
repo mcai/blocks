@@ -5,8 +5,6 @@ import { SimpleFormatting } from "../../utils/SimpleFormatting";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactExport from "react-data-export";
-import { configure, shallow } from "enzyme";
-import ReactSixteenAdapter from "enzyme-adapter-react-16";
 
 export class SimpleExport extends Component<SimpleExportProps, SimpleExportState> {
     private refExcelFile: any;
@@ -69,8 +67,6 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
     }
 
     render() {
-        configure({ adapter: new ReactSixteenAdapter() });
-
         return (
             <ReactExport.ExcelFile
                 filename={SimpleFormatting.toFormattedDateTimeStringAsFileName()}
@@ -90,9 +86,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                                     const cloned = React.cloneElement(field, {
                                         values: values,
                                     });
-                                    return "";
-                                    // const wrapper = shallow(cloned); // TODO: disabled for the moment
-                                    // return wrapper.text();
+                                    return ""; // TODO
                                 }}
                             />
                         ) : undefined;
