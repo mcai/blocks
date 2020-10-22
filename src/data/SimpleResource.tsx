@@ -1,4 +1,5 @@
 import React from "react";
+import { SimpleDataProvider } from "./SimpleDataProvider";
 
 export interface SimpleResource {
     name: string;
@@ -6,7 +7,7 @@ export interface SimpleResource {
 
     fieldsFunc: (
         resource: SimpleResource,
-        dataProvider: any,
+        dataProvider: SimpleDataProvider,
         loadTableDataFunc: () => Promise<void>,
     ) => React.ReactNode[];
 
