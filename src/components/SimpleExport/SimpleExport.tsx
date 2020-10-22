@@ -5,7 +5,6 @@ import { SimpleFormatting } from "../../utils/SimpleFormatting";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReactExport from "react-data-export";
-import innerText from "react-innertext";
 
 export class SimpleExport extends Component<SimpleExportProps, SimpleExportState> {
     private refExcelFile: any;
@@ -49,7 +48,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
 
             this.props.onExporting?.(pageCount, pageNum);
 
-            if (pageNum >= pageCount - 1 || (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum)) {
+            if (pageNum == pageCount - 1 || (this.props.endPageNum !== undefined && pageNum == this.props.endPageNum)) {
                 break;
             }
 
@@ -79,14 +78,6 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
             >
                 <ReactExport.ExcelSheet data={this.state.allItems} name="Sheet1">
                     {React.Children.map(this.props.children, (field) => {
-                        console.log(
-                            JSON.stringify({
-                                type: typeof field,
-                                valid: React.isValidElement(field),
-                                props: (field as any)?.props,
-                            }),
-                        );
-
                         return React.isValidElement(field) ? (
                             <ReactExport.ExcelColumn
                                 key={field.props.name}
@@ -96,8 +87,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                                         values: values,
                                     });
 
-                                    // return innerText(cloned);
-                                    return JSON.stringify(cloned.props.values);
+                                    return innerText(cloned);
                                 }}
                             />
                         ) : undefined;
@@ -106,4 +96,34 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
             </ReactExport.ExcelFile>
         );
     }
+}
+
+export function innerText(obj: any) {
+    let buf = "";
+    if (obj) {
+        const type = typeof obj;
+        if (type === "string" || type === "number") {
+            buf += obj;
+        } else if (type === "object") {
+            let children = null;
+            if (Array.isArray(obj)) {
+                children = obj;
+            } else {
+                const props = obj.props;
+                if (props) {
+                    children = props.children;
+                }
+            }
+            if (children) {
+                if (Array.isArray(children)) {
+                    children.forEach(function (o) {
+                        buf += innerText(o);
+                    });
+                } else {
+                    buf += innerText(children);
+                }
+            }
+        }
+    }
+    return buf;
 }
