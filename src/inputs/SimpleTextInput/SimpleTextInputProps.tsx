@@ -14,4 +14,6 @@ export interface SimpleTextInputProps {
     onUpdate?: (name: string, value: any) => void;
 
     readOnly?: (values: any) => boolean;
+
+    inline?: boolean;
 }
