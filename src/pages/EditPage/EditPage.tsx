@@ -1,13 +1,13 @@
-import { Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { EditPageProps } from "./EditPageProps";
 import { EditPageState } from "./EditPageState";
-import React from "react";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleUpdateForm } from "../../forms/SimpleUpdateForm/SimpleUpdateForm";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
+import urljoin from "url-join";
 
 export class EditPage extends Component<EditPageProps, EditPageState> {
     dataProvider: SimpleDataProvider;
@@ -27,8 +27,6 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
     private async loadData() {}
 
     render() {
-        const resource = `${this.props.resource.name}/`;
-
         return (
             <Fragment>
                 <SimpleBreadcrumb
@@ -40,12 +38,12 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
                                 href: "/",
                             },
                             {
-                                key: `${this.props.resource.name}/list`,
+                                key: "list",
                                 title: `${this.props.resource.title}管理`,
-                                href: `/${this.props.resource.name}/list`,
+                                href: urljoin("/", this.props.resource.name, "list"),
                             },
                             {
-                                key: `${this.props.resource.name}/edit`,
+                                key: "edit",
                                 title:
                                     this.props.resource.titleFunc?.(this.state.item) ??
                                     this.state.item.title ??
@@ -60,13 +58,13 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
 
                 <SimpleUpdateForm
                     dataProvider={this.dataProvider}
-                    resource={resource}
+                    resource={this.props.resource.name}
                     initialValues={{
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
-                    oneAction={"getOne/"}
-                    updateAction={"update/"}
+                    oneAction={"getOne"}
+                    updateAction={"update"}
                     updateExtraData={{}}
                     filter={this.props.filter}
                     onOneResult={(item) => {
@@ -79,7 +77,7 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `更新${this.props.resource.title}成功!`);
                     }}
-                    onSuccessRedirect={() => `/${this.props.resource.name}/list`}
+                    onSuccessRedirect={() => urljoin("/", this.props.resource.name, "list")}
                     onFailure={() => {
                         Toastify(SimpleToastType.Error, `更新${this.props.resource.title}失败!`);
                     }}

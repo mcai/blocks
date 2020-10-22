@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { ListPageProps } from "./ListPageProps";
-import { FindPageState } from "./FindPageState";
+import { ListPageState } from "./ListPageState";
 import { Button } from "react-bootstrap";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
+import urljoin from "url-join";
 
-export class ListPage extends Component<ListPageProps, FindPageState> {
+export class ListPage extends Component<ListPageProps, ListPageState> {
     dataProvider: SimpleDataProvider;
     refTable: any;
 
@@ -26,8 +27,6 @@ export class ListPage extends Component<ListPageProps, FindPageState> {
     private async loadData() {}
 
     render() {
-        const resource = `${this.props.resource.name}/`;
-
         return (
             <Fragment>
                 <SimpleBreadcrumb
@@ -57,12 +56,16 @@ export class ListPage extends Component<ListPageProps, FindPageState> {
                     initialPageNum={0}
                     initialOrdering={this.props.initialOrdering}
                     dataProvider={this.dataProvider}
-                    resource={resource}
-                    action={"getList/"}
+                    resource={this.props.resource.name}
+                    action={"getList"}
                     filter={this.props.filter}
                     keyFunc={(values) => this.props.resource.keyFunc?.(values)}
                     extra={
-                        <Button variant={"primary"} className={"ml-3"} href={`/${this.props.resource.name}/create`}>
+                        <Button
+                            variant={"primary"}
+                            className={"ml-3"}
+                            href={urljoin("/", this.props.resource.name, "create")}
+                        >
                             添加{this.props.resource.title}
                         </Button>
                     }

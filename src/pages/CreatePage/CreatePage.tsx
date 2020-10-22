@@ -1,13 +1,13 @@
-import { Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { CreatePageProps } from "./CreatePageProps";
 import { CreatePageState } from "./CreatePageState";
-import React from "react";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleAddForm } from "../../forms/SimpleAddForm/SimpleAddForm";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
+import urljoin from "url-join";
 
 export class CreatePage extends Component<CreatePageProps, CreatePageState> {
     dataProvider: SimpleDataProvider;
@@ -29,8 +29,6 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
     private async loadData() {}
 
     render() {
-        const resource = `${this.props.resource.name}/`;
-
         return (
             <Fragment>
                 <SimpleBreadcrumb
@@ -42,12 +40,12 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                                 href: "/",
                             },
                             {
-                                key: `${this.props.resource.name}/list`,
+                                key: "list",
                                 title: `${this.props.resource.title}管理`,
-                                href: `/${this.props.resource.name}/list`,
+                                href: urljoin("/", this.props.resource.name, "list"),
                             },
                             {
-                                key: `${this.props.resource.name}/create`,
+                                key: "create",
                                 title: `添加${this.props.resource.title}`,
                                 active: true,
                             },
@@ -59,19 +57,19 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
 
                 <SimpleAddForm
                     dataProvider={this.dataProvider}
-                    resource={resource}
+                    resource={this.props.resource.name}
                     initialValues={{
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
-                    addAction={"create/"}
+                    addAction={"create"}
                     addExtraData={{}}
                     inputs={this.props.resource.inputs}
                     submitButtonText={"添加"}
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `添加${this.props.resource.title}成功!`);
                     }}
-                    onSuccessRedirect={() => `/${this.props.resource.name}/list`}
+                    onSuccessRedirect={() => urljoin("/", this.props.resource.name, "list")}
                     onFailure={() => {
                         Toastify(SimpleToastType.Error, `添加${this.props.resource.title}失败!`);
                     }}
