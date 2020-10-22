@@ -15,13 +15,13 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     async componentDidMount() {
-        const result = await this.props.dataProvider.getOne(this.props.resource, this.props.oneAction, {
+        const result = await this.props.dataProvider.getOne(this.props.resource, this.props.getOneAction, {
             filter: this.props.filter,
         });
 
         const item = result.data;
 
-        this.props.onOneResult?.(item);
+        this.props.onGetOneResult?.(item);
 
         this.setState({
             item: item,

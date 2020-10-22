@@ -8,9 +8,9 @@ export interface SimpleUpdateFormProps {
 
     filter: any;
 
-    oneAction: string;
-    oneExtraData?: any;
-    onOneResult?: (item: any) => void;
+    getOneAction: string;
+    getOneExtraData?: any;
+    onGetOneResult?: (item: any) => void;
 
     updateAction: string;
     updateExtraData?: any;

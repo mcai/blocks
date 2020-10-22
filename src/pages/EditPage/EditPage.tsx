@@ -46,7 +46,7 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
                                 key: "edit",
                                 title:
                                     this.props.resource.titleFunc?.(this.state.item) ??
-                                    this.state.item.title ??
+                                    this.state.item?.title ??
                                     "untitled",
                                 active: true,
                             },
@@ -63,11 +63,11 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
-                    oneAction={"getOne"}
+                    getOneAction={"getOne"}
                     updateAction={"update"}
                     updateExtraData={{}}
                     filter={this.props.filter}
-                    onOneResult={(item) => {
+                    onGetOneResult={(item) => {
                         this.setState({
                             item: item,
                         });
