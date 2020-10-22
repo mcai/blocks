@@ -1,5 +1,6 @@
 import request from "superagent";
 import { SimpleHttpClientMethod } from "./SimpleHttpClientMethod";
+import { stringifyUrl } from "query-string";
 
 export class SimpleHttpClient {
     static async call(url: string, method: SimpleHttpClientMethod, params: any): Promise<any | undefined> {
@@ -15,5 +16,9 @@ export class SimpleHttpClient {
 
     static async post(baseUrl: string, resource: string, action: string, params: any): Promise<any | undefined> {
         return await this.call(baseUrl + resource + action, SimpleHttpClientMethod.post, params);
+    }
+
+    static buildUrl(url: string, query: any): string {
+        return stringifyUrl({ url: url, query: query });
     }
 }
