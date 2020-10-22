@@ -264,6 +264,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                 return (
                                                     <td key={field.props.name} className={trClass}>
                                                         {React.cloneElement(field, {
+                                                            inline: true,
                                                             values: values,
                                                         })}
                                                     </td>
