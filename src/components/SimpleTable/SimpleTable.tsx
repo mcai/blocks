@@ -41,6 +41,10 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         prevState: Readonly<SimpleTableState>,
         snapshot?: any,
     ) {
+        if (prevProps.filter !== this.props.filter) {
+            this.resetPageNum();
+        }
+
         if (
             prevProps.filter !== this.props.filter ||
             prevState.pageNum !== this.state.pageNum ||
