@@ -44,10 +44,10 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                             {
                                 key: `${this.props.resource.name}/list`,
                                 title: `${this.props.resource.title}管理`,
-                                href: `${this.props.resource.name}/list`,
+                                href: `/${this.props.resource.name}/list`,
                             },
                             {
-                                key: `add${this.props.resource.name}`,
+                                key: `${this.props.resource.name}/create`,
                                 title: `添加${this.props.resource.title}`,
                                 active: true,
                             },

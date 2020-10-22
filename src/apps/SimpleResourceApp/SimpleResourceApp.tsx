@@ -5,7 +5,7 @@ import { SimpleResourceAppProps } from "./SimpleResourceAppProps";
 import { SimpleRoute } from "../../components/SimpleApp/SimpleRoute";
 import { ListPage } from "../../pages/ListPage/ListPage";
 import { CreatePage } from "../../pages/CreatePage/CreatePage";
-import { EditPage } from "../../pages/UpdatePage/EditPage";
+import { EditPage } from "../../pages/EditPage/EditPage";
 import { SimpleApp } from "../../components/SimpleApp/SimpleApp";
 import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
 import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";

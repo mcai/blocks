@@ -1,6 +1,6 @@
 import { Component, Fragment } from "react";
-import { UpdatePageProps } from "./UpdatePageProps";
-import { UpdatePageState } from "./UpdatePageState";
+import { EditPageProps } from "./EditPageProps";
+import { EditPageState } from "./EditPageState";
 import React from "react";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleUpdateForm } from "../../forms/SimpleUpdateForm/SimpleUpdateForm";
@@ -9,10 +9,10 @@ import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 
-export class EditPage extends Component<UpdatePageProps, UpdatePageState> {
+export class EditPage extends Component<EditPageProps, EditPageState> {
     dataProvider: SimpleDataProvider;
 
-    constructor(props: UpdatePageProps) {
+    constructor(props: EditPageProps) {
         super(props);
 
         this.state = {};
@@ -42,11 +42,14 @@ export class EditPage extends Component<UpdatePageProps, UpdatePageState> {
                             {
                                 key: `${this.props.resource.name}/list`,
                                 title: `${this.props.resource.title}管理`,
-                                href: `${this.props.resource.name}/list`,
+                                href: `/${this.props.resource.name}/list`,
                             },
                             {
-                                key: `${this.props.resource.name}`,
-                                title: this.props.resource.titleFunc?.(this.state.item) ?? "untitled",
+                                key: `${this.props.resource.name}/edit`,
+                                title:
+                                    this.props.resource.titleFunc?.(this.state.item) ??
+                                    this.state.item.title ??
+                                    "untitled",
                                 active: true,
                             },
                         ]
