@@ -1,8 +1,4 @@
 export interface SimpleDataProvider {
-    get(resource: string, action: string, params: any): Promise<any | undefined>;
-
-    post(resource: string, action: string, params: any): Promise<any | undefined>;
-
     getList(
         resource: string,
         action: string,

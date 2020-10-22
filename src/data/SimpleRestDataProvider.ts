@@ -1,29 +1,11 @@
 import { SimpleDataProvider } from "./SimpleDataProvider";
 import { SimpleHttpClient } from "./SimpleHttpClient";
-import { SimpleHttpClientMethod } from "./SimpleHttpClientMethod";
 
 export class SimpleRestDataProvider implements SimpleDataProvider {
     private readonly baseUrl: string;
 
     constructor(baseUrl: string) {
         this.baseUrl = baseUrl;
-    }
-
-    private async call(
-        resource: string,
-        action: string,
-        method: SimpleHttpClientMethod,
-        params: any,
-    ): Promise<any | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, method, params);
-    }
-
-    async get(resource: string, action: string, params: any): Promise<any | undefined> {
-        return await this.call(resource, action, SimpleHttpClientMethod.get, params);
-    }
-
-    async post(resource: string, action: string, params: any): Promise<any | undefined> {
-        return await this.call(resource, action, SimpleHttpClientMethod.post, params);
     }
 
     async getList(
@@ -44,7 +26,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
         data: any[];
         total: number;
     }> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 
     async getAll(
@@ -60,7 +42,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: any[];
     }> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 
     async count(
@@ -72,7 +54,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: number;
     }> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 
     async getOne(
@@ -84,7 +66,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: any;
     }> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 
     async getMany(
@@ -96,7 +78,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: any[];
     }> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.get, params);
+        return await SimpleHttpClient.get(this.baseUrl, resource, action, params);
     }
 
     async create(
@@ -106,7 +88,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             data: any;
         },
     ): Promise<any | undefined> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
+        return await SimpleHttpClient.post(this.baseUrl, resource, action, params);
     }
 
     async update(
@@ -119,7 +101,7 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
     ): Promise<{
         data: any;
     }> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
+        return await SimpleHttpClient.post(this.baseUrl, resource, action, params);
     }
 
     async delete(
@@ -129,6 +111,6 @@ export class SimpleRestDataProvider implements SimpleDataProvider {
             filter: any;
         },
     ): Promise<void> {
-        return await SimpleHttpClient.call(this.baseUrl + resource + action, SimpleHttpClientMethod.post, params);
+        return await SimpleHttpClient.post(this.baseUrl, resource, action, params);
     }
 }
