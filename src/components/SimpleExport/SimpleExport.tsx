@@ -79,17 +79,26 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
             >
                 <ReactExport.ExcelSheet data={this.state.allItems} name="Sheet1">
                     {React.Children.map(this.props.children, (field) => {
+                        console.log(
+                            JSON.stringify({
+                                type: typeof field,
+                                valid: React.isValidElement(field),
+                                props: (field as any)?.props,
+                            }),
+                        );
+
                         return React.isValidElement(field) ? (
                             <ReactExport.ExcelColumn
                                 key={field.props.name}
                                 label={field.props.title}
-                                value={(values: any) =>
-                                    innerText(
-                                        React.cloneElement(field, {
-                                            values: values,
-                                        }),
-                                    )
-                                }
+                                value={(values: any) => {
+                                    const cloned = React.cloneElement(field, {
+                                        values: values,
+                                    });
+
+                                    // return innerText(cloned);
+                                    return JSON.stringify(cloned.props.values);
+                                }}
                             />
                         ) : undefined;
                     })?.filter((e) => e != undefined)}
