@@ -90,8 +90,9 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
                                     const cloned = React.cloneElement(field, {
                                         values: values,
                                     });
-                                    const wrapper = shallow(cloned);
-                                    return wrapper.text();
+                                    return "";
+                                    // const wrapper = shallow(cloned); // TODO: disabled for the moment
+                                    // return wrapper.text();
                                 }}
                             />
                         ) : undefined;
