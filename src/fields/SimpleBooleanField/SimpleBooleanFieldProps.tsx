@@ -5,7 +5,4 @@ export interface SimpleBooleanFieldProps {
     name?: string;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

@@ -11,7 +11,4 @@ export interface SimpleSelectFieldProps {
     }[];
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

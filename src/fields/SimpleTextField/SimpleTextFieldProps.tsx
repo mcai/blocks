@@ -5,7 +5,4 @@ export interface SimpleTextFieldProps {
     name?: string;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

@@ -6,7 +6,4 @@ export interface SimpleUrlFieldProps {
     text?: React.ReactNode;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

@@ -6,7 +6,4 @@ export interface SimpleNumberFieldProps {
     fractionDigits?: number;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

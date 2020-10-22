@@ -14,7 +14,4 @@ export interface SimpleActionsFieldProps {
     }[];
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

@@ -5,7 +5,4 @@ export interface SimpleDateFieldProps {
     name?: string;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

@@ -5,7 +5,4 @@ export interface SimpleFuncFieldProps {
     renderFunc?: (item: any) => React.ReactNode;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }

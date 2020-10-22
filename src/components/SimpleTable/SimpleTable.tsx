@@ -199,9 +199,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                             <tr>
                                 {React.Children.map(this.props.children, (field) => {
                                     return React.isValidElement(field) ? (
-                                        <th key={field.props.name}>
-                                            {field.props.ascendingOrdering !== undefined &&
-                                            field.props.descendingOrdering !== undefined ? (
+                                        <th key={field.props.key}>
+                                            {field.props.name ? (
                                                 <a
                                                     href={"#"}
                                                     onClick={() => {
@@ -219,13 +218,13 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                 field.props.title
                                             )}
 
-                                            {this.state.ordering !== undefined &&
-                                                this.state.ordering == field.props.ascendingOrdering && <BsCaretUp />}
+                                            {this.state.ordering.key &&
+                                                this.state.ordering.key == field.props.name &&
+                                                !this.state.ordering.descending && <BsCaretUp />}
 
-                                            {this.state.ordering !== undefined &&
-                                                this.state.ordering == field.props.descendingOrdering && (
-                                                    <BsCaretDown />
-                                                )}
+                                            {this.state.ordering.key &&
+                                                this.state.ordering.key == field.props.name &&
+                                                this.state.ordering.descending && <BsCaretDown />}
                                         </th>
                                     ) : (
                                         <th />

@@ -6,7 +6,4 @@ export interface SimpleImageFieldProps {
     text?: string;
 
     values?: any;
-
-    ascendingOrdering?: any;
-    descendingOrdering?: any;
 }
