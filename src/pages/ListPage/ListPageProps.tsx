@@ -1,11 +1,14 @@
 import React from "react";
 import { SimpleResource } from "../../data/SimpleResource";
 
-export interface FindPageProps {
+export interface ListPageProps {
     baseUrl: string;
     resource: SimpleResource;
-    initialOrdering?: any;
-    filter?: any;
+    initialOrdering: {
+        key: string;
+        descending: boolean;
+    };
+    filter: any;
 
     breadCrumbItems?: {
         key: string;

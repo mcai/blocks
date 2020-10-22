@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { FindPageProps } from "./FindPageProps";
+import { ListPageProps } from "./ListPageProps";
 import { FindPageState } from "./FindPageState";
 import { Button } from "react-bootstrap";
 import pluralize from "pluralize";
@@ -8,11 +8,11 @@ import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
 
-export class ListPage extends Component<FindPageProps, FindPageState> {
+export class ListPage extends Component<ListPageProps, FindPageState> {
     dataProvider: SimpleDataProvider;
     refTable: any;
 
-    constructor(props: FindPageProps) {
+    constructor(props: ListPageProps) {
         super(props);
 
         this.state = {};

@@ -5,13 +5,16 @@ import { SimpleTableRowType } from "./SimpleTableRowType";
 export interface SimpleTableProps {
     pageSize: number;
     initialPageNum: number;
-    initialOrdering?: any;
+    initialOrdering: {
+        key: string;
+        descending: boolean;
+    };
 
     dataProvider: SimpleDataProvider;
     resource: string;
     action: string;
 
-    filter?: any;
+    filter: any;
 
     rowTypeFunc?: (values: any) => SimpleTableRowType;
 

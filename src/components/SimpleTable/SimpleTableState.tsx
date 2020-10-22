@@ -1,6 +1,9 @@
 export interface SimpleTableState {
     pageNum: number;
-    ordering?: any;
+    ordering: {
+        key: string;
+        descending: boolean;
+    };
     count: number;
     pageCount: number;
     itemsInCurrentPage: any[];

@@ -17,4 +17,9 @@ export interface SimpleResource {
     idFunc?: (item: any) => string;
     keyFunc?: (values: any) => string | number;
     titleFunc?: (item: any) => React.ReactNode;
+
+    initialOrdering: {
+        key: string;
+        descending: boolean;
+    };
 }
