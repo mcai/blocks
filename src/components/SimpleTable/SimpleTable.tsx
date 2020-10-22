@@ -205,10 +205,12 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     href={"#"}
                                                     onClick={() => {
                                                         this.setState({
-                                                            ordering:
-                                                                this.state.ordering == field.props.ascendingOrdering
-                                                                    ? field.props.descendingOrdering
-                                                                    : field.props.ascendingOrdering,
+                                                            ordering: {
+                                                                key: field.props.name,
+                                                                descending:
+                                                                    this.state.ordering.key === field.props.name &&
+                                                                    !this.state.ordering.descending,
+                                                            },
                                                         });
                                                     }}
                                                 >

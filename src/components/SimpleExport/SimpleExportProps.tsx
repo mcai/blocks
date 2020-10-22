@@ -5,7 +5,11 @@ export interface SimpleExportProps {
 
     startPageNum?: number;
     endPageNum?: number;
-    ordering?: any;
+
+    ordering: {
+        key: string;
+        descending: boolean;
+    };
 
     dataProvider: SimpleDataProvider;
     resource: string;
