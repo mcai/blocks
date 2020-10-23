@@ -23,14 +23,14 @@ export function useQuery(props: any) {
 export function getRoutes(
     baseUrl: string,
     resource: SimpleResource,
-    findPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
+    listPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
     createPageFunc?: (baseUrl: string, resource: SimpleResource) => React.ReactNode,
     editPageFunc?: (baseUrl: string, resource: SimpleResource, filter: any) => React.ReactNode,
 ) {
     return [
         {
             path: `/${resource.name}/list`,
-            page: findPageFunc?.(baseUrl, resource) || (
+            page: listPageFunc?.(baseUrl, resource) || (
                 <ListPage
                     baseUrl={baseUrl}
                     resource={resource}
