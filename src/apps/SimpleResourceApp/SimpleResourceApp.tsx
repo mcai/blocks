@@ -46,7 +46,7 @@ export function getRoutes(
         {
             path: `/${resource.name}/edit`,
             page: withRouter((props) => {
-                const { filter } = useQuery(props);
+                const { ...filter } = useQuery(props);
 
                 return (
                     <Fragment>
