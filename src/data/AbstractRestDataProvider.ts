@@ -16,6 +16,20 @@ export abstract class AbstractRestDataProvider implements SimpleDataProvider {
         return await SimpleHttpClient.post(this.baseUrl, resource, action, params);
     }
 
+    abstract countMany(resource: string, action: string, params: { filters: any[] }): Promise<{ data: number[] }>;
+
+    abstract countOne(resource: string, action: string, params: { filter: any }): Promise<{ data: number }>;
+
+    abstract create(resource: string, action: string, params: { data: any }): Promise<{ data: any }>;
+
+    abstract delete(resource: string, action: string, params: { filter: any }): Promise<void>;
+
+    abstract getAll(
+        resource: string,
+        action: string,
+        params: { ordering: { key: string; descending: boolean }; filter: any; transform?: { jsonPath: string } },
+    ): Promise<{ data: any[] }>;
+
     abstract getList(
         resource: string,
         action: string,
@@ -23,26 +37,21 @@ export abstract class AbstractRestDataProvider implements SimpleDataProvider {
             paging: { pageSize: number; pageNum: number };
             ordering: { key: string; descending: boolean };
             filter: any;
+            transform?: { jsonPath: string };
         },
     ): Promise<{ data: any[]; total: number }>;
 
-    abstract getAll(
+    abstract getMany(
         resource: string,
         action: string,
-        params: { ordering: { key: string; descending: boolean }; filter: any },
+        params: { filters: any[]; transform?: { jsonPath: string } },
     ): Promise<{ data: any[] }>;
 
-    abstract getOne(resource: string, action: string, params: { filter: any }): Promise<{ data: any }>;
-
-    abstract getMany(resource: string, action: string, params: { filters: any[] }): Promise<{ data: any[] }>;
-
-    abstract countOne(resource: string, action: string, params: { filter: any }): Promise<{ data: number }>;
-
-    abstract countMany(resource: string, action: string, params: { filters: any[] }): Promise<{ data: number[] }>;
-
-    abstract create(resource: string, action: string, params: { data: any }): Promise<{ data: any }>;
+    abstract getOne(
+        resource: string,
+        action: string,
+        params: { filter: any; transform?: { jsonPath: string } },
+    ): Promise<{ data: any }>;
 
     abstract update(resource: string, action: string, params: { filter: any; data: any }): Promise<{ data: any }>;
-
-    abstract delete(resource: string, action: string, params: { filter: any }): Promise<void>;
 }

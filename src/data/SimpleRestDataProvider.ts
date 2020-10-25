@@ -19,6 +19,9 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
                 descending: boolean;
             };
             filter: any;
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any[];
@@ -36,6 +39,9 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
                 descending: boolean;
             };
             filter: any;
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any[];
@@ -48,6 +54,9 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
         action: string,
         params: {
             filter: any;
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any;
@@ -60,6 +69,9 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
         action: string,
         params: {
             filters: any[];
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any[];

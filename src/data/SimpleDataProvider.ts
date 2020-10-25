@@ -16,6 +16,9 @@ export interface SimpleDataProvider {
                 descending: boolean;
             };
             filter: any;
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any[];
@@ -31,6 +34,9 @@ export interface SimpleDataProvider {
                 descending: boolean;
             };
             filter: any;
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any[];
@@ -41,6 +47,9 @@ export interface SimpleDataProvider {
         action: string,
         params: {
             filter: any;
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any;
@@ -51,6 +60,9 @@ export interface SimpleDataProvider {
         action: string,
         params: {
             filters: any[];
+            transform?: {
+                jsonPath: string;
+            };
         },
     ): Promise<{
         data: any[];

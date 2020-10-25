@@ -19,6 +19,9 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
                 descending: boolean;
             };
             filter: any;
+            transform?: {
+                jsonPath: string; // TODO: ignored
+            };
         },
     ): Promise<{
         data: any[];
@@ -47,6 +50,9 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
                 descending: boolean;
             };
             filter: any;
+            transform?: {
+                jsonPath: string; // TODO: ignored
+            };
         },
     ): Promise<{
         data: any[];
@@ -68,6 +74,9 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
         action: string,
         params: {
             filter: any;
+            transform?: {
+                jsonPath: string; // TODO: ignored
+            };
         },
     ): Promise<{
         data: any;
@@ -88,6 +97,9 @@ export class SimpleFlatRestDataProvider extends AbstractRestDataProvider {
         action: string,
         params: {
             filters: any[];
+            transform?: {
+                jsonPath: string; // TODO: ignored
+            };
         },
     ): Promise<{
         data: any[];
