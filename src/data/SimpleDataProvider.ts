@@ -17,7 +17,7 @@ export interface SimpleDataProvider {
             };
             filter: any;
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
@@ -35,7 +35,7 @@ export interface SimpleDataProvider {
             };
             filter: any;
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
@@ -48,7 +48,7 @@ export interface SimpleDataProvider {
         params: {
             filter: any;
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
@@ -61,7 +61,7 @@ export interface SimpleDataProvider {
         params: {
             filters: any[];
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{

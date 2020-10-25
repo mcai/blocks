@@ -20,7 +20,7 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
             };
             filter: any;
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
@@ -40,7 +40,7 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
             };
             filter: any;
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
@@ -55,7 +55,7 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
         params: {
             filter: any;
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
@@ -70,7 +70,7 @@ export class SimpleRestDataProvider extends AbstractRestDataProvider {
         params: {
             filters: any[];
             transform?: {
-                jsonPath: string;
+                jsonata: string;
             };
         },
     ): Promise<{
