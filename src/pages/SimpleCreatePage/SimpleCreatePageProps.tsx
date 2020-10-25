@@ -1,15 +1,10 @@
 import React from "react";
 import { SimpleResource } from "../../data/SimpleResource";
 
-export interface ListPageProps {
+export interface SimpleCreatePageProps {
     baseUrl: string;
     resource: SimpleResource;
-    initialOrdering: {
-        key: string;
-        descending: boolean;
-    };
-    filter: any;
-
+    initialValues?: any;
     breadCrumbItems?: {
         key: string;
         title?: React.ReactNode;

@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
-import { EditPageProps } from "./EditPageProps";
-import { EditPageState } from "./EditPageState";
-import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
+import React, { Component } from "react";
+import { SimpleEditPageProps } from "./SimpleEditPageProps";
+import { SimpleEditPageState } from "./SimpleEditPageState";
 import { SimpleUpdateForm } from "../../forms/SimpleUpdateForm/SimpleUpdateForm";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import urljoin from "url-join";
+import { SimplePage } from "../SimplePage/SimplePage";
 
-export class EditPage extends Component<EditPageProps, EditPageState> {
+export class SimpleEditPage extends Component<SimpleEditPageProps, SimpleEditPageState> {
     dataProvider: SimpleDataProvider;
 
-    constructor(props: EditPageProps) {
+    constructor(props: SimpleEditPageProps) {
         super(props);
 
         this.state = {};
@@ -28,32 +28,30 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
 
     render() {
         return (
-            <Fragment>
-                <SimpleBreadcrumb
-                    items={
-                        this.props.breadCrumbItems ?? [
-                            {
-                                key: "home",
-                                title: "主页",
-                                href: "/",
-                            },
-                            {
-                                key: "list",
-                                title: `${this.props.resource.title}管理`,
-                                href: urljoin("/", this.props.resource.name, "list"),
-                            },
-                            {
-                                key: "edit",
-                                title:
-                                    this.props.resource.titleFunc?.(this.state.item) ??
-                                    this.state.item?.title ??
-                                    "untitled",
-                                active: true,
-                            },
-                        ]
-                    }
-                />
-
+            <SimplePage
+                breadCrumbItems={
+                    this.props.breadCrumbItems ?? [
+                        {
+                            key: "home",
+                            title: "主页",
+                            href: "/",
+                        },
+                        {
+                            key: "list",
+                            title: `${this.props.resource.title}管理`,
+                            href: urljoin("/", this.props.resource.name, "list"),
+                        },
+                        {
+                            key: "edit",
+                            title:
+                                this.props.resource.titleFunc?.(this.state.item) ??
+                                this.state.item?.title ??
+                                "untitled",
+                            active: true,
+                        },
+                    ]
+                }
+            >
                 {this.props.children}
 
                 <SimpleUpdateForm
@@ -82,7 +80,7 @@ export class EditPage extends Component<EditPageProps, EditPageState> {
                         Toastify(SimpleToastType.Error, `更新${this.props.resource.title}失败!`);
                     }}
                 />
-            </Fragment>
+            </SimplePage>
         );
     }
 }

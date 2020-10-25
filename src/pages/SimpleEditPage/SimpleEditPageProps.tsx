@@ -1,9 +1,10 @@
 import React from "react";
 import { SimpleResource } from "../../data/SimpleResource";
 
-export interface CreatePageProps {
+export interface SimpleEditPageProps {
     baseUrl: string;
     resource: SimpleResource;
+    filter: any;
     initialValues?: any;
     breadCrumbItems?: {
         key: string;

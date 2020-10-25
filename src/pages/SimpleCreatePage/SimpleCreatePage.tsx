@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
-import { CreatePageProps } from "./CreatePageProps";
-import { CreatePageState } from "./CreatePageState";
+import React, { Component } from "react";
+import { SimpleCreatePageProps } from "./SimpleCreatePageProps";
+import { SimpleCreatePageState } from "./SimpleCreatePageState";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleAddForm } from "../../forms/SimpleAddForm/SimpleAddForm";
-import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import urljoin from "url-join";
+import { SimplePage } from "../SimplePage/SimplePage";
 
-export class CreatePage extends Component<CreatePageProps, CreatePageState> {
+export class SimpleCreatePage extends Component<SimpleCreatePageProps, SimpleCreatePageState> {
     dataProvider: SimpleDataProvider;
 
-    constructor(props: CreatePageProps) {
+    constructor(props: SimpleCreatePageProps) {
         super(props);
 
         this.state = {
@@ -30,29 +30,27 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
 
     render() {
         return (
-            <Fragment>
-                <SimpleBreadcrumb
-                    items={
-                        this.props.breadCrumbItems ?? [
-                            {
-                                key: "home",
-                                title: "主页",
-                                href: "/",
-                            },
-                            {
-                                key: "list",
-                                title: `${this.props.resource.title}管理`,
-                                href: urljoin("/", this.props.resource.name, "list"),
-                            },
-                            {
-                                key: "create",
-                                title: `添加${this.props.resource.title}`,
-                                active: true,
-                            },
-                        ]
-                    }
-                />
-
+            <SimplePage
+                breadCrumbItems={
+                    this.props.breadCrumbItems ?? [
+                        {
+                            key: "home",
+                            title: "主页",
+                            href: "/",
+                        },
+                        {
+                            key: "list",
+                            title: `${this.props.resource.title}管理`,
+                            href: urljoin("/", this.props.resource.name, "list"),
+                        },
+                        {
+                            key: "create",
+                            title: `添加${this.props.resource.title}`,
+                            active: true,
+                        },
+                    ]
+                }
+            >
                 {this.props.children}
 
                 <SimpleAddForm
@@ -74,7 +72,7 @@ export class CreatePage extends Component<CreatePageProps, CreatePageState> {
                         Toastify(SimpleToastType.Error, `添加${this.props.resource.title}失败!`);
                     }}
                 />
-            </Fragment>
+            </SimplePage>
         );
     }
 }

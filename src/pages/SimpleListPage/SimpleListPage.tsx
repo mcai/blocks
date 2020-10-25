@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
-import { ListPageProps } from "./ListPageProps";
-import { ListPageState } from "./ListPageState";
+import React, { Component } from "react";
+import { SimpleListPageProps } from "./SimpleListPageProps";
+import { SimpleListPageState } from "./SimpleListPageState";
 import { Button } from "react-bootstrap";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
-import { SimpleBreadcrumb } from "../../components/SimpleBreadcrumb/SimpleBreadcrumb";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
 import urljoin from "url-join";
+import { SimplePage } from "../SimplePage/SimplePage";
 
-export class ListPage extends Component<ListPageProps, ListPageState> {
+export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPageState> {
     dataProvider: SimpleDataProvider;
     refTable: any;
 
-    constructor(props: ListPageProps) {
+    constructor(props: SimpleListPageProps) {
         super(props);
 
         this.state = {};
@@ -28,24 +28,22 @@ export class ListPage extends Component<ListPageProps, ListPageState> {
 
     render() {
         return (
-            <Fragment>
-                <SimpleBreadcrumb
-                    items={
-                        this.props.breadCrumbItems ?? [
-                            {
-                                key: "home",
-                                title: "主页",
-                                href: "/",
-                            },
-                            {
-                                key: `${this.props.resource.name}/list`,
-                                title: `${this.props.resource.title}管理`,
-                                active: true,
-                            },
-                        ]
-                    }
-                />
-
+            <SimplePage
+                breadCrumbItems={
+                    this.props.breadCrumbItems ?? [
+                        {
+                            key: "home",
+                            title: "主页",
+                            href: "/",
+                        },
+                        {
+                            key: `${this.props.resource.name}/list`,
+                            title: `${this.props.resource.title}管理`,
+                            active: true,
+                        },
+                    ]
+                }
+            >
                 {this.props.children}
 
                 <SimpleTable
@@ -76,7 +74,7 @@ export class ListPage extends Component<ListPageProps, ListPageState> {
                         }
                     })}
                 </SimpleTable>
-            </Fragment>
+            </SimplePage>
         );
     }
 }

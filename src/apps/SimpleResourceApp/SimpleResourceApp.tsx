@@ -3,9 +3,9 @@ import { withRouter } from "react-router-dom";
 import * as queryString from "querystring";
 import { SimpleResourceAppProps } from "./SimpleResourceAppProps";
 import { SimpleRoute } from "../../components/SimpleApp/SimpleRoute";
-import { ListPage } from "../../pages/ListPage/ListPage";
-import { CreatePage } from "../../pages/CreatePage/CreatePage";
-import { EditPage } from "../../pages/EditPage/EditPage";
+import { SimpleListPage } from "../../pages/SimpleListPage/SimpleListPage";
+import { SimpleCreatePage } from "../../pages/SimpleCreatePage/SimpleCreatePage";
+import { SimpleEditPage } from "../../pages/SimpleEditPage/SimpleEditPage";
 import { SimpleApp } from "../../components/SimpleApp/SimpleApp";
 import { SimpleNavbar } from "../../components/SimpleNavbar/SimpleNavbar";
 import { SimpleFooter } from "../../components/SimpleFooter/SimpleFooter";
@@ -31,7 +31,7 @@ export function getRoutes(
         {
             path: `/${resource.name}/list`,
             page: listPageFunc?.(baseUrl, resource) || (
-                <ListPage
+                <SimpleListPage
                     baseUrl={baseUrl}
                     resource={resource}
                     filter={{}}
@@ -41,7 +41,7 @@ export function getRoutes(
         },
         {
             path: `/${resource.name}/create`,
-            page: createPageFunc?.(baseUrl, resource) || <CreatePage baseUrl={baseUrl} resource={resource} />,
+            page: createPageFunc?.(baseUrl, resource) || <SimpleCreatePage baseUrl={baseUrl} resource={resource} />,
         },
         {
             path: `/${resource.name}/edit`,
@@ -51,7 +51,7 @@ export function getRoutes(
                 return (
                     <Fragment>
                         {editPageFunc?.(baseUrl, resource, filter) || (
-                            <EditPage baseUrl={baseUrl} resource={resource} filter={filter} />
+                            <SimpleEditPage baseUrl={baseUrl} resource={resource} filter={filter} />
                         )}
                     </Fragment>
                 );
