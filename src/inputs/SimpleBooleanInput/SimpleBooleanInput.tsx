@@ -3,7 +3,7 @@ import { SimpleBooleanInputProps } from "./SimpleBooleanInputProps";
 
 export class SimpleBooleanInput extends Component<SimpleBooleanInputProps, any> {
     onUpdate(value: any) {
-        this.props.onUpdate?.(this.props.name ?? "", value);
+        this.props.onUpdate?.(this.props.name ?? "", value ? "true" : "false");
     }
 
     render() {
