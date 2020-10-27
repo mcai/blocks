@@ -44,6 +44,10 @@ export class SimpleTabInputContainer extends Component<SimpleTabInputContainerPr
                                               onUpdate: (name: string, value: any) => {
                                                   this.onUpdate(name, value);
                                               },
+                                              visible: (values: any) =>
+                                                  (input.props.visible === undefined ||
+                                                      input.props.visible?.(values)) &&
+                                                  (this.props.visible === undefined || this.props.visible?.(values)),
                                               readOnly: (values: any) =>
                                                   (input.props.readOnly !== undefined &&
                                                       input.props.readOnly?.(values)) ||

@@ -7,12 +7,16 @@ export class SimpleHiddenInput extends Component<SimpleHiddenInputProps, any> {
     }
 
     render() {
+        const visible = this.props.visible === undefined || this.props.visible(this.props.values);
+
         return (
-            <input
-                type="hidden"
-                value={this.props.values?.[this.props.name ?? ""]}
-                onChange={(e) => this.onUpdate(e.target.value)}
-            />
+            visible && (
+                <input
+                    type="hidden"
+                    value={this.props.values?.[this.props.name ?? ""]}
+                    onChange={(e) => this.onUpdate(e.target.value)}
+                />
+            )
         );
     }
 }

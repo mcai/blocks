@@ -9,5 +9,7 @@ export interface SimpleNumberInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
+    visible?: (values: any) => boolean;
+
     readOnly?: (values: any) => boolean;
 }

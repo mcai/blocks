@@ -12,4 +12,6 @@ export interface SimpleFuncInputProps {
     getValueFunc: (values?: { [name: string]: any }) => any;
 
     onUpdate?: (name: string, value: any) => void;
+
+    visible?: (values: any) => boolean;
 }

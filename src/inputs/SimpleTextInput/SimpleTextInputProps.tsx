@@ -13,6 +13,8 @@ export interface SimpleTextInputProps {
 
     onUpdate?: (name: string, value: any) => void;
 
+    visible?: (values: any) => boolean;
+
     readOnly?: (values: any) => boolean;
 
     inline?: boolean;

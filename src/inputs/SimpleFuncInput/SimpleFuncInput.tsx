@@ -7,19 +7,23 @@ export class SimpleFuncInput extends Component<SimpleFuncInputProps, any> {
     }
 
     render() {
-        return (
-            <div className="simple-row">
-                <span className="simple-input-label">{this.props.label}: </span>
+        const visible = this.props.visible === undefined || this.props.visible(this.props.values);
 
-                <input
-                    className="simple-input"
-                    type="text"
-                    placeholder={this.props.placeholder}
-                    value={this.props.getValueFunc(this.props.values)}
-                    onChange={(e) => this.onUpdate(e.target.value)}
-                    readOnly={true}
-                />
-            </div>
+        return (
+            visible && (
+                <div className="simple-row">
+                    <span className="simple-input-label">{this.props.label}: </span>
+
+                    <input
+                        className="simple-input"
+                        type="text"
+                        placeholder={this.props.placeholder}
+                        value={this.props.getValueFunc(this.props.values)}
+                        onChange={(e) => this.onUpdate(e.target.value)}
+                        readOnly={true}
+                    />
+                </div>
+            )
         );
     }
 }

@@ -7,8 +7,9 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     }
 
     render() {
-        const inline = this.props.inline != undefined && this.props.inline;
+        const visible = this.props.visible === undefined || this.props.visible(this.props.values);
         const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
+        const inline = this.props.inline != undefined && this.props.inline;
 
         const input = (
             <input
@@ -21,16 +22,19 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
             />
         );
 
-        return inline ? (
-            <Fragment>
-                <span>{this.props.label}: </span>
-                &nbsp;{input}
-            </Fragment>
-        ) : (
-            <div className="simple-row">
-                <span className="simple-input-label">{this.props.label}: </span>
-                {input}
-            </div>
+        return (
+            visible &&
+            (inline ? (
+                <Fragment>
+                    <span>{this.props.label}: </span>
+                    &nbsp;{input}
+                </Fragment>
+            ) : (
+                <div className="simple-row">
+                    <span className="simple-input-label">{this.props.label}: </span>
+                    {input}
+                </div>
+            ))
         );
     }
 }

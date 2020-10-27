@@ -6,4 +6,6 @@ export interface SimpleHiddenInputProps {
     values?: { [name: string]: any };
 
     onUpdate?: (name: string, value: any) => void;
+
+    visible?: (values: any) => boolean;
 }
