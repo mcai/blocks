@@ -8,13 +8,14 @@ export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
 
     render() {
         const inline = this.props.inline != undefined && this.props.inline;
+        const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
 
         const select = (
             <select
                 className={`${this.props.inline ? "" : "simple-input"}`}
                 value={this.props.values?.[this.props.name ?? ""]}
                 onChange={(e) => this.onUpdate(e.target.value)}
-                disabled={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
+                disabled={readOnly}
             >
                 {this.props.options?.map((option) => (
                     <option key={option.key} value={option.value}>

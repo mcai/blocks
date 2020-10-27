@@ -8,11 +8,13 @@ export class SimpleMarkdownInput extends Component<SimpleMarkdownInputProps, any
     }
 
     render() {
+        const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
+
         return (
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
 
-                {this.props.readOnly !== undefined && this.props.readOnly(this.props.values) ? (
+                {readOnly ? (
                     <MDEditor.Markdown className="simple-input" source={this.props.values?.[this.props.name ?? ""]} />
                 ) : (
                     <MDEditor

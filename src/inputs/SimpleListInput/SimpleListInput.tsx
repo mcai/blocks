@@ -8,12 +8,14 @@ export class SimpleListInput extends Component<SimpleListInputProps, any> {
     }
 
     render() {
+        const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
+
         return (
             <SimpleList
                 options={this.props.options}
                 rows={this.props.values?.[this.props.name ?? ""]}
                 onUpdate={(rows?: any) => this.onUpdate(rows)}
-                readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
+                readOnly={readOnly}
             />
         );
     }

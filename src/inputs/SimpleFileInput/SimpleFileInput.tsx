@@ -27,14 +27,14 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
     render() {
         const value = this.props.values?.[this.props.name ?? ""];
 
-        const notReadOnly = this.props.readOnly === undefined || !this.props.readOnly(this.props.values);
+        const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
 
         return (
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
 
                 <div className="simple-input">
-                    {notReadOnly && (
+                    {!readOnly && (
                         <input
                             ref={(ref: any) => {
                                 this.refFile = ref;
@@ -65,7 +65,7 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                                 下载
                             </button>
 
-                            {notReadOnly && (
+                            {!readOnly && (
                                 <button
                                     className="simple-button"
                                     type={"button"}

@@ -8,6 +8,8 @@ export class SimpleDateInput extends Component<SimpleDateInputProps, any> {
     }
 
     render() {
+        const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
+
         return (
             <div className="simple-row">
                 <span className="simple-input-label">{this.props.label}: </span>
@@ -17,7 +19,7 @@ export class SimpleDateInput extends Component<SimpleDateInputProps, any> {
                     type="date"
                     value={SimpleFormatting.toFormattedDateString(this.props.values?.[this.props.name ?? ""])}
                     onChange={(e) => this.onUpdate(SimpleFormatting.toFormattedDateTimeString(e.target.value))}
-                    readOnly={(this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false}
+                    readOnly={readOnly}
                 />
             </div>
         );
