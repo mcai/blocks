@@ -7,6 +7,7 @@ import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
 import urljoin from "url-join";
 import { SimplePage } from "../SimplePage/SimplePage";
+import { SimpleTableRowType } from "../../components/SimpleTable/SimpleTableRowType";
 
 export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPageState> {
     dataProvider: SimpleDataProvider;
@@ -57,7 +58,8 @@ export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPag
                     resource={this.props.resource.name}
                     action={"getList"}
                     filter={this.props.filter}
-                    keyFunc={(values) => this.props.resource.keyFunc?.(values)}
+                    rowTypeFunc={(item) => this.props.resource.rowTypeFunc?.(item) ?? SimpleTableRowType.none}
+                    keyFunc={(item) => this.props.resource.keyFunc?.(item)}
                     extra={
                         <Button
                             variant={"primary"}

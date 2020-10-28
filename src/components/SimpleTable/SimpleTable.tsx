@@ -235,11 +235,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.itemsInCurrentPage.map((values) => {
+                            {this.state.itemsInCurrentPage.map((item) => {
                                 let trClass = "";
 
                                 if (this.props.rowTypeFunc !== undefined) {
-                                    switch (this.props.rowTypeFunc(values)) {
+                                    switch (this.props.rowTypeFunc(item)) {
                                         case SimpleTableRowType.none:
                                             break;
                                         case SimpleTableRowType.danger:
@@ -252,12 +252,12 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                 }
 
                                 return (
-                                    <tr className={trClass} key={this.props.keyFunc?.(values)}>
+                                    <tr className={trClass} key={this.props.keyFunc?.(item)}>
                                         {React.Children.map(this.props.children, (field) => {
                                             let tdClass = "";
 
                                             if (this.props.cellTypeFunc !== undefined) {
-                                                switch (this.props.cellTypeFunc(values, field)) {
+                                                switch (this.props.cellTypeFunc(item, field)) {
                                                     case SimpleTableRowType.none:
                                                         break;
                                                     case SimpleTableRowType.danger:
@@ -274,7 +274,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                                     <td key={field.props.name} className={trClass}>
                                                         {React.cloneElement(field, {
                                                             inline: true,
-                                                            values: values,
+                                                            values: item,
                                                         })}
                                                     </td>
                                                 );

@@ -1,5 +1,6 @@
 import React from "react";
 import { SimpleDataProvider } from "./SimpleDataProvider";
+import { SimpleTableRowType } from "../components/SimpleTable/SimpleTableRowType";
 
 export interface SimpleResource {
     name: string;
@@ -15,8 +16,10 @@ export interface SimpleResource {
 
     initialValues?: any;
 
+    rowTypeFunc?: (item: any) => SimpleTableRowType;
+
     idFunc?: (item: any) => string;
-    keyFunc?: (values: any) => string | number;
+    keyFunc?: (item: any) => string | number;
     titleFunc?: (item: any) => React.ReactNode;
 
     initialOrdering: {

@@ -16,11 +16,10 @@ export interface SimpleTableProps {
 
     filter: any;
 
-    rowTypeFunc?: (values: any) => SimpleTableRowType;
+    rowTypeFunc?: (item: any) => SimpleTableRowType;
+    cellTypeFunc?: (item: any, field: React.ReactNode) => SimpleTableRowType;
 
-    cellTypeFunc?: (values: any, field: React.ReactNode) => SimpleTableRowType;
-
-    keyFunc?: (values: any) => string | number | undefined;
+    keyFunc?: (item: any) => string | number | undefined;
 
     extra?: React.ReactNode;
 }
