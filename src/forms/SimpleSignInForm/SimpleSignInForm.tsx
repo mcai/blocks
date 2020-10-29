@@ -18,19 +18,21 @@ export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
                 dataProvider={this.props.dataProvider}
                 resource={this.props.resource}
                 createAction={this.props.signInAction}
-                inputs={[
-                    <SimpleTextInput key={"name"} label={"用户名"} name={"name"} />,
-                    <SimpleTextInput key={"password"} label={"密码"} name={"password"} password={() => true} />,
-                ]}
-                submitButtonText={"登陆"}
+                onBeforeSubmit={(values) => this.props.onBeforeSubmit?.(values)}
                 onSuccess={(item) => {
                     this.props.cookie.signIn(item.guid);
 
                     Toastify(SimpleToastType.Success, "登陆成功!");
                 }}
+                onSuccessRedirect={(item) => this.props.onSuccessRedirect?.(item) ?? ""}
                 onFailure={() => {
                     Toastify(SimpleToastType.Error, "登陆失败!");
                 }}
+                inputs={[
+                    <SimpleTextInput key={"name"} label={"用户名"} name={"name"} />,
+                    <SimpleTextInput key={"password"} label={"密码"} name={"password"} password={() => true} />,
+                ]}
+                submitButtonText={"登陆"}
             />
         );
     }
