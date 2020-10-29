@@ -3,7 +3,7 @@ import { SimpleCreatePageProps } from "./SimpleCreatePageProps";
 import { SimpleCreatePageState } from "./SimpleCreatePageState";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
-import { SimpleAddForm } from "../../forms/SimpleAddForm/SimpleAddForm";
+import { SimpleCreateForm } from "../../forms/SimpleCreateForm/SimpleCreateForm";
 import { Toastify } from "../../components/SimpleToast/SimpleToast";
 import { SimpleToastType } from "../../components/SimpleToast/SimpleToastType";
 import urljoin from "url-join";
@@ -53,15 +53,16 @@ export class SimpleCreatePage extends Component<SimpleCreatePageProps, SimpleCre
             >
                 {this.props.children}
 
-                <SimpleAddForm
+                <SimpleCreateForm
                     dataProvider={this.dataProvider}
                     resource={this.props.resource.name}
                     initialValues={{
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
-                    addAction={"create"}
-                    addExtraData={{}}
+                    createAction={"create"}
+                    createExtraData={{}}
+                    onBeforeSubmit={(values) => this.props.onBeforeSubmit?.(values)}
                     inputs={this.props.resource.inputs}
                     submitButtonText={"添加"}
                     onSuccess={() => {

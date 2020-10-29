@@ -14,6 +14,7 @@ export interface SimpleUpdateFormProps {
 
     updateAction: string;
     updateExtraData?: any;
+    onBeforeSubmit?: (values: any) => any;
     onSuccess?: (item: any) => void;
     onSuccessRedirect?: (item: any) => string;
     onFailure?: () => void;

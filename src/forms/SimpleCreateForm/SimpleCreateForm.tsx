@@ -1,20 +1,24 @@
 import React, { Component, Fragment } from "react";
-import { SimpleAddFormProps } from "./SimpleAddFormProps";
-import { SimpleAddFormState } from "./SimpleAddFormState";
+import { SimpleCreateFormProps } from "./SimpleCreateFormProps";
+import { SimpleCreateFormState } from "./SimpleCreateFormState";
 import { Redirect } from "react-router-dom";
 import { SimpleForm } from "../SimpleForm/SimpleForm";
 
-export class SimpleAddForm extends Component<SimpleAddFormProps, SimpleAddFormState> {
-    constructor(props: SimpleAddFormProps) {
+export class SimpleCreateForm extends Component<SimpleCreateFormProps, SimpleCreateFormState> {
+    constructor(props: SimpleCreateFormProps) {
         super(props);
 
         this.state = {};
     }
 
     private async onSubmit(values: any) {
-        const result = await this.props.dataProvider.create(this.props.resource, this.props.addAction, {
+        if (this.props.onBeforeSubmit) {
+            values = this.props.onBeforeSubmit(values);
+        }
+
+        const result = await this.props.dataProvider.create(this.props.resource, this.props.createAction, {
             data: {
-                ...this.props.addExtraData,
+                ...this.props.createExtraData,
                 ...values,
             },
         });

@@ -29,6 +29,10 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
     }
 
     private async onSubmit(values: any) {
+        if (this.props.onBeforeSubmit) {
+            values = this.props.onBeforeSubmit(values);
+        }
+
         const result = await this.props.dataProvider.update(this.props.resource, this.props.updateAction, {
             filter: this.props.filter,
             data: {

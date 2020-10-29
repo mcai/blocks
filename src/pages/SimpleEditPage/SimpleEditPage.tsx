@@ -61,10 +61,11 @@ export class SimpleEditPage extends Component<SimpleEditPageProps, SimpleEditPag
                         ...this.props.resource.initialValues,
                         ...this.props.initialValues,
                     }}
+                    filter={this.props.filter}
                     getOneAction={"getOne"}
                     updateAction={"update"}
                     updateExtraData={{}}
-                    filter={this.props.filter}
+                    onBeforeSubmit={(values) => this.props.onBeforeSubmit?.(values)}
                     onGetOneResult={(item) => {
                         this.setState({
                             item: item,
