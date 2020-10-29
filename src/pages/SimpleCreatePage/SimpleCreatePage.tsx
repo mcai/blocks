@@ -62,7 +62,9 @@ export class SimpleCreatePage extends Component<SimpleCreatePageProps, SimpleCre
                     }}
                     createAction={"create"}
                     createExtraData={{}}
-                    onBeforeSubmit={(values) => this.props.onBeforeSubmit?.(values)}
+                    onBeforeSubmit={(values) =>
+                        this.props.onBeforeSubmit ? this.props.onBeforeSubmit(values) : values
+                    }
                     inputs={this.props.resource.inputs}
                     submitButtonText={"添加"}
                     onSuccess={() => {
