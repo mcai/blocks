@@ -8,7 +8,6 @@ import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import urljoin from "url-join";
 import { SimplePage } from "../SimplePage/SimplePage";
-import { SimpleCreateForm } from "../../forms/SimpleCreateForm/SimpleCreateForm";
 
 export class SimpleEditPage extends Component<SimpleEditPageProps, SimpleEditPageState> {
     dataProvider: SimpleDataProvider;
@@ -66,8 +65,8 @@ export class SimpleEditPage extends Component<SimpleEditPageProps, SimpleEditPag
                     getOneAction={"getOne"}
                     updateAction={"update"}
                     updateExtraData={{}}
-                    onBeforeSubmit={(values) =>
-                        this.props.onBeforeSubmit ? this.props.onBeforeSubmit(values) : values
+                    onBeforeSubmit={async (values) =>
+                        this.props.onBeforeSubmit ? await this.props.onBeforeSubmit(values) : Promise.resolve(values)
                     }
                     onGetOneResult={(item) => {
                         this.setState({

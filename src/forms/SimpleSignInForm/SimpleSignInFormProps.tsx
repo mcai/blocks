@@ -5,7 +5,7 @@ export interface SimpleSignInFormProps {
     dataProvider: SimpleDataProvider;
     resource: string;
     signInAction: string;
-    onBeforeSubmit?: (values: any) => any;
+    onBeforeSubmit?: (values: any) => Promise<any>;
     onSuccessRedirect?: (item: any) => string;
     cookie: SimpleCookie;
 }

@@ -8,7 +8,7 @@ export interface SimpleCreateFormProps {
 
     createAction: string;
     createExtraData?: any;
-    onBeforeSubmit?: (values: any) => any;
+    onBeforeSubmit?: (values: any) => Promise<any>;
     onSuccess?: (item: any) => void;
     onSuccessRedirect?: (item: any) => string;
     onFailure?: () => void;

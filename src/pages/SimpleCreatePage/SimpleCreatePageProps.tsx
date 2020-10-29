@@ -5,7 +5,7 @@ export interface SimpleCreatePageProps {
     baseUrl: string;
     resource: SimpleResource;
     initialValues?: any;
-    onBeforeSubmit?: (values: any) => any;
+    onBeforeSubmit?: (values: any) => Promise<any>;
     breadCrumbItems?: {
         key: string;
         title?: React.ReactNode;

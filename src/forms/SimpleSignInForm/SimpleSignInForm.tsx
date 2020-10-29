@@ -18,7 +18,9 @@ export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
                 dataProvider={this.props.dataProvider}
                 resource={this.props.resource}
                 createAction={this.props.signInAction}
-                onBeforeSubmit={(values) => (this.props.onBeforeSubmit ? this.props.onBeforeSubmit(values) : values)}
+                onBeforeSubmit={async (values) =>
+                    this.props.onBeforeSubmit ? await this.props.onBeforeSubmit(values) : Promise.resolve(values)
+                }
                 onSuccess={(item) => {
                     this.props.cookie.signIn(item.guid);
 

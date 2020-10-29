@@ -13,7 +13,7 @@ export class SimpleCreateForm extends Component<SimpleCreateFormProps, SimpleCre
 
     private async onSubmit(values: any) {
         if (this.props.onBeforeSubmit) {
-            values = this.props.onBeforeSubmit(values);
+            values = await this.props.onBeforeSubmit(values);
         }
 
         const result = await this.props.dataProvider.create(this.props.resource, this.props.createAction, {
