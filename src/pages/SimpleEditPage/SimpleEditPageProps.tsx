@@ -7,6 +7,7 @@ export interface SimpleEditPageProps {
     filter: any;
     initialValues?: any;
     onBeforeSubmit?: (values: any) => Promise<any>;
+    onSuccessRedirect?: (item: any) => string;
     breadCrumbItems?: {
         key: string;
         title?: React.ReactNode;

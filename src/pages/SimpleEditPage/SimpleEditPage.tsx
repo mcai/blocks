@@ -78,7 +78,7 @@ export class SimpleEditPage extends Component<SimpleEditPageProps, SimpleEditPag
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `更新${this.props.resource.title}成功!`);
                     }}
-                    onSuccessRedirect={() => urljoin("/", this.props.resource.name, "list")}
+                    onSuccessRedirect={this.props.onSuccessRedirect}
                     onFailure={() => {
                         Toastify(SimpleToastType.Error, `更新${this.props.resource.title}失败!`);
                     }}

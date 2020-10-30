@@ -68,7 +68,7 @@ export class SimpleCreatePage extends Component<SimpleCreatePageProps, SimpleCre
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `添加${this.props.resource.title}成功!`);
                     }}
-                    onSuccessRedirect={() => urljoin("/", this.props.resource.name, "list")}
+                    onSuccessRedirect={this.props.onSuccessRedirect}
                     onFailure={() => {
                         Toastify(SimpleToastType.Error, `添加${this.props.resource.title}失败!`);
                     }}
