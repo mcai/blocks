@@ -15,9 +15,7 @@ export class SimpleCreatePage extends Component<SimpleCreatePageProps, SimpleCre
     constructor(props: SimpleCreatePageProps) {
         super(props);
 
-        this.state = {
-            signedInOperator: undefined,
-        };
+        this.state = {};
 
         this.dataProvider = new SimpleRestDataProvider(this.props.baseUrl);
     }
