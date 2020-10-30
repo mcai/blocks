@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { SimpleListPageProps } from "./SimpleListPageProps";
 import { SimpleListPageState } from "./SimpleListPageState";
 import { Button } from "react-bootstrap";
@@ -28,6 +28,8 @@ export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPag
     private async loadData() {}
 
     render() {
+        const createButtonVisible = this.props.createButtonVisible == undefined || this.props.createButtonVisible;
+
         return (
             <SimplePage
                 breadCrumbItems={
@@ -61,13 +63,17 @@ export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPag
                     rowTypeFunc={(item) => this.props.resource.rowTypeFunc?.(item) ?? SimpleTableRowType.none}
                     keyFunc={(item) => this.props.resource.keyFunc?.(item)}
                     extra={
-                        <Button
-                            variant={"primary"}
-                            className={"ml-3"}
-                            href={urljoin("/", this.props.resource.name, "create")}
-                        >
-                            添加{this.props.resource.title}
-                        </Button>
+                        <Fragment>
+                            {createButtonVisible && (
+                                <Button
+                                    variant={"primary"}
+                                    className={"ml-3"}
+                                    href={urljoin("/", this.props.resource.name, "create")}
+                                >
+                                    添加{this.props.resource.title}
+                                </Button>
+                            )}
+                        </Fragment>
                     }
                 >
                     {this.props.resource.fieldsFunc(this.props.resource, this.dataProvider, async () => {

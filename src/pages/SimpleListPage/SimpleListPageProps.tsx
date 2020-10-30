@@ -16,4 +16,6 @@ export interface SimpleListPageProps {
         href?: string;
         active?: boolean;
     }[];
+
+    createButtonVisible?: boolean;
 }
