@@ -7,7 +7,9 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
     constructor(props: SimpleSearchInputProps) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            value: this.props.values?.[this.props.name ?? ""],
+        };
     }
 
     onUpdate(value: any) {
@@ -24,7 +26,7 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
                 className="simple-input"
                 type="text"
                 placeholder={this.props.placeholder}
-                value={this.props.values?.[this.props.name ?? ""]}
+                value={this.state.value}
                 onChange={(e) => {
                     this.setState({
                         value: e.target.value,
