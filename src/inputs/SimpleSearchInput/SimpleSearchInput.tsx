@@ -59,6 +59,8 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
                     this.setState({
                         value: "",
                     });
+
+                    this.onUpdate("");
                 }}
             >
                 重置
