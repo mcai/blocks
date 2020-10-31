@@ -41,7 +41,7 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
             />
         );
 
-        const button = (
+        const buttonSearch = (
             <Button
                 variant={"primary"}
                 onClick={() => {
@@ -52,19 +52,34 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
             </Button>
         );
 
+        const buttonClear = (
+            <Button
+                variant={"secondary"}
+                onClick={() => {
+                    this.setState({
+                        value: "",
+                    });
+                }}
+            >
+                重置
+            </Button>
+        );
+
         return (
             visible &&
             (inline ? (
                 <Fragment>
                     <span>{this.props.label}: </span>
                     &nbsp;{input}
-                    &nbsp;{button}
+                    &nbsp;{buttonSearch}
+                    &nbsp;{buttonClear}
                 </Fragment>
             ) : (
                 <div className="simple-row">
                     <span className="simple-input-label">{this.props.label}: </span>
                     {input}
-                    &nbsp;{button}
+                    &nbsp;{buttonSearch}
+                    &nbsp;{buttonClear}
                 </div>
             ))
         );
