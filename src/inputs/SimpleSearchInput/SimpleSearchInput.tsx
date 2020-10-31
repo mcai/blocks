@@ -22,7 +22,7 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
         const input = (
             <input
                 className="simple-input"
-                type="search"
+                type="text"
                 placeholder={this.props.placeholder}
                 value={this.props.values?.[this.props.name ?? ""]}
                 onChange={(e) => {
@@ -31,7 +31,9 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
                     });
                 }}
                 onKeyPress={(e) => {
-                    this.onUpdate(this.state.value);
+                    if (e.key === "Enter") {
+                        this.onUpdate(this.state.value);
+                    }
                 }}
                 readOnly={readOnly}
             />
