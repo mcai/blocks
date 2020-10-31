@@ -37,26 +37,30 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
             />
         );
 
+        const button = (
+            <Button
+                variant={"primary"}
+                onClick={() => {
+                    this.onUpdate(this.state.value);
+                }}
+            >
+                搜索
+            </Button>
+        );
+
         return (
             visible &&
             (inline ? (
                 <Fragment>
                     <span>{this.props.label}: </span>
                     &nbsp;{input}
+                    &nbsp;{button}
                 </Fragment>
             ) : (
                 <div className="simple-row">
                     <span className="simple-input-label">{this.props.label}: </span>
                     {input}
-                    &nbsp;
-                    <Button
-                        variant={"primary"}
-                        onClick={() => {
-                            this.onUpdate(this.state.value);
-                        }}
-                    >
-                        搜索
-                    </Button>
+                    &nbsp;{button}
                 </div>
             ))
         );
