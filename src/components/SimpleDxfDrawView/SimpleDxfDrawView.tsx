@@ -86,24 +86,26 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
                         </Layer>
 
                         <Layer scaleY={-1} offsetY={this.getStageHeight() ?? 0.0}>
-                            {this.props.dxfFileDraw?.drawParts.map((drawPart) => (
-                                <SimpleDxfPartView
-                                    key={drawPart.guid}
-                                    drawPart={drawPart}
-                                    onHighlightedChanged={(highlighted) => {
-                                        if (this.props.onHighlightedChanged) {
-                                            this.props.onHighlightedChanged(drawPart, highlighted);
-                                        }
-                                    }}
-                                    onClick={() => {
-                                        if (this.props.onClick) {
-                                            this.props.onClick(drawPart);
-                                        } else {
-                                            alert(SimpleDxfDrawPartExtensions.getDescription(drawPart));
-                                        }
-                                    }}
-                                />
-                            ))}
+                            {this.props.dxfFileDraw?.drawParts
+                                .filter((x) => (this.props.filter ? this.props.filter(x) : true))
+                                .map((drawPart) => (
+                                    <SimpleDxfPartView
+                                        key={drawPart.guid}
+                                        drawPart={drawPart}
+                                        onHighlightedChanged={(highlighted) => {
+                                            if (this.props.onHighlightedChanged) {
+                                                this.props.onHighlightedChanged(drawPart, highlighted);
+                                            }
+                                        }}
+                                        onClick={() => {
+                                            if (this.props.onClick) {
+                                                this.props.onClick(drawPart);
+                                            } else {
+                                                alert(SimpleDxfDrawPartExtensions.getDescription(drawPart));
+                                            }
+                                        }}
+                                    />
+                                ))}
                         </Layer>
                     </Stage>
                 </SimpleIf>
