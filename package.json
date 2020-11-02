@@ -1,6 +1,6 @@
 {
   "name": "@itecgo/blocks",
-  "version": "0.0.374",
+  "version": "0.0.375",
   "description": "blocks",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "@uiw/react-md-editor": "^1.14.4",
     "base64-arraybuffer": "^0.2.0",
     "bootstrap": "^4.5.2",
+    "chroma-js": "^2.1.0",
     "js-cookie": "^2.2.1",
     "konva": "^7.1.4",
     "moment": "^2.27.0",
@@ -53,6 +54,7 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@types/base64-arraybuffer": "^0.1.0",
+    "@types/chroma-js": "^2.1.0",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^12.0.0",
     "@types/query-string": "^6.3.0",

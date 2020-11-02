@@ -3,22 +3,22 @@ import { SimpleDxfCircleViewProps } from "./SimpleDxfCircleViewProps";
 import { Circle } from "react-konva";
 import { SimpleDxfCircleViewState } from "./SimpleDxfCircleViewState";
 import { SimpleDxfDrawColorExtensions } from "../SimpleDxfDrawColorExtensions";
+import chroma from "chroma-js";
 
 export class SimpleDxfCircleView extends Component<SimpleDxfCircleViewProps, SimpleDxfCircleViewState> {
     render() {
-        const stroke = SimpleDxfDrawColorExtensions.getDescription(this.props.drawObject.stroke);
+        let stroke = SimpleDxfDrawColorExtensions.getDescription(this.props.drawObject.stroke);
         let fill = SimpleDxfDrawColorExtensions.getDescription(this.props.drawObject.fill);
 
         if (this.props.drawPart.needRefinement) {
-            fill = "#FFA36C";
+            const color2 = "#ffa62b";
+
+            stroke = chroma.blend(stroke, color2, "darken").hex();
+            fill = chroma.blend(fill, color2, "darken").hex();
         }
 
         if (this.props.highlighted) {
             fill = stroke;
-
-            if (this.props.drawPart.needRefinement) {
-                fill = "#A20A0A";
-            }
         }
 
         return (
