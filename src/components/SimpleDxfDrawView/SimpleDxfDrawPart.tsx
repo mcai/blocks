@@ -8,4 +8,5 @@ export interface SimpleDxfDrawPart {
     boundingBoxWidth: number;
     boundingBoxHeight: number;
     drawObjects: SimpleDxfDrawObject[];
+    metadata1?: string;
 }
