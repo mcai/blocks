@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { SimpleFileInputProps } from "./SimpleFileInputProps";
 import { decode, encode } from "base64-arraybuffer";
+import { InputUtils } from "../InputUtils";
 
 export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
     private refFile: any;
@@ -32,7 +33,7 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
         const inline = this.props.inline != undefined && this.props.inline;
 
         const input = (
-            <Fragment>
+            <div className="simple-input">
                 {!readOnly && (
                     <input
                         ref={(ref: any) => {
@@ -86,22 +87,9 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                 ) : (
                     ""
                 )}
-            </Fragment>
+            </div>
         );
 
-        return (
-            visible &&
-            (inline ? (
-                <Fragment>
-                    <span>{this.props.label}: </span>
-                    &nbsp;{input}
-                </Fragment>
-            ) : (
-                <div className="simple-row">
-                    <span className="simple-input-label">{this.props.label}: </span>
-                    <div className="simple-input">{input}</div>
-                </div>
-            ))
-        );
+        return InputUtils.render(this.props.label, input, visible, inline);
     }
 }

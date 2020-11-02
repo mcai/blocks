@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { SimpleSearchInputProps } from "./SimpleSearchInputProps";
 import { Button } from "react-bootstrap";
 import { SimpleSearchInputState } from "./SimpleSearchInputState";
+import { InputUtils } from "../InputUtils";
 
 export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleSearchInputState> {
     constructor(props: SimpleSearchInputProps) {
@@ -67,23 +68,15 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
             </Button>
         );
 
-        return (
-            visible &&
-            (inline ? (
-                <Fragment>
-                    <span>{this.props.label}: </span>
-                    &nbsp;{input}
-                    &nbsp;{buttonSearch}
-                    &nbsp;{buttonClear}
-                </Fragment>
-            ) : (
-                <div className="simple-row">
-                    <span className="simple-input-label">{this.props.label}: </span>
-                    {input}
-                    &nbsp;{buttonSearch}
-                    &nbsp;{buttonClear}
-                </div>
-            ))
+        return InputUtils.render(
+            this.props.label,
+            <>
+                &nbsp;{input}
+                &nbsp;{buttonSearch}
+                &nbsp;{buttonClear}
+            </>,
+            visible,
+            inline,
         );
     }
 }

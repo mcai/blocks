@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { SimpleTextInputProps } from "./SimpleTextInputProps";
+import { InputUtils } from "../InputUtils";
 
 export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
     onUpdate(value: any) {
@@ -22,19 +23,6 @@ export class SimpleTextInput extends Component<SimpleTextInputProps, any> {
             />
         );
 
-        return (
-            visible &&
-            (inline ? (
-                <Fragment>
-                    <span>{this.props.label}: </span>
-                    &nbsp;{input}
-                </Fragment>
-            ) : (
-                <div className="simple-row">
-                    <span className="simple-input-label">{this.props.label}: </span>
-                    {input}
-                </div>
-            ))
-        );
+        return InputUtils.render(this.props.label, input, visible, inline);
     }
 }
