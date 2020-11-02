@@ -87,7 +87,7 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
 
                         <Layer scaleY={-1} offsetY={this.getStageHeight() ?? 0.0}>
                             {this.props.dxfFileDraw?.drawParts
-                                .filter((x) => (this.props.filter ? this.props.filter(x) : true))
+                                .filter((x) => !this.props.showNeedRefinementOnly || x.needRefinement)
                                 .map((drawPart) => (
                                     <SimpleDxfPartView
                                         key={drawPart.guid}

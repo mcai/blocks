@@ -14,5 +14,5 @@ export interface SimpleDxfDrawViewProps {
     onHighlightedChanged?: (part: SimpleDxfDrawPart, highlighted: boolean) => void;
     onClick?: (part: SimpleDxfDrawPart) => void;
 
-    filter?: (part: SimpleDxfDrawPart) => boolean;
+    showNeedRefinementOnly: boolean;
 }
