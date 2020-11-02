@@ -11,5 +11,5 @@ export interface SimpleDxfDrawObject {
     stroke: SimpleDxfDrawColor;
     strokeWidth: number;
     args: number[];
-    metadata1?: string;
+    metaData1?: string;
 }

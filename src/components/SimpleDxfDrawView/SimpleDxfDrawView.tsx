@@ -36,8 +36,8 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
     private static getDescription(drawPart: SimpleDxfDrawPart) {
         let metaData1 = `GUID:${drawPart.guid}`;
 
-        if (drawPart.metadata1) {
-            metaData1 = `配件#${drawPart.metadata1}`;
+        if (drawPart.metaData1) {
+            metaData1 = `配件#${drawPart.metaData1}`;
         }
 
         return `${metaData1}
