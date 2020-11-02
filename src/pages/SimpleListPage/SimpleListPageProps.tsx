@@ -9,6 +9,9 @@ export interface SimpleListPageProps {
         descending: boolean;
     };
     filter: any;
+    transform?: {
+        jsonata: string;
+    };
 
     breadCrumbItems?: {
         key: string;

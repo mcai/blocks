@@ -75,6 +75,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
             },
             ordering: this.state.ordering,
             filter: this.props.filter,
+            transform: this.props.transform,
         });
 
         const pageCount = Math.ceil(result.total / this.props.pageSize);

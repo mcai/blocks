@@ -15,6 +15,9 @@ export interface SimpleTableProps {
     action: string;
 
     filter: any;
+    transform?: {
+        jsonata: string;
+    };
 
     rowTypeFunc?: (item: any) => SimpleTableRowType;
     cellTypeFunc?: (item: any, field: React.ReactNode) => SimpleTableRowType;

@@ -60,6 +60,7 @@ export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPag
                     resource={this.props.resource.name}
                     action={"getList"}
                     filter={this.props.filter}
+                    transform={this.props.transform}
                     rowTypeFunc={(item) => this.props.resource.rowTypeFunc?.(item) ?? SimpleTableRowType.none}
                     keyFunc={(item) => this.props.resource.keyFunc?.(item)}
                     extra={
