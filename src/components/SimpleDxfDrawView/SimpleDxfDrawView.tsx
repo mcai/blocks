@@ -34,14 +34,10 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
     }
 
     private static getDescription(drawPart: SimpleDxfDrawPart) {
-        return (
-            <span>
-                metadata1/GUID:{drawPart.drawObjects?.[0]?.metadata1 ?? drawPart.guid}
-                ,宽高:{drawPart.boundingBoxWidth.toFixed(2)}x{drawPart.boundingBoxHeight.toFixed(2)}毫米<sup>2</sup>
-                ,周长:{drawPart.totalLength.toFixed(2)}毫米 ,面积:{drawPart.area.toFixed(2)}毫米<sup>2</sup>
-                ,零碎:{!drawPart.isClosed ? "是" : "否"}
-            </span>
-        );
+        return `metadata1/GUID:${drawPart.drawObjects?.[0]?.metadata1 ?? drawPart.guid}
+                ,宽高:${drawPart.boundingBoxWidth.toFixed(2)}x${drawPart.boundingBoxHeight.toFixed(2)}毫米^2
+                ,周长:${drawPart.totalLength.toFixed(2)}毫米,面积:${drawPart.area.toFixed(2)}毫米^2
+                ,零碎:${!drawPart.isClosed ? "是" : "否"}`;
     }
 
     // TODO: to be shown in the properties view
