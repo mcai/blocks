@@ -36,7 +36,7 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
     private static getDescription(drawPart: SimpleDxfDrawPart) {
         return (
             <span>
-                GUID:{drawPart.guid}
+                metadata1/GUID:{drawPart.drawObjects?.[0]?.metadata1 ?? drawPart.guid}
                 ,宽高:{drawPart.boundingBoxWidth.toFixed(2)}x{drawPart.boundingBoxHeight.toFixed(2)}毫米<sup>2</sup>
                 ,周长:{drawPart.totalLength.toFixed(2)}毫米 ,面积:{drawPart.area.toFixed(2)}毫米<sup>2</sup>
                 ,零碎:{!drawPart.isClosed ? "是" : "否"}
@@ -115,11 +115,13 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
                                             highlightedDrawPart: highlighted ? drawPart : undefined,
                                         })
                                     }
-                                    onClick={() =>
+                                    onClick={() => {
                                         this.setState({
                                             selectedDrawPart: drawPart,
-                                        })
-                                    }
+                                        });
+
+                                        alert(SimpleDxfDrawView.getDescription(drawPart));
+                                    }}
                                 />
                             ))}
                         </Layer>
