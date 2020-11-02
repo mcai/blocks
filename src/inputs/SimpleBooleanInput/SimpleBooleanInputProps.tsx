@@ -12,4 +12,6 @@ export interface SimpleBooleanInputProps {
     visible?: (values: any) => boolean;
 
     readOnly?: (values: any) => boolean;
+
+    inline?: boolean;
 }
