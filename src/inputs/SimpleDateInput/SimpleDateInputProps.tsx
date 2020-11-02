@@ -12,4 +12,6 @@ export interface SimpleDateInputProps {
     visible?: (values: any) => boolean;
 
     readOnly?: (values: any) => boolean;
+
+    inline?: boolean;
 }
