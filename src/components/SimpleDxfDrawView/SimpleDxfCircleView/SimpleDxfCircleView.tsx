@@ -11,7 +11,7 @@ export class SimpleDxfCircleView extends Component<SimpleDxfCircleViewProps, Sim
         let fill = SimpleDxfDrawColorExtensions.getDescription(this.props.drawObject.fill);
 
         if (this.props.drawPart.needRefinement) {
-            const color2 = "#ffa62b";
+            const color2 = "#fd97c2";
 
             stroke = chroma.blend(stroke, color2, "darken").hex();
             fill = chroma.blend(fill, color2, "darken").hex();
