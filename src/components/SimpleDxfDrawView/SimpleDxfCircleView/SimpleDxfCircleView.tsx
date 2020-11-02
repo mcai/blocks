@@ -9,8 +9,16 @@ export class SimpleDxfCircleView extends Component<SimpleDxfCircleViewProps, Sim
         const stroke = SimpleDxfDrawColorExtensions.getDescription(this.props.drawObject.stroke);
         let fill = SimpleDxfDrawColorExtensions.getDescription(this.props.drawObject.fill);
 
-        if (this.props.highlighted || this.props.drawPart.needRefinement) {
+        if (this.props.drawPart.needRefinement) {
+            fill = "#FFA36C";
+        }
+
+        if (this.props.highlighted) {
             fill = stroke;
+
+            if (this.props.drawPart.needRefinement) {
+                fill = "#A20A0A";
+            }
         }
 
         return (
