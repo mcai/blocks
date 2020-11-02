@@ -3,8 +3,8 @@ import { Layer, Rect, Stage } from "react-konva";
 import { SimpleDxfDrawViewProps } from "./SimpleDxfDrawViewProps";
 import { SimpleDxfDrawViewState } from "./SimpleDxfDrawViewState";
 import { SimpleDxfPartView } from "./SimpleDxfPartView/SimpleDxfPartView";
-import { SimpleDxfDrawPart } from "./SimpleDxfDrawPart";
 import { SimpleIf } from "../SimpleIf/SimpleIf";
+import { SimpleDxfDrawPartExtensions } from "./SimpleDxfDrawPartExtensions";
 
 export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleDxfDrawViewState> {
     private refContainer: any;
@@ -14,8 +14,6 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
 
         this.state = {
             scale: 1.0,
-
-            selectedDrawPart: undefined,
         };
 
         window.addEventListener("resize", () => {
@@ -31,26 +29,6 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
         if (prevProps.dxfFileDraw !== this.props.dxfFileDraw) {
             this.fitStageIntoParentContainer();
         }
-    }
-
-    private static getDescription(drawPart: SimpleDxfDrawPart) {
-        let metaData1 = `GUID:${drawPart.guid}`;
-
-        if (drawPart.metaData1) {
-            metaData1 = `配件#${drawPart.metaData1}`;
-        }
-
-        return `${metaData1}
-                ,宽高:${drawPart.boundingBoxWidth.toFixed(2)}x${drawPart.boundingBoxHeight.toFixed(2)}毫米^2
-                ,周长:${drawPart.totalLength.toFixed(2)}毫米,面积:${drawPart.area.toFixed(2)}毫米^2
-                ,零碎:${!drawPart.isClosed ? "是" : "否"}`;
-    }
-
-    // TODO: to be shown in the properties view
-    private getDescription(): React.ReactNode {
-        return this.state.highlightedDrawPart !== undefined
-            ? SimpleDxfDrawView.getDescription(this.state.highlightedDrawPart)
-            : "请选择配件";
     }
 
     private getStageWidth(): number | undefined {
@@ -112,17 +90,17 @@ export class SimpleDxfDrawView extends Component<SimpleDxfDrawViewProps, SimpleD
                                 <SimpleDxfPartView
                                     key={drawPart.guid}
                                     drawPart={drawPart}
-                                    onHighlightedChanged={(highlighted) =>
-                                        this.setState({
-                                            highlightedDrawPart: highlighted ? drawPart : undefined,
-                                        })
-                                    }
+                                    onHighlightedChanged={(highlighted) => {
+                                        if (this.props.onHighlightedChanged) {
+                                            this.props.onHighlightedChanged(drawPart, highlighted);
+                                        }
+                                    }}
                                     onClick={() => {
-                                        this.setState({
-                                            selectedDrawPart: drawPart,
-                                        });
-
-                                        alert(SimpleDxfDrawView.getDescription(drawPart));
+                                        if (this.props.onClick) {
+                                            this.props.onClick(drawPart);
+                                        } else {
+                                            alert(SimpleDxfDrawPartExtensions.getDescription(drawPart));
+                                        }
                                     }}
                                 />
                             ))}

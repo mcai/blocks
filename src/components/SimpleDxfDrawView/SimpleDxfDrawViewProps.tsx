@@ -1,4 +1,5 @@
 import { SimpleDxfDrawFile } from "./SimpleDxfDrawFile";
+import { SimpleDxfDrawPart } from "./SimpleDxfDrawPart";
 
 export interface SimpleDxfDrawViewProps {
     thumbnailJpgFileName: string;
@@ -9,4 +10,7 @@ export interface SimpleDxfDrawViewProps {
     sheetHeight?: number;
 
     scale?: number;
+
+    onHighlightedChanged?: (part: SimpleDxfDrawPart, highlighted: boolean) => void;
+    onClick?: (part: SimpleDxfDrawPart) => void;
 }
