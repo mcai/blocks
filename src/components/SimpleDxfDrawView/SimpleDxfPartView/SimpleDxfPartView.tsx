@@ -35,16 +35,39 @@ export class SimpleDxfPartView extends Component<SimpleDxfPartViewProps, SimpleD
         switch (drawObject.type) {
             case "Line":
                 return (
-                    <SimpleDxfLineView drawObject={drawObject} closed={false} highlighted={this.state.highlighted} />
+                    <SimpleDxfLineView
+                        drawObject={drawObject}
+                        drawPart={this.props.drawPart}
+                        closed={false}
+                        highlighted={this.state.highlighted}
+                    />
                 );
             case "Arc":
                 return (
-                    <SimpleDxfLineView drawObject={drawObject} closed={false} highlighted={this.state.highlighted} />
+                    <SimpleDxfLineView
+                        drawObject={drawObject}
+                        drawPart={this.props.drawPart}
+                        closed={false}
+                        highlighted={this.state.highlighted}
+                    />
                 );
             case "Polyline":
-                return <SimpleDxfLineView drawObject={drawObject} closed={true} highlighted={this.state.highlighted} />;
+                return (
+                    <SimpleDxfLineView
+                        drawObject={drawObject}
+                        drawPart={this.props.drawPart}
+                        closed={true}
+                        highlighted={this.state.highlighted}
+                    />
+                );
             case "Circle":
-                return <SimpleDxfCircleView drawObject={drawObject} highlighted={this.state.highlighted} />;
+                return (
+                    <SimpleDxfCircleView
+                        drawObject={drawObject}
+                        drawPart={this.props.drawPart}
+                        highlighted={this.state.highlighted}
+                    />
+                );
         }
 
         throw new Error("Not supported draw object type");
