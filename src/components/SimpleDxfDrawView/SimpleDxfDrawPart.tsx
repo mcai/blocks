@@ -9,4 +9,8 @@ export interface SimpleDxfDrawPart {
     boundingBoxHeight: number;
     drawObjects: SimpleDxfDrawObject[];
     metaData1?: string;
+    hasSinkHoles: boolean;
+    hasFreeSegments: boolean;
+    needRefinement: boolean;
+    isDue: boolean;
 }
