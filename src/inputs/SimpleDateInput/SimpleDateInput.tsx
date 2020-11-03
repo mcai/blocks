@@ -17,8 +17,8 @@ export class SimpleDateInput extends Component<SimpleDateInputProps, any> {
             <input
                 className="simple-input"
                 type="date"
-                value={SimpleFormatting.toFormattedDateString(this.props.values?.[this.props.name ?? ""])}
-                onChange={(e) => this.onUpdate(`${e.target.value}T00:00:00+08:00`)}
+                value={this.props.values?.[this.props.name ?? ""]}
+                onChange={(e) => this.onUpdate(e.target.value)}
                 readOnly={readOnly}
             />
         );
