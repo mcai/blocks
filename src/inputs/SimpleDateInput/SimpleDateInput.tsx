@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { SimpleDateInputProps } from "./SimpleDateInputProps";
-import { SimpleFormatting } from "../../utils/SimpleFormatting";
 import { InputUtils } from "../InputUtils";
 
 export class SimpleDateInput extends Component<SimpleDateInputProps, any> {
