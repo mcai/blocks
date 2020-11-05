@@ -14,7 +14,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
 
     render() {
         return (
-            <Fragment>
+            <div className={"mb-3"}>
                 {this.props.pageCount > 1 && (
                     <Fragment>
                         <Button variant={"primary"} className={"mr-3"} onClick={() => this.props.onClick(0)}>
@@ -57,7 +57,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
                         {this.props.pageSize} 项)
                     </label>
                 )}
-            </Fragment>
+            </div>
         );
     }
 }
