@@ -70,9 +70,15 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                     <span className="simple-input-label">&nbsp;</span>
 
                     <div className="simple-input">
-                        <Button variant={"primary"} type="submit" disabled={this.state.submitting}>
-                            {this.props.submitButtonText ?? "提交"}
-                        </Button>
+                        {this.state.submitting ? (
+                            <Button variant={"primary"} type="submit" disabled={true}>
+                                正在{this.props.submitButtonText ?? "提交"},请稍候...
+                            </Button>
+                        ) : (
+                            <Button variant={"primary"} type="submit">
+                                {this.props.submitButtonText ?? "提交"}
+                            </Button>
+                        )}
                     </div>
                 </div>
             </form>
