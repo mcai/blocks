@@ -9,7 +9,7 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
 
         this.state = {
             ...this.props.initialValues,
-            submitting: false,
+            submitting: "false",
         };
     }
 
@@ -41,14 +41,14 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
 
     private async onSubmit(e: React.FormEvent<HTMLFormElement>) {
         this.setState({
-            submitting: true,
+            submitting: "true",
         });
 
         e.preventDefault();
         await this.props.onSubmit?.(this.state);
 
         this.setState({
-            submitting: false,
+            submitting: "false",
         });
     }
 
@@ -70,7 +70,7 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                     <span className="simple-input-label">&nbsp;</span>
 
                     <div className="simple-input">
-                        {this.state.submitting ? (
+                        {this.state.submitting === "true" ? (
                             <Button variant={"primary"} type="submit" disabled={true}>
                                 正在{this.props.submitButtonText ?? "提交"},请稍候...
                             </Button>
