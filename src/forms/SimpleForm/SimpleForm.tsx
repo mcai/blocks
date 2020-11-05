@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { SimpleFormProps } from "./SimpleFormProps";
 import { SimpleFormState } from "./SimpleFormState";
+import { Button } from "react-bootstrap";
 
 export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     constructor(props: SimpleFormProps) {
@@ -69,9 +70,9 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                     <span className="simple-input-label">&nbsp;</span>
 
                     <div className="simple-input">
-                        <button className="simple-button" type="submit" disabled={this.state.submitting}>
+                        <Button variant={"primary"} type="submit" disabled={this.state.submitting}>
                             {this.props.submitButtonText ?? "提交"}
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </form>

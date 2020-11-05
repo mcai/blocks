@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import { SimplePaginationProps } from "./SimplePaginationProps";
 import React from "react";
+import { Button } from "react-bootstrap";
 
 export class SimplePagination extends Component<SimplePaginationProps, any> {
     get hasPreviousPage() {
@@ -16,31 +17,25 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
             <Fragment>
                 {this.props.pageCount > 1 && (
                     <Fragment>
-                        <button className="simple-button" onClick={() => this.props.onClick(0)}>
+                        <Button variant={"primary"} onClick={() => this.props.onClick(0)}>
                             首页
-                        </button>
+                        </Button>
 
                         {this.hasPreviousPage && (
-                            <button
-                                className="simple-button"
-                                onClick={() => this.props.onClick(this.props.pageNum - 1)}
-                            >
+                            <Button variant={"primary"} onClick={() => this.props.onClick(this.props.pageNum - 1)}>
                                 上页
-                            </button>
+                            </Button>
                         )}
 
                         {this.hasNextPage && (
-                            <button
-                                className="simple-button"
-                                onClick={() => this.props.onClick(this.props.pageNum + 1)}
-                            >
+                            <Button variant={"primary"} onClick={() => this.props.onClick(this.props.pageNum + 1)}>
                                 下页
-                            </button>
+                            </Button>
                         )}
 
-                        <button className="simple-button" onClick={() => this.props.onClick(this.props.pageCount - 1)}>
+                        <Button variant={"primary"} onClick={() => this.props.onClick(this.props.pageCount - 1)}>
                             尾页
-                        </button>
+                        </Button>
                     </Fragment>
                 )}
 

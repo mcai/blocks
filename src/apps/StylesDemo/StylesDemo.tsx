@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Button } from "react-bootstrap";
 
 export class StylesDemo extends React.Component<any> {
     render() {
@@ -34,26 +35,26 @@ export class StylesDemo extends React.Component<any> {
                     <div>
                         <div className="simple-left">
                             <Fragment>
-                                <button className="simple-button" onClick={() => alert("hello")}>
+                                <Button variant={"primary"} onClick={() => alert("hello")}>
                                     左对齐1
-                                </button>
-                                <button className="simple-button">左对齐2</button>
-                                <button className="simple-button">左对齐3</button>
+                                </Button>
+                                <Button variant={"primary"}>左对齐2</Button>
+                                <Button variant={"primary"}>左对齐3</Button>
                             </Fragment>
                         </div>
 
                         <div className="simple-right">
                             <Fragment>
-                                <button className="simple-button">右对齐1</button>
-                                <button className="simple-button">右对齐2</button>
-                                <button className="simple-button">右对齐3</button>
+                                <Button variant={"primary"}>右对齐1</Button>
+                                <Button variant={"primary"}>右对齐2</Button>
+                                <Button variant={"primary"}>右对齐3</Button>
                             </Fragment>
                         </div>
 
                         <div className="simple-center">
-                            <button className="simple-button">居中1</button>
-                            <button className="simple-button">居中2</button>
-                            <button className="simple-button">居中3</button>
+                            <Button variant={"primary"}>居中1</Button>
+                            <Button variant={"primary"}>居中2</Button>
+                            <Button variant={"primary"}>居中3</Button>
                         </div>
                     </div>
                 </div>
