@@ -81,14 +81,6 @@
   text-align: left;
   padding: 0.5em; }
 
-.SimpleTheme1 .simple-button {
-  color: #f3f2f4;
-  background: #6ea5c5;
-  border: 1px solid #f3f2f4;
-  margin: 0.5em;
-  padding: 0.25em 0.5em;
-  border-radius: 5px; }
-
 .SimpleTheme1 .simple-navbar {
   list-style-type: none;
   margin: 0;
@@ -222,14 +214,6 @@
   text-align: left;
   padding: 0.5em; }
 
-.SimpleTheme2 .simple-button {
-  color: #F4F4F2;
-  background: #9390A0;
-  border: 1px solid #F4F4F2;
-  margin: 0.5em;
-  padding: 0.25em 0.5em;
-  border-radius: 5px; }
-
 .SimpleTheme2 .simple-navbar {
   list-style-type: none;
   margin: 0;
@@ -362,14 +346,6 @@
   flex-basis: 85%;
   text-align: left;
   padding: 0.5em; }
-
-.SimpleTheme3 .simple-button {
-  color: #FFFFFF;
-  background: #3850D8;
-  border: 1px solid #FFFFFF;
-  margin: 0.5em;
-  padding: 0.25em 0.5em;
-  border-radius: 5px; }
 
 .SimpleTheme3 .simple-navbar {
   list-style-type: none;
