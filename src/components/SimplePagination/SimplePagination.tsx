@@ -17,23 +17,35 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
             <Fragment>
                 {this.props.pageCount > 1 && (
                     <Fragment>
-                        <Button variant={"primary"} onClick={() => this.props.onClick(0)}>
+                        <Button variant={"primary"} className={"mr-3"} onClick={() => this.props.onClick(0)}>
                             首页
                         </Button>
 
                         {this.hasPreviousPage && (
-                            <Button variant={"primary"} onClick={() => this.props.onClick(this.props.pageNum - 1)}>
+                            <Button
+                                variant={"primary"}
+                                className={"mr-3"}
+                                onClick={() => this.props.onClick(this.props.pageNum - 1)}
+                            >
                                 上页
                             </Button>
                         )}
 
                         {this.hasNextPage && (
-                            <Button variant={"primary"} onClick={() => this.props.onClick(this.props.pageNum + 1)}>
+                            <Button
+                                variant={"primary"}
+                                className={"mr-3"}
+                                onClick={() => this.props.onClick(this.props.pageNum + 1)}
+                            >
                                 下页
                             </Button>
                         )}
 
-                        <Button variant={"primary"} onClick={() => this.props.onClick(this.props.pageCount - 1)}>
+                        <Button
+                            variant={"primary"}
+                            className={"mr-3"}
+                            onClick={() => this.props.onClick(this.props.pageCount - 1)}
+                        >
                             尾页
                         </Button>
                     </Fragment>
