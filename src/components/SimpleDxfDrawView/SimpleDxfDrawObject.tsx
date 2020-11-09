@@ -11,5 +11,7 @@ export interface SimpleDxfDrawObject {
     stroke: SimpleDxfDrawColor;
     strokeWidth: number;
     args: number[];
-    metaData1?: string;
+    nestingId?: number;
+    nestingKey?: string;
+    nestingRotationInDegree?: number;
 }

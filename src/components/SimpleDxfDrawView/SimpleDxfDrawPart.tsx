@@ -8,7 +8,9 @@ export interface SimpleDxfDrawPart {
     boundingBoxWidth: number;
     boundingBoxHeight: number;
     drawObjects: SimpleDxfDrawObject[];
-    metaData1?: string;
+    nestingId?: number;
+    nestingKey?: string;
+    nestingRotationInDegree?: number;
     hasSinkHoles: boolean;
     hasFreeSegments: boolean;
     needRefinement: boolean;
