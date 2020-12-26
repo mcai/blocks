@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface SimpleFormProps {
     initialValues?: { [name: string]: any };
 
@@ -6,4 +8,6 @@ export interface SimpleFormProps {
     onSubmit?: (values: { [name: string]: any }) => void;
 
     submitButtonText?: string;
+
+    inputsFunc: (props: any) => React.ReactNode[];
 }

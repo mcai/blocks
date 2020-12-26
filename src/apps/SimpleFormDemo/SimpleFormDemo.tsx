@@ -22,30 +22,36 @@ export class SimpleFormDemo extends Component<any, any> {
                 onSubmit={(values) => {
                     alert(`SimpleFormDemo.onSubmit: values=${JSON.stringify(values)}`);
                 }}
-            >
-                <SimpleTextInput label={"User ID"} name={"userId"} />
-                <SimpleTextInput label={"Nickname"} name={"nickName"} />
-                <SimpleBooleanInput label={"Remember Password"} name={"rememberPassword"} />
-                <SimpleNumberInput label={"Count"} name={"count"} />
-                <SimpleTextAreaInput label={"Description"} name={"description"} />
-                <SimpleSelectInput
-                    label={"Gender"}
-                    name={"gender"}
-                    options={[
-                        {
-                            key: "male",
-                            value: "male",
-                            text: "Male",
-                        },
-                        {
-                            key: "female",
-                            value: "female",
-                            text: "Female",
-                        },
-                    ]}
-                />
-                <SimpleFileInput label={"Avatar"} name={"avatar"} />
-            </SimpleForm>
+                inputsFunc={(props) => [
+                    <SimpleTextInput label={"User ID"} name={"userId"} key={"userId"} />,
+                    <SimpleTextInput label={"Nickname"} name={"nickName"} key={"nickName"} />,
+                    <SimpleBooleanInput
+                        label={"Remember Password"}
+                        name={"rememberPassword"}
+                        key={"rememberPassword"}
+                    />,
+                    <SimpleNumberInput label={"Count"} name={"count"} key={"count"} />,
+                    <SimpleTextAreaInput label={"Description"} name={"description"} key={"description"} />,
+                    <SimpleSelectInput
+                        label={"Gender"}
+                        name={"gender"}
+                        key={"gender"}
+                        options={[
+                            {
+                                key: "male",
+                                value: "male",
+                                text: "Male",
+                            },
+                            {
+                                key: "female",
+                                value: "female",
+                                text: "Female",
+                            },
+                        ]}
+                    />,
+                    <SimpleFileInput label={"Avatar"} name={"avatar"} key={"avatar"} />,
+                ]}
+            />
         );
     }
 }
