@@ -56,14 +56,9 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
         return (
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
                 {this.props.inputsFunc?.(this.state).map((input) => {
-                    console.log(`before function call: typeof input = ${typeof input}`);
-
                     if (typeof input === "function") {
                         input = input(this.state);
                     }
-
-                    console.log(`after function call: typeof input = ${typeof input}`);
-                    console.log(`after function call: React.isValidElement(input) = ${React.isValidElement(input)}`);
 
                     return React.isValidElement(input)
                         ? React.cloneElement(input, {
