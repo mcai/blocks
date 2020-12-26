@@ -19,6 +19,7 @@ export class SimpleFuncInput extends Component<SimpleFuncInputProps, any> {
                 value={this.props.getValueFunc(this.props.values)}
                 onChange={(e) => this.onUpdate(e.target.value)}
                 readOnly={true}
+                style={this.props.style}
             />
         );
 
