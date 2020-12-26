@@ -13,7 +13,7 @@ export interface SimpleCreateFormProps {
     onSuccessRedirect?: (item: any) => string;
     onFailure?: () => void;
 
-    inputs: React.ReactNode[];
+    inputsFunc: (props: any) => React.ReactNode[];
 
     submitButtonText?: string;
 }

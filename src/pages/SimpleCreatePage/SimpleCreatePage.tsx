@@ -63,7 +63,7 @@ export class SimpleCreatePage extends Component<SimpleCreatePageProps, SimpleCre
                     onBeforeSubmit={async (values) =>
                         this.props.onBeforeSubmit ? await this.props.onBeforeSubmit(values) : Promise.resolve(values)
                     }
-                    inputs={this.props.resource.inputs}
+                    inputsFunc={(props) => this.props.resource.inputsFunc(props)}
                     submitButtonText={"添加"}
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `添加${this.props.resource.title}成功!`);

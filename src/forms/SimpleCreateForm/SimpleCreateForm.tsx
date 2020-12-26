@@ -48,7 +48,7 @@ export class SimpleCreateForm extends Component<SimpleCreateFormProps, SimpleCre
                     onSubmit={(values) => this.onSubmit(values)}
                     submitButtonText={this.props.submitButtonText}
                 >
-                    {this.props.inputs}
+                    {(props: any) => this.props.inputsFunc(props)}
                 </SimpleForm>
             </Fragment>
         );

@@ -30,7 +30,7 @@ export class SimpleSignInForm extends Component<SimpleSignInFormProps, any> {
                 onFailure={() => {
                     Toastify(SimpleToastType.Error, "登陆失败!");
                 }}
-                inputs={[
+                inputsFunc={(props) => [
                     <SimpleTextInput key={"name"} label={"用户名"} name={"name"} />,
                     <SimpleTextInput key={"password"} label={"密码"} name={"password"} password={() => true} />,
                 ]}

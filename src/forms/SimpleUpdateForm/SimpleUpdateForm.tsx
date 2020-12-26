@@ -69,7 +69,7 @@ export class SimpleUpdateForm extends Component<SimpleUpdateFormProps, SimpleUpd
                     onSubmit={(values) => this.onSubmit(values)}
                     submitButtonText={this.props.submitButtonText}
                 >
-                    {this.props.inputs}
+                    {(props: any) => this.props.inputsFunc(props)}
                 </SimpleForm>
             </SimpleIf>
         );
