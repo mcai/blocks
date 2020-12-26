@@ -55,7 +55,7 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     render() {
         return (
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
-                {React.Children.map(this.props.children, (input) => {
+                {this.props.inputsFunc?.(this.state).map((input) => {
                     console.log(`before function call: typeof input = ${typeof input}`);
 
                     if (typeof input === "function") {
