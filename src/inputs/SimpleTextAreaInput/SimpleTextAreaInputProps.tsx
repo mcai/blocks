@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface SimpleTextAreaInputProps {
     label?: React.ReactNode;
@@ -14,4 +14,6 @@ export interface SimpleTextAreaInputProps {
     visible?: (values: any) => boolean;
 
     readOnly?: (values: any) => boolean;
+
+    style?: CSSProperties;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface SimpleMarkdownInputProps {
     label?: React.ReactNode;
@@ -14,4 +14,6 @@ export interface SimpleMarkdownInputProps {
     readOnly?: (values: any) => boolean;
 
     height?: (values: any) => string | number;
+
+    style?: CSSProperties;
 }

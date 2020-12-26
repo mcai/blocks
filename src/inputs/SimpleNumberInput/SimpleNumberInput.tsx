@@ -19,6 +19,7 @@ export class SimpleNumberInput extends Component<SimpleNumberInputProps, any> {
                 value={this.props.values?.[this.props.name ?? ""]}
                 onChange={(e) => this.onUpdate(e.target.value)}
                 readOnly={readOnly}
+                style={this.props.style}
             />
         );
 

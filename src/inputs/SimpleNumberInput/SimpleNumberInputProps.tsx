@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface SimpleNumberInputProps {
     label?: React.ReactNode;
@@ -14,4 +14,6 @@ export interface SimpleNumberInputProps {
     readOnly?: (values: any) => boolean;
 
     inline?: boolean;
+
+    style?: CSSProperties;
 }

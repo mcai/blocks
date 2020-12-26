@@ -18,6 +18,7 @@ export class SimpleSelectInput extends Component<SimpleSelectInputProps, any> {
                 value={this.props.values?.[this.props.name ?? ""]}
                 onChange={(e) => this.onUpdate(e.target.value)}
                 disabled={readOnly}
+                style={this.props.style}
             >
                 {this.props.options?.map((option) => (
                     <option key={option.key} value={option.value}>

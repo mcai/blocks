@@ -15,13 +15,18 @@ export class SimpleMarkdownInput extends Component<SimpleMarkdownInputProps, any
         const input = (
             <>
                 {readOnly ? (
-                    <MDEditor.Markdown className="simple-input" source={this.props.values?.[this.props.name ?? ""]} />
+                    <MDEditor.Markdown
+                        className="simple-input"
+                        source={this.props.values?.[this.props.name ?? ""]}
+                        style={this.props.style}
+                    />
                 ) : (
                     <MDEditor
                         className="simple-input"
                         value={this.props.values?.[this.props.name ?? ""]}
                         onChange={(value) => this.onUpdate(value)}
                         height={this.props.height != undefined ? this.props.height(this.props.values) : 350}
+                        style={this.props.style}
                     />
                 )}
             </>

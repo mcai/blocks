@@ -19,6 +19,7 @@ export class SimpleBooleanInput extends Component<SimpleBooleanInputProps, any> 
                 checked={this.props.values?.[this.props.name ?? ""] == "true"}
                 onChange={(e) => this.onUpdate(e.target.checked)}
                 readOnly={readOnly}
+                style={this.props.style}
             />
         );
 
