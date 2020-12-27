@@ -5,7 +5,7 @@ export interface SimpleListItemProps {
 
     description?: React.ReactNode;
 
-    inputs: React.ReactNode[];
+    inputsFunc?: (values: any) => React.ReactNode[];
 
     index: number;
 

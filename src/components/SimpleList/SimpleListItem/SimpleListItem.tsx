@@ -39,7 +39,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 </div>
 
                 <div className="simple-section">
-                    {React.Children.map(this.props.inputs, (input) =>
+                    {this.props.inputsFunc?.(values)?.map((input) =>
                         React.isValidElement(input)
                             ? React.cloneElement(input, {
                                   values: values,
