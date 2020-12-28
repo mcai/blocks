@@ -1,8 +1,6 @@
 import React, { CSSProperties } from "react";
 
 export interface SimpleTextInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     placeholder?: string;
@@ -17,7 +15,7 @@ export interface SimpleTextInputProps {
 
     readOnly?: (values: any) => boolean;
 
-    inline?: boolean;
+    className?: string;
 
     style?: CSSProperties;
 }

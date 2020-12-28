@@ -1,8 +1,6 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface SimpleSearchInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     placeholder?: string;
@@ -15,5 +13,7 @@ export interface SimpleSearchInputProps {
 
     readOnly?: (values: any) => boolean;
 
-    inline?: boolean;
+    className?: string;
+
+    style?: CSSProperties;
 }

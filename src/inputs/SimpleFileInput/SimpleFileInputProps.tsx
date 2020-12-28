@@ -1,8 +1,6 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface SimpleFileInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     values?: any;
@@ -13,5 +11,7 @@ export interface SimpleFileInputProps {
 
     readOnly?: (values: any) => boolean;
 
-    inline?: boolean;
+    className?: string;
+
+    style?: CSSProperties;
 }

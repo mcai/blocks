@@ -20,11 +20,9 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
     render() {
         const visible = this.props.visible === undefined || this.props.visible(this.props.values);
         const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
-        const inline = this.props.inline != undefined && this.props.inline;
 
         const input = (
             <input
-                className="simple-input"
                 type="text"
                 placeholder={this.props.placeholder}
                 value={this.state.value}
@@ -69,14 +67,12 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
         );
 
         return InputUtils.render(
-            this.props.label,
-            <>
+            <div className={this.props.className} style={this.props.style}>
                 &nbsp;{input}
                 &nbsp;{buttonSearch}
                 &nbsp;{buttonClear}
-            </>,
+            </div>,
             visible,
-            inline,
         );
     }
 }

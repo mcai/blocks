@@ -31,10 +31,9 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
 
         const visible = this.props.visible === undefined || this.props.visible(this.props.values);
         const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
-        const inline = this.props.inline != undefined && this.props.inline;
 
         const input = (
-            <div className="simple-input">
+            <div className={this.props.className} style={this.props.style}>
                 {!readOnly && (
                     <input
                         ref={(ref: any) => {
@@ -91,6 +90,6 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
             </div>
         );
 
-        return InputUtils.render(this.props.label, input, visible, inline);
+        return InputUtils.render(input, visible);
     }
 }

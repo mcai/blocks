@@ -1,8 +1,6 @@
 import React, { CSSProperties } from "react";
 
 export interface SimpleDateInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     values?: { [name: string]: any };
@@ -13,7 +11,7 @@ export interface SimpleDateInputProps {
 
     readOnly?: (values: any) => boolean;
 
-    inline?: boolean;
+    className?: string;
 
     style?: CSSProperties;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 export interface SimpleHiddenInputProps {
     name?: string;
@@ -8,4 +8,8 @@ export interface SimpleHiddenInputProps {
     onUpdate?: (name: string, value: any) => void;
 
     visible?: (values: any) => boolean;
+
+    className?: string;
+
+    style?: CSSProperties;
 }

@@ -1,8 +1,6 @@
 import React, { CSSProperties } from "react";
 
 export interface SimpleFuncInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     placeholder?: string;
@@ -15,7 +13,7 @@ export interface SimpleFuncInputProps {
 
     visible?: (values: any) => boolean;
 
-    inline?: boolean;
+    className?: string;
 
     style?: CSSProperties;
 }

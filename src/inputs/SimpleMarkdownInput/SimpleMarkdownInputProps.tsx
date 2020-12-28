@@ -1,8 +1,6 @@
 import React, { CSSProperties } from "react";
 
 export interface SimpleMarkdownInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     values?: any;
@@ -14,6 +12,8 @@ export interface SimpleMarkdownInputProps {
     readOnly?: (values: any) => boolean;
 
     height?: (values: any) => string | number;
+
+    className?: string;
 
     style?: CSSProperties;
 }

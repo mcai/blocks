@@ -15,6 +15,8 @@ export class SimpleHiddenInput extends Component<SimpleHiddenInputProps, any> {
                     type="hidden"
                     value={this.props.values?.[this.props.name ?? ""]}
                     onChange={(e) => this.onUpdate(e.target.value)}
+                    className={this.props.className}
+                    style={this.props.style}
                 />
             )
         );

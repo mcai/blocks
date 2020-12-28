@@ -1,8 +1,6 @@
 import React, { CSSProperties } from "react";
 
 export interface SimpleBooleanInputProps {
-    label?: React.ReactNode;
-
     name?: string;
 
     values?: any;
@@ -13,7 +11,7 @@ export interface SimpleBooleanInputProps {
 
     readOnly?: (values: any) => boolean;
 
-    inline?: boolean;
+    className?: string;
 
     style?: CSSProperties;
 }
