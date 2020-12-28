@@ -8,8 +8,13 @@ export class InputUtils {
             visible &&
             (inline ? (
                 <Fragment>
-                    <span>{label1}</span>
-                    &nbsp;{input}
+                    {label1 && (
+                        <Fragment>
+                            <span>{label1}</span>
+                            &nbsp;
+                        </Fragment>
+                    )}
+                    {input}
                 </Fragment>
             ) : (
                 <div className="simple-row">
