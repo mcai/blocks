@@ -53,21 +53,21 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     }
 
     render() {
+        const props = {
+            values: this.state,
+            onUpdate: (name: string, value: any) => {
+                this.onUpdate(name, value);
+            },
+        };
+
         return (
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
-                {this.props.inputsFunc?.(this.state).map((input) => {
+                {this.props.inputsFunc?.(props).map((input) => {
                     if (typeof input === "function") {
                         input = input(this.state);
                     }
 
-                    return React.isValidElement(input)
-                        ? React.cloneElement(input, {
-                              values: this.state,
-                              onUpdate: (name: string, value: any) => {
-                                  this.onUpdate(name, value);
-                              },
-                          })
-                        : input;
+                    return React.isValidElement(input) ? React.cloneElement(input, props) : input;
                 })}
 
                 <div className="simple-row">

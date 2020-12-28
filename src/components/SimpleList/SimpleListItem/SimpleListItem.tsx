@@ -17,6 +17,13 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             values[name] = typeof value === "function" ? value(values) : value;
         });
 
+        const props = {
+            values: values,
+            onUpdate: (name: string, value: any) => {
+                this.onUpdate(name, value);
+            },
+        };
+
         return (
             <Fragment>
                 <div className="simple-section">
@@ -39,20 +46,9 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 </div>
 
                 <div className="simple-section">
-                    {this.props.inputsFunc?.(values)?.map((input) =>
-                        React.isValidElement(input)
-                            ? React.cloneElement(input, {
-                                  values: values,
-                                  onUpdate: (name: string, value: any) => {
-                                      this.onUpdate(name, value);
-                                  },
-                                  readOnly: (values: any) =>
-                                      (input.props.readOnly !== undefined && input.props.readOnly?.(values)) ||
-                                      (this.props.readOnly != undefined && this.props.readOnly) ||
-                                      false,
-                              })
-                            : input,
-                    )}
+                    {this.props
+                        .inputsFunc?.(props)
+                        ?.map((input) => (React.isValidElement(input) ? React.cloneElement(input, props) : input))}
                 </div>
             </Fragment>
         );
