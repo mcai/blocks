@@ -49,8 +49,6 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
         return (
             <div>
-                {toolbar}
-
                 {this.props.rows?.map((row, index) => {
                     const { id, ...values } = row;
                     const option = this.props.options?.filter((x) => x.id == row.id)?.[0];
@@ -71,7 +69,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                     );
                 })}
 
-                {this.props.rows && toolbar}
+                {toolbar}
             </div>
         );
     }
