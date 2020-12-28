@@ -92,7 +92,10 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                         {
                             id: "simpleTodo",
                             descriptionAsText: "Simple TODO",
-                            inputsFunc: () => [<SimpleTextInput key="content" label="内容" name="content" />],
+                            inputsFunc: () => [
+                                <span key={"contentLabel"}>内容: </span>,
+                                <SimpleTextInput key="content" name="content" />,
+                            ],
                             values: {
                                 content: "",
                             },

@@ -23,17 +23,18 @@ export class SimpleFormDemo extends Component<any, any> {
                     alert(`SimpleFormDemo.onSubmit: values=${JSON.stringify(values)}`);
                 }}
                 inputsFunc={(props) => [
-                    <SimpleTextInput label={"User ID"} name={"userId"} key={"userId"} />,
-                    <SimpleTextInput label={"Nickname"} name={"nickName"} key={"nickName"} />,
-                    <SimpleBooleanInput
-                        label={"Remember Password"}
-                        name={"rememberPassword"}
-                        key={"rememberPassword"}
-                    />,
-                    <SimpleNumberInput label={"Count"} name={"count"} key={"count"} />,
-                    <SimpleTextAreaInput label={"Description"} name={"description"} key={"description"} />,
+                    <span key={"userIdLabel"}>User ID: </span>,
+                    <SimpleTextInput name={"userId"} key={"userId"} />,
+                    <span key={"nickNameLabel"}>Nickname: </span>,
+                    <SimpleTextInput name={"nickName"} key={"nickName"} />,
+                    <span key={"rememberPasswordLabel"}>Remember Password: </span>,
+                    <SimpleBooleanInput name={"rememberPassword"} key={"rememberPassword"} />,
+                    <span key={"countLabel"}>Count: </span>,
+                    <SimpleNumberInput name={"count"} key={"count"} />,
+                    <span key={"descriptionLabel"}>Description: </span>,
+                    <SimpleTextAreaInput name={"description"} key={"description"} />,
+                    <span key={"genderLabel"}>Gender: </span>,
                     <SimpleSelectInput
-                        label={"Gender"}
                         name={"gender"}
                         key={"gender"}
                         options={[
@@ -49,7 +50,8 @@ export class SimpleFormDemo extends Component<any, any> {
                             },
                         ]}
                     />,
-                    <SimpleFileInput label={"Avatar"} name={"avatar"} key={"avatar"} />,
+                    <span key={"avatarLabel"}>Avatar: </span>,
+                    <SimpleFileInput name={"avatar"} key={"avatar"} />,
                 ]}
             />
         );
