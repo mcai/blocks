@@ -15,5 +15,7 @@ export interface SimpleTextAreaInputProps {
 
     readOnly?: (values: any) => boolean;
 
+    inline?: boolean;
+
     style?: CSSProperties;
 }

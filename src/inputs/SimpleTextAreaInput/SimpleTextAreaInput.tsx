@@ -10,6 +10,7 @@ export class SimpleTextAreaInput extends Component<SimpleTextAreaInputProps, any
     render() {
         const visible = this.props.visible === undefined || this.props.visible(this.props.values);
         const readOnly = (this.props.readOnly !== undefined && this.props.readOnly(this.props.values)) || false;
+        const inline = this.props.inline != undefined && this.props.inline;
 
         const textarea = (
             <textarea
@@ -22,6 +23,6 @@ export class SimpleTextAreaInput extends Component<SimpleTextAreaInputProps, any
             />
         );
 
-        return InputUtils.render(this.props.label, textarea, visible, false);
+        return InputUtils.render(this.props.label, textarea, visible, inline);
     }
 }
