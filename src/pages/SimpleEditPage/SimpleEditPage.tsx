@@ -73,7 +73,7 @@ export class SimpleEditPage extends Component<SimpleEditPageProps, SimpleEditPag
                             item: item,
                         });
                     }}
-                    inputsFunc={(props) => this.props.resource.inputsFunc(props)}
+                    inputFunc={(props) => this.props.resource.inputFunc(props)}
                     submitButtonText={"更新"}
                     onSuccess={() => {
                         Toastify(SimpleToastType.Success, `更新${this.props.resource.title}成功!`);

@@ -9,5 +9,5 @@ export interface SimpleFormProps {
 
     submitButtonText?: string;
 
-    inputsFunc?: (props: any) => React.ReactNode[];
+    inputFunc?: (props: any) => React.ReactNode;
 }

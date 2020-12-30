@@ -12,7 +12,7 @@ export interface SimpleResource {
         loadTableDataFunc: () => Promise<void>,
     ) => React.ReactNode[];
 
-    inputsFunc: (props: any) => React.ReactNode[];
+    inputFunc: (props: any) => React.ReactNode;
 
     initialValues?: any;
 

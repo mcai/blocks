@@ -60,15 +60,15 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
             },
         };
 
+        let input = this.props.inputFunc?.(props);
+
+        if (typeof input === "function") {
+            input = input(this.state);
+        }
+
         return (
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
-                {this.props.inputsFunc?.(props).map((input) => {
-                    if (typeof input === "function") {
-                        input = input(this.state);
-                    }
-
-                    return React.isValidElement(input) ? React.cloneElement(input, props) : input;
-                })}
+                {React.isValidElement(input) ? React.cloneElement(input, props) : input}
 
                 <div className="simple-row">
                     <span className="simple-input-label">&nbsp;</span>
