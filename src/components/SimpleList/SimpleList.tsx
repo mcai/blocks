@@ -58,7 +58,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                             <SimpleListItem
                                 id={id}
                                 description={option?.description}
-                                inputsFunc={option?.inputsFunc}
+                                inputFunc={option?.inputFunc}
                                 values={values ?? {}}
                                 index={index}
                                 onUpdate={(index1, name, value) => this.onUpdate(index1, name, value)}

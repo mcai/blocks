@@ -24,6 +24,8 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             },
         };
 
+        const input = this.props.inputFunc?.(props);
+
         return (
             <Fragment>
                 <div className="simple-section">
@@ -46,9 +48,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                 </div>
 
                 <div className="simple-section">
-                    {this.props
-                        .inputsFunc?.(props)
-                        ?.map((input) => (React.isValidElement(input) ? React.cloneElement(input, props) : input))}
+                    {React.isValidElement(input) ? React.cloneElement(input, props) : input}
                 </div>
             </Fragment>
         );

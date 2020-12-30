@@ -6,7 +6,7 @@ export interface SimpleTabInputContainerProps {
     tabs: {
         key: string;
         description?: React.ReactNode;
-        inputs: React.ReactNode[];
+        input: React.ReactNode;
     }[];
 
     values?: any;

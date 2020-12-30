@@ -33,33 +33,31 @@ export class SimpleTabInputContainer extends Component<SimpleTabInputContainerPr
                     }
                 />
 
-                {this.props.tabs.map(
-                    (tab) =>
+                {this.props.tabs.map((tab) => {
+                    const input = tab.input;
+
+                    return (
                         tab.key == this.state.selectedTabKey && (
                             <Fragment>
-                                {tab.inputs.map((input) =>
-                                    React.isValidElement(input)
-                                        ? React.cloneElement(input, {
-                                              values: this.props.values,
-                                              onUpdate: (name: string, value: any) => {
-                                                  this.onUpdate(name, value);
-                                              },
-                                              visible: (values: any) =>
-                                                  (input.props.visible === undefined ||
-                                                      input.props.visible?.(values)) &&
-                                                  (this.props.visible === undefined || this.props.visible?.(values)),
-                                              readOnly: (values: any) =>
-                                                  (input.props.readOnly !== undefined &&
-                                                      input.props.readOnly?.(values)) ||
-                                                  (this.props.readOnly !== undefined &&
-                                                      this.props.readOnly?.(values)) ||
-                                                  false,
-                                          })
-                                        : input,
-                                )}
+                                {React.isValidElement(input)
+                                    ? React.cloneElement(input, {
+                                          values: this.props.values,
+                                          onUpdate: (name: string, value: any) => {
+                                              this.onUpdate(name, value);
+                                          },
+                                          visible: (values: any) =>
+                                              (input.props.visible === undefined || input.props.visible?.(values)) &&
+                                              (this.props.visible === undefined || this.props.visible?.(values)),
+                                          readOnly: (values: any) =>
+                                              (input.props.readOnly !== undefined && input.props.readOnly?.(values)) ||
+                                              (this.props.readOnly !== undefined && this.props.readOnly?.(values)) ||
+                                              false,
+                                      })
+                                    : input}
                             </Fragment>
-                        ),
-                )}
+                        )
+                    );
+                })}
             </Fragment>
         );
     }

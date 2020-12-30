@@ -7,7 +7,7 @@ export interface SimpleListOption {
 
     descriptionAsText?: string;
 
-    inputsFunc?: (props: any) => React.ReactNode[];
+    inputFunc?: (props: any) => React.ReactNode;
 
     values: { [name: string]: any };
 }
