@@ -34,16 +34,13 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     render() {
         const toolbar = (
-            <div className="simple-section">
-                <div className="simple-left">
-                    <p>共 {this.props.rows?.length ?? 0} 项</p>
-                </div>
-                <div className="simple-right">
+            <div className="row">
+                <div className="col-auto">共 {this.props.rows?.length ?? 0} 项</div>
+                <div className="col-auto ml-auto">
                     {(this.props.readOnly === undefined || !this.props.readOnly) && (
                         <SimpleListToolbar options={this.props.options} onAdd={(row) => this.onAdd(row)} />
                     )}
                 </div>
-                <div className="simple-center">&nbsp;&nbsp;</div>
             </div>
         );
 
