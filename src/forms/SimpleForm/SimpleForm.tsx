@@ -70,21 +70,15 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
                 {React.isValidElement(input) ? React.cloneElement(input, props) : input}
 
-                <div className="simple-row">
-                    <span className="simple-input-label">&nbsp;</span>
-
-                    <div className="simple-input">
-                        {this.state.submitting === "true" ? (
-                            <Button variant={"primary"} type="submit" disabled={true}>
-                                正在{this.props.submitButtonText ?? "提交"},请稍候...
-                            </Button>
-                        ) : (
-                            <Button variant={"primary"} type="submit">
-                                {this.props.submitButtonText ?? "提交"}
-                            </Button>
-                        )}
-                    </div>
-                </div>
+                {this.state.submitting === "true" ? (
+                    <Button variant={"primary"} type="submit" disabled={true}>
+                        正在{this.props.submitButtonText ?? "提交"},请稍候...
+                    </Button>
+                ) : (
+                    <Button variant={"primary"} type="submit">
+                        {this.props.submitButtonText ?? "提交"}
+                    </Button>
+                )}
             </form>
         );
     }
