@@ -17,11 +17,14 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             values[name] = typeof value === "function" ? value(values) : value;
         });
 
+        const readOnly = this.props.readOnly !== undefined && !this.props.readOnly;
+
         const props = {
             values: values,
             onUpdate: (name: string, value: any) => {
                 this.onUpdate(name, value);
             },
+            readOnly: readOnly,
         };
 
         const input = this.props.inputFunc?.(props);
@@ -32,9 +35,9 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     <div className="simple-left">
                         {this.props.index + 1}. {this.props.description}
                         &nbsp;
-                        {this.props.readOnly === undefined || !this.props.readOnly ? (
+                        {!readOnly ? (
                             <Button
-                                variant={"primary"}
+                                variant={"danger"}
                                 type="button"
                                 onClick={() => this.props.onRemove?.(this.props.index)}
                             >
