@@ -68,7 +68,7 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
 
         return (
             <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => this.onSubmit(e)}>
-                {React.isValidElement(input) ? React.cloneElement(input, props) : input}
+                {React.isValidElement(input) ? React.cloneElement(input) : input}
 
                 {this.state.submitting === "true" ? (
                     <Button variant={"primary"} type="submit" disabled={true}>

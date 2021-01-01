@@ -50,9 +50,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                     <div className="simple-center">&nbsp;&nbsp;</div>
                 </div>
 
-                <div className="simple-section">
-                    {React.isValidElement(input) ? React.cloneElement(input, props) : input}
-                </div>
+                <div className="simple-section">{React.isValidElement(input) ? React.cloneElement(input) : input}</div>
             </Fragment>
         );
     }
