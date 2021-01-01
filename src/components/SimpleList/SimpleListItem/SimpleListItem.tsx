@@ -17,7 +17,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             values[name] = typeof value === "function" ? value(values) : value;
         });
 
-        const readOnly = this.props.readOnly !== undefined && !this.props.readOnly;
+        const readOnly = this.props.readOnly !== undefined && this.props.readOnly;
 
         const props = {
             values: values,
