@@ -195,99 +195,101 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 </Row>
 
                 {this.state.itemsInCurrentPage?.length > 0 ? (
-                    <Table striped={true} bordered={true} hover={true}>
-                        <thead>
-                            <tr>
-                                {React.Children.map(this.props.children, (field) => {
-                                    return React.isValidElement(field) ? (
-                                        <th key={field.props.key}>
-                                            {field.props.name ? (
-                                                <a
-                                                    href={"#"}
-                                                    onClick={() => {
-                                                        this.setState({
-                                                            ordering: {
-                                                                key: field.props.name,
-                                                                descending:
-                                                                    this.state.ordering.key === field.props.name &&
-                                                                    !this.state.ordering.descending,
-                                                            },
-                                                        });
-                                                    }}
-                                                >
-                                                    {field.props.title}
-                                                </a>
-                                            ) : (
-                                                field.props.title
-                                            )}
+                    <div style={{ overflowX: "auto" }}>
+                        <Table striped={true} bordered={true} hover={true}>
+                            <thead>
+                                <tr>
+                                    {React.Children.map(this.props.children, (field) => {
+                                        return React.isValidElement(field) ? (
+                                            <th key={field.props.key}>
+                                                {field.props.name ? (
+                                                    <a
+                                                        href={"#"}
+                                                        onClick={() => {
+                                                            this.setState({
+                                                                ordering: {
+                                                                    key: field.props.name,
+                                                                    descending:
+                                                                        this.state.ordering.key === field.props.name &&
+                                                                        !this.state.ordering.descending,
+                                                                },
+                                                            });
+                                                        }}
+                                                    >
+                                                        {field.props.title}
+                                                    </a>
+                                                ) : (
+                                                    field.props.title
+                                                )}
 
-                                            {this.state.ordering.key &&
-                                                this.state.ordering.key == field.props.name &&
-                                                !this.state.ordering.descending && <BsCaretUp />}
+                                                {this.state.ordering.key &&
+                                                    this.state.ordering.key == field.props.name &&
+                                                    !this.state.ordering.descending && <BsCaretUp />}
 
-                                            {this.state.ordering.key &&
-                                                this.state.ordering.key == field.props.name &&
-                                                this.state.ordering.descending && <BsCaretDown />}
-                                        </th>
-                                    ) : (
-                                        <th />
+                                                {this.state.ordering.key &&
+                                                    this.state.ordering.key == field.props.name &&
+                                                    this.state.ordering.descending && <BsCaretDown />}
+                                            </th>
+                                        ) : (
+                                            <th />
+                                        );
+                                    })}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.itemsInCurrentPage.map((item) => {
+                                    let trClass = "";
+
+                                    if (this.props.rowTypeFunc !== undefined) {
+                                        switch (this.props.rowTypeFunc(item)) {
+                                            case SimpleTableRowType.none:
+                                                break;
+                                            case SimpleTableRowType.danger:
+                                                trClass = "table-danger";
+                                                break;
+                                            case SimpleTableRowType.warning:
+                                                trClass = "table-warning";
+                                                break;
+                                        }
+                                    }
+
+                                    return (
+                                        <tr className={trClass} key={this.props.keyFunc?.(item)}>
+                                            {React.Children.map(this.props.children, (field) => {
+                                                let tdClass = "";
+
+                                                if (this.props.cellTypeFunc !== undefined) {
+                                                    switch (this.props.cellTypeFunc(item, field)) {
+                                                        case SimpleTableRowType.none:
+                                                            break;
+                                                        case SimpleTableRowType.danger:
+                                                            tdClass = "table-danger";
+                                                            break;
+                                                        case SimpleTableRowType.warning:
+                                                            tdClass = "table-warning";
+                                                            break;
+                                                    }
+                                                }
+
+                                                if (React.isValidElement(field)) {
+                                                    return (
+                                                        <td key={field.props.name} className={trClass}>
+                                                            {React.cloneElement(field, {
+                                                                inline: true,
+                                                                values: item,
+                                                            })}
+                                                        </td>
+                                                    );
+                                                } else {
+                                                    return <td className={trClass}>{field}</td>;
+                                                }
+                                            })}
+                                        </tr>
                                     );
                                 })}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.state.itemsInCurrentPage.map((item) => {
-                                let trClass = "";
-
-                                if (this.props.rowTypeFunc !== undefined) {
-                                    switch (this.props.rowTypeFunc(item)) {
-                                        case SimpleTableRowType.none:
-                                            break;
-                                        case SimpleTableRowType.danger:
-                                            trClass = "table-danger";
-                                            break;
-                                        case SimpleTableRowType.warning:
-                                            trClass = "table-warning";
-                                            break;
-                                    }
-                                }
-
-                                return (
-                                    <tr className={trClass} key={this.props.keyFunc?.(item)}>
-                                        {React.Children.map(this.props.children, (field) => {
-                                            let tdClass = "";
-
-                                            if (this.props.cellTypeFunc !== undefined) {
-                                                switch (this.props.cellTypeFunc(item, field)) {
-                                                    case SimpleTableRowType.none:
-                                                        break;
-                                                    case SimpleTableRowType.danger:
-                                                        tdClass = "table-danger";
-                                                        break;
-                                                    case SimpleTableRowType.warning:
-                                                        tdClass = "table-warning";
-                                                        break;
-                                                }
-                                            }
-
-                                            if (React.isValidElement(field)) {
-                                                return (
-                                                    <td key={field.props.name} className={trClass}>
-                                                        {React.cloneElement(field, {
-                                                            inline: true,
-                                                            values: item,
-                                                        })}
-                                                    </td>
-                                                );
-                                            } else {
-                                                return <td className={trClass}>{field}</td>;
-                                            }
-                                        })}
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </Table>
+                            </tbody>
+                        </Table>
+                    </div>
                 ) : (
                     <span>没有数据。</span>
                 )}
