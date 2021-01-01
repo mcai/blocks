@@ -24,7 +24,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
             onUpdate: (name: string, value: any) => {
                 this.onUpdate(name, value);
             },
-            readOnly: readOnly,
+            readOnly: () => readOnly,
         };
 
         const input = this.props.inputFunc?.(props);
