@@ -7,7 +7,8 @@ export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
             this.props.sections
                 .filter(
                     (section) =>
-                        (section.visible === undefined || section.visible) && section.rightAligned == rightAligned,
+                        (section.visible === undefined || section.visible) &&
+                        (section.rightAligned !== undefined && section.rightAligned) === rightAligned,
                 )
                 .map((section) => {
                     return (
