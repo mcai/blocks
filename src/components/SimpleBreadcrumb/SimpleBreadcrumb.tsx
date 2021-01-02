@@ -4,20 +4,25 @@ import { SimpleBreadcrumbProps } from "./SimpleBreadcrumbProps";
 export class SimpleBreadcrumb extends Component<SimpleBreadcrumbProps, any> {
     render() {
         return (
-            <div className="simple-section">
-                <div className="simple-left">
-                    {this.props.items.map((item, index) => (
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    {this.props.items.map((item) => (
                         <Fragment key={item.key}>
-                            {!item.active && <a href={item.href}>{item.title}</a>}
+                            {!item.active && (
+                                <li className="breadcrumb-item">
+                                    <a href={item.href}>{item.title}</a>
+                                </li>
+                            )}
 
-                            {item.active && item.title}
-
-                            {index !== this.props.items.length - 1 ? " / " : ""}
+                            {item.active && (
+                                <li className="breadcrumb-item active" aria-current="page">
+                                    {item.title}
+                                </li>
+                            )}
                         </Fragment>
                     ))}
-                </div>
-                <div className="simple-center">&nbsp;&nbsp;</div>
-            </div>
+                </ol>
+            </nav>
         );
     }
 }

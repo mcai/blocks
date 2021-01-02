@@ -95,8 +95,9 @@ export class SimpleResourceApp extends Component<SimpleResourceAppProps, any> {
                     navbar={<SimpleNavbar brand={this.props.brand} sections={allSections} />}
                     routes={allRoutes}
                 />
-                <div className="simple-space" />
-                <SimpleFooter brand={this.props.brand} />
+                <div className="mt-1">
+                    <SimpleFooter brand={this.props.brand} />
+                </div>
             </div>
         );
     }
