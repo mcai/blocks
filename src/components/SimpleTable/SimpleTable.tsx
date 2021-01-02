@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { SimpleTableState } from "./SimpleTableState";
 import { SimpleTableProps } from "./SimpleTableProps";
-import { Button, Col, Row, Table } from "react-bootstrap";
 import { SimplePagination } from "../SimplePagination/SimplePagination";
 import { SimpleExport } from "../SimpleExport/SimpleExport";
 import { SimpleLoading } from "../SimpleLoading/SimpleLoading";
@@ -168,21 +167,24 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 {exportAll}
                 {exportCurrentPage}
 
-                <Row>
-                    <Col>
-                        <div className={"float-right"}>
+                <div className="row">
+                    <div className="col">
+                        <div className="float-right">
                             {this.state.count > 0 && (
-                                <Button onClick={async () => await this.refExportAll.download()} className={"ml-3"}>
+                                <button
+                                    onClick={async () => await this.refExportAll.download()}
+                                    className="btn btn-primary ml-3"
+                                >
                                     导出全部
-                                </Button>
+                                </button>
                             )}
                             {this.state.itemsInCurrentPage.length > 0 && (
-                                <Button
+                                <button
                                     onClick={async () => await this.refExportCurrentPage.download()}
-                                    className={"ml-3"}
+                                    className="btn btn-primary ml-3"
                                 >
                                     导出当前页
-                                </Button>
+                                </button>
                             )}
 
                             {this.props.extra}
@@ -191,12 +193,12 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                         <SimpleSpacing />
 
                         {pagination}
-                    </Col>
-                </Row>
+                    </div>
+                </div>
 
                 {this.state.itemsInCurrentPage?.length > 0 ? (
                     <div style={{ overflowX: "auto" }}>
-                        <Table striped={true} bordered={true} hover={true}>
+                        <table className="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
                                     {React.Children.map(this.props.children, (field) => {
@@ -288,15 +290,15 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                                     );
                                 })}
                             </tbody>
-                        </Table>
+                        </table>
                     </div>
                 ) : (
                     <span>没有数据。</span>
                 )}
 
-                <Row>
-                    <Col>{pagination}</Col>
-                </Row>
+                <div className="row">
+                    <div className="col">{pagination}</div>
+                </div>
             </SimpleLoading>
         );
     }
