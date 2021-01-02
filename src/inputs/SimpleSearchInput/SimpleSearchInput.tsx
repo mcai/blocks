@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { SimpleSearchInputProps } from "./SimpleSearchInputProps";
-import { Button } from "react-bootstrap";
 import { SimpleSearchInputState } from "./SimpleSearchInputState";
 import { InputUtils } from "../InputUtils";
 
@@ -41,19 +40,19 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
         );
 
         const buttonSearch = (
-            <Button
-                variant={"primary"}
+            <button
+                className="btn btn-primary"
                 onClick={() => {
                     this.onUpdate(this.state.value);
                 }}
             >
                 搜索
-            </Button>
+            </button>
         );
 
         const buttonClear = (
-            <Button
-                variant={"secondary"}
+            <button
+                className="btn btn-secondary"
                 onClick={() => {
                     this.setState({
                         value: "",
@@ -63,7 +62,7 @@ export class SimpleSearchInput extends Component<SimpleSearchInputProps, SimpleS
                 }}
             >
                 重置
-            </Button>
+            </button>
         );
 
         return InputUtils.render(

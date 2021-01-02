@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { SimpleFileInputProps } from "./SimpleFileInputProps";
 import { decode, encode } from "base64-arraybuffer";
 import { InputUtils } from "../InputUtils";
-import { Button } from "react-bootstrap";
 
 export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
     private refFile: any;
@@ -48,8 +47,8 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                     <Fragment>
                         <span>{value.name}&nbsp;</span>
 
-                        <Button
-                            variant={"primary"}
+                        <button
+                            className="btn btn-primary"
                             type={"button"}
                             onClick={() => {
                                 const data = decode(value.data);
@@ -63,11 +62,11 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                             }}
                         >
                             下载
-                        </Button>
+                        </button>
 
                         {!readOnly && (
-                            <Button
-                                variant={"primary"}
+                            <button
+                                className="btn btn-danger"
                                 type={"button"}
                                 onClick={() => {
                                     if (this.refFile != undefined) {
@@ -81,7 +80,7 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                                 }}
                             >
                                 删除
-                            </Button>
+                            </button>
                         )}
                     </Fragment>
                 ) : (

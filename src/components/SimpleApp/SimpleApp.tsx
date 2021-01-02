@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { SimpleAppProps } from "./SimpleAppProps";
 import { SimpleAppState } from "./SimpleAppState";
-import { Container } from "react-bootstrap";
 import { SimpleToast } from "../SimpleToast/SimpleToast";
 
 export class SimpleApp extends Component<SimpleAppProps, SimpleAppState> {
@@ -13,7 +12,7 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState> {
                 {this.props.navbar}
 
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
-                    <Container fluid={true}>
+                    <div className="container-fluid">
                         <Switch>
                             {this.props.routes.map((route) => (
                                 <Route exact path={route.path} key={route.path}>
@@ -21,7 +20,7 @@ export class SimpleApp extends Component<SimpleAppProps, SimpleAppState> {
                                 </Route>
                             ))}
                         </Switch>
-                    </Container>
+                    </div>
                 </BrowserRouter>
             </Fragment>
         );

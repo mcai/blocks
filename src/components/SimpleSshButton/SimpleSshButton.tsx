@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { SimpleSshButtonProps } from "./SimpleSshButtonProps";
 import { SimpleSshButtonState } from "./SimpleSshButtonState";
-import { Button } from "react-bootstrap";
 import { NodeSSH } from "node-ssh";
 import { SimpleSpinner } from "../SimpleSpinner/SimpleSpinner";
 
@@ -57,8 +56,8 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
     render() {
         return (
             <Fragment>
-                <Button
-                    variant={"primary"}
+                <button
+                    className="btn btn-primary"
                     disabled={this.state.running}
                     onClick={async () => await this.exec(this.props.workingDirectory, this.props.commands)}
                 >
@@ -70,7 +69,7 @@ export class SimpleSshButton extends Component<SimpleSshButtonProps, SimpleSshBu
                             {this.props.buttonRunningText ?? "Running"}
                         </Fragment>
                     )}
-                </Button>
+                </button>
             </Fragment>
         );
     }

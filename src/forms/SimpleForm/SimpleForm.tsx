@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { SimpleFormProps } from "./SimpleFormProps";
 import { SimpleFormState } from "./SimpleFormState";
-import { Button } from "react-bootstrap";
 
 export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
     constructor(props: SimpleFormProps) {
@@ -71,13 +70,13 @@ export class SimpleForm extends Component<SimpleFormProps, SimpleFormState> {
                 {React.isValidElement(input) ? React.cloneElement(input) : input}
 
                 {this.state.submitting === "true" ? (
-                    <Button variant={"primary"} type="submit" disabled={true}>
+                    <button className="btn btn-primary" type="submit" disabled={true}>
                         正在{this.props.submitButtonText ?? "提交"},请稍候...
-                    </Button>
+                    </button>
                 ) : (
-                    <Button variant={"primary"} type="submit">
+                    <button className="btn btn-primary" type="submit">
                         {this.props.submitButtonText ?? "提交"}
-                    </Button>
+                    </button>
                 )}
             </form>
         );

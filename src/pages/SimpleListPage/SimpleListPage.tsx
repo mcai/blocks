@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { SimpleListPageProps } from "./SimpleListPageProps";
 import { SimpleListPageState } from "./SimpleListPageState";
-import { Button } from "react-bootstrap";
 import { SimpleDataProvider } from "../../data/SimpleDataProvider";
 import { SimpleRestDataProvider } from "../../data/SimpleRestDataProvider";
 import { SimpleTable } from "../../components/SimpleTable/SimpleTable";
@@ -66,13 +65,12 @@ export class SimpleListPage extends Component<SimpleListPageProps, SimpleListPag
                     extra={
                         <Fragment>
                             {createButtonVisible && (
-                                <Button
-                                    variant={"primary"}
-                                    className={"ml-3"}
+                                <a
+                                    className={"btn btn-primary ml-3"}
                                     href={urljoin("/", this.props.resource.name, "create")}
                                 >
                                     添加{this.props.resource.title}
-                                </Button>
+                                </a>
                             )}
                         </Fragment>
                     }

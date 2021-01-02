@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { SimpleModalConfirmProps } from "./SimpleModalConfirmProps";
 import { SimpleModalConfirmState } from "./SimpleModalConfirmState";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { SimpleModalConfirmType } from "./SimpleModalConfirmType";
 
 export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, SimpleModalConfirmState> {
@@ -66,12 +66,12 @@ export class SimpleModalConfirm extends Component<SimpleModalConfirmProps, Simpl
                     </Modal.Header>
                     <Modal.Body>{this.props.subtitle ?? this.props.title ?? "Untitled"}</Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.handleCancel()}>
+                        <button className="btn btn-secondary" onClick={() => this.handleCancel()}>
                             {this.props.cancelText ?? "Cancel"}
-                        </Button>
-                        <Button variant={confirmButtonClass} onClick={() => this.handleConfirm()}>
+                        </button>
+                        <button className={`btn btn-${confirmButtonClass}`} onClick={() => this.handleConfirm()}>
                             {this.props.okText ?? "OK"}
-                        </Button>
+                        </button>
                     </Modal.Footer>
                 </Modal>
             </div>

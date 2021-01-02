@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { SimpleListItemProps } from "./SimpleListItemProps";
-import { Button } from "react-bootstrap";
 
 export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(name: string, value: any) {
@@ -36,13 +35,13 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
                         {this.props.index + 1}. {this.props.description}
                         &nbsp;
                         {!readOnly ? (
-                            <Button
-                                variant={"danger"}
+                            <button
+                                className="btn btn-danger"
                                 type="button"
                                 onClick={() => this.props.onRemove?.(this.props.index)}
                             >
                                 删除
-                            </Button>
+                            </button>
                         ) : (
                             <span>&nbsp;</span>
                         )}

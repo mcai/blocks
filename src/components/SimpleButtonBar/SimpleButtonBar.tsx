@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Button } from "react-bootstrap";
 import { SimpleButtonBarProps } from "./SimpleButtonBarProps";
 
 export class SimpleButtonBar extends Component<SimpleButtonBarProps, any> {
@@ -7,15 +6,17 @@ export class SimpleButtonBar extends Component<SimpleButtonBarProps, any> {
         return (
             <Fragment>
                 {this.props.items.map((item) => (
-                    <Button
-                        variant="primary"
-                        key={item.key}
-                        href={item.href}
-                        onClick={() => item.onClick?.()}
-                        className={"mr-3"}
-                    >
-                        {item.title}
-                    </Button>
+                    <Fragment key={item.key}>
+                        {item.href ? (
+                            <a className="btn btn-primary mr-3" href={item.href}>
+                                {item.title}
+                            </a>
+                        ) : (
+                            <button className="btn btn-primary mr-3" onClick={() => item.onClick?.()}>
+                                {item.title}
+                            </button>
+                        )}
+                    </Fragment>
                 ))}
             </Fragment>
         );

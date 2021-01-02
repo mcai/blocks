@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import { SimpleListToolbarProps } from "./SimpleListToolbarProps";
 import { SimpleListToolbarState } from "./SimpleListToolbarState";
-import { Button } from "react-bootstrap";
 
 export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, SimpleListToolbarState> {
     constructor(props: SimpleListToolbarProps) {
@@ -48,14 +47,14 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                     ))}
                 </select>
                 &nbsp;&nbsp;
-                <Button
-                    variant={"primary"}
+                <button
+                    className="btn btn-primary"
                     type="button"
                     onClick={() => this.add()}
                     disabled={this.props.options?.[this.state.selectedIndex] === undefined}
                 >
                     添加
-                </Button>
+                </button>
             </Fragment>
         );
     }
