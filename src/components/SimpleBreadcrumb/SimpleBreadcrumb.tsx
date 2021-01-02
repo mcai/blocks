@@ -4,7 +4,7 @@ import { SimpleBreadcrumbProps } from "./SimpleBreadcrumbProps";
 export class SimpleBreadcrumb extends Component<SimpleBreadcrumbProps, any> {
     render() {
         return (
-            <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb" className="mt-2">
                 <ol className="breadcrumb">
                     {this.props.items.map((item) => (
                         <Fragment key={item.key}>

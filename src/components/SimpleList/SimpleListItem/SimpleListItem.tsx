@@ -30,26 +30,23 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
 
         return (
             <Fragment>
-                <div className="simple-section">
-                    <div className="simple-left">
+                <div className="mt-2">
+                    <span>
                         {this.props.index + 1}. {this.props.description}
-                        &nbsp;
-                        {!readOnly ? (
-                            <button
-                                className="btn btn-danger"
-                                type="button"
-                                onClick={() => this.props.onRemove?.(this.props.index)}
-                            >
-                                删除
-                            </button>
-                        ) : (
-                            <span>&nbsp;</span>
-                        )}
-                    </div>
-                    <div className="simple-center">&nbsp;&nbsp;</div>
+                    </span>
+
+                    {!readOnly && (
+                        <button
+                            className="btn btn-danger ml-2"
+                            type="button"
+                            onClick={() => this.props.onRemove?.(this.props.index)}
+                        >
+                            删除
+                        </button>
+                    )}
                 </div>
 
-                <div className="simple-section">{React.isValidElement(input) ? React.cloneElement(input) : input}</div>
+                <div className="mt-2">{React.isValidElement(input) ? React.cloneElement(input) : input}</div>
             </Fragment>
         );
     }
