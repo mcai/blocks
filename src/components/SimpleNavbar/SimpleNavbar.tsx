@@ -3,46 +3,72 @@ import { SimpleNavbarProps } from "./SimpleNavbarProps";
 
 export class SimpleNavbar extends Component<SimpleNavbarProps, any> {
     render() {
-        return (
-            <ul className="simple-navbar">
-                <li className="simple-brand">
-                    <a className="simple-brand-item" href={this.props.brand.href}>
-                        {this.props.brand.title}
-                    </a>
-                </li>
-
-                {this.props.sections
-                    .filter((section) => section.visible === undefined || section.visible)
-                    .map((section) => {
-                        return (
-                            <li
-                                className="simple-dropdown"
-                                key={section.id}
-                                style={{
-                                    float: section.rightAligned ? "right" : "left",
-                                }}
+        const sectionsFunc = (rightAligned: boolean) =>
+            this.props.sections
+                .filter(
+                    (section) =>
+                        (section.visible === undefined || section.visible) && section.rightAligned == rightAligned,
+                )
+                .map((section) => {
+                    return (
+                        <li key={section.id} className="nav-item active dropdown">
+                            <span
+                                className="nav-link dropdown-toggle"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
                             >
-                                <div className="simple-dropdown-item">{section.title}</div>
-                                <div className="simple-dropdown-content">
-                                    {section.items
-                                        .filter((item) => item.visible === undefined || item.visible)
-                                        .map((item) => (
-                                            <a
-                                                className="simple-dropdown-content-item"
-                                                href={item.href}
-                                                onClick={item.onClick}
+                                {section.title}
+                            </span>
+                            <div className="dropdown-menu">
+                                {section.items
+                                    .filter((item) => item.visible === undefined || item.visible)
+                                    .map((item) =>
+                                        item.href ? (
+                                            <a className="dropdown-item" href={item.href} key={item.key}>
+                                                {item.title}
+                                            </a>
+                                        ) : (
+                                            <button
+                                                className="dropdown-item"
+                                                onClick={() => item.onClick?.()}
                                                 key={item.key}
                                             >
                                                 {item.title}
-                                            </a>
-                                        ))}
-                                </div>
-                            </li>
-                        );
-                    })}
+                                            </button>
+                                        ),
+                                    )}
+                            </div>
+                        </li>
+                    );
+                });
+
+        return (
+            <nav className="navbar navbar-expand-md navbar-dark bg-primary">
+                <a className="navbar-brand" href={this.props.brand.href}>
+                    {this.props.brand.title}
+                </a>
+
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbar"
+                    aria-controls="navbar"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div className="collapse navbar-collapse" id="navbar">
+                    <ul className="navbar-nav">{sectionsFunc(false)}</ul>
+                    <ul className="navbar-nav ml-auto">{sectionsFunc(true)}</ul>
+                </div>
 
                 {this.props.extra}
-            </ul>
+            </nav>
         );
     }
 }
