@@ -15,7 +15,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
         return (
             <div className={"mb-3"}>
                 {this.props.pageCount > 1 && (
-                    <Fragment>
+                    <div className="btn-group">
                         <button className={"btn btn-primary mr-3"} onClick={() => this.props.onClick(0)}>
                             首页
                         </button>
@@ -44,7 +44,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
                         >
                             尾页
                         </button>
-                    </Fragment>
+                    </div>
                 )}
 
                 {this.props.count > 0 && (

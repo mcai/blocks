@@ -170,22 +170,24 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 <div className="row">
                     <div className="col">
                         <div className="float-right">
-                            {this.state.count > 0 && (
-                                <button
-                                    onClick={async () => await this.refExportAll.download()}
-                                    className="btn btn-primary ml-3"
-                                >
-                                    导出全部
-                                </button>
-                            )}
-                            {this.state.itemsInCurrentPage.length > 0 && (
-                                <button
-                                    onClick={async () => await this.refExportCurrentPage.download()}
-                                    className="btn btn-primary ml-3"
-                                >
-                                    导出当前页
-                                </button>
-                            )}
+                            <div className="btn-group ml-3">
+                                {this.state.count > 0 && (
+                                    <button
+                                        onClick={async () => await this.refExportAll.download()}
+                                        className="btn btn-primary"
+                                    >
+                                        导出全部
+                                    </button>
+                                )}
+                                {this.state.itemsInCurrentPage.length > 0 && (
+                                    <button
+                                        onClick={async () => await this.refExportCurrentPage.download()}
+                                        className="btn btn-primary"
+                                    >
+                                        导出当前页
+                                    </button>
+                                )}
+                            </div>
 
                             {this.props.extra}
                         </div>
@@ -197,7 +199,7 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 </div>
 
                 {this.state.itemsInCurrentPage?.length > 0 ? (
-                    <div style={{ overflowX: "auto" }}>
+                    <div className="tw-overflow-x-auto">
                         <table className="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
