@@ -1,6 +1,6 @@
 {
     "name": "@itecgo/blocks",
-    "version": "0.0.415",
+    "version": "0.0.416",
     "description": "blocks",
     "repository": {
         "type": "git",
@@ -12,7 +12,8 @@
         "build"
     ],
     "scripts": {
-        "build:tailwind": "NODE_ENV=production tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+        "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+        "build:tailwind-production": "NODE_ENV=production tailwindcss build src/tailwind.css -o src/tailwind.output.css",
         "build": "rm -rf build && tsc",
         "html": "cd src && copyfiles **/*.css ../build",
         "prepare": "npm run build:tailwind && npm run build && npm run html",
