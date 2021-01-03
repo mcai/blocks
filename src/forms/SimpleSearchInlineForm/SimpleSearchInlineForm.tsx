@@ -37,27 +37,29 @@ export class SimpleSearchInlineForm extends Component<SimpleSearchInlineFormProp
                     }}
                 />
 
-                <button
-                    className="btn btn-primary form-control ml-2"
-                    onClick={() => {
-                        this.onUpdate(this.state.value);
-                    }}
-                >
-                    搜索
-                </button>
+                <div className="btn-group ml-2">
+                    <button
+                        className="btn btn-primary form-control"
+                        onClick={() => {
+                            this.onUpdate(this.state.value);
+                        }}
+                    >
+                        搜索
+                    </button>
 
-                <button
-                    className="btn btn-secondary form-control ml-2"
-                    onClick={() => {
-                        this.setState({
-                            value: "",
-                        });
+                    <button
+                        className="btn btn-secondary form-control"
+                        onClick={() => {
+                            this.setState({
+                                value: "",
+                            });
 
-                        this.onUpdate("");
-                    }}
-                >
-                    重置
-                </button>
+                            this.onUpdate("");
+                        }}
+                    >
+                        重置
+                    </button>
+                </div>
             </div>
         );
     }

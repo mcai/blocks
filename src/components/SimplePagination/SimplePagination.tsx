@@ -16,13 +16,13 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
             <div className={"mb-3"}>
                 {this.props.pageCount > 1 && (
                     <div className="btn-group">
-                        <button className={"btn btn-primary mr-3"} onClick={() => this.props.onClick(0)}>
+                        <button className={"btn btn-primary"} onClick={() => this.props.onClick(0)}>
                             首页
                         </button>
 
                         {this.hasPreviousPage && (
                             <button
-                                className={"btn btn-primary mr-3"}
+                                className={"btn btn-primary"}
                                 onClick={() => this.props.onClick(this.props.pageNum - 1)}
                             >
                                 上页
@@ -31,7 +31,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
 
                         {this.hasNextPage && (
                             <button
-                                className={"btn btn-primary mr-3"}
+                                className={"btn btn-primary"}
                                 onClick={() => this.props.onClick(this.props.pageNum + 1)}
                             >
                                 下页
@@ -39,7 +39,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
                         )}
 
                         <button
-                            className={"btn btn-primary mr-3"}
+                            className={"btn btn-primary"}
                             onClick={() => this.props.onClick(this.props.pageCount - 1)}
                         >
                             尾页
@@ -48,7 +48,7 @@ export class SimplePagination extends Component<SimplePaginationProps, any> {
                 )}
 
                 {this.props.count > 0 && (
-                    <span>
+                    <span className="ml-3">
                         第 {this.props.pageNum + 1} / {this.props.pageCount} 页 (共 {this.props.count} 项, 本页显示{" "}
                         {this.props.pageSize} 项)
                     </span>
