@@ -1,6 +1,6 @@
 import React from "react";
 
 export interface SimplePageHeaderProps {
-    label?: React.ReactNode;
+    title?: React.ReactNode;
     extra?: React.ReactNode;
 }
