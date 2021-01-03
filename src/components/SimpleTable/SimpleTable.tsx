@@ -166,9 +166,11 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 {exportAll}
                 {exportCurrentPage}
 
-                <div className={"tw-flex tw-flex-row tw-items-center tw-space-x-2"}>
-                    <div>{pagination}</div>
-                    <div className="tw-mr-auto">{this.props.extra}</div>
+                <div className="tw-flex tw-flex-row tw-items-center tw-space-x-2">
+                    <div className="tw-flex-grow">
+                        {pagination}
+                        {this.props.extra}
+                    </div>
                     <div className="btn-group">
                         {this.state.count > 0 && (
                             <button
