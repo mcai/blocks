@@ -6,7 +6,6 @@ import { SimpleExport } from "../SimpleExport/SimpleExport";
 import { SimpleLoading } from "../SimpleLoading/SimpleLoading";
 import { Toastify } from "../SimpleToast/SimpleToast";
 import { SimpleToastType } from "../SimpleToast/SimpleToastType";
-import { SimpleSpacing } from "../SimpleSpacing/SimpleSpacing";
 import { SimpleTableRowType } from "./SimpleTableRowType";
 import { BsCaretDown, BsCaretUp } from "react-icons/all";
 
@@ -167,34 +166,28 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 {exportAll}
                 {exportCurrentPage}
 
-                <div className="row">
-                    <div className="col">
-                        <div className="float-right">
-                            <div className="btn-group ml-3">
-                                {this.state.count > 0 && (
-                                    <button
-                                        onClick={async () => await this.refExportAll.download()}
-                                        className="btn btn-primary"
-                                    >
-                                        导出全部
-                                    </button>
-                                )}
-                                {this.state.itemsInCurrentPage.length > 0 && (
-                                    <button
-                                        onClick={async () => await this.refExportCurrentPage.download()}
-                                        className="btn btn-primary"
-                                    >
-                                        导出当前页
-                                    </button>
-                                )}
-                            </div>
+                <div className={"tw-flex tw-flex-row tw-items-center tw-space-x-2"}>
+                    {pagination}
 
-                            {this.props.extra}
-                        </div>
+                    {this.props.extra}
 
-                        <SimpleSpacing />
-
-                        {pagination}
+                    <div className="btn-group tw-ml-auto">
+                        {this.state.count > 0 && (
+                            <button
+                                onClick={async () => await this.refExportAll.download()}
+                                className="btn btn-primary"
+                            >
+                                导出全部
+                            </button>
+                        )}
+                        {this.state.itemsInCurrentPage.length > 0 && (
+                            <button
+                                onClick={async () => await this.refExportCurrentPage.download()}
+                                className="btn btn-primary"
+                            >
+                                导出当前页
+                            </button>
+                        )}
                     </div>
                 </div>
 
