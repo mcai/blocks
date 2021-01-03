@@ -167,27 +167,29 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
                 {exportCurrentPage}
 
                 <div className={"tw-flex tw-flex-row tw-items-center tw-space-x-2"}>
-                    {pagination}
+                    <div>{pagination}</div>
 
-                    {this.props.extra}
+                    <div>{this.props.extra}</div>
 
-                    <div className="btn-group tw-ml-auto">
-                        {this.state.count > 0 && (
-                            <button
-                                onClick={async () => await this.refExportAll.download()}
-                                className="btn btn-primary"
-                            >
-                                导出全部
-                            </button>
-                        )}
-                        {this.state.itemsInCurrentPage.length > 0 && (
-                            <button
-                                onClick={async () => await this.refExportCurrentPage.download()}
-                                className="btn btn-primary"
-                            >
-                                导出当前页
-                            </button>
-                        )}
+                    <div className="tw-ml-auto">
+                        <div className="btn-group">
+                            {this.state.count > 0 && (
+                                <button
+                                    onClick={async () => await this.refExportAll.download()}
+                                    className="btn btn-primary"
+                                >
+                                    导出全部
+                                </button>
+                            )}
+                            {this.state.itemsInCurrentPage.length > 0 && (
+                                <button
+                                    onClick={async () => await this.refExportCurrentPage.download()}
+                                    className="btn btn-primary"
+                                >
+                                    导出当前页
+                                </button>
+                            )}
+                        </div>
                     </div>
                 </div>
 
