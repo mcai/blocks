@@ -12,7 +12,7 @@
         "build"
     ],
     "scripts": {
-        "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
+        "build:tailwind": "NODE_ENV=production tailwindcss build src/tailwind.css -o src/tailwind.output.css",
         "build": "rm -rf build && tsc",
         "html": "cd src && copyfiles **/*.css ../build",
         "prepare": "npm run build:tailwind && npm run build && npm run html",
