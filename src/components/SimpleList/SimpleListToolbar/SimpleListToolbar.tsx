@@ -18,7 +18,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
             selectedIndex: selectedIndex,
         });
 
-        console.log(`SimpleListToolbar.onChange: selectedIndex=${selectedIndex}`);
+        console.debug(`SimpleListToolbar.onChange: selectedIndex=${selectedIndex}`);
     }
 
     private add() {
@@ -33,7 +33,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
             });
         }
 
-        console.log(`SimpleListToolbar.onSubmit: selectedIndex=${selectedIndex}, option=${option}`);
+        console.debug(`SimpleListToolbar.onSubmit: selectedIndex=${selectedIndex}, option=${option}`);
     }
 
     render() {

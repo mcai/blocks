@@ -59,7 +59,7 @@ export class SimpleExport extends Component<SimpleExportProps, SimpleExportState
             allItems: allItems,
         });
 
-        console.log(`[SimpleExport] handle download`);
+        console.debug(`[SimpleExport] handle download`);
 
         this.props.onEndExport?.();
 

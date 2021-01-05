@@ -31,6 +31,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     }
 
     async componentDidMount() {
+        console.debug(`[SimpleTable] componentDidMount`);
+
         await this.loadData();
     }
 
@@ -39,15 +41,21 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         prevState: Readonly<SimpleTableState>,
         snapshot?: any,
     ) {
-        if (prevProps.filter !== this.props.filter) {
+        const filterChanged = prevProps.filter !== this.props.filter;
+        const pageNumChanged = prevState.pageNum !== this.state.pageNum;
+        const orderingChanged = prevState.ordering !== this.state.ordering;
+
+        console.debug(
+            `[SimpleTable] componentDidUpdate: filterChanged=${filterChanged ? "true" : "false"}, pageNumChanged=${
+                pageNumChanged ? "true" : "false"
+            }, orderingChanged=${orderingChanged ? "true" : "false"}`,
+        );
+
+        if (filterChanged) {
             this.resetPageNum();
         }
 
-        if (
-            prevProps.filter !== this.props.filter ||
-            prevState.pageNum !== this.state.pageNum ||
-            prevState.ordering !== this.state.ordering
-        ) {
+        if (filterChanged || pageNumChanged || orderingChanged) {
             await this.loadData();
         }
     }
@@ -59,6 +67,8 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
     }
 
     public async loadData() {
+        console.debug(`[SimpleTable] load data`);
+
         this.setState({
             count: 0,
             pageCount: 0,

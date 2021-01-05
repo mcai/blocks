@@ -19,7 +19,7 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
                 name: value.name,
                 data: data,
             });
-            console.log(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
+            console.debug(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
         });
 
         reader.readAsArrayBuffer(value);

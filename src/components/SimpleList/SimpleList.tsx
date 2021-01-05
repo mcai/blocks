@@ -7,7 +7,7 @@ import { SimpleListItem } from "./SimpleListItem/SimpleListItem";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
     private onAdd(row: { id: string; [name: string]: any }) {
-        console.log(`SimpleList.onAdd: row.id=${row.id}`);
+        console.debug(`SimpleList.onAdd: row.id=${row.id}`);
 
         const newRows = [...(this.props.rows ?? []), row];
 
@@ -18,7 +18,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         const newRows = [...(this.props.rows ?? [])];
         newRows[index][name] = value;
 
-        console.log(`SimpleList.onUpdate: index=${index}, name=${name}, value=${value}`);
+        console.debug(`SimpleList.onUpdate: index=${index}, name=${name}, value=${value}`);
 
         this.props.onUpdate(newRows);
     }
@@ -27,7 +27,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         const newRows = [...(this.props.rows ?? [])];
         newRows.splice(index, 1);
 
-        console.log(`SimpleList.onRemove: index=${index}`);
+        console.debug(`SimpleList.onRemove: index=${index}`);
 
         this.props.onUpdate(newRows);
     }

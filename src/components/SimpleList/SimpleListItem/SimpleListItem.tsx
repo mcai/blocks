@@ -5,7 +5,7 @@ export class SimpleListItem extends React.Component<SimpleListItemProps, any> {
     onUpdate(name: string, value: any) {
         this.props.onUpdate?.(this.props.index, name, value);
 
-        console.log(`SimpleListItem.onUpdate: index=${this.props.index}, name=${name}, value=${value}`);
+        console.debug(`SimpleListItem.onUpdate: index=${this.props.index}, name=${name}, value=${value}`);
     }
 
     render() {
