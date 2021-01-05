@@ -52,6 +52,14 @@ export class SimpleTable extends Component<SimpleTableProps, SimpleTableState> {
         );
 
         if (filterChanged) {
+            console.debug(
+                `[SimpleTable] prevProps.filter: ${JSON.stringify(
+                    prevProps.filter,
+                )}, this.props.filter: ${JSON.stringify(this.props.filter)}`,
+            );
+        }
+
+        if (filterChanged) {
             this.resetPageNum();
         }
 
