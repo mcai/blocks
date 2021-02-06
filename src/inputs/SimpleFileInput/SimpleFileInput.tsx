@@ -11,18 +11,26 @@ export class SimpleFileInput extends Component<SimpleFileInputProps, any> {
             return;
         }
 
+        const isTextFile = this.props.isTextFile !== undefined && this.props.isTextFile;
+
         const reader = new FileReader();
 
         reader.addEventListener("loadend", async () => {
-            const data = encode(reader.result as ArrayBuffer);
+            const data = isTextFile ? (reader.result as string) : encode(reader.result as ArrayBuffer);
+
             this.props.onUpdate?.(this.props.name ?? "", {
                 name: value.name,
                 data: data,
             });
+
             console.debug(`SimpleFormFileInput.onUpdate: name=${this.props.name}, value=${JSON.stringify(data)}`);
         });
 
-        reader.readAsArrayBuffer(value);
+        if (isTextFile) {
+            reader.readAsText(value);
+        } else {
+            reader.readAsArrayBuffer(value);
+        }
     }
 
     render() {

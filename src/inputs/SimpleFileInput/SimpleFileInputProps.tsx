@@ -14,4 +14,6 @@ export interface SimpleFileInputProps {
     className?: string;
 
     style?: CSSProperties;
+
+    isTextFile?: boolean;
 }
