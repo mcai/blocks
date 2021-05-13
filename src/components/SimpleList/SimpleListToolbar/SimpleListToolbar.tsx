@@ -39,10 +39,6 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                         });
                     }}
                     onChange={async (text: any) => {
-                        this.setState({
-                            selectedOption: undefined,
-                        });
-
                         await this.props.onChange?.(text);
                     }}
                     fuseConfigs={{
