@@ -29,7 +29,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
 
     render() {
         return (
-            <Fragment>
+            <div>
                 <ReactSearchBox
                     placeholder="请输入关键词"
                     data={this.props.options?.map((option) => ({ key: option.id, value: option.descriptionAsText }))}
@@ -55,7 +55,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                 >
                     添加
                 </button>
-            </Fragment>
+            </div>
         );
     }
 }
