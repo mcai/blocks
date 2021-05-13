@@ -1,30 +1,21 @@
 import React, { Fragment } from "react";
 import { SimpleListToolbarProps } from "./SimpleListToolbarProps";
 import { SimpleListToolbarState } from "./SimpleListToolbarState";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import ReactSearchBox from "react-search-box";
 
 export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, SimpleListToolbarState> {
     constructor(props: SimpleListToolbarProps) {
         super(props);
 
         this.state = {
-            selectedIndex: 0,
+            selectedOption: undefined,
         };
     }
 
-    private onChange(e: React.ChangeEvent<HTMLSelectElement>) {
-        const selectedIndex = Number(e.target.value);
-
-        this.setState({
-            selectedIndex: selectedIndex,
-        });
-
-        console.debug(`SimpleListToolbar.onChange: selectedIndex=${selectedIndex}`);
-    }
-
     private add() {
-        const selectedIndex = this.state.selectedIndex;
-
-        const option = this.props.options?.[selectedIndex];
+        const option = this.state.selectedOption;
 
         if (option) {
             this.props.onAdd({
@@ -33,25 +24,38 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
             });
         }
 
-        console.debug(`SimpleListToolbar.onSubmit: selectedIndex=${selectedIndex}, option=${option}`);
+        console.debug(`SimpleListToolbar.onSubmit: option=${option}`);
     }
 
     render() {
         return (
             <Fragment>
-                <select value={this.state.selectedIndex} onChange={(e) => this.onChange(e)}>
-                    {this.props.options?.map((option, index) => (
-                        <option key={index} value={index}>
-                            {option.descriptionAsText}
-                        </option>
-                    ))}
-                </select>
+                <ReactSearchBox
+                    placeholder="请输入关键词"
+                    data={this.props.options?.map((option) => ({ key: option.id, value: option.descriptionAsText }))}
+                    onSelect={(record: any) => {
+                        this.setState({
+                            selectedOption: this.props.options?.filter((o) => o.id === record.key)?.[0],
+                        });
+                    }}
+                    onChange={async (text: any) => {
+                        this.setState({
+                            selectedOption: undefined,
+                        });
+
+                        await this.props.onChange?.(text);
+                    }}
+                    fuseConfigs={{
+                        threshold: 0.05,
+                    }}
+                    value=""
+                />
                 &nbsp;&nbsp;
                 <button
                     className="btn btn-primary"
                     type="button"
                     onClick={() => this.add()}
-                    disabled={this.props.options?.[this.state.selectedIndex] === undefined}
+                    disabled={this.state.selectedOption === undefined}
                 >
                     添加
                 </button>

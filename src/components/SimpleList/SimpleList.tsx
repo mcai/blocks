@@ -38,7 +38,17 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                 <div className="col-auto">共 {this.props.rows?.length ?? 0} 项</div>
                 <div className="col-auto ml-auto">
                     {(this.props.readOnly === undefined || !this.props.readOnly) && (
-                        <SimpleListToolbar options={this.props.options} onAdd={(row) => this.onAdd(row)} />
+                        <SimpleListToolbar
+                            options={this.state.options}
+                            onAdd={(row) => this.onAdd(row)}
+                            onChange={async (text) => {
+                                const options = await this.props.getOptions?.(text);
+
+                                this.setState({
+                                    options: options,
+                                });
+                            }}
+                        />
                     )}
                 </div>
             </div>
@@ -48,7 +58,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             <div>
                 {this.props.rows?.map((row, index) => {
                     const { id, ...values } = row;
-                    const option = this.props.options?.filter((x) => x.id == row.id)?.[0];
+                    const option = this.state.options?.filter((x) => x.id == row.id)?.[0];
 
                     return (
                         <div key={index}>

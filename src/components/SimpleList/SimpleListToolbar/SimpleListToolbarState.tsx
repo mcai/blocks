@@ -1,3 +1,5 @@
+import { SimpleListOption } from "../SimpleListOption";
+
 export interface SimpleListToolbarState {
-    selectedIndex: number;
+    selectedOption?: SimpleListOption;
 }
