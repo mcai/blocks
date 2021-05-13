@@ -14,6 +14,14 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         };
     }
 
+    async componentDidMount() {
+        const options = await this.props.getOptions?.();
+
+        this.setState({
+            options: options,
+        });
+    }
+
     private onAdd(row: { id: string; [name: string]: any }) {
         console.debug(`SimpleList.onAdd: row.id=${row.id}`);
 
