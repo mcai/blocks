@@ -29,33 +29,37 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
 
     render() {
         return (
-            <div>
-                <ReactSearchBox
-                    placeholder="请输入关键词"
-                    data={this.props.options?.map((option) => ({ key: option.id, value: option.descriptionAsText }))}
-                    onSelect={(record: any) => {
-                        this.setState({
-                            selectedOption: this.props.options?.filter((o) => o.id === record.key)?.[0],
-                        });
-                    }}
-                    onChange={async (text: any) => {
-                        await this.props.onChange?.(text);
-                    }}
-                    fuseConfigs={{
-                        threshold: 0.05,
-                    }}
-                    value=""
-                />
-                &nbsp;&nbsp;
+            <Fragment>
+                <div className="p-2">
+                    <ReactSearchBox
+                        placeholder="请输入关键词"
+                        data={this.props.options?.map((option) => ({
+                            key: option.id,
+                            value: option.descriptionAsText,
+                        }))}
+                        onSelect={(record: any) => {
+                            this.setState({
+                                selectedOption: this.props.options?.filter((o) => o.id === record.key)?.[0],
+                            });
+                        }}
+                        onChange={async (text: any) => {
+                            await this.props.onChange?.(text);
+                        }}
+                        fuseConfigs={{
+                            threshold: 0.05,
+                        }}
+                        value=""
+                    />
+                </div>
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-primary p-2"
                     type="button"
                     onClick={() => this.add()}
                     disabled={this.state.selectedOption === undefined}
                 >
                     添加
                 </button>
-            </div>
+            </Fragment>
         );
     }
 }

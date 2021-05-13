@@ -50,23 +50,21 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     render() {
         const toolbar = (
-            <div className="row mb-2">
-                <div className="col-auto">共 {this.props.rows?.length ?? 0} 项</div>
-                <div className="col-auto ml-auto">
-                    {(this.props.readOnly === undefined || !this.props.readOnly) && (
-                        <SimpleListToolbar
-                            options={this.state.options}
-                            onAdd={(row) => this.onAdd(row)}
-                            onChange={async (text) => {
-                                const options = await this.props.getOptions?.(text);
+            <div className="row mb-2 d-flex">
+                <div className="mr-auto p-2">共 {this.props.rows?.length ?? 0} 项</div>
+                {(this.props.readOnly === undefined || !this.props.readOnly) && (
+                    <SimpleListToolbar
+                        options={this.state.options}
+                        onAdd={(row) => this.onAdd(row)}
+                        onChange={async (text) => {
+                            const options = await this.props.getOptions?.(text);
 
-                                this.setState({
-                                    options: options,
-                                });
-                            }}
-                        />
-                    )}
-                </div>
+                            this.setState({
+                                options: options,
+                            });
+                        }}
+                    />
+                )}
             </div>
         );
 
