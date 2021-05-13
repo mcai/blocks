@@ -88,7 +88,7 @@ export class SimpleTodoApp extends Component<SimpleTodoAppProps, SimpleTodoAppSt
                 />
 
                 <SimpleList
-                    options={[
+                    getOptions={async () => [
                         {
                             id: "simpleTodo",
                             descriptionAsText: "Simple TODO",
