@@ -6,6 +6,14 @@ import { SimpleListState } from "./SimpleListState";
 import { SimpleListItem } from "./SimpleListItem/SimpleListItem";
 
 export class SimpleList extends React.Component<SimpleListProps, SimpleListState> {
+    constructor(props: SimpleListProps) {
+        super(props);
+
+        this.state = {
+            options: undefined,
+        };
+    }
+
     private onAdd(row: { id: string; [name: string]: any }) {
         console.debug(`SimpleList.onAdd: row.id=${row.id}`);
 
