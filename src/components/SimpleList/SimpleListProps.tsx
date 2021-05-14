@@ -1,7 +1,7 @@
 import { SimpleListOption } from "./SimpleListOption";
 
 export interface SimpleListProps {
-    getOptions?: (text?: string) => Promise<SimpleListOption[] | undefined>;
+    options?: SimpleListOption[];
 
     rows?: { id: any; [name: string]: any }[];
 

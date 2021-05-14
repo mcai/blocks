@@ -14,7 +14,7 @@ export class SimpleListInput extends Component<SimpleListInputProps, any> {
         return (
             visible && (
                 <SimpleList
-                    getOptions={async () => this.props.options}
+                    options={this.props.options}
                     rows={this.props.values?.[this.props.name ?? ""]}
                     onUpdate={(rows?: any) => this.onUpdate(rows)}
                     readOnly={readOnly}

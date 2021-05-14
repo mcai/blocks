@@ -14,14 +14,6 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
         };
     }
 
-    async componentDidMount() {
-        const options = await this.props.getOptions?.();
-
-        this.setState({
-            options: options,
-        });
-    }
-
     private onAdd(row: { id: string; [name: string]: any }) {
         console.debug(`SimpleList.onAdd: row.id=${row.id}`);
 
@@ -54,15 +46,8 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                 <div className="mr-auto p-2">共 {this.props.rows?.length ?? 0} 项</div>
                 {(this.props.readOnly === undefined || !this.props.readOnly) && (
                     <SimpleListToolbar
-                        options={this.state.options}
+                        options={this.props.options}
                         onAdd={(row) => this.onAdd(row)}
-                        onChange={async (text) => {
-                            const options = await this.props.getOptions?.(text);
-
-                            this.setState({
-                                options: options,
-                            });
-                        }}
                         useSearch={this.props.useSearch}
                     />
                 )}
@@ -73,7 +58,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
             <div>
                 {this.props.rows?.map((row, index) => {
                     const { id, ...values } = row;
-                    const option = this.state.options?.filter((x) => x.id == row.id)?.[0];
+                    const option = this.props.options?.filter((x) => x.id == row.id)?.[0];
 
                     return (
                         <div key={index}>
