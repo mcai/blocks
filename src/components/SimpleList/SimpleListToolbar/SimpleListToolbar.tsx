@@ -45,7 +45,8 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
         return (
             <Fragment>
                 <div className="tw-z-50" style={{ width: 800 }}>
-                    {useSearch && (
+                    {useSearch && !this.props.options && <span>数据正在载入,请稍候...</span>}
+                    {useSearch && this.props.options && (
                         <ReactSearchAutocomplete
                             fuseOptions={{
                                 threshold: 0.6,
@@ -96,7 +97,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                     className="btn btn-primary ml-2"
                     type="button"
                     onClick={() => this.add()}
-                    disabled={this.state.selectedOption === undefined}
+                    disabled={!this.props.options || this.state.selectedOption === undefined}
                 >
                     添加
                 </button>
