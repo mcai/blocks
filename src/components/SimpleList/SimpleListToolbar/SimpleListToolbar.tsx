@@ -3,7 +3,7 @@ import { SimpleListToolbarProps } from "./SimpleListToolbarProps";
 import { SimpleListToolbarState } from "./SimpleListToolbarState";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import ReactSearchBox from "react-search-box";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, SimpleListToolbarState> {
     constructor(props: SimpleListToolbarProps) {
@@ -31,24 +31,20 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
         return (
             <Fragment>
                 <div className="p-2">
-                    <ReactSearchBox
-                        placeholder="请输入关键词"
-                        data={this.props.options?.map((option) => ({
-                            key: option.id,
-                            value: option.descriptionAsText,
+                    <ReactSearchAutocomplete
+                        items={this.props.options?.map((option) => ({
+                            id: option.id,
+                            name: option.descriptionAsText,
                         }))}
-                        onSelect={(record: any) => {
-                            this.setState({
-                                selectedOption: this.props.options?.filter((o) => o.id === record.key)?.[0],
-                            });
-                        }}
-                        onChange={async (text: any) => {
+                        onSearch={async (text: any) => {
                             await this.props.onChange?.(text);
                         }}
-                        fuseConfigs={{
-                            threshold: 0.05,
+                        onSelect={(item: any) => {
+                            this.setState({
+                                selectedOption: this.props.options?.filter((o) => o.id === item.id)?.[0],
+                            });
                         }}
-                        value=""
+                        autofocus
                     />
                 </div>
                 <button
