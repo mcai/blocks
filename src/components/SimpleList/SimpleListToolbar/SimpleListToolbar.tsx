@@ -10,7 +10,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
         super(props);
 
         this.state = {
-            selectedOption: undefined,
+            selectedOption: this.props.options?.[0],
         };
     }
 
