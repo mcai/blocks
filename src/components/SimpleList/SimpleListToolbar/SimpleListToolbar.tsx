@@ -30,7 +30,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
     render() {
         return (
             <Fragment>
-                <div className="p-2" style={{ width: 200 }}>
+                <div className="tw-z-50" style={{ width: 400 }}>
                     <ReactSearchAutocomplete
                         items={this.props.options?.map((option) => ({
                             id: option.id,
@@ -48,7 +48,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                     />
                 </div>
                 <button
-                    className="btn btn-primary p-2"
+                    className="btn btn-primary"
                     type="button"
                     onClick={() => this.add()}
                     disabled={this.state.selectedOption === undefined}
