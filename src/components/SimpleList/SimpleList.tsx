@@ -50,7 +50,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
 
     render() {
         const toolbar = (
-            <div className="row mb-2">
+            <div className="row mb-2 mx-2">
                 <div className="mr-auto p-2">共 {this.props.rows?.length ?? 0} 项</div>
                 {(this.props.readOnly === undefined || !this.props.readOnly) && (
                     <SimpleListToolbar
