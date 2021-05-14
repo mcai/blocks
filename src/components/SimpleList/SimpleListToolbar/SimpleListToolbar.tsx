@@ -54,6 +54,22 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                         placeholder="请输入关键词, 输入a: 显示前几项"
                         autofocus
                     />
+                    <select
+                        value={this.state.selectedOption ? this.props.options?.indexOf(this.state.selectedOption) : 0}
+                        onChange={(e) => {
+                            const selectedIndex = Number(e.target.value);
+
+                            this.setState({
+                                selectedOption: this.props.options?.[selectedIndex],
+                            });
+                        }}
+                    >
+                        {this.props.options?.map((option, index) => (
+                            <option key={index} value={index}>
+                                {option.descriptionAsText}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <button
                     className="btn btn-primary ml-2"
