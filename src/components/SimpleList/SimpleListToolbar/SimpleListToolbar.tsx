@@ -33,7 +33,8 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                 <div className="tw-z-50" style={{ width: 800 }}>
                     <ReactSearchAutocomplete
                         fuseOptions={{
-                            threshold: 1.0,
+                            threshold: 0.6,
+                            ignoreLocation: true,
                         }}
                         items={this.props.options?.map((option) => ({
                             id: option.id,
