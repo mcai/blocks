@@ -32,6 +32,9 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
             <Fragment>
                 <div className="tw-z-50" style={{ width: 800 }}>
                     <ReactSearchAutocomplete
+                        fuseOptions={{
+                            threshold: 1.0,
+                        }}
                         items={this.props.options?.map((option) => ({
                             id: option.id,
                             name: option.descriptionAsText,
@@ -44,6 +47,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                                 selectedOption: this.props.options?.filter((o) => o.id === item.id)?.[0],
                             });
                         }}
+                        placeholder="请输入关键词"
                         autofocus
                     />
                 </div>
