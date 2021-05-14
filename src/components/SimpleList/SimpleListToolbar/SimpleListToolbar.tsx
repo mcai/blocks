@@ -50,6 +50,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                             keys: ["descriptionAsText", "fuseSearchKey"],
                         }}
                         resultStringKeyName="descriptionAsText"
+                        inputSearchString={this.props.options?.[0]?.descriptionAsText}
                         items={this.props.options?.map((option) => ({
                             id: option.id,
                             descriptionAsText: option.descriptionAsText,
@@ -63,6 +64,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                                 selectedOption: this.props.options?.filter((o) => o.id === item.id)?.[0],
                             });
                         }}
+                        maxResults={100}
                         placeholder="请输入关键词, 输入a: 显示前几项"
                         autofocus
                     />
