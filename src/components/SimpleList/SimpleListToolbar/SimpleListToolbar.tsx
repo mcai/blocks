@@ -68,7 +68,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                                 });
                             }}
                             maxResults={100}
-                            placeholder="请输入关键词, 输入a: 显示前几项"
+                            placeholder="请输入关键词, 支持模糊查询"
                             autofocus
                         />
                     )}
