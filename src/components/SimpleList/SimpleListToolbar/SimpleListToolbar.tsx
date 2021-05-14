@@ -14,6 +14,18 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
         };
     }
 
+    componentDidUpdate(
+        prevProps: Readonly<SimpleListToolbarProps>,
+        prevState: Readonly<SimpleListToolbarState>,
+        snapshot?: any,
+    ) {
+        if (prevProps.options !== this.props.options) {
+            this.setState({
+                selectedOption: this.props.options?.[0],
+            });
+        }
+    }
+
     private add() {
         const option = this.state.selectedOption;
 
