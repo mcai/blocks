@@ -7,6 +7,8 @@ export interface SimpleListOption {
 
     descriptionAsText?: string;
 
+    fuseSearchKey?: string;
+
     inputFunc?: (props: any) => React.ReactNode;
 
     values: { [name: string]: any };

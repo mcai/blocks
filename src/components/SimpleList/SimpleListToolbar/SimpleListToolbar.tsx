@@ -35,10 +35,13 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                         fuseOptions={{
                             threshold: 0.6,
                             ignoreLocation: true,
+                            keys: ["descriptionAsText", "fuseSearchKey"],
                         }}
+                        resultStringKeyName="descriptionAsText"
                         items={this.props.options?.map((option) => ({
                             id: option.id,
-                            name: option.descriptionAsText,
+                            descriptionAsText: option.descriptionAsText,
+                            fuseSearchKey: option.fuseSearchKey,
                         }))}
                         onSearch={async (text: any) => {
                             await this.props.onChange?.(text);
