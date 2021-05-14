@@ -63,6 +63,7 @@ export class SimpleList extends React.Component<SimpleListProps, SimpleListState
                                 options: options,
                             });
                         }}
+                        useSearch={this.props.useSearch}
                     />
                 )}
             </div>

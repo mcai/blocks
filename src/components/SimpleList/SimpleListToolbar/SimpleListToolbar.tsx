@@ -40,50 +40,58 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
     }
 
     render() {
+        const useSearch = this.props.useSearch ?? false;
+
         return (
             <Fragment>
                 <div className="tw-z-50" style={{ width: 800 }}>
-                    <ReactSearchAutocomplete
-                        fuseOptions={{
-                            threshold: 0.6,
-                            ignoreLocation: true,
-                            keys: ["descriptionAsText", "fuseSearchKey"],
-                        }}
-                        resultStringKeyName="descriptionAsText"
-                        inputSearchString={this.props.options?.[0]?.descriptionAsText}
-                        items={this.props.options?.map((option) => ({
-                            id: option.id,
-                            descriptionAsText: option.descriptionAsText,
-                            fuseSearchKey: option.fuseSearchKey,
-                        }))}
-                        onSearch={async (text: any) => {
-                            await this.props.onChange?.(text);
-                        }}
-                        onSelect={(item: any) => {
-                            this.setState({
-                                selectedOption: this.props.options?.filter((o) => o.id === item.id)?.[0],
-                            });
-                        }}
-                        maxResults={100}
-                        placeholder="请输入关键词, 输入a: 显示前几项"
-                        autofocus
-                    />
-                    <select
-                        value={this.state.selectedOption ? this.props.options?.indexOf(this.state.selectedOption) : 0}
-                        onChange={(e) => {
-                            const selectedIndex = Number(e.target.value);
+                    {useSearch && (
+                        <ReactSearchAutocomplete
+                            fuseOptions={{
+                                threshold: 0.6,
+                                ignoreLocation: true,
+                                keys: ["descriptionAsText", "fuseSearchKey"],
+                            }}
+                            resultStringKeyName="descriptionAsText"
+                            inputSearchString={this.props.options?.[0]?.descriptionAsText}
+                            items={this.props.options?.map((option) => ({
+                                id: option.id,
+                                descriptionAsText: option.descriptionAsText,
+                                fuseSearchKey: option.fuseSearchKey,
+                            }))}
+                            onSearch={async (text: any) => {
+                                await this.props.onChange?.(text);
+                            }}
+                            onSelect={(item: any) => {
+                                this.setState({
+                                    selectedOption: this.props.options?.filter((o) => o.id === item.id)?.[0],
+                                });
+                            }}
+                            maxResults={100}
+                            placeholder="请输入关键词, 输入a: 显示前几项"
+                            autofocus
+                        />
+                    )}
+                    {!useSearch && (
+                        <select
+                            value={
+                                this.state.selectedOption ? this.props.options?.indexOf(this.state.selectedOption) : 0
+                            }
+                            onChange={(e) => {
+                                const selectedIndex = Number(e.target.value);
 
-                            this.setState({
-                                selectedOption: this.props.options?.[selectedIndex],
-                            });
-                        }}
-                    >
-                        {this.props.options?.map((option, index) => (
-                            <option key={index} value={index}>
-                                {option.descriptionAsText}
-                            </option>
-                        ))}
-                    </select>
+                                this.setState({
+                                    selectedOption: this.props.options?.[selectedIndex],
+                                });
+                            }}
+                        >
+                            {this.props.options?.map((option, index) => (
+                                <option key={index} value={index}>
+                                    {option.descriptionAsText}
+                                </option>
+                            ))}
+                        </select>
+                    )}
                 </div>
                 <button
                     className="btn btn-primary ml-2"

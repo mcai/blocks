@@ -8,4 +8,6 @@ export interface SimpleListProps {
     onUpdate: (rows?: { id: any; [name: string]: any }[]) => void;
 
     readOnly?: boolean;
+
+    useSearch?: boolean;
 }

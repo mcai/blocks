@@ -7,4 +7,6 @@ export interface SimpleListToolbarProps {
     onChange?: (text?: string) => Promise<void>;
 
     onAdd: (row: { id: any; [name: string]: any }) => void;
+
+    useSearch?: boolean;
 }
