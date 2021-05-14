@@ -30,7 +30,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
     render() {
         return (
             <Fragment>
-                <div className="tw-z-50" style={{ width: 400 }}>
+                <div className="tw-z-50" style={{ width: 800 }}>
                     <ReactSearchAutocomplete
                         items={this.props.options?.map((option) => ({
                             id: option.id,
