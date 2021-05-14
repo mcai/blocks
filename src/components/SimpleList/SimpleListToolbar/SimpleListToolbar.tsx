@@ -53,7 +53,6 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                                 keys: ["descriptionAsText", "fuseSearchKey"],
                             }}
                             resultStringKeyName="descriptionAsText"
-                            inputSearchString={this.props.options?.[0]?.descriptionAsText}
                             items={this.props.options?.map((option) => ({
                                 id: option.id,
                                 descriptionAsText: option.descriptionAsText,
