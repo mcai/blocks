@@ -45,7 +45,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
         return (
             <Fragment>
                 <div className="tw-z-50" style={{ width: 800 }}>
-                    {useSearch && !this.props.options && <span>数据正在载入,请稍候...</span>}
+                    {useSearch && !this.props.options && <span className="text-danger">数据正在载入,请稍候...</span>}
                     {useSearch && this.props.options && (
                         <ReactSearchAutocomplete
                             fuseOptions={{
