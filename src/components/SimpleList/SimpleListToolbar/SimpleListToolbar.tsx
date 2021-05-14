@@ -51,7 +51,7 @@ export class SimpleListToolbar extends React.Component<SimpleListToolbarProps, S
                                 selectedOption: this.props.options?.filter((o) => o.id === item.id)?.[0],
                             });
                         }}
-                        placeholder="请输入关键词, 输入a: 查找全部"
+                        placeholder="请输入关键词, 输入a: 显示前几项"
                         autofocus
                     />
                 </div>
